@@ -1,0 +1,1567 @@
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Chapter 8 Database Development</title><link rel="stylesheet" type="text/css" href="mvl.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="MySQL Workbench"><link rel="up" href="index.html" title="MySQL Workbench"><link rel="prev" href="wb-performance.html" title="Chapter 7 Performance Tools"><link rel="next" href="wb-data-modeling.html" title="Chapter 9 Database Design and Modeling"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 8 Database Development</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="wb-performance.html">Previous</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="wb-data-modeling.html">Next</a></td></tr></table><hr></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a name="wb-develop"></a>Chapter 8 Database Development</h1></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl class="toc"><dt><span class="section"><a href="wb-develop.html#wb-sql-editor">8.1 Visual SQL Editor</a></span></dt><dd><dl><dt><span class="section"><a href="wb-develop.html#wb-sql-editor-query-panel">8.1.1 SQL Query Tab</a></span></dt><dt><span class="section"><a href="wb-develop.html#wb-sql-editor-toolbar">8.1.2 SQL Query Toolbar</a></span></dt><dt><span class="section"><a href="wb-develop.html#wb-sql-editor-main-menu">8.1.3 Query and Edit Menus</a></span></dt><dt><span class="section"><a href="wb-develop.html#wb-develop-sql-editor-results">8.1.4 Result Grid</a></span></dt><dt><span class="section"><a href="wb-develop.html#wb-sql-editor-snippets">8.1.5 SQL Additions - Snippets Tab</a></span></dt><dt><span class="section"><a href="wb-develop.html#wb-develop-sql-editor-help">8.1.6 SQL Additions - Context Help Tab</a></span></dt><dt><span class="section"><a href="wb-develop.html#wb-develop-sql-editor-history">8.1.7 Output Panel</a></span></dt><dt><span class="section"><a href="wb-develop.html#wb-develop-sql-editor-table-search">8.1.8 Table Data Search Tab</a></span></dt><dt><span class="section"><a href="wb-develop.html#wb-develop-sql-editor-table-export-import">8.1.9 Export or Import a Table</a></span></dt><dt><span class="section"><a href="wb-develop.html#wb-table-editor">8.1.10 MySQL Table Editor</a></span></dt><dt><span class="section"><a href="wb-develop.html#wb-generating">8.1.11 Code Generation Overview</a></span></dt></dl></dd><dt><span class="section"><a href="wb-develop.html#wb-develop-object-management">8.2 Object Management</a></span></dt><dd><dl><dt><span class="section"><a href="wb-develop.html#wb-sql-editor-navigator">8.2.1 Object Browser and Editor Navigator</a></span></dt><dt><span class="section"><a href="wb-develop.html#wb-sql-editor-connection-information-panel">8.2.2 Session and Object Information Panel</a></span></dt><dt><span class="section"><a href="wb-develop.html#wb-develop-object-management-inspector">8.2.3 Schema and Table Inspector</a></span></dt></dl></dd></dl></div><p>
+    A set of visual tools to create, edit, and manage SQL queries,
+    database connections, and objects.
+  </p><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-sql-editor"></a>8.1 Visual SQL Editor</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="wb-develop.html#wb-sql-editor-query-panel">8.1.1 SQL Query Tab</a></span></dt><dt><span class="section"><a href="wb-develop.html#wb-sql-editor-toolbar">8.1.2 SQL Query Toolbar</a></span></dt><dt><span class="section"><a href="wb-develop.html#wb-sql-editor-main-menu">8.1.3 Query and Edit Menus</a></span></dt><dt><span class="section"><a href="wb-develop.html#wb-develop-sql-editor-results">8.1.4 Result Grid</a></span></dt><dt><span class="section"><a href="wb-develop.html#wb-sql-editor-snippets">8.1.5 SQL Additions - Snippets Tab</a></span></dt><dt><span class="section"><a href="wb-develop.html#wb-develop-sql-editor-help">8.1.6 SQL Additions - Context Help Tab</a></span></dt><dt><span class="section"><a href="wb-develop.html#wb-develop-sql-editor-history">8.1.7 Output Panel</a></span></dt><dt><span class="section"><a href="wb-develop.html#wb-develop-sql-editor-table-search">8.1.8 Table Data Search Tab</a></span></dt><dt><span class="section"><a href="wb-develop.html#wb-develop-sql-editor-table-export-import">8.1.9 Export or Import a Table</a></span></dt><dt><span class="section"><a href="wb-develop.html#wb-table-editor">8.1.10 MySQL Table Editor</a></span></dt><dt><span class="section"><a href="wb-develop.html#wb-generating">8.1.11 Code Generation Overview</a></span></dt></dl></div><p>
+      The visual SQL editor consists of a set of specialized editors
+      (query, schema, table, and so on) and three panels: sidebar,
+      secondary sidebar, and output area. Each editor opens in a
+      separate secondary tab within an active MySQL connection tab. Each
+      panel can be hidden or shown. Together the editors and panels
+      enable you to:
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          Build, edit, and run queries
+        </p></li><li class="listitem"><p>
+          Create and edit data
+        </p></li><li class="listitem"><p>
+          View and export results
+        </p></li><li class="listitem"><p>
+          Perform basic RDBMS administrative tasks
+        </p></li></ul></div><p>
+      Color syntax highlighting, context help, and code completion
+      assist you in writing and debugging SQL statements. The integrated
+      EXPLAIN plans provide data to help optimize the your queries. The
+      following figure shows the main elements of the visual editor.
+    </p><div class="figure"><a name="wb-sql-editor-gui-screenshot"></a><p class="title"><b>Figure 8.1 Visual SQL Editor</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-visual-sql-editor.png" width="729" height="434" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h3><a name="wb-sql-editor-elements"></a>Description of the Visual SQL Editor Elements</h3><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+          Home screen tab. The Home screen tab provides quick access to
+          connections, models, and the MySQL Migration wizard. Unlike
+          the other main tabs, the Home screen tab does not close. For
+          additional information, see <a class="xref" href="wb-home.html" title="Chapter 4 The Home Screen">Chapter 4, <i>The Home Screen</i></a>.
+        </p></li><li class="listitem"><p>
+          Connection tab. Each connection made to the MySQL server is
+          represented by a separate connection tab. A server can be
+          active or inactive when the connection tab for it is opened.
+          For assistance in creating and managing MySQL connections, see
+          <a class="xref" href="wb-mysql-connections.html" title="Chapter 5 Connections in MySQL Workbench">Chapter 5, <i>Connections in MySQL Workbench</i></a>.
+        </p></li><li class="listitem"><p>
+          SQL query tab. The SQL query tab is a secondary tab that opens
+          by default when you make a connection to a MySQL server. Each
+          query tab is uniquely identified by an incrementing number:
+          <code class="literal">query 1</code>, <code class="literal">query 2</code>, and so
+          on. To close an open tab, click the <code class="literal">x</code> on
+          the tab. For a closer look at query editing in MySQL Workbench,
+          (see <a class="xref" href="wb-develop.html#wb-sql-editor-query-panel" title="8.1.1 SQL Query Tab">Section 8.1.1, “SQL Query Tab”</a>).
+        </p><p>
+          All SQL query tabs provide an area to edit queries. You can
+          open other specialized editors within tabs in this same
+          central area. For example, you can edit schemas, tables,
+          columns, and so on. Administration tabs also open in this
+          area.
+        </p></li><li class="listitem"><p>
+          Main menu bar. The menu bar has the following menus:
+          <span class="guimenu">File</span>, <span class="guimenu">Edit</span>,
+          <span class="guimenu">View</span>, <span class="guimenu">Query</span>,
+          <span class="guimenu">Database</span>, <span class="guimenu">Server</span>,
+          <span class="guimenu">Tools</span>, <span class="guimenu">Scripting</span>, and
+          <span class="guimenu">Help</span>. The actions available to you depend
+          on which tab is selected when you click a menu. For a
+          description of frequently used menus, see
+          <a class="xref" href="wb-develop.html#wb-sql-editor-main-menu" title="8.1.3 Query and Edit Menus">Section 8.1.3, “Query and Edit Menus”</a>.
+        </p></li><li class="listitem"><p>
+          Main toolbar. The quick actions in this toolbar are (ordered
+          from left to right):
+        </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+              Create a new SQL tab for executing queries
+            </p></li><li class="listitem"><p>
+              Open a SQL script file in a new query tab
+            </p></li><li class="listitem"><p>
+              Open Inspector for the selected object
+            </p></li><li class="listitem"><p>
+              Create a new schema in the connected server
+            </p></li><li class="listitem"><p>
+              Create a new table in the active schema in connected
+              server
+            </p></li><li class="listitem"><p>
+              Create a new view in the active schema in the connected
+              server
+            </p></li><li class="listitem"><p>
+              Create a new stored procedure in the active schema in the
+              connected server
+            </p></li><li class="listitem"><p>
+              Create a new function in the active schema in the
+              connected server
+            </p></li><li class="listitem"><p>
+              Search table data for text in objects selected in the
+              sidebar schema tree
+            </p></li><li class="listitem"><p>
+              Reconnect to DBMS
+            </p></li></ul></div></li><li class="listitem"><p>
+          Shortcut actions. Provides the following shortcuts (ordered
+          from left to right):
+        </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+              Show preferences dialog (see
+              <a class="xref" href="wb-configuring.html#wb-preferences" title="3.2 Workbench Preferences">Section 3.2, “Workbench Preferences”</a>)
+            </p></li><li class="listitem"><p>
+              Hide or show the sidebar panel
+            </p></li><li class="listitem"><p>
+              Hide or show the secondary sidebar panel
+            </p></li><li class="listitem"><p>
+              Hide or show the output area panel
+            </p></li></ul></div></li><li class="listitem"><p>
+          Sidebar panel. The sidebar has two main labels: Navigator and
+          Information. The labels are omitted on some hosts.
+        </p><p>
+          The Navigator has two subtabs:
+          <span class="guilabel">Administration</span> (previously named
+          <span class="guilabel">Management</span>) and
+          <span class="guilabel">Schemas</span>. You can merge (or separate) the
+          content of the two tabs into a single list by clicking merge
+          (<span class="inlinemediaobject"><img src="images/wb-icon-navigator-merge.png" align="middle" width="18" height="18"></span>).
+        </p><p>
+          The Information area provides the <span class="guilabel">Object
+          Info</span> and <span class="guilabel">Session</span> subtabs,
+          which include read-only information about a selected object
+          and about the active connection.
+        </p></li><li class="listitem"><p>
+          Secondary sidebar panel (SQL Additions). The SQL Additions
+          area provides the following subtabs:
+        </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+              <span class="guilabel">Context Help</span> (see
+              <a class="xref" href="wb-develop.html#wb-develop-sql-editor-help" title="8.1.6 SQL Additions - Context Help Tab">Section 8.1.6, “SQL Additions - Context Help Tab”</a>)
+            </p></li><li class="listitem"><p>
+              <span class="guilabel">Snippets</span> (see
+              <a class="xref" href="wb-develop.html#wb-sql-editor-snippets" title="8.1.5 SQL Additions - Snippets Tab">Section 8.1.5, “SQL Additions - Snippets Tab”</a>)
+            </p></li></ul></div></li><li class="listitem"><p>
+          Output area panel. The output panel can display a summary of
+          the executed queries in the following forms: Action Output,
+          Text Output, or History Output. For additional information,
+          see <a class="xref" href="wb-develop.html#wb-develop-sql-editor-history" title="8.1.7 Output Panel">Section 8.1.7, “Output Panel”</a>.
+        </p></li></ol></div><p>
+      The next sections describe how to use the visual SQL editor.
+    </p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-sql-editor-query-panel"></a>8.1.1 SQL Query Tab</h3></div></div></div><p>
+        The SQL query secondary tab opens by default when you make a
+        connection to a server from the Home screen. It includes a query
+        editor area and a toolbar. You can enter SQL statements directly
+        into the query editor area. The statements entered can be saved
+        to a file or snippet for later use. At any point, you can also
+        execute the statements you have entered.
+      </p><p>
+        To save a snippet of code entered into the query editor, click
+        <span class="guilabel">Save SQL to Snippets List</span>
+        (<span class="inlinemediaobject"><img src="images/snippet_add.png" align="middle" width="18" height="18"></span>) from the SQL query toolbar, enter a name
+        (optional), and click <span class="guibutton">OK</span>. The following
+        figure shows the main elements of a query tab.
+      </p><div class="figure"><a name="wb-sql-editor-statements-panel-screenshot"></a><p class="title"><b>Figure 8.2 SQL Editor - SQL Query Tab</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-sql-editor-statements-panel-screenshot.png" width="800" height="665" alt="Query elements include: Execute statement icon, SQL query panel, hide/show options, output (results) grid, output style bar, output log, visual explain (Execution Plan style), and object information."></div></div></div><br class="figure-break"><p>
+        Executing a <code class="literal">SELECT</code> query will display the
+        associated result set in the SQL View panel, directly below the
+        SQL Query panel. These cells are editable if MySQL Workbench is able
+        to determine how, as for example they are editable if a Primary
+        or Unique key exists within the result set. If not, MySQL Workbench
+        will display a "read-only" icon at the bottom-right corner of
+        the SQL View panel, and hovering the mouse cursor over this icon
+        will provide a hint as to why it's not editable.
+      </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+          To quickly enter the name of a table, view, or column,
+          double-click the item in the Schema Palette. The item name
+          will be inserted into the SQL Query panel.
+        </p></div><p>
+        The SQL editor has several configurable panels and tabs, as
+        shown in the previous figure.
+      </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-sql-editor-toolbar"></a>8.1.2 SQL Query Toolbar</h3></div></div></div><p>
+        The SQL query toolbar provides actions that enable you to create
+        and manage queries. The following figure shows the set buttons
+        in the toolbar, located within the SQL query tab.
+      </p><div class="figure"><a name="wb-sql-editor-toolbar-screenshot"></a><p class="title"><b>Figure 8.3 SQL Query Toolbar</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-sql-editor-toolbar-screenshot.png" width="584" height="31" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+        SQL query buttons (from left to right) include:
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            <span class="bold"><strong>Open a Script File in this
+            Editor</strong></span>: Loads content from a saved SQL script
+            into the SQL editor.
+          </p></li><li class="listitem"><p>
+            <span class="bold"><strong>Save SQL Script to File</strong></span>:
+            Saves contents from the SQL editor into a file.
+          </p></li><li class="listitem"><p>
+            <span class="bold"><strong>Execute SQL Script</strong></span>:
+            Executes the selected portion of the query, or the entire
+            query if nothing is selected.
+          </p></li><li class="listitem"><p>
+            <span class="bold"><strong>Execute Current SQL script</strong></span>:
+            Execute the statement under the keyboard cursor.
+          </p></li><li class="listitem"><p>
+            <span class="bold"><strong>Explain (All or Selection)</strong></span>:
+            Execute the <code class="literal">EXPLAIN</code> command on the query
+            under the keyboard cursor.
+          </p><p>
+            A result grid tab is also displayed when executing an
+            EXPLAIN statement. Clicking it will execute the same query,
+            as if <span class="guilabel">Execute SQL Script</span> was selected.
+          </p><p>
+            Alternatively, the Visual Explain plan is already available
+            for all executed queries. Select <span class="guilabel">Execution
+            Plan</span> from the results tab to view it.
+          </p></li><li class="listitem"><p>
+            <span class="bold"><strong>Stop the query being
+            executed</strong></span>: Halts execution of the currently
+            executing SQL script.
+          </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+              The database connection will not be restarted, and open
+              transactions will remain open.
+            </p></div></li><li class="listitem"><p>
+            <span class="bold"><strong>Toggle whether execution of SQL script
+            should continue after failed statements</strong></span>: If the
+            red <span class="quote">“<span class="quote">breakpoint</span>”</span> circle is displayed, the
+            script terminates on a statement that fails. If you click
+            the button so that the green arrow is displayed, execution
+            continues past the failed code, possibly generating
+            additional result sets. In either case, any error generated
+            from attempting to execute the faulty statement is recorded
+            in the Output tab sheet.
+          </p><p>
+            This behavior can also be set from the <span class="guilabel">SQL
+            Execution</span> user preferences panel.
+          </p></li><li class="listitem"><p>
+            <span class="bold"><strong>Commit</strong></span>: Commits the current
+            transaction.
+          </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+              All query tabs in the same connection share the same
+              transactions. To have independent transactions, a new
+              connection must be opened.
+            </p></div></li><li class="listitem"><p>
+            <span class="bold"><strong>Rollback</strong></span>: Rolls back the
+            current transaction.
+          </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+              All query tabs in the same connection share the same
+              transactions. To have independent transactions, a new
+              connection must be opened.
+            </p></div></li><li class="listitem"><p>
+            <span class="bold"><strong>Toggle Auto-Commit Mode</strong></span>: If
+            selected, each statement will be committed independently.
+          </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+              All query tabs in the same connection share the same
+              transactions. To have independent transactions, a new
+              connection must be opened.
+            </p></div><p>
+            Auto-commit is enabled by default, and this default behavior
+            can be modified (disabled) under the <span class="guilabel">SQL
+            Execution</span> user preferences panel.
+          </p></li><li class="listitem"><p>
+            <span class="bold"><strong>Set Limit for Executed
+            Queries</strong></span>: The default value is 1000, which appends
+            "LIMIT 0, 1000" to SELECT queries.
+          </p><p>
+            The default (1000) can be changed from the <span class="guilabel">SQL
+            Execution</span> user preferences panel.
+          </p></li><li class="listitem"><p>
+            <span class="bold"><strong>Save Snippet</strong></span>: Save the
+            current statement or selection to the active snippet list.
+          </p></li><li class="listitem"><p>
+            <span class="bold"><strong>Beautify SQL</strong></span>:
+            Beautify/reformat the SQL script.
+          </p><p>
+            By default, SQL keywords are changed to UPPER CASE. This
+            functionality can be changed from the <span class="guilabel">SQL
+            Editor</span> user preferences window.
+          </p></li><li class="listitem"><p>
+            <span class="bold"><strong>Find panel</strong></span>: Show the Find
+            panel for the editor.
+          </p></li><li class="listitem"><p>
+            <span class="bold"><strong>Invisible characters</strong></span>:
+            Toggle display of invisible characters, such as newlines,
+            tabs, spaces.
+          </p><p>
+            A new line is represented as
+            <span class="bold"><strong>[LF]</strong></span>, a space as a single
+            dot (.), and a tab as a right arrow.
+          </p></li><li class="listitem"><p>
+            <span class="bold"><strong>Wrapping</strong></span>: Toggles the
+            wrapping of long lines in the SQL editor.
+          </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-sql-editor-main-menu"></a>8.1.3 Query and Edit Menus</h3></div></div></div><p>
+        When an SQL query tab is selected, the most important items on
+        the main menu bar are the <span class="guimenu">Query</span> and
+        <span class="guimenu">Edit</span> menus.
+      </p><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-sql-editor-query-menu"></a>SQL Query Menu</h4></div></div></div><p>
+          The <span class="guimenu">Query</span> menu features the following
+          items:
+        </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+              <span class="guimenuitem">Execute (All or Selection)</span>:
+              Executes all statements in the SQL Query area, or only the
+              selected statements.
+            </p></li><li class="listitem"><p>
+              <span class="guimenuitem">Execute (All or Selection) to
+              Text</span>: Executes all statements in the SQL
+              Query area, or only the selected statements, and displays
+              it in plain text like the standard MySQL command line
+              console.
+            </p></li><li class="listitem"><p>
+              <span class="guimenuitem">Execute Current Statement</span>:
+              Executes the current SQL statement.
+            </p></li><li class="listitem"><p>
+              <span class="guimenuitem">Execute Current Statement (Vertical Text
+              Output)</span>: Executes all statements in the SQL
+              Query area, or only the selected statements, and displays
+              it in plain text like the MySQL command line console does
+              vertically (\G).
+            </p></li><li class="listitem"><p>
+              <span class="guimenuitem">Explain Current Statement</span>:
+              Describes the current statement by using the MySQL EXPLAIN
+              statement.
+            </p></li><li class="listitem"><p>
+              <span class="guimenuitem">Visual Explain Current
+              Statement</span>: Visually describes the current
+              statement, based on EXPLAIN information provided by MySQL
+              Server 5.6 and above. MySQL Workbench parses the EXPLAIN
+              (JSON) output from MySQL server 5.6+, and outputs a visual
+              representation.
+            </p><p>
+              For additional information about Visual Explain, see
+              <a class="xref" href="wb-performance.html#wb-performance-explain" title="7.4 Visual Explain Plan">Section 7.4, “Visual Explain Plan”</a> and
+              <a class="xref" href="wb-performance.html#wb-tutorial-visual-explain-dbt3" title="7.5 Tutorial: Using Explain to Improve Query Performance">Section 7.5, “Tutorial: Using Explain to Improve Query Performance”</a>.
+            </p></li><li class="listitem"><p>
+              <span class="guimenuitem">Stop</span>: Stops executing the
+              currently running script.
+            </p></li><li class="listitem"><p>
+              <span class="guimenuitem">Stop Script Execution On
+              Errors</span>: If enabled, MySQL Workbench stops
+              executing the a query if errors are found. It can be
+              enabled/disabled from this menu.
+            </p></li><li class="listitem"><p>
+              <span class="guimenuitem">Limit Rows</span>: By default, the
+              number of returned rows (LIMIT) is 1000. Values defined
+              here affects subsequent statements. The number ranges from
+              10 to 50000, and "Don't Limit".
+            </p></li><li class="listitem"><p>
+              <span class="guimenuitem">Collect Performance Schema
+              Stats</span>: Provides data to the <span class="guilabel">Query
+              Stats</span> result set view, which includes statement
+              specific information about Timing, Rows processed,
+              Temporary tables, Joins per type, Sorting, and Index
+              usage.
+            </p></li><li class="listitem"><p>
+              <span class="guimenuitem">Collect Resultset Field
+              Metadata</span>: Provides data to the
+              <span class="guilabel">Form Editor</span> and <span class="guilabel">Field
+              Types</span> result set views.
+            </p></li><li class="listitem"><p>
+              <span class="guimenuitem">Reconnect to Server</span>: Reconnects
+              to the MySQL server.
+            </p></li><li class="listitem"><p>
+              <span class="guimenuitem">New Tab to Current Server</span>:
+              Creates a duplicate of the current SQL Editor tab.
+            </p></li><li class="listitem"><p>
+              <span class="guimenuitem">Auto-Commit Transactions</span>:
+              Enable to auto-commit transactions.
+            </p></li><li class="listitem"><p>
+              <span class="guimenuitem">Commit Transaction</span>: Commits a
+              database transaction.
+            </p></li><li class="listitem"><p>
+              <span class="guimenuitem">Rollback Transaction</span>: Rolls
+              back a database transaction.
+            </p></li><li class="listitem"><p>
+              <span class="guimenuitem">Commit Result Edits</span>: Commits
+              any changes you have made to the server.
+            </p></li><li class="listitem"><p>
+              <span class="guimenuitem">Discard Result Edits</span>: Discards
+              any changes you have made.
+            </p></li><li class="listitem"><p>
+              <span class="guimenuitem">Export Results</span>: Exports result
+              sets to a file. Selecting this option displays the
+              <span class="guilabel">Export Query Results to File</span> dialog.
+              The dialog enables you to select which result set you wish
+              to export, the file format (CSV, HTML, XML), and the name
+              and location of the output file. Then click
+              <span class="guibutton">Export</span> to export the data.
+            </p></li></ul></div></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-sql-editor-edit-menu"></a>Edit Menu</h4></div></div></div><p>
+          The <span class="guimenu">Edit</span> menu provides the
+          <span class="guisubmenu">Format</span> submenu. The
+          <span class="guisubmenu">Format</span> submenu includes the following
+          menu items:
+        </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+              <span class="guimenuitem">Beautify Query</span>: Reformats the
+              query selected in the query tab and lays it out in nicely
+              indented fashion.
+            </p></li><li class="listitem"><p>
+              <span class="guimenuitem">UPCASE Keywords</span>: Converts
+              keywords to uppercase in the currently selected query in
+              the query tab.
+            </p></li><li class="listitem"><p>
+              <span class="guimenuitem">lowercase Keywords</span>: Converts
+              keywords to lowercase in the currently selected query in
+              the query tab.
+            </p></li><li class="listitem"><p>
+              <span class="guimenuitem">Un/Comment Selection</span>: Comments
+              the lines currently selected in the query tab. If the
+              lines are already commented, this operation removes the
+              comments.
+            </p></li><li class="listitem"><p>
+              <span class="guimenuitem">Auto-complete</span>: Triggers the
+              auto-completion wizard. This is enabled (and triggered) by
+              default, and can be disabled with
+              <span class="guimenu">Preferences</span>, <span class="guimenu">SQL
+              Editor</span>, <span class="guilabel">Automatically Start Code
+              Completion</span>. Auto-completion will list
+              functions, keywords, schema names, table names and column
+              names.
+            </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-develop-sql-editor-results"></a>8.1.4 Result Grid</h3></div></div></div><p>
+        The results area of the screen shows the results from executed
+        statements. If the script contains multiple statements, a result
+        subtab will be generated for each statemented that returned
+        results. The following figure shows a single subtab and
+        highlights the main features of the result grid.
+      </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+          MySQL Workbench handles quoting and escaping for strings entered
+          into the result grid, so adding quotes and proper escaping
+          here is optional.
+        </p></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+          It is possible to enter a function, or other expression, into
+          a field. Use the prefix <code class="literal">\func</code> to prevent
+          MySQL Workbench from escaping quotation marks. For example, for
+          the expression <code class="literal">md5('fred')</code>, MySQL Workbench
+          normally would generate the code
+          <code class="literal">md5(\'fred\')</code>. To prevent this, enter the
+          expression as <code class="literal">\func md5('fred')</code> to ensure
+          that the quoting is not escaped.
+        </p></div><div class="figure"><a name="wb-develop-sql-editor-results-screenshot"></a><p class="title"><b>Figure 8.4 SQL Editor - Result Grid</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-develop-sql-editor-results-window.png" width="800" height="613" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-sql-editor-resultgrid-toolbar"></a>Result Grid Toolbar</h4></div></div></div><p>
+          Elements of the result grid toolbar include:
+        </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+              <span class="guilabel">Reset</span>: Resets all sorted columns.
+            </p></li><li class="listitem"><p>
+              <span class="guilabel">Refresh</span>: Refreshes all data by
+              re-executing the original statement.
+            </p></li><li class="listitem"><p>
+              <span class="guilabel">Filter Rows</span>: performs a
+              case-insensitive search of all cells. It automatically
+              refreshes, and there is also the refresh button to perform
+              this action manually.
+            </p></li><li class="listitem"><p>
+              <span class="guilabel">Edit Current Row</span>: Edit the current
+              row.
+            </p></li><li class="listitem"><p>
+              <span class="guilabel">Add New Row</span>: Adds a new empty row,
+              and highlights it in edit mode. Click
+              <span class="guibutton">Apply</span> to execute (and review) the
+              insert row query.
+            </p></li><li class="listitem"><p>
+              <span class="guilabel">Delete Selected Rows</span>: Deletes the
+              selected rows. Click <span class="guibutton">Apply</span> to
+              execute (and review) the delete query.
+            </p></li><li class="listitem"><p>
+              <span class="guilabel">Export</span>: Writes a result set to a CSV,
+              HTML, JSON, SQL INSERT, Excel, XML, or Tab separated file
+              as required.
+            </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+                This exports a result set. To export an entire table or
+                schema, see
+                <a class="xref" href="wb-admin.html#wb-mysql-connections-navigator-management-data-export" title="Data Export">Data Export</a>.
+              </p></div></li><li class="listitem"><p>
+              <span class="guilabel">Import</span>: Import records from an
+              external CSV file.
+            </p></li><li class="listitem"><p>
+              <span class="guilabel">Wrap Cell Content</span>: If the contents of
+              a cell exceeds the cell width, then the data will be cut
+              off with an ellipses. This option will instead wrap the
+              contents within the cell, and adjust the cell height
+              accordingly.
+            </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+                The "Refresh" button automatically adjusts the column
+                width to match the longest string one of its cells. You
+                may also manually adjust the column width.
+              </p></div></li></ul></div></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-sql-editor-resultgrid-tab-menu"></a>Result Grid Tab Menu</h4></div></div></div><p>
+          Right-click a result grid subtab to open the context menu,
+          which appears in the figure that follows.
+        </p><div class="figure"><a name="wb-develop-sql-editor-results-tab-context-screenshot"></a><p class="title"><b>Figure 8.5 SQL Editor - Result Grid Context Menu</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-develop-sql-editor-results-window-tab-context.png" width="776" height="234" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+          The result grid context menu includes:
+        </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+              <span class="guimenuitem">Rename Tab</span>: Customize the name
+              (title) of this tab.
+            </p></li><li class="listitem"><p>
+              <span class="guimenuitem">Pin Tab</span>: Pin the results tab to
+              the result grid. Executing additional SQL statements will
+              create new result grid tabs.
+            </p></li><li class="listitem"><p>
+              <span class="guimenuitem">Close Tab</span>: Close this tab.
+            </p></li><li class="listitem"><p>
+              <span class="guimenuitem">Close Other Tabs</span>: Close all
+              tabs except this one.
+            </p></li></ul></div></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-sql-editor-resultgrid-field-menu"></a>Result Grid Field Menu</h4></div></div></div><p>
+          Right-click any field in the result grid to open the context
+          menu for that field type. An example field with an open menu
+          is shown in the figure that follows.
+        </p><div class="figure"><a name="wb-develop-sql-editor-results-field-context-screenshot"></a><p class="title"><b>Figure 8.6 SQL Editor - Result Grid Field Menu</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-develop-sql-editor-results-field-context.png" width="800" height="495" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+          The result grid field-context menu includes:
+        </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+              <span class="guimenuitem">Open Value in Editor</span>: Opens a
+              new editor window that specializes in editing Binary and
+              JSON data, but can edit text.
+            </p></li><li class="listitem"><p>
+              <span class="guimenuitem">Show point in browser</span>:
+              Evaluates whether the field is a geometry point and then
+              opens the point in a browser using
+              <code class="literal">openstreetmap.org</code> by default. An
+              alternative online service can be configured (see
+              <a class="xref" href="wb-configuring.html#wb-preferences-others" title="3.2.7 Other Preferences">Section 3.2.7, “Other Preferences”</a>). This option is
+              available for columns with valid point-location types
+              only.
+            </p></li><li class="listitem"><p>
+              <span class="guimenuitem">Set Field to NULL</span>: Sets the
+              field value to NULL.
+            </p></li><li class="listitem"><p>
+              <span class="guimenuitem">Mark Field Value as a
+              Function/Literal</span>: Marks as a function, by
+              prepending \func.
+            </p></li><li class="listitem"><p>
+              <span class="guimenuitem">Delete Row(s)</span>: Deletes the
+              entire row.
+            </p></li><li class="listitem"><p>
+              <span class="guimenuitem">Load Value from File</span>: Opens a
+              file dialog to insert a value from a file. The entire file
+              contents are inserted into the field.
+            </p></li><li class="listitem"><p>
+              <span class="guimenuitem">Save Value to File</span>: Saves the
+              value of a field to a file.
+            </p></li><li class="listitem"><p>
+              <span class="guimenuitem">Copy Row</span>: Copy the row in
+              escaped CSV format, in a form such as: 'a', 'b','c'.
+              Alternatively, there is <span class="guimenuitem">Copy Row (tab
+              separated)</span> to use tabs instead of commas as
+              the separator, and <span class="guimenuitem">Copy Row
+              (unquoted)</span> to not escape the values.
+            </p></li><li class="listitem"><p>
+              <span class="guimenuitem">Copy Row (with names)</span>: Copy an
+              escaped row like "Copy Row", but also adds a #comment
+              containing column names. Alternatively, there is
+              <span class="guimenuitem">Copy Row (with names,
+              unquoted)</span>.
+            </p></li><li class="listitem"><p>
+              <span class="guimenuitem">Copy Field</span>: Copies the field
+              name, such as: 'a', or use <span class="guimenuitem">Copy Field
+              (unquoted)</span> to not use single quotes.
+            </p></li><li class="listitem"><p>
+              <span class="guimenuitem">Paste Row</span>: Pastes the row over
+              the currently selected row.
+            </p></li><li class="listitem"><p>
+              <span class="guimenuitem">Capitalize Text</span>: Capitalizes
+              text in the current row, such as: Hello World.
+            </p></li><li class="listitem"><p>
+              <span class="guimenuitem">lowercase Text</span>: Lowercases text
+              in the current row, such as: hello world.
+            </p></li><li class="listitem"><p>
+              <span class="guimenuitem">UPPERCASE Text</span>: Alters row to
+              use all capitals, such as: HELLO WORLD.
+            </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-sql-editor-snippets"></a>8.1.5 SQL Additions - Snippets Tab</h3></div></div></div><p>
+        The Snippets secondary tab includes built-in, local, and shared
+        custom snippets. The <span class="guilabel">My Snippets</span> option
+        stores custom snippets in a file under the MySQL Workbench user's
+        configuration directory. Select the <span class="guilabel">Shared</span>
+        option for shared snippets.
+      </p><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-sql-editor-snippets-using"></a>Using Snippets</h4></div></div></div><p>
+          Snippets can be inserted into the SQL editor or the system's
+          clipboard. To insert (use) a snippet, either use the snippet
+          icons or right-click on the desired snippet and choose Insert.
+          The next figure shows the location of the main action icons to
+          use with snippets.
+        </p><div class="figure"><a name="wb-sql-editor-snippets-screenshot"></a><p class="title"><b>Figure 8.7 SQL Snippets: Usage</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-sql-editor-snippets-usage.png" width="800" height="563" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="idm140544309992048"></a>Local Snippets (My Snippets)</h4></div></div></div><p>
+          Local snippets are stored in the MySQL Workbench directory. By
+          default, the <code class="literal">My Snippets</code> SQL snippets are
+          stored as indicated in the following table.
+        </p><div class="table"><a name="wb-sql-editor-snippets-local-paths"></a><p class="title"><b>Table 8.1 Default Local Snippet File Location</b></p><div class="table-contents"><table class="table" summary="Default Local Snippet File Location" border="1"><colgroup><col><col></colgroup><thead><tr><th scope="col">Operating System</th><th scope="col">File Path</th></tr></thead><tbody><tr><td scope="row">Windows</td><td>%AppData%\MySQL\Workbench\User Snippets.txt</td></tr><tr><td scope="row">macOS</td><td>~username/Library/Application Support/MySQL/Workbench/snippets/User
+                  Snippets.txt</td></tr><tr><td scope="row">Linux</td><td>~username/.mysql/workbench/snippets/User Snippets.txt</td></tr></tbody></table></div></div><br class="table-break"><p>
+          Editing (or adding) snippets to <code class="literal">My Snippets</code>
+          in MySQL Workbench edits this plain text file. Optionally, you can
+          edit this file outside of MySQL Workbench or create new files that
+          will also be listed under the snippets selector. For example,
+          adding a file named "More Snippets.txt" will add a "More
+          Snippets" section to the snippets selection box.
+        </p></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="idm140544309978272"></a>Shared Snippets</h4></div></div></div><p>
+          <span class="guilabel">Shared</span> snippets are saved in a
+          <code class="literal">.mysqlworkbench</code> schema on the connected
+          MySQL server. Selecting "Shared" for the first time will
+          request permission for MySQL Workbench to create this shared
+          <code class="literal">.mysqlworkbench</code> schema. Users connected to
+          this MySQL server are allowed to create, edit, and use these
+          shared snippets.
+        </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+            Shared snippets were added in MySQL Workbench 6.2.0.
+          </p></div><p>
+          The <code class="literal">.mysqlworkbench</code> schema is hidden from
+          within MySQL Workbench as it is considered an internal schema that
+          does not need to be seen or edited.
+        </p></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="idm140544309972208"></a>Built-in Snippets</h4></div></div></div><p>
+          Several built-in SQL snippets are bundled with MySQL Workbench,
+          and typically show the SQL syntax for MySQL operations. They
+          are divided up into the following categories.
+        </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+              <span class="guilabel">DB Mgmt</span> (Database Management): Syntax
+              examples use <code class="literal">SHOW</code> in many forms to
+              provide information about databases, tables, columns, or
+              status information about the MySQL server.
+            </p></li><li class="listitem"><p>
+              <span class="guilabel">SQL DDL</span> (SQL Data Definition
+              Language): Syntax examples include creating, altering, and
+              dropping tables, indexes, views, and procedures.
+            </p></li><li class="listitem"><p>
+              <span class="guilabel">SQL DML</span> (SQL Data Manipulation
+              Language): Syntax examples for operations such as SELECT,
+              INSERT, and REPLACE.
+            </p></li></ul></div><p>
+          The built-in operations are stored in text files in the same
+          directory as the custom snippet files.
+        </p></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-sql-editor-snippets-saving"></a>Saving and Editing Snippets</h4></div></div></div><p>
+          To save a snippet, choose the Snippets Insert icon
+          (<span class="inlinemediaobject"><img src="images/snippet_add.png" align="middle" width="18" height="18"></span>) or right-click in the snippet window and
+          choose <span class="guimenuitem">Add Snippet from Editor
+          Content</span> from the context-menu. Double-click a
+          snippet to open it, and choose the snippet editor to edit its
+          body or title. The example in the following figure shows two
+          snippets with only the first having defined a name.
+        </p><div class="figure"><a name="wb-sql-editor-snippets-editing"></a><p class="title"><b>Figure 8.8 SQL Snippets: Editor</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-sql-editor-snippets-editing.png" width="732" height="604" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-develop-sql-editor-help"></a>8.1.6 SQL Additions - Context Help Tab</h3></div></div></div><p>
+        Within the visual SQL Editor, you can select a keyword or
+        function in your query to open a help topic describing its
+        syntax and usage. The level of information is equivalent to
+        typing <strong class="userinput"><code>help
+        <em class="replaceable"><code>keyword</code></em></code></strong> at the
+        <span class="command"><strong>mysql</strong></span> prompt and the content is specific to
+        the release series (5.5, 5.6, 5.7, or 8.0) of the current MySQL
+        connection. Context help requires no MySQL connection to use
+        because the context help is stored locally.
+      </p><p>
+        To view context help, first open the <span class="guilabel">SQL
+        Additions</span> panel by clicking <span class="guimenu">View</span>,
+        <span class="guisubmenu">Panels</span>, and then <span class="guimenuitem">Show
+        Secondary Sidebar</span> from the menu. Alternatively,
+        you can click the panel shortcut (<span class="inlinemediaobject"><img src="images/wb-develop-sql-editor-help-panel-button.png" align="middle" width="18" height="18"></span>) from the toolbar. This panel has two
+        bottom tabs; select <span class="guilabel">Context Help</span>.
+      </p><p>
+        You have several options for displaying context help: automatic,
+        manual, and most frequent list. Initially, automatic context
+        help is disabled.
+      </p><p><b>Automatic context help. </b>
+          To enable automatic context help, click the automatic context
+          button (<span class="inlinemediaobject"><img src="images/wb-develop-sql-editor-automatic-button.png" align="middle" width="18" height="18"></span>) from the SQL Additions toolbar. As you
+          click on or near different SQL keywords and functions in the
+          editor, the context help shifts to the specific topic.
+        </p><p><b>Manual context help. </b>
+          Manual context help is available when automatic context help
+          is disabled. Click on or near the SQL keyword in the editor
+          and then click the manual context button (<span class="inlinemediaobject"><img src="images/wb-develop-sql-editor-manual-button.png" align="middle" width="18" height="18"></span>) from the SQL Additions toolbar to view
+          each new topic.
+        </p><p><b>Most frequent list. </b>
+          Use the drop-down list to select a help topic for display. The
+          set of SQL keywords in this list is predefined. Most frequent
+          keywords, when selected in the SQL editor, also display in the
+          list box. Less common keywords display <code class="literal">Jump
+          To</code> in the list box when selected from the editor in
+          either automatic or manual mode.
+        </p><p>
+        The SQL Additions toolbar also includes forward and reverse
+        arrows that enable you to browse recent content help topics. The
+        following figure shows an example in which automatic context
+        help is enabled and open. Note that when automatic context help
+        is enabled, the manual context button is disabled.
+      </p><div class="figure"><a name="wb-develop-sql-editor-help-window"></a><p class="title"><b>Figure 8.9 SQL Editor: Context Help</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-develop-sql-editor-help.png" width="754" height="415" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-develop-sql-editor-history"></a>8.1.7 Output Panel</h3></div></div></div><p>
+        The <span class="guilabel">Output</span> is located at the bottom of
+        MySQL Workbench. Its select box includes the <code class="literal">Action
+        Output</code>, <code class="literal">History Output</code>, and
+        <code class="literal">Text Output</code> options.
+      </p><p>
+        The <span class="guilabel">Action Output</span> panel displays a summary
+        of the communication between the active MySQL connection in
+        MySQL Workbench and the MySQL server, and can refer to errors or
+        general information. Each message displays the time, action, and
+        server response. The following figure shows this output, which
+        can be useful to troubleshoot a script.
+      </p><div class="figure"><a name="wb-develop-sql-editor-output-action"></a><p class="title"><b>Figure 8.10 SQL Editor: Output: Action Output</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-develop-sql-editor-output-action.png" width="800" height="600" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+        The <span class="guilabel">History Output</span> panel provides a history
+        of SQL operations carried out in MySQL Workbench for the active
+        MySQL connection. The time and SQL code for each operation is
+        recorded. To view the executed SQL statement, click the time,
+        and the SQL code executed will be displayed in the
+        <span class="guilabel">SQL</span> column, as the following figure shows.
+      </p><div class="figure"><a name="wb-develop-sql-editor-output-history"></a><p class="title"><b>Figure 8.11 SQL Editor: History Output</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-develop-sql-editor-output-history.png" width="800" height="600" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-develop-sql-editor-table-search"></a>8.1.8 Table Data Search Tab</h3></div></div></div><p>
+        Find data across a MySQL connection by using the text search
+        feature on any number of tables and schemas.
+      </p><p>
+        From the schema tree, select the tables, schemas, or both to
+        search and then right-click the highlighted items and click
+        <span class="guimenuitem">Search Data Table</span> from the context
+        menu. The following figure shows the options available in the
+        open <span class="guilabel">Search</span> secondary tab.
+      </p><div class="figure"><a name="wb-develop-sql-editor-table-search-tables"></a><p class="title"><b>Figure 8.12 Table Search Example: Multiple Tables and Schemas</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-develop-table-search-selected.png" width="800" height="718" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+        The search options include:
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            <span class="guilabel">Search for table fields that</span>:
+            "CONTAINS", "Search using =", "Search using LIKE", "Search
+            using REGEXP". These search options are case-insensitive.
+          </p></li><li class="listitem"><p>
+            <span class="guilabel">Max. matches per table</span>:
+            [<em class="replaceable"><code>100</code></em>]
+          </p></li><li class="listitem"><p>
+            <span class="guilabel">Max. total matches</span>:
+            [<em class="replaceable"><code>1000</code></em>]
+          </p></li><li class="listitem"><p>
+            <span class="guilabel"> Search columns of all types</span> check box:
+            If checked, non-text column type columns are cast to CHAR to
+            perform the matches, otherwise only text types (CHAR,
+            VARCHAR, and TEXT) are searched. This is unchecked by
+            default.
+          </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-develop-sql-editor-table-export-import"></a>8.1.9 Export or Import a Table</h3></div></div></div><p>
+        Export or import tables using a wizard to assist you.
+      </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+          These wizards were added in MySQL Workbench 6.3.
+        </p></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-develop-sql-editor-table-export"></a>Export a Table</h4></div></div></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+            Alternatively, use <a class="xref" href="wb-admin.html#wb-admin-export-import" title="6.5 Data Export and Import">Section 6.5, “Data Export and Import”</a>
+            to export larger sets of data, such as entire tables and
+            databases.
+          </p></div></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-develop-sql-editor-table-import"></a>Import into Table</h4></div></div></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+            Alternatively, use <a class="xref" href="wb-admin.html#wb-admin-export-import" title="6.5 Data Export and Import">Section 6.5, “Data Export and Import”</a>
+            to export larger sets of data, such as entire tables and
+            databases.
+          </p></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-table-editor"></a>8.1.10 MySQL Table Editor</h3></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="wb-develop.html#wb-table-editor-main-window">8.1.10.1 Main Editor Window</a></span></dt><dt><span class="section"><a href="wb-develop.html#wb-table-editor-columns-tab">8.1.10.2 Columns Tab</a></span></dt><dt><span class="section"><a href="wb-develop.html#wb-table-editor-indexes-tab">8.1.10.3 Indexes Tab</a></span></dt><dt><span class="section"><a href="wb-develop.html#wb-table-editor-foreign-keys-tab">8.1.10.4 Foreign Keys Tab</a></span></dt><dt><span class="section"><a href="wb-develop.html#wb-table-editor-triggers-tab">8.1.10.5 Triggers Tab</a></span></dt><dt><span class="section"><a href="wb-develop.html#wb-table-editor-partitioning-tab">8.1.10.6 Partitioning Tab</a></span></dt><dt><span class="section"><a href="wb-develop.html#wb-table-editor-options-tab">8.1.10.7 Options Tab</a></span></dt></dl></div><p>
+    The MySQL Table Editor is a used to create and modify tables. You can
+    add or modify the columns or indexes of a table, change the engine,
+    add foreign keys, or alter the table name.
+  </p><p>
+    To access the MySQL Table Editor, right-click on a table name in the
+    Navigator area of the sidebar with the <span class="guilabel">Schemas</span>
+    secondary tab selected and click <span class="guilabel">ALTER TABLE</span>.
+    This action opens a new secondary tab within the main <span class="guilabel">SQL
+    Editor</span> window. You can also access the MySQL Table Editor
+    from an EER Diagram by double-clicking on a table object.
+  </p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="wb-table-editor-main-window"></a>8.1.10.1 Main Editor Window</h4></div></div></div><p>
+      Any number of tables may be edited in the MySQL Table Editor at any
+      one time. Adding another table creates a new secondary tab at the
+      top of the editor. By default, the MySQL Table Editor appears docked
+      at the top of the table editor tab, within the SQL editor.
+    </p><p>
+      The MySQL Table Editor for the <code class="literal">customer</code> table with
+      the <span class="guilabel">Columns</span> subtab selected is shown in
+      following figure.
+    </p><div class="figure"><a name="wb-table-editor-overview-figure"></a><p class="title"><b>Figure 8.13 The Table Editor</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-table-editor-overview.png" width="800" height="696" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      The MySQL Table Editor provides a work space that has subtabs used to
+      perform these actions:
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <a class="link" href="wb-develop.html#wb-table-editor-columns-tab" title="8.1.10.2 Columns Tab">Columns</a>:
+          Add or modify columns.
+        </p></li><li class="listitem"><p>
+          <a class="link" href="wb-develop.html#wb-table-editor-indexes-tab" title="8.1.10.3 Indexes Tab">Indexes</a>:
+          Add or modify indexes.
+        </p></li><li class="listitem"><p>
+          <a class="link" href="wb-develop.html#wb-table-editor-foreign-keys-tab" title="8.1.10.4 Foreign Keys Tab">Foreign
+          Keys</a>: Add or modify foreign keys.
+        </p></li><li class="listitem"><p>
+          <a class="link" href="wb-develop.html#wb-table-editor-triggers-tab" title="8.1.10.5 Triggers Tab">Triggers</a>:
+          Add or modify triggers.
+        </p></li><li class="listitem"><p>
+          <a class="link" href="wb-develop.html#wb-table-editor-partitioning-tab" title="8.1.10.6 Partitioning Tab">Partitioning</a>:
+          Manage partitioning of a table.
+        </p></li><li class="listitem"><p>
+          <a class="link" href="wb-develop.html#wb-table-editor-options-tab" title="8.1.10.7 Options Tab">Options</a>:
+          Add or modify other options, divided in categories named
+          general, row, storage, and merge.
+        </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="wb-table-editor-columns-tab"></a>8.1.10.2 Columns Tab</h4></div></div></div><p>
+      Use the <span class="guilabel">Columns</span> subtab to display and edit
+      all the column information for a table. With this subtab, you can
+      add, drop, and alter columns.
+    </p><p>
+      You can also use the <span class="guilabel">Columns</span> subtab to change
+      column properties such as name, data type, and default value. The
+      following figure shows an example of the
+      <span class="guilabel">Columns</span> subtab.
+    </p><div class="figure"><a name="wb-table-editor-columns-figure"></a><p class="title"><b>Figure 8.14 The Columns Tab</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-table-editor-columns-tab.png" width="800" height="555" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      Right-click a row under the <code class="literal">Column Name</code> column
+      to open a pop-up menu with the following items:
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <span class="guimenuitem">Move Up</span>: Move the selected column
+          up.
+        </p></li><li class="listitem"><p>
+          <span class="guimenuitem">Move Down</span>: Move the selected column
+          down.
+        </p></li><li class="listitem"><p>
+          <span class="guimenuitem">Copy</span>: Copies the column for a
+          model.
+        </p></li><li class="listitem"><p>
+          <span class="guimenuitem">Cut</span>: Copies and then deletes the
+          column for a model.
+        </p></li><li class="listitem"><p>
+          <span class="guimenuitem">Paste</span>: Pastes the column. If a
+          column with the same name already exists, then
+          <code class="literal">_copy1</code> is appended to the column name.
+        </p></li><li class="listitem"><p>
+          <span class="guimenuitem">Delete Selected Columns</span>: Select
+          multiple contiguous columns by right-clicking and pressing the
+          <span class="keycap"><strong>Shift</strong></span> key. Use the <span class="keycap"><strong>Control</strong></span>
+          key to select separated columns.
+        </p></li><li class="listitem"><p>
+          <span class="guimenuitem">Refresh</span>: Update all information in
+          the <span class="guilabel">Columns</span> subtab.
+        </p></li><li class="listitem"><p>
+          <span class="guimenuitem">Clear Default</span>: Clear the assigned
+          default value.
+        </p></li><li class="listitem"><p>
+          <span class="guimenuitem">Default NULL</span>: Set the column
+          default value to <code class="literal">NULL</code>.
+        </p></li><li class="listitem"><p>
+          <span class="guimenuitem">Default 0</span>: Set the column default
+          value to <code class="literal">0</code>.
+        </p></li><li class="listitem"><p>
+          <span class="guimenuitem">Default CURRENT_TIMESTAMP</span>:
+          Available for <code class="literal">TIMESTAMP</code> data types.
+        </p></li><li class="listitem"><p>
+          <span class="guimenuitem">Default CURRENT_TIMESTAMP ON UPDATE
+          CURRENT_TIMESTAMP</span>: Available for
+          <code class="literal">TIMESTAMP</code> data types.
+        </p></li></ul></div><p>
+      To add a column, click the <code class="literal">Column Name</code> field in
+      an empty row and enter an appropriate value. Select a data type
+      from the <span class="guilabel">Datatype</span> list. Select the column
+      property check boxes as required according to the list of column
+      properties below, and also read the
+      <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/create-table.html" target="_top">CREATE TABLE</a> documentation for
+      information about what these options mean.
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <span class="guilabel">PK</span>: PRIMARY KEY
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">NN</span>: NOT NULL
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">UQ</span>: UNIQUE INDEX
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">BIN</span>: BINARY
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">UN</span>: UNSIGNED
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">ZF</span>: ZEROFILL
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">AI</span>: AUTO_INCREMENT
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">G</span>: Generated Column
+        </p><p>
+          This option is available as of MySQL Server 5.7.
+        </p></li></ul></div><p>
+      To change the name, data type, default value, or comment of a
+      column, double-click the value to edit it.
+    </p><p>
+      You can also add column comments to the <code class="literal">Column
+      Comment</code> field. It is also possible to set the column
+      collation, using the list in the <span class="guilabel">Column
+      Details</span> panel.
+    </p><p>
+      To the left of the column name is an icon that indicates whether
+      the column is a member of the primary key. If the icon is a small
+      key, that column belongs to the primary key, otherwise the icon is
+      a blue diamond or a white diamond. A blue diamond indicates the
+      column has <span class="guilabel">NN</span> set. To add or remove a column
+      from the primary key, double-click the icon. You can also add a
+      primary key by checking the <code class="literal">PRIMARY KEY</code> check
+      box in the <code class="literal">Column Details</code> section of the table
+      editor.
+    </p><p>
+      If you wish to create a composite primary key you can select
+      multiple columns and check the PK check box. However, there is an
+      additional step that is required, you must click the Indexes tab,
+      then in the Index Columns panel you must set the desired order of
+      the primary keys.
+    </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+        When entering default values, in the case of
+        <code class="literal">CHAR</code> and <code class="literal">VARCHAR</code> data
+        types MySQL Workbench will attempt to automatically add quotation
+        marks, if the user does not start their entry with one. For
+        other data types the user must manage quoting if required, as it
+        will not be handled automatically by MySQL Workbench.
+      </p></div><div class="caution" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Caution</div><p>
+        Care must be taken when entering a default value for
+        <code class="literal">ENUM</code> columns because a non-numeric default
+        will not be automatically quoted. You must manually add single
+        quote characters for the default value. Note that MySQL Workbench
+        will <span class="bold"><strong>not</strong></span> prevent you from
+        entering the default value without the single quotation marks.
+        If a non-numeric default value is entered without quotation
+        marks, this will lead to errors. For example, if the model is
+        reverse engineered, the script will contain unquoted default
+        values for <code class="literal">ENUM</code> columns and will fail if an
+        attempt is made to run the script on MySQL Server.
+      </p></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+        ENUM, BIT, and SET must contain at least one value when entering
+        these data types into MySQL Workbench.
+      </p></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="wb-table-editor-indexes-tab"></a>8.1.10.3 Indexes Tab</h4></div></div></div><p>
+      The <span class="guilabel">Indexes</span> subtab contains all of the index
+      information for your table. Use this subtab to add, drop, and
+      modify indexes. The following figure shows an example of the
+      layout with the <code class="literal">PRIMARY</code> index of the
+      <code class="literal">customer</code> table selected and both the index
+      columns and index options shown.
+    </p><div class="figure"><a name="wb-table-editor-indexes-tab-figure"></a><p class="title"><b>Figure 8.15 The Indexes Tab</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-table-editor-indexes-tab.png" width="760" height="467" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      All indexes for a table are listed by index name. Click an index
+      name to display the <span class="guilabel">Index Columns</span> section
+      with information about the selected index. In addition, you can
+      configure the storage type, key block size, parser, and the
+      visibility of the index. Index comments, when added, apply to the
+      selected index only.
+    </p><p>
+      The actions available from this subtab include:
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          To add an index, click the last row in the index list. Enter a
+          name for the index and select the index type from the list.
+          Select the column or columns that you wish to index by
+          checking the column name in the <span class="guilabel">Index
+          Columns</span> list. You can remove a column from the
+          index by removing the check mark from the appropriate column.
+        </p></li><li class="listitem"><p>
+          To specify the order of a column within an index, select
+          <code class="literal">ASC</code> or <code class="literal">DESC</code> from the
+          <span class="guilabel">Order</span> column. Create an index prefix by
+          specifying a numeric value under the <code class="literal">Length</code>
+          column. You cannot enter a prefix value for fields that have a
+          data type that does not support prefixing.
+        </p></li><li class="listitem"><p>
+          To render a secondary index (an index other than the primary
+          key or a unique column) invisible to the optimizer, deselect
+          the <span class="guilabel">Visible</span> option. By default, all
+          indexes are visible. This feature must be supported by the
+          active server; otherwise, the <span class="guilabel">Visible</span>
+          check box is grayed out. For a description of the usage
+          patterns for this option, see
+          <a class="ulink" href="http://dev.mysql.com/doc/refman/8.0/en/invisible-indexes.html" target="_top">Invisible Indexes</a>.
+        </p></li><li class="listitem"><p>
+          To drop an index, right-click the index name and then click
+          the <span class="guimenuitem">Delete Selected</span> menu item.
+        </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="wb-table-editor-foreign-keys-tab"></a>8.1.10.4 Foreign Keys Tab</h4></div></div></div><p>
+      The <span class="guilabel">Foreign Keys</span> subtab is organized in much
+      the same fashion as the <span class="guilabel">Indexes</span> subtab and
+      adding or editing a foreign key is similar to adding or editing an
+      index. The following figure shows an example of the
+      <span class="guilabel">Foreign Keys</span> tab.
+    </p><div class="figure"><a name="wb-table-editor-foreign-keys-tab-figure"></a><p class="title"><b>Figure 8.16 The Foreign Keys Tab</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-table-editor-foreign-keys-tab.png" width="800" height="555" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      To add a foreign key, click the last row in the <code class="literal">Foreign
+      Key Name</code> list. Enter a name for the foreign key and
+      select the column or columns that you wish to index by checking
+      the column name in the <span class="guilabel">Column</span> list. You can
+      remove a column from the index by removing the check mark from the
+      appropriate column.
+    </p><p>
+      Under <span class="guilabel">Foreign Key Options</span>, choose an action
+      for the update and delete events. The options are:
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <span class="guimenuitem">RESTRICT</span>
+        </p></li><li class="listitem"><p>
+          <span class="guimenuitem">CASCADE</span>
+        </p></li><li class="listitem"><p>
+          <span class="guimenuitem">SET NULL</span>
+        </p></li><li class="listitem"><p>
+          <span class="guimenuitem">NO ACTION</span>
+        </p></li></ul></div><p>
+      To drop a foreign key, right-click the row you wish to delete,
+      then select the <span class="guimenuitem">Delete Selected FKs</span>
+      menu item.
+    </p><p>
+      To modify properties of a foreign key, select it and make the
+      desired changes.
+    </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="wb-table-editor-triggers-tab"></a>8.1.10.5 Triggers Tab</h4></div></div></div><p>
+      The <span class="guilabel">Triggers</span> subtab opens a workspace that
+      enables you to create new triggers or edit existing triggers. All
+      triggers are organized within a tree structure by section, such as
+      <span class="guilabel">BEFORE INSERT</span> and <span class="guilabel">AFTER
+      INSERT</span>.
+    </p><p>
+      To add a new trigger, click the
+      <span class="bold"><strong>[+]</strong></span> icon next to the trigger
+      section. To delete a trigger, click the associated
+      <span class="bold"><strong>[-]</strong></span> icon. These icons become
+      visible by hovering over a trigger or trigger section. Click
+      <span class="guibutton">Apply</span> to commit your changes. The next
+      figure shows an example of the
+      <code class="literal">customer_create_date</code> trigger.
+    </p><div class="figure"><a name="wb-table-editor-triggers-tab-figure"></a><p class="title"><b>Figure 8.17 The Triggers Tab</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-table-editor-triggers-tab.png" width="800" height="547" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="wb-table-editor-partitioning-tab"></a>8.1.10.6 Partitioning Tab</h4></div></div></div><p>
+      To enable partitioning for your table, check the <span class="guilabel">Enable
+      Partitioning</span> check box. This enables the partitioning
+      options (shown in the figure that follows).
+    </p><div class="figure"><a name="wb-table-editor-partitioning-tab-figure"></a><p class="title"><b>Figure 8.18 The Partitioning Tab</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-table-editor-partitioning-tab.png" width="800" height="547" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      The <span class="guimenu">Partition By</span> pop-up menu displays the types
+      of partitions you can create:
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <span class="guimenuitem">HASH</span>
+        </p></li><li class="listitem"><p>
+          <span class="guimenuitem">LINEAR HASH</span>
+        </p></li><li class="listitem"><p>
+          <span class="guimenuitem">KEY</span>
+        </p></li><li class="listitem"><p>
+          <span class="guimenuitem">LINEAR KEY</span>
+        </p></li><li class="listitem"><p>
+          <span class="guimenuitem">RANGE</span>
+        </p></li><li class="listitem"><p>
+          <span class="guimenuitem">LIST</span>
+        </p></li></ul></div><p>
+      Use the <span class="guilabel">Parameters</span> field to define any
+      parameters to be supplied to the partitioning function, such as an
+      integer column value.
+    </p><p>
+      Choose the number of partitions from the <span class="guilabel">Partition
+      Count</span> list. To manually configure your partitions,
+      check the <span class="guilabel">Manual</span> check box. This enables
+      entry of values into the partition configuration table. The
+      entries in this table are:
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <code class="literal">Partition</code>
+        </p></li><li class="listitem"><p>
+          <code class="literal">Values</code>
+        </p></li><li class="listitem"><p>
+          <code class="literal">Data Directory</code>
+        </p></li><li class="listitem"><p>
+          <code class="literal">Index Directory</code>
+        </p></li><li class="listitem"><p>
+          <code class="literal">Min Rows</code>
+        </p></li><li class="listitem"><p>
+          <code class="literal">Max Rows</code>
+        </p></li><li class="listitem"><p>
+          <code class="literal">Comment</code>
+        </p></li></ul></div><p>
+      Subpartitioning is also available. For more information about
+      partitioning, see <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/partitioning.html" target="_top">Partitioning</a>.
+    </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="wb-table-editor-options-tab"></a>8.1.10.7 Options Tab</h4></div></div></div><p>
+      The <span class="guilabel">Options</span> subtab enables you to set several
+      types of options. The next figure shows an example of this tab.
+    </p><div class="figure"><a name="wb-table-editor-options-tab-figure"></a><p class="title"><b>Figure 8.19 The Options Tab</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-table-editor-options-tab.png" width="800" height="622" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      Table options are grouped into the following sections:
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <span class="guilabel">General Options</span>
+        </p></li><li class="listitem"><p>
+          <span class="guilabel"> Row Options</span>
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">Storage Options</span>
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">Merge Table Options</span>
+        </p></li></ul></div><p>
+      The following sections describe these options in more detail.
+    </p><h5><a name="idm140544309663152"></a>General Options Section</h5><p>
+      In the <span class="guilabel">General Options</span> section, choose a pack
+      keys option. The options are <code class="literal">Default</code>,
+      <code class="literal">Pack None</code>, and <code class="literal">Pack All</code>. You
+      may also encrypt the definition of a table. The
+      <code class="literal">AUTO_INCREMENT</code> and delayed key update behaviors
+      apply only to <code class="literal">MyISAM</code> tables.
+    </p><h5><a name="idm140544309657600"></a>Row Options Section</h5><p>
+      To set the row format, choose the desired row format from the
+      list. For more information about the different row formats that
+      are available, see <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/myisam-table-formats.html" target="_top">MyISAM Table Storage Formats</a>.
+    </p><p>
+      These options are:
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          Default
+        </p></li><li class="listitem"><p>
+          Dynamic
+        </p></li><li class="listitem"><p>
+          Fixed
+        </p></li><li class="listitem"><p>
+          Compressed
+        </p></li><li class="listitem"><p>
+          Redundant
+        </p></li><li class="listitem"><p>
+          Compact
+        </p></li></ul></div><p>
+      When you expect a table to be particularly large, use the
+      <span class="guilabel">Avg. Row</span>, <span class="guilabel">Min. Rows</span>, and
+      <span class="guilabel">Max. Rows</span> options to enable the MySQL server
+      to better accommodate your data. See
+      <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/create-table.html" target="_top">CREATE TABLE Syntax</a> for more information on how to use
+      these options.
+    </p><h5><a name="idm140544309646432"></a>Storage Options Section</h5><p>
+      The <code class="literal">Storage Options</code> section is available only
+      for <code class="literal">MyISAM</code> tables. Use it to configure a custom
+      path to the table storage and data files. This can help improve
+      server performance by locating different tables on different hard
+      drives.
+    </p><h5><a name="idm140544309643696"></a>Merge Table Options Section</h5><p>
+      Use the <code class="literal">Merge Table</code> Options section to
+      configure <code class="literal">MERGE</code> tables. To create a
+      <code class="literal">MERGE</code> table, select <code class="literal">MERGE</code> as
+      your storage engine and then specify the <code class="literal">MyISAM</code>
+      tables you wish to merge in the <span class="guilabel">Union Tables</span>
+      dialog.
+    </p><p>
+      You may specify the action the server should take when users
+      attempt to perform <code class="literal">INSERT</code> statements on the
+      merge table. You may also select the <code class="literal">Merge
+      Method</code> by selecting from the list. For more information
+      about <code class="literal">MERGE</code> tables, see
+      <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/merge-storage-engine.html" target="_top">The MERGE Storage Engine</a>.
+    </p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-generating"></a>8.1.11 Code Generation Overview</h3></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="wb-develop.html#wb-generating-sql">8.1.11.1 Generating SQL Statements</a></span></dt><dt><span class="section"><a href="wb-develop.html#wb-generating-php">8.1.11.2 Generating PHP Code</a></span></dt></dl></div><p>
+    This document provides a quick hands-on introduction to using
+    MySQL Workbench to generate code for later use, for either in or outside
+    of MySQL Workbench.
+  </p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="wb-generating-sql"></a>8.1.11.1 Generating SQL Statements</h4></div></div></div><p>
+      MySQL Workbench can be used to generate SQL, most typically as either
+      <code class="literal">INSERT</code> statements or <code class="literal">SELECT</code>
+      statements.
+    </p><p>
+      Below are common methods for generating SQL statements in
+      MySQL Workbench.
+    </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+        All of the MySQL Workbench Export options include the option to
+        export as SQL.
+      </p></div><p>
+      Context-menu options after right-clicking on a
+      <code class="literal">schema</code> in the schema view, using the
+      <code class="literal">sakila</code> column as an example.
+    </p><p>
+      <span class="guimenuitem">Create Statement</span>
+    </p><pre class="programlisting">
+
+CREATE DATABASE `sakila` /*!40100 DEFAULT CHARACTER SET latin1 */;
+
+</pre><p>
+      <span class="guimenuitem">Name</span>
+    </p><pre class="programlisting">
+
+`sakila`
+
+</pre><p>
+      Context-menu options after right-clicking on a
+      <code class="literal">table</code> in the schema view, using the
+      <code class="literal">sakila.actor</code> column as an example:
+    </p><p>
+      <span class="guimenuitem">Name (Short)</span>
+    </p><pre class="programlisting">
+
+`actor`
+
+</pre><p>
+      <span class="guimenuitem">Name (Long)</span>
+    </p><pre class="programlisting">
+
+`sakila`.`actor`
+
+</pre><p>
+      <span class="guimenuitem">Select All Statement</span>
+    </p><pre class="programlisting">
+
+SELECT `actor`.`actor_id`,
+    `actor`.`first_name`,
+    `actor`.`last_name`,
+    `actor`.`last_update`
+FROM `sakila`.`actor`;
+
+</pre><p>
+      <span class="guimenuitem">Select with References</span>
+    </p><pre class="programlisting">
+
+SET @actor_id_to_select = &lt;{row_id}&gt;;
+SELECT film_actor.*
+    FROM film_actor, actor
+    WHERE `actor`.`actor_id` = `film_actor`.`actor_id`
+          AND actor.actor_id = @actor_id_to_select;
+SELECT actor.*
+    FROM actor
+    WHERE actor.actor_id = @actor_id_to_select;
+
+</pre><p>
+      <span class="guimenuitem">Insert Statement</span>
+    </p><pre class="programlisting">
+
+INSERT INTO `sakila`.`actor`
+  (`actor_id`,
+  `first_name`,
+  `last_name`,
+  `last_update`)
+VALUES
+  (&lt;{actor_id: }&gt;,
+  &lt;{first_name: }&gt;,
+  &lt;{last_name: }&gt;,
+  &lt;{last_update: CURRENT_TIMESTAMP}&gt;);
+
+</pre><p>
+      <span class="guimenuitem">Update Statement</span>
+    </p><pre class="programlisting">
+
+UPDATE `sakila`.`actor`
+SET
+`actor_id` = &lt;{actor_id: }&gt;,
+`first_name` = &lt;{first_name: }&gt;,
+`last_name` = &lt;{last_name: }&gt;,
+`last_update` = &lt;{last_update: CURRENT_TIMESTAMP}&gt;
+WHERE `actor_id` = &lt;{expr}&gt;;
+
+</pre><p>
+      <span class="guimenuitem">Delete Statement</span>
+    </p><pre class="programlisting">
+
+DELETE FROM `sakila`.`actor`
+WHERE &lt;{where_expression}&gt;;
+
+</pre><p>
+      <span class="guimenuitem">Delete with References</span>
+    </p><pre class="programlisting">
+
+
+-- All objects that reference that row (directly or indirectly)
+-- will be deleted when this snippet is executed.
+-- To preview the rows to be deleted, use Select Row Dependencies
+START TRANSACTION;
+-- Provide the values of the primary key of the row to delete.
+SET @actor_id_to_delete = &lt;{row_id}&gt;;
+
+DELETE FROM film_actor
+    USING film_actor, actor
+    WHERE `actor`.`actor_id` = `film_actor`.`actor_id`
+          AND actor.actor_id = @actor_id_to_delete;
+DELETE FROM actor
+    USING actor
+    WHERE actor.actor_id = @actor_id_to_delete;
+COMMIT;
+
+
+</pre><p>
+      <span class="guimenuitem">Create Statement</span>
+    </p><pre class="programlisting">
+
+CREATE TABLE `actor` (
+  `actor_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(45) NOT NULL,
+  `last_name` varchar(45) NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`actor_id`),
+  KEY `idx_actor_last_name` (`last_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=201 DEFAULT CHARSET=utf8;
+
+</pre><p>
+      Context-menu options after right-clicking on a
+      <code class="literal">column</code> in the schema view, using the
+      <code class="literal">sakila.actor.first_name</code> column as an example:
+    </p><p>
+      <span class="guimenuitem">Name (short)</span>
+    </p><pre class="programlisting">
+
+`first_name`
+
+</pre><p>
+      <span class="guimenuitem">Name (long)</span>
+    </p><pre class="programlisting">
+
+`actor`.`first_name`
+
+</pre><p>
+      <span class="guimenuitem">Select Columns Statement</span>
+    </p><pre class="programlisting">
+
+SELECT `first_name` FROM `sakila`.`actor`;
+
+</pre><p>
+      <span class="guimenuitem">Insert Statement</span>
+    </p><pre class="programlisting">
+
+INSERT INTO `sakila`.`actor`
+(`first_name`)
+VALUES
+(&lt;{first_name}&gt;);
+
+</pre><p>
+      <span class="guimenuitem">Update Statement</span>
+    </p><pre class="programlisting">
+
+UPDATE `sakila`.`actor`
+SET
+`first_name` = &lt;{first_name}&gt;
+WHERE &lt;{where_expression}&gt;;
+
+</pre><p>
+      Context-menu options after right-clicking on a
+      <code class="literal">field</code> in the results view, using record #1 in
+      the <code class="literal">sakila.actor</code> table as an example:
+    </p><p>
+      <span class="guimenuitem">Copy Rows (with names)</span>
+    </p><pre class="programlisting">
+
+# actor_id, first_name, last_name, last_update
+'1', 'PENELOPE', 'GUINESS', '2006-02-15 04:34:33'
+
+</pre><p>
+      <span class="guimenuitem">Copy Rows (with names, unquoted)</span>
+    </p><pre class="programlisting">
+
+# actor_id, first_name, last_name, last_update
+1, PENELOPE, GUINESS, 2006-02-15 04:34:33
+
+</pre><p>
+      <span class="guimenuitem">Copy Row (tab separated)</span>
+    </p><pre class="programlisting">
+
+1	PENELOPE	GUINESS	2006-02-15 04:34:33
+
+</pre><p>
+      <span class="guimenuitem">Copy Field</span>
+    </p><pre class="programlisting">
+
+'GUINESS'
+
+</pre></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="wb-generating-php"></a>8.1.11.2 Generating PHP Code</h4></div></div></div><p>
+      MySQL Workbench can be used to generate PHP code with the bundled PHP
+      plugin, by using the <span class="guimenu">Tools</span>,
+      <span class="guimenu">Utilities</span>, <span class="guimenu">Copy as PHP Code</span>
+      menu option.
+    </p><p>
+      Below is an example scenario for how to create PHP code. It is a
+      <code class="literal">SELECT</code> statement, and optionally uses
+      <code class="literal">SET</code> to set variables.
+    </p><p>
+      SQL @variables generate PHP variables in the code that then bind
+      to the statement before execution.
+    </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+          Generate or type in the desired SQL query into the SQL editor.
+          This example will use the <code class="literal">sakila</code> database,
+          with the query being:
+        </p><pre class="programlisting">
+SET @last_update = '2006-02-14';
+
+SELECT  actor_id, first_name, last_name, last_update
+  FROM  actor
+  WHERE last_update &gt; @last_update;
+</pre></li><li class="listitem"><p>
+          While in the SQL editor, choose <span class="guimenu">Tools</span>,
+          <span class="guimenu">Utilities</span>, <span class="guimenu">Copy as PHP Code
+          (Iterate SELECT Results)</span> from the main menu. This
+          will copy PHP code to the clipboard.
+        </p></li><li class="listitem"><p>
+          Paste the code to the desired location.
+        </p></li></ol></div><p>
+      Additionally, PHP code that connects to the MySQL database can
+      also be generated by choosing <span class="guimenu">Tools</span>,
+      <span class="guimenu">Utilities</span>, <span class="guimenu">Copy as PHP Code (Connect
+      to Server)</span>.
+    </p><p>
+      After combining the two, the generated PHP code will look like
+      this:
+    </p><pre class="programlisting">
+
+&lt;?php
+
+$host     = "localhost";
+$port     = 3306;
+$socket   = "";
+$user     = "nobody";
+$password = "";
+$dbname   = "sakila";
+
+$con = new mysqli($host, $user, $password, $dbname, $port, $socket)
+    or die ('Could not connect to the database server' . mysqli_connect_error());
+
+//$con-&gt;close();
+
+$query = "SELECT actor_id, first_name, last_name, last_update
+          FROM   actor
+          WHERE  last_update &gt; ?";
+$last_update = '';
+
+$stmt-&gt;bind_param('s', $last_update);
+
+if ($stmt = $con-&gt;prepare($query)) {
+
+    $stmt-&gt;execute();
+    $stmt-&gt;bind_result($actor_id, $first_name, $last_name, $last_update);
+
+    while ($stmt-&gt;fetch()) {
+        // printf("%s, %s, %s, %s\n",
+        //   $actor_id, $first_name, $last_name, $last_update);
+    }
+
+    $stmt-&gt;close();
+}
+
+?&gt;
+
+</pre><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+        The generated PHP code uses the <code class="literal">mysqli</code> PHP
+        extension for MySQL. This extension must be enabled in your PHP
+        distribution for this code to work. For additional details about
+        this PHP extension, see <a class="ulink" href="http://dev.mysql.com/doc/apis-php/en/apis-php-mysqli.html" target="_top">MySQL Improved Extension</a>.
+      </p></div></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-develop-object-management"></a>8.2 Object Management</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="wb-develop.html#wb-sql-editor-navigator">8.2.1 Object Browser and Editor Navigator</a></span></dt><dt><span class="section"><a href="wb-develop.html#wb-sql-editor-connection-information-panel">8.2.2 Session and Object Information Panel</a></span></dt><dt><span class="section"><a href="wb-develop.html#wb-develop-object-management-inspector">8.2.3 Schema and Table Inspector</a></span></dt></dl></div><p>
+      The Object Browser allows you to navigate database schemas and
+      objects. From here, you can perform common tasks such as selecting
+      tables and fields to query, edit tables, create new or drop tables
+      and databases, perform searches, and more.
+    </p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-sql-editor-navigator"></a>8.2.1 Object Browser and Editor Navigator</h3></div></div></div><p>
+        The Navigator area of the sidebar contains options to manage the
+        active MySQL connection. It also lists the schemas on the server
+        for that connection. To access the Navigator area, open an
+        existing connection (or create a new connection) from the home
+        screen. If the panel is not visible, click
+        <span class="guimenu">View</span>, <span class="guisubmenu">Panels</span>, and
+        then <span class="guimenuitem">Show Sidebar</span>.
+      </p><h4><a name="idm140544309549312"></a>Navigator Schemas Tab</h4><p>
+        The Schemas list shows available schema on the currently
+        connected server. These items can be explored to show tables,
+        views, and routines within the schema as the following figure
+        shows.
+      </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+          Internal schemas, such as "performance_schema",
+          "information"schema", "sys", and "mysql", are hidden by
+          default. Toggle the <span class="guilabel">Show Metadata and Internal
+          Schemas</span> preference to list them in the object
+          browser. Schemas beginning with a "." are also controlled by
+          this setting.
+        </p></div><div class="figure"><a name="wb-sql-editor-navigator-schemas-tab"></a><p class="title"><b>Figure 8.20 SQL Editor - Navigator Schemas Tab</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-sql-editor-navigator-schemas.png" width="449" height="723" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+        It is possible to set a schema as the default schema by
+        right-clicking the schema and selecting the <span class="guimenuitem">Set As
+        Default Schema</span> menu item. This executes a
+        <code class="literal">USE <em class="replaceable"><code>schema_name</code></em></code>
+        statement so that subsequent statements without schema
+        qualifiers are executed against this schema. This setting
+        applies only to the query session. To set a default schema for
+        multiple MySQL Workbench sessions, you must set the default schema
+        for the stored connection. From the home screen, right-click on
+        a MySQL connection, choose <span class="guimenuitem">Edit
+        Connection</span>, and set the desired default schema on
+        the <span class="guilabel">Default Schema</span> box.
+      </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+          The selected schema is displayed as <code class="literal">bold</code> in
+          the Schema navigator.
+        </p></div><p>
+        Double-clicking a table, view, or column name in the schema
+        explorer inserts the name into the SQL Query area. This reduces
+        typing significantly when entering SQL statements containing
+        references to several tables, views, or columns.
+      </p><p>
+        The Schema Navigator also features a context menu which can be
+        displayed by right-clicking an object. For example,
+        right-clicking a table displays the following menu items:
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            <span class="guimenuitem">Select Rows - Limit 1000</span>: Pulls
+            up to 1000 rows of table data from the live server into a
+            Results tab, and enables editing. Data can be saved directly
+            to the live server.
+          </p></li><li class="listitem"><p>
+            <span class="guimenuitem">Table Inspector</span>: Displays table
+            information, similar to the <code class="literal">Schema
+            Inspector</code>. This also has a simpler and easier to
+            use interface for analyzing and creating indexes for tables.
+          </p></li><li class="listitem"><p>
+            <span class="guimenuitem">Table Data Export</span>: Opens the
+            table export wizard to export the table's data to JSON or
+            customized CSV.
+          </p></li><li class="listitem"><p>
+            <span class="guimenuitem">Table Data Import</span>: Opens the
+            table import wizard to import JSON or CSV formatted data to
+            the selected or new table.
+          </p></li><li class="listitem"><p>
+            <span class="guimenuitem">Copy to Clipboard</span>: There are
+            various submenus, each of which copies information to the
+            clipboard:
+          </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem"><p>
+                Name (short): Copies the table name.
+              </p></li><li class="listitem"><p>
+                Name (long): Copies the qualified table name in the form
+                <code class="literal">`schema`.`table`</code>.
+              </p></li><li class="listitem"><p>
+                Select All Statement: Copies a statement to select all
+                columns in this form:
+              </p><pre class="programlisting">
+SELECT
+`table`.`column1`,
+`table`.`column2`,
+...
+FROM `schema`.`table`;
+</pre></li><li class="listitem"><p>
+                Insert Statement: Copies an <code class="literal">INSERT</code>
+                statement to insert all columns.
+              </p></li><li class="listitem"><p>
+                Update Statement: Copies an <code class="literal">UPDATE</code>
+                statement to update all columns.
+              </p></li><li class="listitem"><p>
+                Delete Statement: Copies a <code class="literal">DELETE</code>
+                statement in the form <code class="literal">DELETE FROM
+                `world`.`country` WHERE
+                &lt;{where_condition}&gt;;</code>.
+              </p></li><li class="listitem"><p>
+                Create Statement: Copies a <code class="literal">CREATE</code>
+                statement in the form <code class="literal">DELETE FROM
+                `world`.`country` WHERE
+                &lt;{where_condition}&gt;;</code>.
+              </p></li><li class="listitem"><p>
+                Delete with References: Copies a
+                <code class="literal">DELETE</code> statement, in the form of a
+                transaction, that deletes all objects that reference the
+                row (directly or indirectly).
+              </p><p>
+                Use <span class="guimenuitem">Select with References</span>
+                first to preview this operation.
+              </p></li><li class="listitem"><p>
+                Select with References: Copies a
+                <code class="literal">SELECT</code> statement that selects all
+                objects that reference the row (directly or indirectly).
+              </p><p>
+                Use <span class="guimenuitem">Delete with References</span> to
+                generate a DELETE statement for this operation.
+              </p></li></ul></div></li><li class="listitem"><p>
+            <span class="guimenuitem">Send to SQL Editor</span>: Provides
+            functionality similar to Copy to Clipboard. However, this
+            item inserts the SQL code directly into the SQL Query panel,
+            where it can be edited further as required.
+          </p></li><li class="listitem"><p>
+            <span class="guimenuitem">Create Table</span>: Launches a dialog
+            to enable you to create a new table.
+          </p></li><li class="listitem"><p>
+            <span class="guimenuitem">Create Table Like...</span>: Launches a
+            dialog to enable you to create a new table, and to also
+            apply predefined templates. For additional information, see
+            <a class="xref" href="wb-data-modeling.html#wb-design-table-templates" title="9.6 Table Templates">Section 9.6, “Table Templates”</a>.
+          </p></li><li class="listitem"><p>
+            <span class="guimenuitem">Alter Table...</span>: Displays the
+            table editor loaded with the details of the table.
+          </p></li><li class="listitem"><p>
+            <span class="guimenuitem">Table Maintenance</span>: Opens a new
+            tab for performing table maintenance operations. Operations
+            include "Analyze Table", "Optimize Table", "Check Table",
+            and "Checksum Table". Additional information about the table
+            may also be viewed from this tab. For additional
+            information, see
+            <a class="xref" href="wb-develop.html#wb-develop-object-management-schema-inspector" title="Schema Inspector">Schema Inspector</a>.
+          </p></li><li class="listitem"><p>
+            <span class="guimenuitem">Drop Table...</span>: Drops the table.
+            All data in the table will be lost if this operation is
+            carried out.
+          </p></li><li class="listitem"><p>
+            <span class="guimenuitem">Truncate Table...</span>: Truncates the
+            table.
+          </p></li><li class="listitem"><p>
+            <span class="guimenuitem">Search Table Data...</span>: Opens a new
+            tab for performing table searches. It performs a search on
+            all columns, and offers additional options to limit the
+            search.
+          </p></li><li class="listitem"><p>
+            <span class="guimenuitem">Refresh All</span>: Refreshes all
+            schemas in the explorer by resynchronizing with the server.
+          </p></li></ul></div><p>
+        Right-clicking on a schema provides similar options to the table
+        context menu described above, but the operations refer to the
+        Schema. For example, the <span class="guilabel">Table Maintenance</span>
+        in the table context menu selects the table in the
+        <span class="guilabel">Schema Inspector</span>, which is a schema context
+        menu option.
+      </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-sql-editor-connection-information-panel"></a>8.2.2 Session and Object Information Panel</h3></div></div></div><p>
+        The <span class="guilabel">Session</span> tab of the Information panel
+        summarizes the current connection to the server, as the
+        following figure shows.
+      </p><div class="figure"><a name="wb-sql-editor-connection-information-palette-screenshot"></a><p class="title"><b>Figure 8.21 SQL Editor - Connection Information Palette</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-sql-editor-connection-information-palette-screenshot.png" width="207" height="292" alt="Connection: Name, Host, Port, Server, Version, Login User, Current User, and SSL."></div></div></div><br class="figure-break"><p>
+        The <span class="guilabel">Object Info</span> tab of the Information
+        panel summarizes information about a specific object, such as a
+        table. The following figure shows an example of object
+        information.
+      </p><div class="figure"><a name="wb-sql-editor-object-info-screenshot"></a><p class="title"><b>Figure 8.22 SQL Editor - Object Info</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-sql-editor-connection-object-info-screenshot.png" width="231" height="360" alt="Information for an example table object shows the columns of the selected table."></div></div></div><br class="figure-break"></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-develop-object-management-inspector"></a>8.2.3 Schema and Table Inspector</h3></div></div></div><p>
+        The Schema and Table Inspector includes the ability to analyze
+        and repair tables, and also view table metrics.
+      </p><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-develop-object-management-schema-inspector"></a>Schema Inspector</h4></div></div></div><p>
+          Use the Schema Inspector to browse general information from
+          schema objects (shown in the figure that follows). It allows
+          you to perform maintenance tasks on tables such as ANALYZE,
+          OPTIMIZE, CHECK, and CHECKSUM TABLE. To access the inspector,
+          right-click a schema and select the <span class="guilabel">Schema
+          Inspector</span>.
+        </p><div class="figure"><a name="wb-schema-inspector-tables"></a><p class="title"><b>Figure 8.23 Schema Inspector</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-schema-inspector-tables.png" width="800" height="495" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+          Each tab lists topic-oriented information, such as "Tables",
+          "Indexes", and "Triggers". From the
+          <span class="guilabel">Tables</span> tab, click <span class="guibutton">Inspect
+          Table</span> to open the
+          <a class="link" href="wb-develop.html#wb-develop-object-management-table-inspector" title="Table Inspector">Table
+          Inspector</a>, or <span class="guibutton">Maintenance</span> to
+          open the table maintenance tools (shown in the figure that
+          follows).
+        </p><div class="figure"><a name="wb-schema-inspector-tables-maintenance"></a><p class="title"><b>Figure 8.24 Schema Inspector: Table Maintenance</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-schema-inspector-tables-maintenance.png" width="800" height="564" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-develop-object-management-table-inspector"></a>Table Inspector</h4></div></div></div><p>
+          You can use the Table Inspector to view table information,
+          which is similar to the Schema Inspector. The Table Inspector
+          includes an easy-to-use interface for analyzing and creating
+          indexes for your tables.
+        </p><p>
+          To open, right-click a table in the object browser of the
+          Navigator pane and choose <span class="guimenuitem">Table
+          Inspector</span> from the context menu as demonstrated
+          in the following figure.
+        </p><div class="figure"><a name="wb-schema-inspector-table-inspector-context-menu"></a><p class="title"><b>Figure 8.25 Open the Table Inspector</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-schema-inspector-table-inspector-context-menu.png" width="510" height="588" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+          The <span class="guilabel">Table Inspector</span> shows information
+          related to the table. The next figure shows an example using
+          the <code class="literal">sakila.actor</code> table.
+        </p><div class="figure"><a name="wb-schema-inspector-table-inspector-info"></a><p class="title"><b>Figure 8.26 Table Inspector: Info Tab</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-schema-inspector-table-inspector-info.png" width="799" height="544" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></div></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="wb-performance.html">Previous</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="wb-data-modeling.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 7 Performance Tools </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Chapter 9 Database Design and Modeling</td></tr></table></div><div class="copyright-footer"></div></body></html>

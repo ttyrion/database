@@ -1,0 +1,632 @@
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Appendix C Extending Workbench</title><link rel="stylesheet" type="text/css" href="mvl.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="MySQL Workbench"><link rel="up" href="index.html" title="MySQL Workbench"><link rel="prev" href="wb-keys.html" title="Appendix B Keyboard Shortcuts"><link rel="next" href="workbench-reporting-bugs.html" title="Appendix D How To Report Bugs or Problems"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Appendix C Extending Workbench</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="wb-keys.html">Previous</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="workbench-reporting-bugs.html">Next</a></td></tr></table><hr></div><div class="appendix"><div class="titlepage"><div><div><h1 class="title"><a name="wb-extending"></a>Appendix C Extending Workbench</h1></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl class="toc"><dt><span class="section"><a href="wb-extending.html#wb-grt-data-organization">C.1 GRT and Workbench Data Organization</a></span></dt><dt><span class="section"><a href="wb-extending.html#wb-modules">C.2 Modules</a></span></dt><dt><span class="section"><a href="wb-extending.html#wb-plugins">C.3 Plugins and Tools</a></span></dt><dt><span class="section"><a href="wb-extending.html#wb-mforms">C.4 Adding a GUI to a Plugin Using MForms</a></span></dt><dt><span class="section"><a href="wb-extending.html#wb-scripting-shell">C.5 The Workbench Scripting Shell</a></span></dt><dd><dl><dt><span class="section"><a href="wb-extending.html#wb-exploring-scripting-shell">C.5.1 Exploring the Workbench Scripting Shell</a></span></dt><dt><span class="section"><a href="wb-extending.html#wb-scripting-shell-window">C.5.2 The Shell Window</a></span></dt><dt><span class="section"><a href="wb-extending.html#wb-scripting-modules-palettes">C.5.3 Files, Globals, Classes, Modules, and Notifications Tabs</a></span></dt></dl></dd><dt><span class="section"><a href="wb-extending.html#wb-tutorial-plugins">C.6 Tutorial: Writing Plugins</a></span></dt><dd><dl><dt><span class="section"><a href="wb-extending.html#wb-tutorial-plugins-php-pdo">C.6.1 Tutorial: Generate PHP Code to Create a Connection with PDO_MySQL</a></span></dt><dt><span class="section"><a href="wb-extending.html#wb-tutorial-plugins-myisam-fk">C.6.2 Tutorial: Generating Foreign Keys with MyISAM</a></span></dt></dl></dd></dl></div><p>
+    MySQL Workbench provides an extension and scripting system that enables
+    the developer to extend MySQL Workbench capabilities. While the core of
+    MySQL Workbench is developed using C++, it is possible to harness this
+    core functionality using the Python scripting language. MySQL Workbench
+    also provides access to a cross-platform GUI library, MForms, which
+    enables the creation of extensions that feature a graphical user
+    interface.
+  </p><p>
+    The extension system enables the following capabilities:
+  </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+        Automate common tasks
+      </p></li><li class="listitem"><p>
+        Extend the Workbench user-interface
+      </p></li><li class="listitem"><p>
+        Create Tools/Plugins (code which can be invoked from the
+        Workbench menu system)
+      </p></li><li class="listitem"><p>
+        Manipulate schemas
+      </p></li><li class="listitem"><p>
+        Create custom Workbench features
+      </p></li></ul></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-grt-data-organization"></a>C.1 GRT and Workbench Data Organization</h2></div></div></div><p>
+      The Generic RunTime (GRT) is the internal system used by
+      MySQL Workbench to hold model document data. It is also the mechanism
+      by which Workbench can interact with Modules and Plugins.
+      Workbench model data, such as diagrams, schemas, and tables, is
+      stored in a hierarchy of objects that can be accessed by any
+      plugin. The information is represented using standard data types:
+      integers, doubles, strings, dicts, lists, and objects.
+    </p><p>
+      The GRT can be accessed using the Python scripting language.
+      Awareness is required of how the GRT data types map into Python.
+      For example, the GRT integer, double, and string data types are
+      seen as corresponding Python data types. Lists and dicts are kept
+      in their internal representation, but can generally be treated as
+      Python lists and dicts, and accessed in the usual way. Objects
+      contain data fields and methods, but the GRT recognizes only
+      objects from a pre-registered class hierarchy.
+    </p><p>
+      It is possible to fully examine the classes contained within the
+      GRT using the Workbench Scripting Shell. Dots in class names are changed to
+      underscores in their Python counterparts. For example,
+      <code class="literal">db.mysql.Table</code> becomes
+      <code class="literal">db_mysql_Table</code> in Python.
+    </p><h3><a name="idm140544305387984"></a>Application Objects Tree (GRT Tree)</h3><p>
+      As mentioned previously, MySQL Workbench document data is stored in an
+      object hierarchy. This hierarchy is known as the GRT Tree. The GRT
+      Tree can be accessed and modified using Python or C++. Be careful
+      when modifying the GRT Tree as mistakes can lead to document
+      corruption. Backups should be made before manipulating the tree.
+      Read-only access to the tree is the safest approach, and is
+      sufficient in most cases.
+    </p><h3><a name="idm140544305386400"></a>Main Nodes in the Application Object Tree</h3><div class="table"><a name="workbench-extending-grt-tree"></a><p class="title"><b>Table C.1 The main nodes in the Application Object Tree</b></p><div class="table-contents"><table class="table" summary="The main nodes in the Application Object Tree" border="1"><colgroup><col><col></colgroup><thead><tr><th scope="col">Node</th><th scope="col">Description</th></tr></thead><tbody><tr><td scope="row">wb.registry</td><td>Application data such as plugin registry, list of editors, and options.</td></tr><tr><td scope="row">wb.customData</td><td>A generic dictionary for data you can use to store your own data. This
+              dictionary is saved and reloaded with Workbench and is
+              global (not document specific).</td></tr><tr><td scope="row">wb.options</td><td>Contains some default options that are used by Workbench.</td></tr><tr><td scope="row">wb.rdbmsMgmt</td><td>Internal registry of supported RDBMS modules, known data types.</td></tr><tr><td scope="row">wb.doc</td><td>The currently loaded model document.</td></tr><tr><td scope="row">wb.doc.physicalModels[0]</td><td>The currently loaded model object, containing the database catalog and
+              diagrams.</td></tr><tr><td scope="row">wb.doc.physicalModels[0].catalog</td><td>The database catalog for the model. Contains the list of schemas.</td></tr><tr><td scope="row">wb.doc.physicalModels[0]catalog.schemata</td><td>List of schemas in the model. Individual schema can be accessed as a
+              list: schemata[0], schemata[1] ...</td></tr><tr><td scope="row">wb.doc.physicalModels[0].catalog.schemata[0].tables (.views, .routines,
+              ...)</td><td>Lists of tables, views, routines in the schema.</td></tr><tr><td scope="row">wb.doc.physicalModels[0].diagrams</td><td>List of EER diagrams in the model.</td></tr><tr><td scope="row">wb.doc.physicalModels[0].diagrams[0].figures (.layers, .connections,
+              ...)</td><td>List of figures, layers, connections (relationships) in the diagram.</td></tr></tbody></table></div></div><br class="table-break"></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-modules"></a>C.2 Modules</h2></div></div></div><p>
+      In the GRT Modules are libraries containing a list of functions
+      that are exported for use by code in other modules, scripts, or
+      Workbench itself. Modules can be written in C++ or Python, but the
+      data types used for arguments and the return value must be GRT
+      types.
+    </p><p>
+      GRT modules are similar to Python modules, but are imported from
+      the built-in <code class="literal">grt</code> module, instead of directly
+      from an external file. The list of modules loaded into the
+      <code class="literal">grt</code> module is obtained from
+      <code class="literal">grt.modules</code>. Modules can be imported in Python
+      using statements such as <code class="literal">from grt.modules import
+      WbModel</code>.
+    </p><p>
+      To export functions as a module from Python code, perform the
+      following steps:
+    </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+          The source file must be located in the user modules folder.
+          This path is displayed in the Workbench Scripting Shell with the label
+          <span class="guilabel">Looking for user plugins in</span>. It is also
+          possible to install the file using the main menu item
+          <span class="guimenu">Scripting</span>, <span class="guimenuitem">Install
+          Plugin/Module File</span>.
+        </p><p>
+          Default module file locations:
+        </p><div class="table"><a name="wb-modules-file-location"></a><p class="title"><b>Table C.2 Default User Module File Location</b></p><div class="table-contents"><table class="table" summary="Default User Module File Location" border="1"><colgroup><col><col></colgroup><thead><tr><th scope="col">Operating System</th><th scope="col">File Path</th></tr></thead><tbody><tr><td scope="row">Windows</td><td>%AppData%\MySQL\Workbench\modules</td></tr><tr><td scope="row">macOS</td><td>~username/Library/Application Support/MySQL/Workbench/modules</td></tr><tr><td scope="row">Linux</td><td>~username/.mysql/workbench/modules</td></tr></tbody></table></div></div><br class="table-break"></li><li class="listitem"><p>
+          The source file name must have the extension
+          <code class="filename">_grt.py</code>; for example,
+          <code class="filename">my_module_grt.py</code>.
+        </p></li><li class="listitem"><p>
+          Some module metadata must be defined. This can be done using
+          the <code class="literal">DefineModule</code> function from the wb
+          module:
+        </p><pre class="programlisting">
+from wb import *
+ModuleInfo = DefineModule(name='MyModule', author='Your Name', version='1.0')
+</pre></li><li class="listitem"><p>
+          Functions to be exported require their signature to be
+          declared. This is achieved using the export decorator in the
+          previously created ModuleInfo object:
+        </p><pre class="programlisting">
+@ModuleInfo.export(grt.INT, grt.STRING)
+def checkString(s):
+   ...
+</pre><p>
+          For the <code class="literal">export</code> statement, the return type
+          is listed first, followed by the input parameter types,
+          specified as GRT typenames. The following typenames can be
+          used:
+        </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+              <code class="literal">grt.INT</code>: An integer value. Also used
+              for boolean values.
+            </p></li><li class="listitem"><p>
+              <code class="literal">grt.DOUBLE</code>: A floating-point numeric
+              value.
+            </p></li><li class="listitem"><p>
+              <code class="literal">grt.STRING</code>: UTF-8 or ASCII string data.
+            </p></li><li class="listitem"><p>
+              <code class="literal">grt.DICT</code>: A key/value dictionary item.
+              Keys must be strings.
+            </p></li><li class="listitem"><p>
+              <code class="literal">grt.LIST</code>: A list of other values. It is
+              possible to specify the type of the contents as a tuple in
+              the form <code class="literal">(grt.LIST,
+              &lt;type-or-class&gt;)</code>. For example, (grt.LIST,
+              grt.STRING) for a list of strings. For a list of table
+              objects, the following would be specified:
+              <code class="literal">(grt.LIST, grt.classes.db_table)</code>.
+            </p></li><li class="listitem"><p>
+              <code class="literal">grt.OBJECT</code>: An instance of a GRT object
+              or a GRT class object, from
+              <code class="literal">grt.classes</code>.
+            </p></li></ul></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+            These types are defined in the <code class="literal">grt</code>
+            module, which must be imported before they are available for
+            use.
+          </p></div></li></ol></div><p>
+      The following code snippet illustrates declaring a module that
+      exports a single function:
+    </p><pre class="programlisting">
+from wb import *
+import grt
+
+ModuleInfo = DefineModule(name='MyModule', author="your name", version='1.0')
+
+@ModuleInfo.export(grt.DOUBLE, grt.STRING, (grt.LIST, grt.DOUBLE))
+def printListSum(message, doubleList):
+   sum = 0
+   for d in doubleList:
+      sum = sum + d
+   print message, sum
+   return sum 
+</pre></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-plugins"></a>C.3 Plugins and Tools</h2></div></div></div><p>
+      Plugins are special Modules that are exposed to the user through
+      the Workbench GUI. This is typically done using the main menu, or
+      the context-sensitive menu. Much of the MySQL Workbench functionality
+      is implemented using plugins; for example, table, view, and
+      routine editors are native C++ plugins, as are the forward and
+      reverse engineering wizards. The Administrator facility in
+      MySQL Workbench is implemented entirely as a plugin in Python.
+    </p><p>
+      A plugin can be a simple function that performs some action on an
+      input, and ends without further interaction with the user.
+      Examples of this include auto-arranging a diagram, or making batch
+      changes to objects. To create a simple plugin, the function must
+      be located in a module and declared as a plugin using the
+      <code class="literal">plugin</code> decorator of the
+      <code class="literal">ModuleInfo</code> object.
+    </p><p>
+      Plugins can have an indefinite runtime, such as when they are
+      driven by the user through a graphical user interface. This is the
+      case for the object editors and wizards within MySQL Workbench.
+      Although the wizard type of plugin must be declared in the usual
+      way, only the entry point of the plugin will need to be executed
+      in the plugin function, as most of the additional functionality
+      will be invoked as a result of the user interacting with the GUI.
+    </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+        Reloading a plugin requires MySQL Workbench to be restarted.
+      </p></div><p>
+      Imported plugin files (and their compiled counterparts) are stored
+      here:
+    </p><div class="table"><a name="wb-plugins-file-location"></a><p class="title"><b>Table C.3 User Plugin File Location</b></p><div class="table-contents"><table class="table" summary="User Plugin File Location" border="1"><colgroup><col><col></colgroup><thead><tr><th scope="col">Operating System</th><th scope="col">File Path</th></tr></thead><tbody><tr><td scope="row">Windows</td><td>%AppData%\MySQL\Workbench\modules</td></tr><tr><td scope="row">macOS</td><td>~username/Library/Application Support/MySQL/Workbench/modules</td></tr><tr><td scope="row">Linux</td><td>~username/.mysql/workbench/modules</td></tr></tbody></table></div></div><br class="table-break"><p>
+      Declare a plugin using this syntax:
+    </p><pre class="programlisting">
+@ModuleInfo.plugin(plugin_name, caption, [input], [groups], [pluginMenu])
+</pre><p>
+      These parameters are defined as follows:
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <span class="bold"><strong>plugin_name</strong></span>: A unique name
+          for the plugin. It may contain only alphanumeric characters,
+          dots, and underscores.
+        </p></li><li class="listitem"><p>
+          <span class="bold"><strong>caption</strong></span>: A caption to use for
+          the plugin in menus.
+        </p></li><li class="listitem"><p>
+          <span class="bold"><strong>input</strong></span>: An optional list of
+          input arguments.
+        </p></li><li class="listitem"><p>
+          <span class="bold"><strong>groups</strong></span>: Optional list of
+          groups the plugin belongs to. Recognized values are:
+        </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem"><p>
+              <code class="literal">Overview/Utility</code>: The
+              <span class="guimenu">Context</span> menu in the Model Overview.
+            </p></li><li class="listitem"><p>
+              <code class="literal">Model/Utility</code>: The menu for diagram
+              objects.
+            </p></li><li class="listitem"><p>
+              <code class="literal">Menu/&lt;category&gt;</code>: The
+              <span class="guimenu">Plugins</span> menu in the main menu.
+            </p></li></ul></div></li><li class="listitem"><p>
+          <span class="bold"><strong>pluginMenu</strong></span>: Optional name of
+          a submenu in the Plugins menu where the plugin should appear.
+          For example, <span class="guisubmenu">Catalog</span>,
+          <span class="guisubmenu">Objects</span>,
+          <span class="guisubmenu">Utilities</span>. This is equivalent to
+          adding a <code class="literal">Menu/&lt;category&gt;</code> in the
+          groups list.
+        </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-mforms"></a>C.4 Adding a GUI to a Plugin Using MForms</h2></div></div></div><p>
+      MySQL Workbench is implemented with a C++ core back-end, and a native
+      front-end for each supported platform. Currently the front-end is
+      implemented with Windows Forms on Microsoft Windows, GTK+ on
+      Linux, and Cocoa on OS X / macOS. This approach permits the
+      application to have a native look and feel, while reducing the
+      amount of work required to maintain the project. However, the GUI
+      functionality required by MySQL Workbench can be met by a subset of
+      graphical operations. These are implemented in a cross-platform
+      GUI library, MForms. This further reduces the development effort
+      because plugin developers can use MForms rather than writing
+      front-end specific code for each supported platform. This also
+      helps consistency of operation across all platforms. MForms is
+      coded in C++, but provides a Python interface. To use it, the
+      Python code must import the <code class="literal">mforms</code> module.
+    </p><p>
+      <span class="bold"><strong>MForms Containers</strong></span>
+    </p><p>
+      Given the problems of using an absolute coordinate system across
+      different platforms, MForms employs containers that perform
+      automatic layout. The basic containers that MForms provides
+      include:
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <span class="bold"><strong>Form</strong></span>: A top-level window
+          which can contain a single control, usually another container.
+          The window will be sized automatically to fit its contents,
+          but can also be sized statically.
+        </p></li><li class="listitem"><p>
+          <span class="bold"><strong>Box</strong></span>: This container can be
+          filled with one or more controls in a vertical or horizontal
+          layout. Each child control can be set to use either the
+          minimum of required space, or fill the box in the direction of
+          the layout. In the direction perpendicular to the layout, for
+          example vertical in a horizontal layout, the smallest possible
+          size that can accommodate all child controls will be employed.
+          So, in this example, the smallest height possible to
+          accommodate the controls would be used.
+        </p></li><li class="listitem"><p>
+          <span class="bold"><strong>Table</strong></span>: This container can
+          organize one or more controls in a grid. The number of rows
+          and columns in the table, and the location of controls within
+          the grid, can be set by the developer.
+        </p></li><li class="listitem"><p>
+          <span class="bold"><strong>ScrollView</strong></span>: This container
+          can contain a single child control, and adds scrollbars if the
+          contents do not fit the available space.
+        </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-scripting-shell"></a>C.5 The Workbench Scripting Shell</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="wb-extending.html#wb-exploring-scripting-shell">C.5.1 Exploring the Workbench Scripting Shell</a></span></dt><dt><span class="section"><a href="wb-extending.html#wb-scripting-shell-window">C.5.2 The Shell Window</a></span></dt><dt><span class="section"><a href="wb-extending.html#wb-scripting-modules-palettes">C.5.3 Files, Globals, Classes, Modules, and Notifications Tabs</a></span></dt></dl></div><p>
+      The Workbench Scripting Shell provides a means for entering and executing
+      <a class="ulink" href="http://www.python.org" target="_top">Python</a> scripts. Through
+      the use of the scripting shell, MySQL Workbench can support new
+      behavior and data sources using code written in Python. The shell
+      can also be used to explore the current Workbench Generic RunTime
+      (GRT) facilities.
+    </p><p>
+      The scripting shell is not only useful for expanding MySQL Workbench.
+      You can use a script file from the scripting shell command line to
+      perform repetitive tasks programmatically.
+    </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+        MySQL also has a product named MySQL Utilities, which is different
+        than Workbench Scripting Shell.
+      </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-exploring-scripting-shell"></a>C.5.1 Exploring the Workbench Scripting Shell</h3></div></div></div><p>
+        To open the Workbench Scripting Shell, select <span class="guimenu">Scripting</span>,
+        <span class="guimenuitem">Scripting Shell</span> from the main menu.
+        You can also open the Workbench Scripting Shell using the <span class="keycap"><strong>Control</strong></span>
+        + <span class="keycap"><strong>F3</strong></span> key combination on Windows and Linux,
+        <span class="keycap"><strong>Command</strong></span> + <span class="keycap"><strong>F3</strong></span> on macOS, or by
+        clicking the shell button above the EER diagram navigator. The
+        Workbench Scripting Shell will then open in a new dialog.
+      </p><p>
+        The following figure shows the Workbench Scripting Shell dialog.
+      </p><div class="figure"><a name="wb-scripting-shell-console"></a><p class="title"><b>Figure C.1 The Workbench Scripting Shell</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-scripting-shell.png" width="833" height="620" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-scripting-shell-window"></a>C.5.2 The Shell Window</h3></div></div></div><p>
+        The Workbench Scripting Shell is primarily used for running Python scripts, or
+        directly typing commands in Python. However, you can also use it
+        to access the Workbench Scripting Shell Scripting Library functions and global
+        functions and objects. To see the available commands, type
+        <span class="quote">“<span class="quote"><code class="literal">?</code></span>”</span>. You can also cut and paste
+        text to and from the shell window.
+      </p><p>
+        The <span class="guilabel">Snippets</span> tab is a scratch pad for
+        saving code snippets, which makes it easy to reuse and execute
+        code in MySQL Workbench. The following figure shows the Snippets tab
+        selected.
+      </p><div class="figure"><a name="wb-scripting-shell-snippets"></a><p class="title"><b>Figure C.2 The Workbench Scripting Shell: Snippets</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-scripting-shell-snippets.png" width="800" height="600" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+        Opened script file tabs are to the right of the
+        <span class="guilabel">Snippets</span> tab. Script tabs are labeled with
+        the script's filename, or <code class="literal">Unnamed</code> for
+        snippets without a name. You can cut-and-paste to and from the
+        tabs, or right-click on a snippet to open a context menu with
+        options to <span class="guimenu">Execute Snippet</span>, <span class="guimenu">Send to
+        Script Editor</span>, or <span class="guimenu">Copy To
+        Clipboard</span>.
+      </p><p>
+        While individual commands can be entered into the shell, it is
+        also possible to run a longer script, stored in an external
+        file, using the main menu item <span class="guimenu">Scripting</span>,
+        <span class="guimenuitem">Run Workbench Script File</span>. When
+        scripts are run outside of the shell, to see the output use the
+        main menu item <span class="guimenu">View</span>,
+        <span class="guimenuitem">Output</span>.
+      </p><p>
+        It is also possible to run script files directly from the shell.
+        For details on running script files, type <span class="command"><strong>?
+        run</strong></span> at the Workbench Scripting Shell prompt. The following message is
+        displayed:
+      </p><pre class="programlisting">
+Help Topics
+-----------
+grt        General information about the Workbench runtime
+scripting  Practical information when working on scripts and modules for Workbench
+wbdata     Summary about Workbench model data organization
+modules    Information about Workbench module usage
+plugins    Information about writing Plugins and Modules for Workbench
+Type '? [topic]' to get help on the topic.
+
+Custom Python Modules
+---------------------
+   grt         Module to work with Workbench runtime (grt) objects
+   grt.root    The root object in the internal Workbench object hierarchy
+   grt.modules Location where Workbench modules are available
+   grt.classes List of classes known to the GRT system
+   mforms      A Module to access the cross-platform UI toolkit used in some Workbench features
+   wb          Utility module for creating Workbench plugins
+
+Type 'help(module/object/function)' to get information about a module, object or function.
+Type 'dir(object)'                  to get a quick list of methods an object has.
+
+For an introductory tutorial on the Python language,    visit http://docs.python.org/tutorial/
+For general Python and library reference documentation, visit http://python.org/doc/
+</pre><p>
+        Within the Workbench Scripting Shell, there are five tabs on the top of the left
+        side panel: <span class="guilabel">Files</span>,
+        <span class="guilabel">Globals</span>, <span class="guilabel">Classes</span>, and
+        <span class="guilabel">Modules</span>, and
+        <span class="guilabel">Notifications</span>.
+      </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+          An exception is thrown while attempting to use
+          <code class="literal">input()</code> or read from
+          <code class="literal">stdin</code>.
+        </p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-scripting-modules-palettes"></a>C.5.3 Files, Globals, Classes, Modules, and Notifications Tabs</h3></div></div></div><p>
+        The Workbench Scripting Shell features the <span class="guilabel">Files</span>,
+        <span class="guilabel">Globals</span>, <span class="guilabel">Classes</span>,
+        <span class="guilabel">Modules</span>, and
+        <span class="guilabel">Notifications</span> tabs, in addition to the main
+        <span class="guilabel">Shell</span> tab.
+      </p><h4><a name="idm140544305215520"></a>Files Tab</h4><p>
+        The <span class="guilabel">Files</span> tab lists folders and files for
+        user-defined (custom) script files. The file-browser categories
+        are <span class="guilabel">User Scripts</span>, <span class="guilabel">User
+        Modules</span>, and <span class="guilabel">User Libraries</span>, as
+        the following figure shows.
+      </p><div class="figure"><a name="wb-scripting-shell-files-tab"></a><p class="title"><b>Figure C.3 The Workbench Scripting Shell tab: Files</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-scripting-shell-files.png" width="423" height="743" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+        By default, scripts are stored in the
+        <code class="filename">scripts/</code> folder of your MySQL Workbench
+        configuration folder. The following table lists the default
+        location for each platform.
+      </p><div class="table"><a name="wb-scripting-shell-default-scripts-path"></a><p class="title"><b>Table C.4 Default Scripts Location</b></p><div class="table-contents"><table class="table" summary="Default Scripts Location" border="1"><colgroup><col><col></colgroup><thead><tr><th scope="col">Operating System</th><th scope="col">Default <code class="filename">scripts/</code> path</th></tr></thead><tbody><tr><td scope="row">Linux</td><td><code class="filename">~/.mysql/workbench/scripts</code></td></tr><tr><td scope="row">macOS</td><td><code class="filename">~/Library/Application\
+                Support/MySQL/Workbench/scripts/</code></td></tr><tr><td scope="row">Windows 7</td><td><code class="filename">C:\Users\[user]\AppData\Roaming\MySQL\Workbench\scripts\</code></td></tr></tbody></table></div></div><br class="table-break"><h4><a name="idm140544305191104"></a>Globals Tab</h4><p>
+        At the top of the window is a list that is used to select the
+        starting point, or root, of the GRT Globals tree displayed
+        beneath it (see the following figure). By default, this starting
+        point is the root of the tree, that is, '/'. You can expand or
+        collapse the GRT Globals tree as desired. The GRT Globals tree
+        is the structure in which MySQL Workbench stores document data.
+        Clicking any item results in its name and value being displayed
+        in the panel below the tree.
+      </p><div class="figure"><a name="wb-scripting-shell-globals-tab"></a><p class="title"><b>Figure C.4 The Workbench Scripting Shell Tab: Globals</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-scripting-shell-globals.png" width="482" height="876" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h4><a name="idm140544305182256"></a>Classes Tab</h4><p>
+        A <code class="literal">class</code> is a user-defined data type formed by
+        combining primitive data types: integers, doubles, strings,
+        dicts, lists, and objects. This tab shows the definitions of the
+        classes used by the objects in the <span class="guilabel">Modules</span>
+        tab. Clicking a class causes a brief description of the class to
+        be displayed in a panel below the classes explorer, as shown in
+        the next figure.
+      </p><div class="figure"><a name="wb-scripting-shell-classes-tab"></a><p class="title"><b>Figure C.5 The Workbench Scripting Shell Tab: Classes</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-scripting-shell-classes.png" width="489" height="743" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+        When the <span class="guilabel">Classes</span> tab is selected, the list
+        displays the following items:
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            <span class="guilabel">Group by Name</span>: Group by the object name
+          </p></li><li class="listitem"><p>
+            <span class="guilabel">Group by Hierarchy</span>: Group by
+            inheritance
+          </p></li><li class="listitem"><p>
+            <span class="guilabel">Group by Package</span>: Group by
+            functionality
+          </p></li></ul></div><p>
+        The default view for this tab is <span class="guilabel">Group By
+        Name</span>. This view shows all the different objects
+        arranged alphabetically. Click the <span class="guibutton">+</span> icon
+        or double-click a package to show the properties of the struct.
+      </p><p>
+        If you switch to the hierarchical view, you will see
+        <code class="literal">GrtObject</code>: the parent object from which all
+        other objects are derived.
+      </p><h4><a name="idm140544305162816"></a>Modules Tab</h4><p>
+        The <span class="guilabel">Modules</span> tab enables you to browse the
+        MySQL Workbench installed modules and their functions. Clicking a
+        module within the explorer causes its details to be displayed in
+        a panel below the explorer, as the following figure shows. This
+        facility is useful for exploring the available modules, and
+        their supported functions. It is also a way to check whether
+        custom modules have been correctly installed.
+      </p><div class="figure"><a name="wb-scripting-shell-modules-tab"></a><p class="title"><b>Figure C.6 The Workbench Scripting Shell Tab: Modules</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-scripting-shell-modules.png" width="488" height="743" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h4><a name="idm140544305153424"></a>Notifications Tab</h4><p>
+        The <span class="guilabel">Notification</span> tab includes the set of
+        <code class="literal">notification</code> classes used by MySQL Workbench
+        modules. Click a notification class for a description of its
+        use, as demonstrated in the next figure.
+      </p><div class="figure"><a name="wb-scripting-shell-notifications-tab"></a><p class="title"><b>Figure C.7 The Workbench Scripting Shell Tab: Notifications</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-scripting-shell-notifications.png" width="488" height="743" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-tutorial-plugins"></a>C.6 Tutorial: Writing Plugins</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="wb-extending.html#wb-tutorial-plugins-php-pdo">C.6.1 Tutorial: Generate PHP Code to Create a Connection with PDO_MySQL</a></span></dt><dt><span class="section"><a href="wb-extending.html#wb-tutorial-plugins-myisam-fk">C.6.2 Tutorial: Generating Foreign Keys with MyISAM</a></span></dt></dl></div><p>
+    The tutorials in this section demonstrate how to extend MySQL Workbench
+    by creating custom plugins.
+  </p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-tutorial-plugins-php-pdo"></a>C.6.1 Tutorial: Generate PHP Code to Create a Connection with PDO_MySQL</h3></div></div></div><p>
+      MySQL Workbench includes a plugin that generates PHP code with the
+      <code class="literal">mysqli</code> extension. This tutorial shows how to
+      generate code with the <code class="literal">PDO_MySQL</code> extension for
+      PHP. You might choose a different extension or a different
+      language altogether, so adjust the generated code accordingly.
+    </p><p>
+      To begin, review the plugin code shown in the example that
+      follows.
+    </p><pre class="programlisting">
+# import the wb module
+from wb import DefineModule, wbinputs
+# import the grt module
+import grt
+# import the mforms module for GUI stuff
+import mforms
+
+# define this Python module as a GRT module
+ModuleInfo = DefineModule(name= "MySQLPDO", author= "Yours Truly", version="1.0")
+
+@ModuleInfo.plugin("info.yourstruly.wb.mysqlpdo", caption= "MySQL PDO (Connect to Server)", input= [wbinputs.currentSQLEditor()], pluginMenu= "SQL/Utilities")
+@ModuleInfo.export(grt.INT, grt.classes.db_query_Editor)
+
+def mysqlpdo(editor):
+    """Copies PHP code to connect to the active MySQL connection using PDO, to the clipboard.
+    """
+    # Values depend on the active connection type
+    if editor.connection:
+        conn = editor.connection
+
+        if conn.driver.name == "MysqlNativeSocket":
+            params = {
+            "host" : "",
+            "port" : "",
+            "user" : conn.parameterValues["userName"],
+            "socket" : conn.parameterValues["socket"],
+            "dbname" : editor.defaultSchema,
+            "dsn" : "mysql:unix_socket={$socket};dbname={$dbname}"
+            }
+        else:
+            params = {
+            "host" : conn.parameterValues["hostName"],
+            "port" : conn.parameterValues["port"] if conn.parameterValues["port"] else 3306,
+            "user" : conn.parameterValues["userName"],
+            "socket" : "",
+            "dbname" : editor.defaultSchema,
+            "dsn" : "mysql:host={$host};port={$port};dbname={$dbname}"
+            }
+        text = """$host="%(host)s";
+$port=%(port)s;
+$socket="%(socket)s";
+$user="%(user)s";
+$password="";
+$dbname="%(dbname)s";
+
+try {
+    $dbh = new PDO("%(dsn)s", $user, $password));
+} catch (PDOException $e) {
+    echo 'Connection failed: ' . $e-&gt;getMessage();
+}
+
+""" % params
+        mforms.Utilities.set_clipboard_text(text)
+        mforms.App.get().set_status_text("Copied PHP code to clipboard")
+    return 0
+</pre><p>
+      This simple plugin generates PHP code to create a MySQL connection
+      using PHP's <code class="literal">PDO_MySQL</code> extension. The DSN
+      definition depends on the connection type in MySQL Workbench. The part
+      you might want to modify is within the text definition.
+    </p><p>
+      To generate PHP code for a connection, first install the plugin as
+      follows:
+    </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+          Copy the plugin code into a new file. The file name used in
+          this example is <code class="filename">php-pdo-connect_grt.py</code>,
+          but you can use a different name as long as
+          <code class="filename">_grt.py</code> is the suffix.
+        </p></li><li class="listitem"><p>
+          Start MySQL Workbench. Click <span class="guilabel">Scripting</span> and
+          then <span class="guilabel">Install Plugin/Module</span> from the menu
+          to open a file browser. Select the plugin file created by the
+          code in the previous step,
+          <code class="filename">php-pdo-connect_grt.py</code> in this case.
+        </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+            You could copy the file directly to the plugin folder
+            instead of using the <span class="guilabel">Install
+            Plugin/Module</span> interface. The result would be the
+            same.
+          </p></div></li><li class="listitem"><p>
+          When prompted, restart MySQL Workbench. This step generates a
+          compiled bytecode file (<code class="filename">.pyc</code>) from your
+          source file. In this example, it generates
+          <code class="filename">php-pdo-connect_grt.pyc</code>.
+        </p></li><li class="listitem"><p>
+          After restarting MySQL Workbench, load the MySQL connection to use
+          to generate the PHP code. From the menu, click
+          <span class="guimenu">Tools</span>,
+          <span class="guimenuitem">Utilities</span>, and then
+          <span class="guimenuitem">MySQL PDO (Connect to Server)</span>,
+          which is the <code class="literal">Caption</code> defined within the
+          plugin code.
+        </p><p>
+          This action copies the generated PHP code into the clipboard
+          on your system. The following connection example defines
+          "sakila" as the default database in the generated code.
+        </p><pre class="programlisting">
+$host="localhost";
+$port=3306;
+$socket="";
+$user="root";
+$password="";
+$dbname="sakila";
+
+try {
+    $dbh = new PDO("mysql:host={$host};port={$port};dbname={$dbname}", $user, $password));
+} catch (PDOException $e) {
+    echo 'Connection failed: ' . $e-&gt;getMessage();
+}         
+        </pre></li></ol></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-tutorial-plugins-myisam-fk"></a>C.6.2 Tutorial: Generating Foreign Keys with MyISAM</h3></div></div></div><p>
+      EER Diagrams are useful for visualizing complex database schemata.
+      They are often created for existing databases, to clarify their
+      purpose or document them. MySQL Workbench provides facilities for
+      reverse engineering existing databases, and then creating an EER
+      Diagram automatically. In this case, relationship lines between
+      foreign keys in the table will automatically be drawn. This
+      graphical representation makes the relationships between the
+      tables much easier to understand. However, the older MyISAM
+      storage engine does not include support for foreign keys. This
+      means that MyISAM tables that are reverse engineered will not
+      automatically have the relationship lines drawn between tables,
+      making the database harder to understand. The plugin created in
+      this tutorial gets around this problem by using the fact that a
+      naming convention is often used for foreign keys:
+      <code class="literal">tablename_primarykeyname</code>. Using this
+      convention, foreign keys can automatically be created after a
+      database is reverse engineered, which will result in relationship
+      lines being drawn in the EER diagram.
+    </p><p>
+      <span class="bold"><strong>Algorithm</strong></span>
+    </p><p>
+      The basic algorithm for this task would be as follows:
+    </p><pre class="programlisting">
+for each table in the schema
+   for each column in the table
+      look for another table whose name and primary key name match the current column name
+      if such a table is found, add a foreign key referencing it
+</pre><p>
+      As iterating the complete table list to find a match can be slow
+      for models with a large number of tables, it is necessary to
+      optimize by pre-computing all possible foreign key names in a
+      given schema.
+    </p><pre class="programlisting">
+import grt
+
+def auto_create_fks(schema):
+   fk_name_format = "%(table)s_%(pk)s"
+   possible_fks = {}
+   # create the list of possible foreign keys from the list of tables
+   for table in schema.tables:
+      if table.primaryKey:
+         format_args = {'table':table.name, 'pk':table.primaryKey.name}
+         fkname = fk_name_format % format_args
+         possible_fks[fkname] = table
+
+   # go through all tables in schema, this time to find columns that may be a fk
+   for table in schema.tables:
+      for column in table.columns:
+         if possible_fks.has_key(column.name):
+            ref_table = possible_fks[column.name]
+            if ref_table.primaryKey.formattedType != column.type:
+               continue
+            fk = table.createForeignKey(column.name+"_fk")
+            fk.referencedTable = ref_table
+            fk.columns.append(column)
+            fk.referencedColumn.append(ref_table.primaryKey)
+            print "Created foreign key %s from %s.%s to %s.%s" \
+            % (fk.name, table.name, column.name, ref_table.name, ref_table.primaryKey.name)
+
+auto_create_fks(grt.root.wb.doc.physicalModels[0].catalog.schemata[0])
+</pre><p>
+      <span class="bold"><strong>Creating a Plugin from a Script</strong></span>
+    </p><p>
+      To create a plugin from an arbitrary script, it is first necessary
+      to make the file a module, and export the required function from
+      it. It is then necessary to declare the module as a plugin, and
+      specify the return type and input arguments.
+    </p><pre class="programlisting">
+from wb import *
+import grt
+
+ModuleInfo = DefineModule(name="AutoFK", author="John Doe", version="1.0")
+
+@ModuleInfo.plugin("sample.createGuessedForeignKeys",
+  caption="Create Foreign Keys from ColumnNames",
+  input=[wbinputs.objectOfClass("db.mysql.schema")],
+  groups=["Overview/Utility"])
+
+@ModuleInfo.export(grt.INT, grt.classes.db_mysql_Schema)
+def auto_create_fks(schema):
+   ...
+</pre><p>
+      With the addition of the preceding code, the
+      <code class="literal">auto_create_fks()</code> function is exported and will
+      be added to the schema context menu in the model overview. When
+      invoked, it receives the currently selected schema as its input.
+    </p></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="wb-keys.html">Previous</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="workbench-reporting-bugs.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Appendix B Keyboard Shortcuts </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Appendix D How To Report Bugs or Problems</td></tr></table></div><div class="copyright-footer"></div></body></html>

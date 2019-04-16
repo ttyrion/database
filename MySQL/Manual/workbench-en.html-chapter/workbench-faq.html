@@ -1,0 +1,371 @@
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Appendix A MySQL Workbench Frequently Asked Questions</title><link rel="stylesheet" type="text/css" href="mvl.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="MySQL Workbench"><link rel="up" href="index.html" title="MySQL Workbench"><link rel="prev" href="wb-migration.html" title="Chapter 10 Database Migration Wizard"><link rel="next" href="wb-keys.html" title="Appendix B Keyboard Shortcuts"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Appendix A MySQL Workbench Frequently Asked Questions</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="wb-migration.html">Previous</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="wb-keys.html">Next</a></td></tr></table><hr></div><div class="appendix"><div class="titlepage"><div><div><h1 class="title"><a name="workbench-faq"></a>Appendix A MySQL Workbench Frequently Asked Questions</h1></div></div></div><a class="indexterm" name="idm140544305745664"></a><p>
+    FAQ Categories
+  </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+        <a class="link" href="workbench-faq.html#workbench-faq-basic-usage"><span class="bold"><strong>Basic
+        Usage</strong></span></a>
+      </p></li><li class="listitem"><p>
+        <a class="link" href="workbench-faq.html#workbench-faq-functionality"><span class="bold"><strong>MySQL Workbench
+        Functionality</strong></span></a>
+      </p></li><li class="listitem"><p>
+        <a class="link" href="workbench-faq.html#workbench-faq-data-management"><span class="bold"><strong>Data
+        Management</strong></span></a>
+      </p></li><li class="listitem"><p>
+        <a class="link" href="workbench-faq.html#workbench-faq-general"><span class="bold"><strong>General</strong></span></a>
+      </p></li></ul></div><p><a name="workbench-faq-basic-usage"></a>
+    <span class="bold"><strong>Basic Usage</strong></span>
+  </p><div class="qandaset"><a name="idm140544305733776"></a><dl><dt>A.1. <a href="workbench-faq.html#faq-workbench-mysql-connection-meaning">
+        What is a MySQL connection? Why might I need to create more than
+        one?
+      </a></dt><dt>A.2. <a href="workbench-faq.html#faq-workbench-tls-support">
+        Does MySQL Workbench support the TLSv1.2 protocol?
+      </a></dt><dt>A.3. <a href="workbench-faq.html#faq-workbench-create-database">
+        How do I create a MySQL database (schema) in MySQL Workbench?
+      </a></dt><dt>A.4. <a href="workbench-faq.html#faq-workbench-select-data">
+        Is there an easy way to select all data from a table, and then
+        see the results?
+      </a></dt></dl><table border="0" style="width: 100%;"><colgroup><col align="left" width="1%"><col></colgroup><tbody><tr class="question"><td align="left" valign="top"><a name="faq-workbench-mysql-connection-meaning"></a><a name="idm140544305733008"></a><p><b>A.1.</b></p></td><td align="left" valign="top"><p>
+        What is a MySQL connection? Why might I need to create more than
+        one?
+      </p></td></tr><tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p>
+        A MySQL connection links (connects) Workbench to a MySQL server.
+        Most actions performed within Workbench are then performed
+        against the connected MySQL server. Each MySQL connection
+        contains its own set of definitions, so you might define
+        multiple MySQL connections in Workbench. For example, the
+        connections might connect to different MySQL servers, or the
+        same MySQL server with different user names, or enable SSL for
+        one, or you might set up a connection to a remote MySQL server
+        (on your web host?) using the SSH options, and so on.
+      </p><p>
+        As for multiple connections to the same local MySQL server, you
+        might have one connection using "root" with another using a less
+        privileged user. Depending on how you set up the users, they may
+        (or may not) both have rights to see and use the same databases
+        (information). For example, you might use Workbench to configure
+        and use the less-privileged user that you use for your web
+        application.
+      </p><p>
+        So to summarize, connections simply connect to the MySQL server.
+        If two connections use the same exact information then the
+        results in Workbench will be identical. However, that is not a
+        common use case. For additional information about MySQL
+        connections in MySQL Workbench, see
+        <a class="xref" href="wb-mysql-connections.html" title="Chapter 5 Connections in MySQL Workbench">Chapter 5, <i>Connections in MySQL Workbench</i></a>.
+      </p></td></tr><tr class="question"><td align="left" valign="top"><a name="faq-workbench-tls-support"></a><a name="idm140544305728064"></a><p><b>A.2.</b></p></td><td align="left" valign="top"><p>
+        Does MySQL Workbench support the TLSv1.2 protocol?
+      </p></td></tr><tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p>
+        Because TLSv1.2 requires OpenSSL, support for this protocol is
+        available for MySQL Workbench Commercial Editions, and not for the
+        Community Edition (which is compiled using yaSSL and supports
+        TLSv1.1 only).
+      </p></td></tr><tr class="question"><td align="left" valign="top"><a name="faq-workbench-create-database"></a><a name="idm140544305725856"></a><p><b>A.3.</b></p></td><td align="left" valign="top"><p>
+        How do I create a MySQL database (schema) in MySQL Workbench?
+      </p></td></tr><tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            Open a MySQL connection to open the SQL editor.
+          </p></li><li class="listitem"><p>
+            On the left pane there is an Object Browser that contains
+            two tabs titled <span class="guilabel">Management</span> and
+            <span class="guilabel">Schemas</span>. Choose the schemas tab
+            (default).
+          </p></li><li class="listitem"><p>
+            Right-click anywhere in the <span class="guilabel">Schemas</span>
+            pane and choose <span class="guimenuitem">Create Schema</span>
+            from the context-menu.
+          </p></li><li class="listitem"><p>
+            Follow the schema creation wizard by naming your new schema,
+            and click <span class="guibutton">Apply</span> to create your new
+            schema.
+          </p></li></ul></div><p>
+        Other options include clicking the "Create Schema" icon on the
+        main navigation bar, or executing a "CREATE SCHEMA your_db_name"
+        query in the SQL editor.
+      </p></td></tr><tr class="question"><td align="left" valign="top"><a name="faq-workbench-select-data"></a><a name="idm140544305716128"></a><p><b>A.4.</b></p></td><td align="left" valign="top"><p>
+        Is there an easy way to select all data from a table, and then
+        see the results?
+      </p></td></tr><tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p>
+        From the schema navigator, hover over the table and click the
+        <span class="inlinemediaobject"><img src="images/wb_item_overlay_result.png" align="middle" width="16" height="16"></span> icon. This executes a "SELECT * FROM
+        schema.table" query and loads the results into the result grid.
+        From there you can view or edit the data.
+      </p><p>
+        Alternatively, right-click on a table and select
+        <span class="guimenuitem">Select Rows - Limit 1000</span> form the
+        context menu.
+      </p></td></tr></tbody></table></div><p><a name="workbench-faq-functionality"></a>
+    <span class="bold"><strong>Workbench Functionality</strong></span>
+  </p><div class="qandaset"><a name="idm140544305709248"></a><dl><dt>A.1. <a href="workbench-faq.html#faq-workbench-ssl-certificate-wizard">
+        How do I use the SSL Certificate wizard to enable SSL for both
+        my MySQL server and MySQL client?
+      </a></dt><dt>A.2. <a href="workbench-faq.html#faq-workbench-save-connections">
+        How do I copy my saved MySQL connections in Workbench to a
+        different computer?
+      </a></dt><dt>A.3. <a href="workbench-faq.html#faq-workbench-view-history">
+        How can I view my MySQL Workbench query history?
+      </a></dt><dt>A.4. <a href="workbench-faq.html#faq-workbench-save-results-tab">
+        Can I preserve a results tab rather than have it refresh every
+        time I execute a statement?
+      </a></dt><dt>A.5. <a href="workbench-faq.html#faq-workbench-embedded-web-browser">
+        How does the embedded web browser functionality work? For
+        example, clicking Workbench Forum on the
+        Home screen opens the forum in its own embedded MySQL Workbench tab.
+      </a></dt><dt>A.6. <a href="workbench-faq.html#faq-workbench-increase-performance">
+        How does MySQL Workbench increase import performance?
+      </a></dt></dl><table border="0" style="width: 100%;"><colgroup><col align="left" width="1%"><col></colgroup><tbody><tr class="question"><td align="left" valign="top"><a name="faq-workbench-ssl-certificate-wizard"></a><a name="idm140544305708480"></a><p><b>A.1.</b></p></td><td align="left" valign="top"><p>
+        How do I use the SSL Certificate wizard to enable SSL for both
+        my MySQL server and MySQL client?
+      </p></td></tr><tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p>
+        Execute the wizard to generate the SSL certificates, and then
+        modify your MySQL server's configuration file
+        (<code class="filename">my.cnf</code> or <code class="filename">my.ini</code>)
+        accordingly. You can copy-n-paste entries for the SSL options
+        from the generated <code class="filename">sample-my.cnf</code> sample
+        file. Next, confirm that the SSL <span class="guilabel">CA File</span>,
+        <span class="guilabel">CERT File</span>, and <span class="guilabel">Key
+        File</span> values are properly set under the
+        <span class="guilabel">SSL</span> tab for your MySQL connection. Set
+        <span class="guilabel">Use SSL</span> to either
+        <span class="emphasis"><em>Require</em></span> (recommended) or <span class="emphasis"><em>If
+        available</em></span>, and then execute <span class="guibutton">Test
+        Connection</span>. This should report that SSL is enabled.
+      </p><p>
+        Failed SSL connections are logged in the MySQL Workbench log file.
+        For additional information about the log file's location, see
+        <a class="xref" href="wb-configuring.html#wb-configuring-files" title="3.3 MySQL Workbench Settings and Log Files">Section 3.3, “MySQL Workbench Settings and Log Files”</a>.
+      </p><p>
+        For additional information, see
+        <a class="xref" href="wb-mysql-connections.html#wb-mysql-connections-ssl-wizard" title="5.3.4 SSL Wizard (Certificates)">Section 5.3.4, “SSL Wizard (Certificates)”</a>.
+      </p></td></tr><tr class="question"><td align="left" valign="top"><a name="faq-workbench-save-connections"></a><a name="idm140544305696384"></a><p><b>A.2.</b></p></td><td align="left" valign="top"><p>
+        How do I copy my saved MySQL connections in Workbench to a
+        different computer?
+      </p></td></tr><tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p>
+        From the main navigation menu, choose <span class="guimenu">Tools</span>,
+        <span class="guimenuitem">Configuration</span>, and then
+        <span class="guimenuitem">Backup Connections</span> to create a Zip
+        file with your configured MySQL connections. Next, load this
+        file into your new Workbench instance by using the related
+        <span class="guimenuitem">Restore Connections</span> option.
+      </p></td></tr><tr class="question"><td align="left" valign="top"><a name="faq-workbench-view-history"></a><a name="idm140544305691264"></a><p><b>A.3.</b></p></td><td align="left" valign="top"><p>
+        How can I view my MySQL Workbench query history?
+      </p></td></tr><tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p>
+        In bottom pane, change <span class="guilabel">Action Output</span> to
+        <span class="guilabel">History</span> and then choose the appropriate
+        date.
+      </p><p>
+        The SQL statement history is stored as plain text on your system
+        under your <a class="link" href="wb-configuring.html#wb-configuring-file-paths" title="Table 3.1 Default Local Configuration Base File Path">user's
+        MySQL Workbench configuration path</a> in the
+        <code class="filename">sql_history</code> directory. These files are
+        organized per date (such as 2014-01-15) and contain your
+        MySQL Workbench SQL statement history for all MySQL connections.
+      </p></td></tr><tr class="question"><td align="left" valign="top"><a name="faq-workbench-save-results-tab"></a><a name="idm140544305685472"></a><p><b>A.4.</b></p></td><td align="left" valign="top"><p>
+        Can I preserve a results tab rather than have it refresh every
+        time I execute a statement?
+      </p></td></tr><tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p>
+        Yes, you can pin the results tab to force it to remain and be
+        unaffected by UPDATE and other statements. Do that by
+        right-clicking the result tab and choose "Pin Tab" from the
+        context-menu, or left-click the little pin icon to toggle it.
+        Now, execute your other queries and then refresh the pinned tab
+        (there is a "refresh" icon in the result grid's menu).
+      </p></td></tr><tr class="question"><td align="left" valign="top"><a name="faq-workbench-embedded-web-browser"></a><a name="idm140544305682992"></a><p><b>A.5.</b></p></td><td align="left" valign="top"><p>
+        How does the embedded web browser functionality work? For
+        example, clicking <span class="guilabel">Workbench Forum</span> on the
+        Home screen opens the forum in its own embedded MySQL Workbench tab.
+      </p></td></tr><tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p>
+        The Webkit system library is used on OS X, Internet Explorer is
+        used on Windows, and Linux opens the default browser externally
+        rather than an embedded browser. Pressing
+        <span class="keycap"><strong>Modifier</strong></span> + <span class="keycap"><strong>Arrow</strong></span> moves the
+        browser history forward and back.
+      </p><p>
+        Additionally, for information about creating your own Home
+        screen links, see
+        <a class="xref" href="wb-configuring.html#wb-configuring-custom-home-link" title="3.4 Tutorial: Add a Custom Link to the Home Screen">Section 3.4, “Tutorial: Add a Custom Link to the Home Screen”</a>.
+      </p></td></tr><tr class="question"><td align="left" valign="top"><a name="faq-workbench-increase-performance"></a><a name="idm140544305677216"></a><p><b>A.6.</b></p></td><td align="left" valign="top"><p>
+        How does MySQL Workbench increase import performance?
+      </p></td></tr><tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p>
+        When a model is exported (<span class="guimenu">Database</span>,
+        <span class="guisubmenu">Forward Engineer...</span>), some MySQL server
+        variables are temporarily set to enable faster SQL import by the
+        server. The statements added at the start of the code are:
+      </p><pre class="programlisting">
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+</pre><p>
+        These statements function as follows:
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            <code class="literal">SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS,
+            UNIQUE_CHECKS=0;</code>: Determines whether
+            <code class="literal">InnoDB</code> performs duplicate key checks.
+            Import is much faster for large data sets if this check is
+            not performed. For additional information, see
+            <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_unique_checks" target="_top"><code class="literal">unique_checks</code></a>.
+          </p></li><li class="listitem"><p>
+            <code class="literal">SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS,
+            FOREIGN_KEY_CHECKS=0;</code>: Determines whether the
+            server should check that a referenced table exists when
+            defining a foreign key. Due to potential circular
+            references, this check must be turned off for the duration
+            of the import, to permit defining foreign keys. For
+            additional information, see
+            <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_foreign_key_checks" target="_top"><code class="literal">foreign_key_checks</code></a>.
+          </p></li><li class="listitem"><p>
+            <code class="literal">SET @OLD_SQL_MODE=@@SQL_MODE,
+            SQL_MODE='TRADITIONAL';</code>: Sets
+            <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/sql-mode.html" target="_top">SQL_MODE</a> to
+            <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/sql-mode.html#sqlmode_traditional" target="_top"><code class="literal">TRADITIONAL</code></a>, causing the
+            server to operate in a more restrictive mode, and
+            <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/sql-mode.html#sqlmode_allow_invalid_dates" target="_top"><code class="literal">ALLOW_INVALID_DATES</code></a>,
+            causing dates to not be fully validated.
+          </p></li></ul></div><p>
+        These server variables are then reset at the end of the script
+        using the following statements:
+      </p><pre class="programlisting">
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+</pre></td></tr></tbody></table></div><p><a name="workbench-faq-behavior"></a>
+    <span class="bold"><strong>Workbench Behavior</strong></span>
+  </p><div class="qandaset"><a name="idm140544305657616"></a><dl><dt>A.1. <a href="workbench-faq.html#faq-workbench-read-only">
+        Why do my query results sometimes say Read
+        Only but other times I can edit data in the results
+        grid?
+      </a></dt><dt>A.2. <a href="workbench-faq.html#faq-workbench-delete-safe">
+        I'm attempting to execute a DELETE query but the query fails
+        with an "Error Code: 1175" error. How do I proceed?
+      </a></dt><dt>A.3. <a href="workbench-faq.html#faq-workbench-error-lost-connection">
+        My MySQL server connection is timing out with an error like
+        "Error Code: 2013. Lost connection to MySQL server during
+        query". Can I adjust the timeout?
+      </a></dt><dt>A.4. <a href="workbench-faq.html#faq-workbench-column-acronyms">
+        What do the column flag acronyms (PK, NN, UQ, BIN, UN, ZF, AI,
+        G) in the MySQL Workbench Table
+        Editor mean?
+      </a></dt></dl><table border="0" style="width: 100%;"><colgroup><col align="left" width="1%"><col></colgroup><tbody><tr class="question"><td align="left" valign="top"><a name="faq-workbench-read-only"></a><a name="idm140544305656848"></a><p><b>A.1.</b></p></td><td align="left" valign="top"><p>
+        Why do my query results sometimes say <span class="guilabel">Read
+        Only</span> but other times I can edit data in the results
+        grid?
+      </p></td></tr><tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p>
+        Data in the query results grid is only editable when the query
+        results includes a primary key. For example, "SELECT type FROM
+        food" will be read-only if "type" is not a primary key, but
+        "SELECT id, type FROM food" will be editable when "id" is a
+        primary key. Typically, "SELECT *" syntax is used in Workbench
+        which often includes query results with a primary key.
+      </p><p>
+        For additional information, hover over the "Read Only" icon to
+        reveal a tooltip that explains why your result set is in
+        read-only mode.
+      </p></td></tr><tr class="question"><td align="left" valign="top"><a name="faq-workbench-delete-safe"></a><a name="idm140544305653088"></a><p><b>A.2.</b></p></td><td align="left" valign="top"><p>
+        I'm attempting to execute a DELETE query but the query fails
+        with an "Error Code: 1175" error. How do I proceed?
+      </p></td></tr><tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p>
+        By default, Workbench is configured to not execute DELETE or
+        UPDATE queries that do not include a WHERE clause on a KEY
+        column. To alter this behavior, open your Workbench
+        <span class="guilabel">Preferences</span>, select the <span class="guilabel">SQL
+        Editor</span> section, and disable the following preference:
+      </p><p>
+        [ ] "Safe Updates". Forbid UPDATEs and DELETEs with no key
+        in WHERE clause or no LIMIT clause.
+      </p><p>
+        Changing this preference requires you to reconnect to your MySQL
+        server before it can take affect.
+      </p></td></tr><tr class="question"><td align="left" valign="top"><a name="faq-workbench-error-lost-connection"></a><a name="idm140544305648192"></a><p><b>A.3.</b></p></td><td align="left" valign="top"><p>
+        My MySQL server connection is timing out with an error like
+        "Error Code: 2013. Lost connection to MySQL server during
+        query". Can I adjust the timeout?
+      </p></td></tr><tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p>
+        Yes, go to <span class="guilabel">Preferences</span>, <span class="guilabel">SQL
+        Editor</span>, and adjust the <span class="guilabel">DBMS connection read
+        time out</span> option that defaults to 600 seconds. This
+        sets the maximum amount of time (in seconds) that a query can
+        take before MySQL Workbench disconnects from the MySQL server.
+      </p></td></tr><tr class="question"><td align="left" valign="top"><a name="faq-workbench-column-acronyms"></a><a name="idm140544305643728"></a><p><b>A.4.</b></p></td><td align="left" valign="top"><p>
+        What do the column flag acronyms (PK, NN, UQ, BIN, UN, ZF, AI,
+        G) in the <a class="link" href="wb-develop.html#wb-table-editor" title="8.1.10 MySQL Table Editor">MySQL Workbench Table
+        Editor</a> mean?
+      </p></td></tr><tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p>
+        Checking these boxes will alter the table column by assigning
+        the checked constraints to the designated columns.
+      </p><p>
+        Hover over an acronym to view a description, and see the
+        <a class="xref" href="wb-develop.html#wb-table-editor-columns-tab" title="8.1.10.2 Columns Tab">Section 8.1.10.2, “Columns Tab”</a> and MySQL
+        <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/create-table.html" target="_top">CREATE TABLE</a> documentation
+        for additional details.
+      </p></td></tr></tbody></table></div><p><a name="workbench-faq-data-management"></a>
+    <span class="bold"><strong>Data Management</strong></span>
+  </p><div class="qandaset"><a name="idm140544305637744"></a><dl><dt>A.1. <a href="workbench-faq.html#faq-workbench-import-csv">
+        How do I import comma-separated values (CSV) data into MySQL
+        using Workbench?
+      </a></dt><dt>A.2. <a href="workbench-faq.html#faq-workbench-export-text">
+        How do I export MySQL data to a plain text file with a format
+        such as CSV, JSON, or XML?
+      </a></dt><dt>A.3. <a href="workbench-faq.html#faq-workbench-export-database-text">
+        How to export (save) a MySQL database to a text file?
+      </a></dt></dl><table border="0" style="width: 100%;"><colgroup><col align="left" width="1%"><col></colgroup><tbody><tr class="question"><td align="left" valign="top"><a name="faq-workbench-import-csv"></a><a name="idm140544305636976"></a><p><b>A.1.</b></p></td><td align="left" valign="top"><p>
+        How do I import comma-separated values (CSV) data into MySQL
+        using Workbench?
+      </p></td></tr><tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p>
+        Importing CSV data into a new or existing
+        <span class="emphasis"><em>table</em></span>: the <span class="guilabel">Table Data
+        Import</span> wizard imports configurable CSV data into a
+        new or existing table. This option was added in MySQL Workbench 6.3.
+      </p><p>
+        Importing CSV data into a <span class="emphasis"><em>result set</em></span>: the
+        <span class="guilabel">Import records from external file</span> wizard
+        imports CSV data directly into a result set's view.
+      </p><p>
+        Alternatively, the <span class="guilabel">Data Import</span> wizard
+        imports your saved MySQL files into your MySQL server. For
+        additional information, see
+        <a class="xref" href="wb-admin.html#wb-admin-export-import" title="6.5 Data Export and Import">Section 6.5, “Data Export and Import”</a>.
+      </p><p>
+        If you are importing Excel files, then consider using the
+        official
+        <a class="ulink" href="http://dev.mysql.com/doc/mysql-for-excel/en/" target="_top">MySQL for Excel
+        Add-on</a> for Excel.
+      </p></td></tr><tr class="question"><td align="left" valign="top"><a name="faq-workbench-export-text"></a><a name="idm140544305628704"></a><p><b>A.2.</b></p></td><td align="left" valign="top"><p>
+        How do I export MySQL data to a plain text file with a format
+        such as CSV, JSON, or XML?
+      </p></td></tr><tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p>
+        The results view panel in Workbench has an "Export recordset to
+        an external file" option that exports your result set to a wide
+        variety of formats. For additional information, see
+        <a class="xref" href="wb-admin.html#wb-develop-sql-editor-export" title="Export a Result Set">Export a Result Set</a>.
+      </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+          This is different than the <span class="guilabel">Data Export</span>
+          wizard that exports your MySQL data to standard MySQL formats.
+          For additional information about that, see
+          <a class="xref" href="wb-admin.html#wb-admin-export-import" title="6.5 Data Export and Import">Section 6.5, “Data Export and Import”</a>.
+        </p></div><p>
+        If you are exporting to Excel, then consider using the official
+        <a class="ulink" href="http://dev.mysql.com/doc/mysql-for-excel/en/" target="_top">MySQL for Excel
+        Add-on</a> for Excel.
+      </p></td></tr><tr class="question"><td align="left" valign="top"><a name="faq-workbench-export-database-text"></a><a name="idm140544305622208"></a><p><b>A.3.</b></p></td><td align="left" valign="top"><p>
+        How to export (save) a MySQL database to a text file?
+      </p></td></tr><tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p>
+        Open a MySQL connection, and select <span class="guimenu">Server</span>
+        from the main navigation menu and choose <span class="guimenu">Data
+        Export</span> to open the data export wizard. Alternatively,
+        choose <span class="guilabel">Data Export</span> from the left Management
+        pane for the desired MySQL selection.
+      </p><p>
+        Here you can choose which databases to export, whether or not to
+        include the data, dump to a single file or multiple files (one
+        per table), and more. For additional details, see
+        <a class="xref" href="wb-admin.html#wb-admin-export-import" title="6.5 Data Export and Import">Section 6.5, “Data Export and Import”</a>.
+      </p></td></tr></tbody></table></div><p><a name="workbench-faq-general"></a>
+    <span class="bold"><strong>General</strong></span>
+  </p><div class="qandaset"><a name="idm140544305615616"></a><dl><dt>A.1. <a href="workbench-faq.html#faq-workbench-workbench-5-2">
+        I'm forced to use MySQL Workbench 5.2.x, is its documentation
+        available?
+      </a></dt></dl><table border="0" style="width: 100%;"><colgroup><col align="left" width="1%"><col></colgroup><tbody><tr class="question"><td align="left" valign="top"><a name="faq-workbench-workbench-5-2"></a><a name="idm140544305614800"></a><p><b>A.1.</b></p></td><td align="left" valign="top"><p>
+        I'm forced to use MySQL Workbench 5.2.x, is its documentation
+        available?
+      </p></td></tr><tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p>
+        Although the 5.2.x branch is no longer maintained, its
+        documentation is archived at
+        <a class="ulink" href="http://dev.mysql.com/doc/index-archive.html" target="_top">http://dev.mysql.com/doc/index-archive.html</a>.
+      </p></td></tr></tbody></table></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="wb-migration.html">Previous</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="wb-keys.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 10 Database Migration Wizard </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Appendix B Keyboard Shortcuts</td></tr></table></div><div class="copyright-footer"></div></body></html>

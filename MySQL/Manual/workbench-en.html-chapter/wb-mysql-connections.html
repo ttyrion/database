@@ -1,0 +1,898 @@
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Chapter 5 Connections in MySQL Workbench</title><link rel="stylesheet" type="text/css" href="mvl.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="MySQL Workbench"><link rel="up" href="index.html" title="MySQL Workbench"><link rel="prev" href="wb-home.html" title="Chapter 4 The Home Screen"><link rel="next" href="wb-admin.html" title="Chapter 6 Administrative Tasks"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 5 Connections in MySQL Workbench</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="wb-home.html">Previous</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="wb-admin.html">Next</a></td></tr></table><hr></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a name="wb-mysql-connections"></a>Chapter 5 Connections in MySQL Workbench</h1></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl class="toc"><dt><span class="section"><a href="wb-mysql-connections.html#wb-mysql-connections-new">5.1 Creating A New MySQL Connection (Simple)</a></span></dt><dt><span class="section"><a href="wb-mysql-connections.html#wb-getting-started-tutorial-create-connection">5.2 Creating A New MySQL Connection (Tutorial)</a></span></dt><dt><span class="section"><a href="wb-mysql-connections.html#wb-manage-server-connections">5.3 Manage Server Connections</a></span></dt><dd><dl><dt><span class="section"><a href="wb-mysql-connections.html#wb-mysql-connections-methods-standard">5.3.1 Standard TCP/IP Connection Method</a></span></dt><dt><span class="section"><a href="wb-mysql-connections.html#wb-mysql-connections-methods-socket">5.3.2 Local Socket/Pipe Connection Method</a></span></dt><dt><span class="section"><a href="wb-mysql-connections.html#wb-mysql-connections-methods-ssh">5.3.3 Standard TCP/IP over SSH Connection Method</a></span></dt><dt><span class="section"><a href="wb-mysql-connections.html#wb-mysql-connections-ssl-wizard">5.3.4 SSL Wizard (Certificates)</a></span></dt><dt><span class="section"><a href="wb-mysql-connections.html#wb-mysql-connections-remote-management">5.3.5 Remote Management</a></span></dt><dt><span class="section"><a href="wb-mysql-connections.html#wb-mysql-connections-system-profile">5.3.6 System Profile</a></span></dt><dt><span class="section"><a href="wb-mysql-connections.html#wb-mysql-connections-server-management-wizard">5.3.7 Configure Server Management Wizard</a></span></dt><dt><span class="section"><a href="wb-mysql-connections.html#wb-mysql-connections-vault">5.3.8 The Password Storage Vault</a></span></dt><dt><span class="section"><a href="wb-mysql-connections.html#wb-mysql-connections-secure-auth">5.3.9 Updating Old Authentication Protocol Passwords</a></span></dt></dl></dd><dt><span class="section"><a href="wb-mysql-connections.html#wb-mysql-connections-navigator-management-client-connections">5.4 Client Connections</a></span></dt></dl></div><p>
+    This chapter describes how to create and manage MySQL connections.
+  </p><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-mysql-connections-new"></a>5.1 Creating A New MySQL Connection (Simple)</h2></div></div></div><p>
+    To add a connection, click the <code class="literal">[+]</code> icon to the
+    right of the <span class="guilabel">MySQL Connections</span> title on the
+    <a class="link" href="wb-home.html" title="Chapter 4 The Home Screen">home</a> screen. This opens the
+    <span class="guilabel">Setup New Connection</span> form, as the following
+    figure shows.
+  </p><div class="figure"><a name="wb-mysql-connections-setup-new-connection"></a><p class="title"><b>Figure 5.1 Setup New Connection Form</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-mysql-connections-setup-new-connection.png" width="800" height="500" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Important</div><p>
+      The <span class="guibutton">Configure Server Management</span> button
+      (bottom left) opens an optional configuration wizard for setting
+      shell commands on the host. For example, commands to start/stop
+      the MySQL instance, or to edit configuration file. For more
+      information, see
+      <a class="xref" href="wb-mysql-connections.html#wb-mysql-connections-server-management-wizard" title="5.3.7 Configure Server Management Wizard">Section 5.3.7, “Configure Server Management Wizard”</a>.
+    </p></div><p>
+    Fill out the connection details and optionally click
+    <span class="guibutton">Configure Server Management</span> to execute the
+    Server Management wizard. Click <span class="guibutton">OK</span> to save
+    the connection.
+  </p><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Important</div><p>
+      When opening connections, MySQL Workbench automatically sets the
+      client character set to <code class="literal">utf8</code>. Manually changing
+      the client character set, such as using <code class="literal">SET NAMES
+      <em class="replaceable"><code>...</code></em></code>, may cause MySQL Workbench to
+      not correctly display the characters. For additional information
+      about client character sets, see
+      <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/charset-connection.html" target="_top">Connection Character Sets and Collations</a>.
+    </p></div><p>
+    New MySQL connections are added to the home screen as a tile, and
+    the <a class="xref" href="wb-develop.html#wb-sql-editor-navigator" title="8.2.1 Object Browser and Editor Navigator">Section 8.2.1, “Object Browser and Editor Navigator”</a> describes several
+    MySQL Workbench features to monitor and configure each connected MySQL
+    server. A single MySQL Workbench instance can open one or multiple MySQL
+    connections into individual tabs.
+  </p><p>
+    For a more detailed overview of this process, see the tutorial
+    titled
+    <a class="xref" href="wb-mysql-connections.html#wb-getting-started-tutorial-create-connection" title="5.2 Creating A New MySQL Connection (Tutorial)">Section 5.2, “Creating A New MySQL Connection (Tutorial)”</a>.
+  </p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-getting-started-tutorial-create-connection"></a>5.2 Creating A New MySQL Connection (Tutorial)</h2></div></div></div><p>
+    This tutorial adds a new connection that can be either an initial
+    connection or an additional connection. An instance of MySQL server
+    must be installed, started, and accessible to MySQL Workbench before you
+    begin.
+  </p><p>
+    To create a new connection, follow these steps:
+  </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+        Launch MySQL Workbench to open the home screen. Existing connections
+        are shown when you click the <span class="guilabel">MySQL
+        Connections</span> view from the sidebar. No connections
+        exist for first-time users.
+      </p><div class="figure"><a name="wb-getting-started-tutorial-home"></a><p class="title"><b>Figure 5.2 Getting Started Tutorial - Home Screen</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-getting-started-tutorial-home.png" width="766" height="468" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></li><li class="listitem"><p>
+        From the MySQL Workbench home screen shown in the previous figure,
+        click the <span class="guilabel">[+]</span> icon near the <span class="guilabel">MySQL
+        Connections</span> label to open the <span class="guilabel">Setup New
+        Connection</span> wizard.
+      </p></li><li class="listitem"><p>
+        Define the <span class="guilabel">Connection Name</span> value, such as
+        <code class="literal">MyFirstConnection</code> as the next figure shows.
+      </p><div class="figure"><a name="wb-getting-started-tutorial-setup-new-connection-initial"></a><p class="title"><b>Figure 5.3 Getting Started Tutorial - Setup New Connection: MyFirstConnection</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-getting-started-tutorial-setup-new-connection.png" width="800" height="500" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+        The default connection values are for a typical local setup, so
+        check them and enter the appropriate values. If you are unsure,
+        click the <span class="guibutton">Test Connection</span> button to check
+        the connection parameters. Do not press
+        <span class="guibutton">OK</span>.
+      </p><p>
+        Next, optionally click <span class="guibutton">Configure Server
+        Management...</span>, which opens up the
+        <span class="guilabel">Configure Local Management</span> wizard:
+      </p></li><li class="listitem"><p>
+        Read the <span class="guilabel">Configure Local Management</span>
+        introduction (shown in the next figure), and press
+        <span class="guibutton">Next</span> to begin defining the new connection
+        parameters.
+      </p><div class="figure"><a name="wb-getting-started-tutorial-clm-introduction"></a><p class="title"><b>Figure 5.4 Getting Started Tutorial - Configure Local Management Introduction</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-getting-started-tutorial-clm-introduction.png" width="800" height="600" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></li><li class="listitem"><p>
+        The connection will now be tested. You should see that the
+        connection was successful. If not, click
+        <span class="guibutton">Back</span> and check that you have entered the
+        information correctly. The following figure shows a database
+        connection that tested successfully.
+      </p><div class="figure"><a name="wb-getting-started-tutorial-test-db-connection"></a><p class="title"><b>Figure 5.5 Getting Started Tutorial - Test Database Connection</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-getting-started-tutorial-test-db-connection.png" width="800" height="600" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+        Toggle the <span class="guibutton">Show Logs</span> to view additional
+        details about the tested connection, then click
+        <span class="guibutton">Next</span>.
+      </p></li><li class="listitem"><p>
+        Optionally, you may configure a method for remote management if
+        a Remote Host was specified. Setting these options enables
+        MySQL Workbench to determine the location of configuration files,
+        and the correct start and stop commands to use for the
+        connection.
+      </p><p>
+        SSH login based management and Native Windows remote management
+        types are available. The Operating System and MySQL Installation
+        Type are configured for the SSH login variant.
+      </p><p>
+        This step creates a local MySQL connection, so you can skip the
+        <span class="guilabel">Management and OS</span> and <span class="guilabel">SSH
+        Configuration</span> options, which are used for configuring
+        a remote MySQL connection.
+      </p></li><li class="listitem"><p>
+        On Microsoft Windows, select the appropriate MySQL service for
+        the MySQL connection, as shown in the figure that follows.
+      </p><div class="figure"><a name="wb-getting-started-tutorial-windows-management"></a><p class="title"><b>Figure 5.6 Getting Started Tutorial - Windows Management</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-getting-started-tutorial-windows-management.png" width="800" height="600" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></li><li class="listitem"><p>
+        The wizard will now check its ability to access the start and
+        stop commands and then check access to the MySQL Server
+        configuration file as the next figure shows.
+      </p><div class="figure"><a name="wb-getting-started-tutorial-test-settings"></a><p class="title"><b>Figure 5.7 Getting Started Tutorial - Test Settings</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-getting-started-tutorial-test-settings.png" width="800" height="600" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></li><li class="listitem"><p>
+        You now have a chance to review the configuration settings. The
+        information displayed varies slightly depending on platform,
+        connection method, and installation type.
+      </p><p>
+        At the Review Settings prompt, choose <code class="literal">I'd like to
+        review the settings again</code> to review the settings as
+        shown in the next figure. Choosing
+        <span class="guibutton">Continue</span> closes the Configure Server
+        Management dialog.
+      </p><div class="figure"><a name="wb-getting-started-tutorial-admin-review-settings"></a><p class="title"><b>Figure 5.8 Getting Started Tutorial - Review Settings</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-getting-started-tutorial-review-settings.png" width="800" height="600" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+        Check the <span class="guilabel">Change Parameters</span> if you want to
+        check or edit information about the MySQL configuration file.
+        For this example, select the check box and click
+        <span class="guibutton">Next</span> to continue.
+      </p></li><li class="listitem"><p>
+        Review the MySQL configuration file information shown in the
+        next figure. Click <span class="guilabel">Check Path</span> and
+        <span class="guibutton">Check Name</span> to perform the described
+        checks, or optionally change the configuration file path.
+      </p><div class="figure"><a name="wb-getting-started-tutorial-mysql-config-file"></a><p class="title"><b>Figure 5.9 Getting Started Tutorial - MySQL Configuration File</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-getting-started-tutorial-mysql-config-file.png" width="800" height="600" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></li><li class="listitem"><p>
+        Optionally, enter your own commands for starting, stopping, and
+        checking the MySQL connection. To apply the default values,
+        leave these optional values blank as the following figure shows.
+      </p><div class="figure"><a name="wb-getting-started-tutorial-specify-commands"></a><p class="title"><b>Figure 5.10 Getting Started Tutorial - Specify Commands</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-getting-started-tutorial-specify-commands.png" width="800" height="600" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+        Click <span class="guibutton">Finish</span> to close the Configure
+        Server Management dialog, which returns to the original Setup
+        New Connection step.
+      </p></li><li class="listitem"><p>
+        After reviewing the <span class="guilabel">Setup New Connection</span>
+        information (see the figure that follows), click <span class="guibutton">Test
+        Connection</span> again to make sure it still functions and
+        then click <span class="guibutton">OK</span> to create the new MySQL
+        connection.
+      </p><div class="figure"><a name="wb-getting-started-tutorial-setup-new-connection-final"></a><p class="title"><b>Figure 5.11 Getting Started Tutorial - Setup New Connection</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-getting-started-tutorial-setup-new-connection-final.png" width="800" height="500" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+        Your new <span class="guilabel">MyFirstConnection</span> MySQL connection
+        is now listed on the home screen.
+      </p></li><li class="listitem"><p>
+        From the home screen, click the new MySQL connection to open the
+        SQL editor for this connection. The SQL editor is the default
+        page. Click <span class="guilabel">Server Status</span> from the
+        Navigator area of the sidebar to display the current status of
+        the connected MySQL server instance (see the figure that
+        follows).
+      </p><div class="figure"><a name="wb-getting-started-tutorial-server-status"></a><p class="title"><b>Figure 5.12 Getting Started Tutorial - Server Status</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-getting-started-tutorial-server-status.png" width="752" height="405" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></li><li class="listitem"><p>
+        Test the other Navigator area options that relate to your new
+        MySQL connection. Check its status, MySQL logs, and measure its
+        performance statistics from the <span class="guilabel">Dashboard</span>.
+      </p><p>
+        Notice the <span class="guilabel">Administration</span> and
+        <span class="guilabel">Schemas</span> tabs in the Navigator area. The
+        <span class="guilabel">Schemas</span> view displays the schemas that are
+        associated with your new MySQL connection. Alternatively, you
+        can merge the content of the tabs by either clicking merge
+        (<span class="inlinemediaobject"><img src="images/wb-icon-navigator-merge.png" align="middle" width="18" height="18"></span>) or by enabling the <span class="guilabel">Show
+        Management Tools and Schema Tree in a single tab</span> SQL
+        editor preference.
+      </p></li></ol></div><p>
+    For additional information about MySQL connections, see
+    <a class="xref" href="wb-mysql-connections.html" title="Chapter 5 Connections in MySQL Workbench">Chapter 5, <i>Connections in MySQL Workbench</i></a>.
+  </p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-manage-server-connections"></a>5.3 Manage Server Connections</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="wb-mysql-connections.html#wb-mysql-connections-methods-standard">5.3.1 Standard TCP/IP Connection Method</a></span></dt><dt><span class="section"><a href="wb-mysql-connections.html#wb-mysql-connections-methods-socket">5.3.2 Local Socket/Pipe Connection Method</a></span></dt><dt><span class="section"><a href="wb-mysql-connections.html#wb-mysql-connections-methods-ssh">5.3.3 Standard TCP/IP over SSH Connection Method</a></span></dt><dt><span class="section"><a href="wb-mysql-connections.html#wb-mysql-connections-ssl-wizard">5.3.4 SSL Wizard (Certificates)</a></span></dt><dt><span class="section"><a href="wb-mysql-connections.html#wb-mysql-connections-remote-management">5.3.5 Remote Management</a></span></dt><dt><span class="section"><a href="wb-mysql-connections.html#wb-mysql-connections-system-profile">5.3.6 System Profile</a></span></dt><dt><span class="section"><a href="wb-mysql-connections.html#wb-mysql-connections-server-management-wizard">5.3.7 Configure Server Management Wizard</a></span></dt><dt><span class="section"><a href="wb-mysql-connections.html#wb-mysql-connections-vault">5.3.8 The Password Storage Vault</a></span></dt><dt><span class="section"><a href="wb-mysql-connections.html#wb-mysql-connections-secure-auth">5.3.9 Updating Old Authentication Protocol Passwords</a></span></dt></dl></div><p>
+    The <span class="guilabel">Manage Server Connections</span> dialog is another
+    way to manage MySQL connections. This dialog is invoked by either
+    clicking the manage connections icon (<span class="inlinemediaobject"><img src="images/wb-tool-button.png" align="middle" width="16" height="16"></span>) on the home screen or by selecting
+    <span class="guimenu">Database</span> and then <span class="guimenuitem">Manage
+    Connections</span> from the main menu. It can also be invoked
+    from any of the wizards requiring access to a live database.
+  </p><p>
+    After the MySQL connection manager is launched, you are presented
+    with the <span class="guilabel">Connection</span> tab of the Manage Server
+    Connections dialog. The following figure shows the initial
+    connection options for a standard TCP/IP connection.
+  </p><div class="figure"><a name="wb-manage-server-connections-connection"></a><p class="title"><b>Figure 5.13 Manage Server Connections: Connection Tab</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-manage-server-connections-connection.png" width="765" height="510" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h3><a name="idm140544311744496"></a>Elements of the MySQL Connection Manager</h3><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+        <span class="guilabel">Connection Name:</span> The name used to refer to
+        this connection. This connection can then be selected from a
+        list in other wizards requiring a connection.
+      </p></li><li class="listitem"><p>
+        <span class="guilabel">Connection Method:</span> Method used to connect
+        to the RDBMS.
+      </p><p>
+        After you select a connection method, the fields available in
+        the <span class="guilabel">Parameters</span>, <span class="guilabel">SSL</span>,
+        and <span class="guilabel">Advanced</span> tabs change accordingly. For
+        more information about these options and parameters, see the
+        specific section for each item.
+      </p></li><li class="listitem"><p>
+        <span class="guibutton">New</span> button: Opens a separate
+        <span class="guilabel">Manage Server Connections</span> dialog to create
+        a new connection. This dialog provides two tabs in addition to
+        the <span class="guilabel">Connection</span> tab:
+        <a class="link" href="wb-mysql-connections.html#wb-mysql-connections-remote-management" title="5.3.5 Remote Management"><span class="guilabel">Remote
+        Management</span></a> and
+        <a class="link" href="wb-mysql-connections.html#wb-mysql-connections-system-profile" title="5.3.6 System Profile"><span class="guilabel">System
+        Profile</span></a>
+      </p></li><li class="listitem"><p>
+        <span class="guibutton">Delete</span>, <span class="guibutton">Duplicate</span>,
+        <span class="guibutton">Move Up</span>, and <span class="guibutton">Move
+        Down</span> buttons: Operations used to manage the existing
+        connections.
+      </p></li><li class="listitem"><p>
+        <span class="guibutton">Test Connection</span> button: Tests the
+        selected MySQL connection and reports the connection status. It
+        also reports whether or not SSL is enabled.
+      </p><p>
+        For testing remote connections, you might also use
+        <code class="literal">ping</code> to check the host name, or
+        <code class="literal">telnet</code> to also check the port. If these fail,
+        then also check the firewall settings on each host, and also
+        that MySQL server is running on the remote host.
+      </p></li></ul></div><h3><a name="idm140544311726464"></a>Notes on MySQL Connection Manager</h3><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+      Because TLSv1.2 requires OpenSSL, support for this protocol is
+      available for MySQL Workbench Commercial Editions, and not for the
+      Community Edition (which is compiled using yaSSL and supports
+      TLSv1.1 only).
+    </p></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+      <span class="bold"><strong>Simultaneous client connections</strong></span>:
+      Opening a MySQL connection from the MySQL Workbench home screen opens
+      a new connection tab in MySQL Workbench for that connection. Each of
+      these tabs requires two MySQL connections to perform basic tasks,
+      such schema discovery and SQL execution. Additionally, performing
+      management related tasks, such as <span class="guilabel">Server
+      Status</span>, requires two additional MySQL connections.
+      Essentially, this means that each MySQL connection tab in
+      MySQL Workbench requires four available connections to MySQL. For
+      additional information about "Too many connection" related errors,
+      see <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/too-many-connections.html" target="_top">Too many connections</a>.
+    </p><p>
+      This connection requirement doubles with each connection tab
+      opened in MySQL Workbench, even if the two connection tabs point to
+      the same MySQL server. SQL editor tabs share their connections, so
+      having multiple SQL editor and SQL results tabs does not affect
+      the number of required connections.
+    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-mysql-connections-methods-standard"></a>5.3.1 Standard TCP/IP Connection Method</h3></div></div></div><p>
+      This connection method enables MySQL Workbench to connect to MySQL
+      Server using TCP/IP.
+    </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+        The <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/server-options.html#option_mysqld_skip-networking" target="_top"><code class="option">--skip-networking</code></a> MySQL
+        server configuration option affects the TCP/IP connection
+        method. If disabled, use named pipes or shared memory (on
+        Windows) or Unix socket files (on Unix).
+      </p></div><h4><a name="idm140544311717488"></a>Parameters Tab</h4><p>
+      The parameters for standard TCP/IP connections are:
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <span class="guilabel">Hostname:</span> The host name or IP address of
+          the MySQL server.
+        </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+            The host name "localhost" might resolve to "127.0.0.1" or
+            "::1" on your host, so note this when checking permissions.
+            For example, if a web application's user only has access to
+            "127.0.0.1" on a host, and a defined connection uses
+            "localhost" that resolves to "::1", this connection may lack
+            the proper permissions to the aforementioned web
+            application. Ping "localhost" on each host to determine
+            where it resolves to.
+          </p></div></li><li class="listitem"><p>
+          <span class="guilabel">Port:</span> The TCP/IP port on which the MySQL
+          server is listening (the default is 3306).
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">Username:</span> User name to use for the
+          connection.
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">Password:</span> Optional password for the
+          account used. If you enter no password here, you will be
+          prompted to enter the password when MySQL Workbench attempts to
+          establish the connection. MySQL Workbench can store the password
+          in a vault (see <a class="xref" href="wb-mysql-connections.html#wb-mysql-connections-vault" title="5.3.8 The Password Storage Vault">Section 5.3.8, “The Password Storage Vault”</a>).
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">Default Schema:</span> When the connection to
+          the server is established, this is the schema that will be
+          used by default. It becomes the default schema for use in
+          other parts of MySQL Workbench.
+        </p></li></ul></div><h4><a name="idm140544311706464"></a>SSL Tab</h4><p>
+      SSL parameters are:
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <span class="guilabel">Use SSL:</span> This dropdown provides options
+          related to enabling SSL encryption. Choose
+          <span class="guilabel">No</span> to disable SSL, <span class="guilabel">If
+          available</span> if the client library supports it, or
+          <span class="guilabel">Require</span> to require SSL support for the
+          MySQL connection to succeed. This option defaults to
+          <span class="guilabel">If available</span>.
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">SSL Key File:</span> Path to the Key file for
+          SSL.
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">SSL CERT File:</span> Path the Certificate file
+          for SSL.
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">SSL CA File:</span> Path to the Certification
+          Authority file for SSL.
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">SSL Cipher:</span> Optional list of permissible
+          ciphers to use for SSL encryption.
+        </p></li><li class="listitem"><p>
+          <span class="guibutton">SSL Wizard</span> button: Generate SSL
+          certificates for both the MySQL server and MySQL client.
+          Requires access to OpenSSL binaries in the system's PATH. For
+          additional information, see
+          <a class="xref" href="wb-mysql-connections.html#wb-mysql-connections-ssl-wizard" title="5.3.4 SSL Wizard (Certificates)">Section 5.3.4, “SSL Wizard (Certificates)”</a>.
+        </p></li><li class="listitem"><p>
+          <span class="guibutton">Files</span> button: Opens a file browser that
+          points to the generated SSL files by the SSL Wizard. For
+          additional information, see
+          <a class="xref" href="wb-mysql-connections.html#wb-mysql-connections-ssl-wizard" title="5.3.4 SSL Wizard (Certificates)">Section 5.3.4, “SSL Wizard (Certificates)”</a>
+        </p></li></ul></div><h4><a name="idm140544311691040"></a>Advanced Tab</h4><p>
+      The <span class="guilabel">Advanced</span> tab includes these check boxes:
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <span class="guilabel">Use compression protocol</span>: If checked, the
+          communication between the application and the MySQL server
+          will be compressed, which may increase transfer rates. This
+          corresponds to starting a MySQL command-line client with the
+          <code class="option">--compress</code> option. This option is unchecked
+          by default.
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">Use ANSI quotes to quote identifiers</span>:
+          Treat <span class="quote">“<span class="quote">"</span>”</span> as an identifier quote character (like
+          the <span class="quote">“<span class="quote">`</span>”</span> quote character) and not as a string
+          quote character. You can still use <span class="quote">“<span class="quote">`</span>”</span> to quote
+          identifiers with this mode enabled. With this option enabled,
+          you cannot use double quotation marks to quote literal
+          strings, because it is interpreted as an identifier. Note: If
+          this option is checked, it overrides the server setting. This
+          option is unchecked by default.
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">Enable Cleartext Authentication Plugin</span>:
+          Send the user password in cleartext. Required for some
+          authentication methods. This option is unchecked by default.
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">Use the old authentication protocol</span>: This
+          option disables the Connector/C++
+          <code class="literal">secure_auth</code> option. This option is
+          unchecked by default. Doing so means you can connect to MySQL
+          Server with MySQL users that utilize the old
+          <code class="literal">mysql_old_password</code> authentication plugin,
+          which is not recommended.
+          <code class="literal">mysql_old_password</code> support was removed in
+          MySQL Server 5.7.
+        </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+            This option was removed in Workbench 6.3.6, and did not
+            function in Workbench 6.3.5. For information about upgrading
+            passwords from the old authentication protocol, see
+            <a class="xref" href="wb-mysql-connections.html#wb-mysql-connections-secure-auth" title="5.3.9 Updating Old Authentication Protocol Passwords">Section 5.3.9, “Updating Old Authentication Protocol Passwords”</a>.
+          </p><p>
+            Also, MySQL Server 5.7 does not support the old
+            authentication protocol, because secure_auth cannot be
+            disabled. Using the old
+            <code class="literal">mysql_old_password</code> has not been
+            recommended since MySQL 4.1.
+          </p></div></li></ul></div><p>
+      It also includes these options:
+    </p><p>
+      <span class="guilabel">Timeout:</span> Maximum time to wait before the
+      connection is aborted. The connection times out in 60 seconds by
+      default.
+    </p><p>
+      <span class="guilabel">SQL_MODE:</span> Override the default
+      <code class="literal">SQL_MODE</code> used by the server.
+    </p><p>
+      <span class="guilabel">Others:</span> Other options for Connector/C++ as
+      option=value pairs, one per line.
+    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-mysql-connections-methods-socket"></a>5.3.2 Local Socket/Pipe Connection Method</h3></div></div></div><p>
+      This connection method enables MySQL Workbench to connect to MySQL
+      Server using a socket file (on Unix) or a named pipe (on Windows).
+    </p><h4><a name="idm140544311670080"></a>Parameters Tab</h4><p>
+      In addition to a number of parameters that are in common with
+      Standard TCP/IP connections, this connection method includes a
+      unique field to configure the socket path or pipe name. As the
+      following figure shows, you can supply the path to the socket file
+      or pipe name within this dialog. If the field is left blank, the
+      default socket or pipe name is used. On Unix, the default socket
+      name is <code class="filename">/tmp/mysql.sock</code>. On Microsoft
+      Windows, the default pipe name is <code class="literal">MySQL</code>.
+    </p><div class="figure"><a name="wb-mysql-connections-methods-socket-parameters"></a><p class="title"><b>Figure 5.14 Manage Server Connections - Local Socket/Pipe Parameters</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-manage-db-connections-socket-parameters.png" width="800" height="533" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h4><a name="idm140544311660576"></a>SSL Tab</h4><p>
+      The SSL options for this connection method are the same as the
+      options described in
+      <a class="xref" href="wb-mysql-connections.html#wb-mysql-connections-methods-standard" title="5.3.1 Standard TCP/IP Connection Method">Section 5.3.1, “Standard TCP/IP Connection Method”</a>.
+    </p><h4><a name="idm140544311658960"></a>Advanced Tab</h4><p>
+      The advanced options for this connection method are the same as
+      the options described in
+      <a class="xref" href="wb-mysql-connections.html#wb-mysql-connections-methods-standard" title="5.3.1 Standard TCP/IP Connection Method">Section 5.3.1, “Standard TCP/IP Connection Method”</a>, except
+      the <span class="guilabel">Use compression protocol</span> and
+      <span class="guilabel">Timeout</span> options do not apply.
+    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-mysql-connections-methods-ssh"></a>5.3.3 Standard TCP/IP over SSH Connection Method</h3></div></div></div><p>
+      This connection method enables MySQL Workbench to connect to MySQL
+      Server using TCP/IP over an SSH connection.
+    </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+        Because TLSv1.2 requires OpenSSL, support for this protocol is
+        available for MySQL Workbench Commercial Editions, and not for
+        the Community Edition (which is compiled using yaSSL and
+        supports TLSv1.1 only).
+      </p></div><h4><a name="idm140544311653520"></a>Parameters Tab</h4><p>
+      In addition to a number of parameters that are in common with
+      Standard TCP/IP connections, this connection method features a
+      number of specialized parameters. These options are:
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <span class="guilabel">SSH Hostname:</span> The name of the SSH server.
+          An optional port number can also be provided. For example,
+          <code class="literal">localhost:22</code>.
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">SSH Username:</span> The name of the SSH user to
+          use to make a connection.
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">SSH Password:</span> The SSH password. It is
+          recommended that an SSH key file is also used.
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">SSH Key File:</span> A path to the SSH key file.
+        </p></li></ul></div><p>
+      If a remote host is missing from the system's list of known hosts,
+      a prompt requires you to confirm the host's fingerprint before
+      storing it. If your stored host fingerprint is different than the
+      host's current fingerprint, then an error is generated and you
+      will be required to handle the discrepancy from outside of
+      MySQL Workbench before creating the connection. Prior to MySQL Workbench
+      6.1.6, the host SSH fingerprint was not saved by MySQL Workbench.
+    </p><p>
+      On Linux and macOS, SSH host fingerprints are stored in
+      <code class="filename">~/.ssh/known_hosts</code>. On Microsoft Windows,
+      they are stored in a file created by MySQL Workbench under the user's
+      application data folder (<code class="literal">%appdata%</code>), such as
+      <code class="filename">C:\Users\<em class="replaceable"><code>[username]\</code></em>AppData\Roaming\MySQL\Workbench\known_hosts</code>.
+    </p><p>
+      The following figure shows the SSH connection settings.
+    </p><div class="figure"><a name="wb-manage-db-connections-ssh-parameters"></a><p class="title"><b>Figure 5.15 Manage Server Connections - Standard TCP/IP over SSH Parameters</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-manage-db-connections-ssh-parameters.png" width="800" height="533" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h4><a name="idm140544311633840"></a>SSL Tab</h4><p>
+      The SSL options for this connection method are the same as the
+      options described in
+      <a class="xref" href="wb-mysql-connections.html#wb-mysql-connections-methods-standard" title="5.3.1 Standard TCP/IP Connection Method">Section 5.3.1, “Standard TCP/IP Connection Method”</a>.
+    </p><h4><a name="idm140544311632224"></a>Advanced Tab</h4><p>
+      The advanced options for this connection method are the same as
+      the options described in
+      <a class="xref" href="wb-mysql-connections.html#wb-mysql-connections-methods-standard" title="5.3.1 Standard TCP/IP Connection Method">Section 5.3.1, “Standard TCP/IP Connection Method”</a>, except
+      the <span class="guilabel">Timeout</span> option does not apply.
+    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-mysql-connections-ssl-wizard"></a>5.3.4 SSL Wizard (Certificates)</h3></div></div></div><p>
+      This wizard helps create SSL certificates for both MySQL clients
+      and MySQL servers. Connections in MySQL Workbench are updated with the
+      certificates by the wizard. This wizard requires OpenSSL to create
+      the certificates. An example MySQL configuration file
+      (<code class="filename">my.cnf</code> / <code class="filename">my.ini</code>) is
+      also generated that utilizes the generated certificates.
+    </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+        The OpenSSL binary should be in the system's PATH.
+      </p></div><p>
+      Start the SSL wizard from the <span class="guilabel">SSL</span> tab of a
+      MySQL server connection. Locate this tab in the MySQL connection
+      editor. Click <span class="guibutton">SSL Wizard</span> to execute the
+      wizard, as the following figure shows.
+    </p><div class="figure"><a name="wb-ssl-wizard-start"></a><p class="title"><b>Figure 5.16 SSL Wizard: Start</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-ssl-wizard-start.png" width="600" height="400" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      Read the informative text on the welcome screen (displayed in the
+      following figure), and then click <span class="guibutton">Next</span>.
+    </p><div class="figure"><a name="wb-ssl-wizard-welcome"></a><p class="title"><b>Figure 5.17 SSL Wizard: Welcome</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-ssl-wizard-welcome.png" width="600" height="450" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      Check the options that apply. The following figure shows an
+      example of the available options.
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <span class="guilabel">Use default parameters</span>: Check this to
+          skip entering the optional attributes, such as Country, State,
+          Organization, and so on. By default, these fields are empty.
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">Generate new certificates and self-signed
+          keys</span>: Check this to generate new files, otherwise
+          the existing files are used. You might disable this if you
+          already generated SSL certificates but forgot where the files
+          are located, or how to configure them.
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">Update the connection</span>: Updates the
+          defined MySQL connection (in Workbench) with the generated
+          certificate information.
+        </p></li></ul></div><div class="figure"><a name="wb-ssl-wizard-options"></a><p class="title"><b>Figure 5.18 SSL Wizard: Options</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-ssl-wizard-options.png" width="600" height="450" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      The results page describes the generated files, and provides
+      requirements that you must perform to complete the operation. For
+      example, you must manually edit your MySQL configuration file
+      (<code class="filename">my.ini</code> or <code class="filename">my.cnf</code>) and
+      define the SSL options.
+    </p><p>
+      The following figure shows an example Results screen. Consider
+      leaving this screen open, and close it after you copied the files
+      and altered your MySQL configuration file to enable SSL
+      connections. The wizard does not perform these actions for you.
+    </p><div class="figure"><a name="wb-ssl-wizard-results"></a><p class="title"><b>Figure 5.19 SSL Wizard: Results</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-ssl-wizard-results.png" width="600" height="450" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      Here an example process of using the generated SSL files to set up
+      an SSL connection. Adjust your paths as they will be different.
+    </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+          Create a directory to store the certificate files. In our
+          simple example, we have MySQL Workbench installed on the same
+          host as the MySQL Server, and we created
+          "<code class="filename">C:\certs</code>" on this system.
+        </p></li><li class="listitem"><p>
+          Copy and paste the results to a new (temporary) file, but
+          change &lt;directory&gt; to the path
+          (<code class="filename">C:\certs</code>) we created. For example:
+        </p><pre class="programlisting">
+
+[client]
+ssl-ca=C:\certs\ca-cert.pem
+ssl-cert=C:\certs\client-cert.pem
+ssl-key=C:\certs\client-key.pem
+
+[mysqld]
+ssl-ca=C:\certs\ca-cert.pem
+ssl-cert=C:\certs\\server-cert.pem
+ssl-key=C:\certs\\server-key.pem
+
+</pre><div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Warning</div><p>
+            MySQL interprets "\s" as a space, so we added an extra
+            backslash to escape it. That is why you see
+            "\\server-key.pem" in the above example, because MySQL
+            Server would interpret "\server-key.pem" as
+            " erver-key.pem".
+          </p></div></li><li class="listitem"><p>
+          Open the MySQL Server configuration file. In this example, its
+          location is "<code class="filename">C:\ProgramData\MySQL\MySQL Server
+          5.7\my.ini</code>".
+        </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+            The location of your configuration file depends on how MySQL
+            Server was installed. The connection editor defines and
+            displays its location, as does the <span class="guilabel">Options
+            File</span> page in MySQL Workbench.
+          </p></div></li><li class="listitem"><p>
+          Add the client certificate information under the
+          <code class="literal">[client]</code> section:
+        </p><pre class="programlisting">
+
+[client]
+ssl-ca=C:\certs\ca-cert.pem
+ssl-cert=C:\certs\client-cert.pem
+ssl-key=C:\certs\client-key.pem
+
+</pre><p>
+          Add the server certificate information under the
+          <code class="literal">[mysqld]</code> section:
+        </p><pre class="programlisting">
+
+[mysqld]
+ssl-ca=C:\certs\ca-cert.pem
+ssl-cert=C:\certs\\server-cert.pem
+ssl-key=C:\certs\\server-key.pem
+
+</pre></li><li class="listitem"><p>
+          Update the paths to the SSL client certificates in your MySQL
+          connection, under the SSL tab. There are three paths to
+          update.
+        </p></li><li class="listitem"><p>
+          Restart the MySQL Server. In the log, you should see something
+          like "Warning CA certificate
+          <code class="filename">C:\certs\ca-cert.pem</code> is self signed."
+        </p></li><li class="listitem"><p>
+          In the MySQL connection editor, clicking <span class="guibutton">Test
+          Connection</span> should confirm your SSL connection.
+        </p></li></ol></div><p>
+      Additionally, consider setting <span class="guilabel">Use SSL</span> to
+      "Required". Or, if you are experiencing problems, set it to "If
+      available" while debugging the problem.
+    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-mysql-connections-remote-management"></a>5.3.5 Remote Management</h3></div></div></div><p>
+      The <span class="guilabel">Remote Management</span> tab is available when
+      connecting to MySQL remotely, as the following figure shows. To
+      access this tab, select a remote connection from the<span class="guilabel">
+      MySQL Connections</span> pane or click
+      <span class="guibutton">New</span> to create a new connection.
+    </p><div class="figure"><a name="wb-manage-server-connections-remote-management"></a><p class="title"><b>Figure 5.20 Manage Server Connections: Remote Management Tab</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-manage-server-connections-remote-management.png" width="800" height="533" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-mysql-connections-system-profile"></a>5.3.6 System Profile</h3></div></div></div><p>
+      The <span class="guilabel">System Profile</span> tab enables you to specify
+      host-specific information. This is achieved primarily through
+      selecting a <span class="guilabel">System Type</span>, along with its
+      corresponding <span class="guilabel">Installation Type</span>. These
+      profile settings contain standard information that is used in
+      managing the host's MySQL instance.
+    </p><p>
+      Here are some of the available installation types:
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          FreeBSD, MySQL package or Custom
+        </p></li><li class="listitem"><p>
+          Linux, including distributions such as Fedora, Oracle, RHEL,
+          SLES, Ubuntu, Generic, and Custom
+        </p></li><li class="listitem"><p>
+          macOS, MySQL package or Custom
+        </p></li><li class="listitem"><p>
+          OpenSolaris, MySQL package or Custom
+        </p></li><li class="listitem"><p>
+          Windows, with different installation methods, MySQL versions,
+          and build architectures
+        </p></li></ul></div><p>
+      Choose the appropriate <span class="guilabel">System Type</span> and
+      <span class="guilabel">Installation Type</span> to set default parameters
+      that includes commands used to start and stop MySQL, commands to
+      check the server status, the location of the
+      <code class="filename">my.ini</code> or <code class="filename">my.cnf</code>
+      configuration file, and on Windows, the Windows Service Name. As
+      the following figure shows, these default values are customizable.
+    </p><div class="figure"><a name="wb-manage-server-connections-system-profile"></a><p class="title"><b>Figure 5.21 Manage Server Connections: System Profile Tab</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-manage-server-connections-system-profile.png" width="800" height="533" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-mysql-connections-server-management-wizard"></a>5.3.7 Configure Server Management Wizard</h3></div></div></div><p>
+      Clicking the [+] icon from the home screen launches the
+      <span class="guilabel">Setup New Connection</span> wizard. The wizard
+      provides a MySQL connection form to create a new MySQL connection,
+      and includes a <span class="guibutton">Configure Server Management</span>
+      option as a step-by-step approach to creating a new MySQL server
+      connection.
+    </p><p>
+      This option can also be executed later (on remote connections)
+      from the home screen by clicking the top right corner of a MySQL
+      remote connection, as the following figure shows.
+    </p><div class="figure"><a name="wb-mysql-connections-configure-remote-management-hover"></a><p class="title"><b>Figure 5.22 Configure Remote Management</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-configure-remote-management-hover.png" width="744" height="457" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      Executing this wizard is required to perform tasks requiring shell
+      access to the host. For example, starting/stopping the MySQL
+      instance and editing the configuration file.
+    </p><p>
+      For a tutorial that demonstrates the steps outlined below, see the
+      tutorial titled
+      <a class="xref" href="wb-mysql-connections.html#wb-getting-started-tutorial-create-connection" title="5.2 Creating A New MySQL Connection (Tutorial)">Section 5.2, “Creating A New MySQL Connection (Tutorial)”</a>.
+    </p><p>
+      The steps presented in the wizard are as follows:
+    </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+          <span class="bold"><strong>Test DB Connection</strong></span>
+        </p><p>
+          On this page, MySQL Workbench tests your database connection and
+          displays the results. If an error occurs, click
+          <span class="guibutton">Show Logs</span> to view the related logs.
+        </p></li><li class="listitem"><p>
+          <span class="bold"><strong>Management and OS</strong></span>
+        </p><p>
+          Used to specify a remote management type and target operating
+          system, which is available when the Host Machine is defined as
+          a remote host.
+        </p><p>
+          The SSH login based management option includes configuration
+          entries for the Operating System and MySQL Installation Type.
+        </p></li><li class="listitem"><p>
+          <span class="bold"><strong>SSH Configuration</strong></span>
+        </p><p>
+          If you specified a Remote Host on the Specify Host Machine
+          page, you will be presented with the Host SSH Connection page,
+          that enables you to use SSH for the connection to the server
+          instance. This facility enables you to create a secure
+          connection to remotely administer and configure the server
+          instance. You must enter the host name and user name of the
+          account that will be used to log in to the server for
+          administration and configuration activities. If you do not
+          enter the optional SSH Key for use with the server, then you
+          will be prompted for the password when the connection is
+          established by MySQL Workbench.
+        </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+            This connection is to enable remote administration and
+            configuration of the MySQL Server itself. It is not the same
+            as the connection used to connect to a server for general
+            database manipulation.
+          </p></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+            You must use an SSH connection type when managing a remote
+            server if you wish to start or stop the server or edit its
+            configuration file. Other administrative functions do not
+            require an SSH connection.
+          </p></div></li><li class="listitem"><p>
+          <span class="bold"><strong>Windows Management</strong></span>
+        </p><p>
+          If a Windows server is used, then setting the Windows
+          configuration parameters is mandatory. Windows management
+          requires a user account with the required privileges to query
+          the system status, and to control services. And read/write
+          access to the configuration file is needed to allow editing of
+          the file.
+        </p></li><li class="listitem"><p>
+          <span class="bold"><strong>Test Settings</strong></span>
+        </p><p>
+          The wizard now attempts a connection to your server and
+          reports the results. If an error occurs, click <span class="guibutton">Show
+          Logs</span> to view the related logs.
+        </p><p>
+          MySQL Workbench must know where the MySQL Server configuration
+          file is located to be able to display configuration
+          information. The wizard is able to determine the most likely
+          location of the configuration file, based on the selection
+          made on the Operating System page of the wizard. However, it
+          is possible to test that this information is correct by
+          clicking the <span class="guibutton">Check path</span> and
+          <span class="guibutton">Check section</span> buttons. The wizard then
+          reports whether the configuration file and server
+          configuration section can in fact be accessed. It is also
+          possible to manually enter the location of the configuration
+          file, and the section pertaining to MySQL Server data; these
+          manually entered values should be tested using the buttons
+          provided. Click the <span class="guibutton">Next</span> button to
+          continue.
+        </p></li><li class="listitem"><p>
+          <span class="bold"><strong>Review Settings</strong></span>
+        </p><p>
+          The modified settings may be reviewed, which also includes the
+          default values. Check the Change Parameters checkbox if the
+          MySQL Config File section will be edited, and then click
+          <span class="guibutton">Next</span> to continue.
+        </p></li><li class="listitem"><p>
+          <span class="bold"><strong>MySQL Config File</strong></span>
+        </p><p>
+          Allows configuration of the MySQL server version. It also
+          allows the editing and validation of the configuration file
+          path, and validation of the server instance section. Click
+          <span class="guibutton">Next</span> to continue.
+        </p></li><li class="listitem"><p>
+          <span class="bold"><strong>Specify Commands</strong></span>
+        </p><p>
+          Optionally set the commands required to start, stop, and check
+          the status of the running MySQL server instance. Commands can
+          be customized, if required, but the defaults are suitable in
+          most cases. The defaults depend on the selected options on the
+          <span class="guilabel">Operating System</span> page of the wizard.
+          Click <span class="guibutton">Next</span> to continue.
+        </p></li><li class="listitem"><p>
+          <span class="bold"><strong>Complete Setup</strong></span>
+        </p><p>
+          Name the MySQL server instance on the final step. This name is
+          used throughout MySQL Workbench as a reference to this MySQL
+          connection. After setting a suitable name, click
+          <span class="guibutton">Finish</span> to save the instance.
+        </p></li></ol></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-mysql-connections-vault"></a>5.3.8 The Password Storage Vault</h3></div></div></div><p>
+      The vault provides a convenient secure storage for passwords used
+      to access MySQL servers. By using the vault, you need not enter
+      credentials every time MySQL Workbench attempts to connect to a
+      server.
+    </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+        The hostname is used for storing password information. For
+        example, a local connection might use "localhost", "127.0.0.1",
+        or "::1", but these are stored separately in the password
+        storage vault, even if they all resolve to the same place.
+      </p></div><p>
+      The vault is implemented differently on each platform:
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <span class="bold"><strong>Windows</strong></span>: The vault is an
+          encrypted file in the MySQL Workbench <code class="filename">data</code>
+          directory. This is where <code class="filename">connections.xml</code>
+          and related files are located. The file is encrypted using a
+          Windows API which performs the encryption based on the current
+          user, so only the current user can decrypt it. As a result it
+          is not possible to decrypt the file on any other computer. It
+          is possible to delete the file, in which case all stored
+          passwords are lost, but MySQL Workbench will otherwise perform as
+          expected. You then must re-enter passwords as required.
+        </p></li><li class="listitem"><p>
+          <span class="bold"><strong>macOS</strong></span>: The vault is
+          implemented using the Secure Keychain. The keychain contents
+          is also viewable from the native <code class="filename">Keychain
+          Access.app</code> utility.
+        </p></li><li class="listitem"><p>
+          <span class="bold"><strong>Linux</strong></span>: The vault works by
+          storing passwords using the <code class="literal">gnome-keyring</code>
+          daemon, which must be running for password persistence to
+          work. The daemon is automatically started in GNOME desktops,
+          but normally is not in KDE and others. The
+          <code class="literal">gnome-keyring</code> daemon stores passwords for
+          MySQL Workbench on non-GNOME platforms, but it must be started
+          manually.
+        </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-mysql-connections-secure-auth"></a>5.3.9 Updating Old Authentication Protocol Passwords</h3></div></div></div><p>
+      MySQL 4.1 extended password hashes from 16 to 41 bytes. However,
+      upgrading MySQL does not automatically update the old password
+      passwords, so existing passwords continue to be stored in the
+      deprecated format. This is because MySQL does not store passwords
+      as plain text, so regenerating password hashes requires user
+      intervention.
+    </p><p>
+      The associated <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_secure_auth" target="_top"><code class="literal">secure_auth</code></a> option
+      was enabled by default as of MySQL 5.6. It is always enabled as of
+      MySQL 5.7, meaning it can <span class="emphasis"><em>not</em></span> be disabled. A
+      future MySQL release will remove this option. With this option
+      enabled, a user with a password defined in the old format will not
+      be able to login to MySQL.
+    </p><p>
+      With all that said, the deprecated password format does not
+      function with MySQL 5.7. All passwords using the old format must
+      be updated. This section documents how to upgrade these passwords
+      using MySQL Workbench. For information about migrating away from the
+      old password format using the MySQL command line instead of
+      Workbench, see <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/account-upgrades.html" target="_top">Migrating Away from Pre-4.1 Password Hashing and the mysql_old_password Plugin</a>.
+    </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+        The method that MySQL stores a password is defined by an
+        authentication plugin. The old method uses the
+        <code class="literal">mysql_old_password</code> authentication plugin, and
+        the current default method uses
+        <code class="literal">mysql_native_password</code>. As of MySQL 5.6, a
+        <code class="literal">sha256_password</code> option is also available
+        although it requires an SSL or encrypted connection. When
+        Workbench upgrades passwords, it upgrades
+        <code class="literal">mysql_old_password</code> to
+        <code class="literal">mysql_native_password</code>. For additional
+        information about authentication plugins, see
+        <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/pluggable-authentication.html" target="_top">Pluggable Authentication</a>.
+      </p></div><h4><a name="idm140544318895104"></a>Options Depend on your secure_auth Option</h4><p>
+      Upgrading a password does have constraints. Here are two
+      scenarios:
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          If the <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_secure_auth" target="_top"><code class="literal">secure_auth</code></a> MySQL
+          Server option is disabled, then you can log in using the user
+          with the old password format and update the user's own MySQL
+          password. However, this is not an option as of MySQL Workbench
+          6.3.5 because compatibility with the old password format was
+          removed. For this reason, a user's ability to upgrade their
+          own password format must be done using the MySQL command line
+          as described in <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/account-upgrades.html" target="_top">Migrating Away from Pre-4.1 Password Hashing and the mysql_old_password Plugin</a>.
+        </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+            If using the MySQL command line is not an option, then you
+            could use an older version of MySQL Workbench (version 6.3.4
+            and earlier), which allows you to enable a
+            <a class="link" href="wb-mysql-connections.html#wb-mysql-connections-methods-standard" title="5.3.1 Standard TCP/IP Connection Method">Use
+            the old authentication protocol</a> option under the
+            <span class="guilabel">Advanced</span> connections tab. Older
+            versions of Workbench are available at
+            <a class="ulink" href="https://downloads.mysql.com/archives/workbench/" target="_top">https://downloads.mysql.com/archives/workbench/</a>.
+          </p></div><p>
+          As stated earlier,
+          <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_secure_auth" target="_top"><code class="literal">secure_auth</code></a> is enabled by
+          default as of MySQL 5.6, and always enabled as of MySQL 5.7.
+        </p></li><li class="listitem"><p>
+          If <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_secure_auth" target="_top"><code class="literal">secure_auth</code></a> is enabled,
+          you can not log in if your user's password is stored in the
+          old format. Attempts will fail and emit an error similar to
+          "<span class="emphasis"><em>ERROR 2049 (HY000): Connection using old
+          (pre-4.1.1) authentication protocol refused (client option
+          'secure_auth' enabled)</em></span>". To upgrade the password,
+          you can either disable <code class="literal">secure_auth</code> (not
+          recommended) then update as described above, or log in as a
+          different and privileged user, such as root, to change the
+          password for a different user.
+        </p></li></ul></div><h4><a name="idm140544311452160"></a>Using Workbench to Upgrade Your Password</h4><p>
+      Keeping the above in mind, there are two methods to update
+      passwords using Workbench.
+    </p><p>
+      Open the
+      <a class="link" href="wb-admin.html#wb-mysql-connections-navigator-management-users-and-privileges" title="6.2 Users and Privileges">Users
+      and Privileges</a> tab from Workbench's Management navigator.
+      Select the user you want to update from the <span class="guilabel">User
+      Accounts</span> section. If using the old password format, you
+      will see text beginning with "This account is using the
+      pre-mysql-4.1.1 password hashing type." in the lower right corner
+      of the screen, and also a large <span class="guibutton">Upgrade</span>
+      button on the right. From here, you can:
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          Option for all MySQL versions:
+        </p><p>
+          Manually enter a new password, or the current password, and
+          click <span class="guibutton">Upgrade</span>. This upgrades the
+          password to the newer password format, and the MySQL user can
+          now log in using the new password that you defined.
+        </p></li><li class="listitem"><p>
+          Option for MySQL 5.6 and later:
+        </p><p>
+          Rather than editing the password field, leave it alone and
+          immediately click <span class="guibutton">Upgrade</span>. From here,
+          you can generate a random password and tag it as expired by
+          clicking <span class="guibutton">Reset To Expired</span>. Use this
+          temporary random password to login the user, and MySQL will
+          prompt for a new password when the user first logs in.
+        </p></li></ul></div><p>
+      The following figures demonstrate the sequence of steps used in
+      both methods:
+    </p><div class="figure"><a name="wb-manage-server-connections-old-password-upgrade-55"></a><p class="title"><b>Figure 5.23 Upgrade Old Password: Setting a New Password</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-old-password-upgrade-55.png" width="800" height="462" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><div class="figure"><a name="wb-manage-server-connections-old-password-upgrade-56"></a><p class="title"><b>Figure 5.24 Upgrade Old Password: Reset to Random Expired Password</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-old-password-upgrade-56.png" width="800" height="518" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      When resetting to a random password, you must save the password
+      and give it to the user. You will find the random password in the
+      new popup window that is similar to the following figure.
+    </p><div class="figure"><a name="wb-manage-server-connections-old-password-upgrade-56-popup"></a><p class="title"><b>Figure 5.25 Upgrade Old Password: Random Password Popup</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-old-password-upgrade-56-popup.png" width="366" height="145" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      After completing the upgrade, notice the new
+      <span class="guilabel">Authentication Type</span> for the connection. In
+      the example shown in the next figure, the value changed from
+      <span class="bold"><strong>Standard (old)</strong></span> to
+      <span class="bold"><strong>Standard</strong></span>. In other words, the
+      authentication type changed from
+      <code class="literal">mysql_old_password</code> to
+      <code class="literal">mysql_native_password</code>.
+    </p><div class="figure"><a name="wb-manage-server-connections-old-password-upgrade-55-after"></a><p class="title"><b>Figure 5.26 Upgraded Password: Standard (old) to Standard</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-old-password-upgrade-55-after.png" width="800" height="426" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-mysql-connections-navigator-management-client-connections"></a>5.4 Client Connections</h2></div></div></div><p>
+    The client connection browser lists the active and sleeping MySQL
+    client connections, and adds the ability to kill statements and
+    connections, and view additional connection details and attributes.
+    The following figure shows an example of client connection
+    information for a local host.
+  </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+      The connection details viewer requires MySQL 5.6 or higher. Only
+      basic connection information is available for previous versions of
+      MySQL, such as the connection hosts, database, and state.
+    </p></div><div class="figure"><a name="wb-mysql-connections-navigator-client-connections"></a><p class="title"><b>Figure 5.27 Client Connection Overview</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-navigator-client-connections.png" width="756" height="464" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h3><a name="idm140544311401968"></a>Client Connections and Metadata Locks</h3><p>
+    The <span class="guilabel">Client Connections</span> management window
+    includes a <span class="guibutton">Show Details</span> for connections to
+    MySQL 5.6 and higher, as the following figure shows. These details
+    are separated into three tabs:
+  </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+        <span class="guilabel">Details</span>: connection details such as Process
+        ID, Type, User, Host, Instrumented, and additional information.
+      </p><div class="figure"><a name="wb-navigator-client-connections-details-figure"></a><p class="title"><b>Figure 5.28 Client Connections Details</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-navigator-client-connections-details.png" width="800" height="700" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></li><li class="listitem"><p>
+        <span class="guilabel">Locks</span>: MySQL uses metadata locking to
+        manage access to objects such as tables and triggers. Sometimes
+        a query might be blocked while being manipulated by another
+        connection from another user. The <span class="guilabel">Locks</span>
+        feature (shown in the following figure) utilizes these MySQL
+        metadata locks (MDL) to show the locked connections that are
+        blocked or being waiting on, and shows information about the
+        locks, what they are waiting for, and what they hold.
+      </p><div class="figure"><a name="wb-navigator-client-connections-metadata-lock"></a><p class="title"><b>Figure 5.29 Metadata Locks Browser</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-metadata-lock-browser.png" width="800" height="611" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+          The metadata lock information is provided in the performance
+          schema as of MySQL server 5.7.3.
+        </p></div></li><li class="listitem"><p>
+        <span class="guilabel">Attributes</span>: these are connection attributes
+        such as OS, Client Name, Client Version, and Platform. The
+        following figure shows a set of attributes and values.
+      </p><div class="figure"><a name="wb-navigator-client-connections-attributes-figure"></a><p class="title"><b>Figure 5.30 Client Connection Attributes</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-navigator-client-connections-attributes.png" width="800" height="490" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></li></ul></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="wb-home.html">Previous</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="wb-admin.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 4 The Home Screen </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Chapter 6 Administrative Tasks</td></tr></table></div><div class="copyright-footer"></div></body></html>

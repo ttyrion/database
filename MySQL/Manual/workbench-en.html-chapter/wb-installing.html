@@ -1,0 +1,734 @@
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Chapter 2 Installation</title><link rel="stylesheet" type="text/css" href="mvl.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="MySQL Workbench"><link rel="up" href="index.html" title="MySQL Workbench"><link rel="prev" href="wb-intro.html" title="Chapter 1 General Information"><link rel="next" href="wb-configuring.html" title="Chapter 3 Configuration"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 2 Installation</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="wb-intro.html">Previous</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="wb-configuring.html">Next</a></td></tr></table><hr></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a name="wb-installing"></a>Chapter 2 Installation</h1></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl class="toc"><dt><span class="section"><a href="wb-installing.html#wb-requirements">2.1 System Requirements</a></span></dt><dt><span class="section"><a href="wb-installing.html#wb-command-line-options">2.2 Command-Line Options</a></span></dt><dt><span class="section"><a href="wb-installing.html#wb-windows">2.3 MySQL Workbench on Windows</a></span></dt><dd><dl><dt><span class="section"><a href="wb-installing.html#wb-installing-windows">2.3.1 Installing</a></span></dt><dt><span class="section"><a href="wb-installing.html#wb-launching-windows">2.3.2 Launching</a></span></dt><dt><span class="section"><a href="wb-installing.html#wb-windows-uninstalling">2.3.3 Uninstalling</a></span></dt></dl></dd><dt><span class="section"><a href="wb-installing.html#wb-linux">2.4 MySQL Workbench on Linux</a></span></dt><dd><dl><dt><span class="section"><a href="wb-installing.html#wb-installing-linux">2.4.1 Installing</a></span></dt><dt><span class="section"><a href="wb-installing.html#wb-launching-linux">2.4.2 Launching</a></span></dt><dt><span class="section"><a href="wb-installing.html#wb-linux-uninstalling">2.4.3 Uninstalling</a></span></dt></dl></dd><dt><span class="section"><a href="wb-installing.html#wb-mac">2.5 MySQL Workbench on macOS</a></span></dt><dd><dl><dt><span class="section"><a href="wb-installing.html#wb-installing-mac">2.5.1 Installing</a></span></dt><dt><span class="section"><a href="wb-installing.html#wb-launching-osx">2.5.2 Launching</a></span></dt><dt><span class="section"><a href="wb-installing.html#wb-mac-uninstalling">2.5.3 Uninstalling</a></span></dt></dl></dd></dl></div><p>
+    MySQL Workbench is available for Windows, Linux, and macOS.
+  </p><p>
+    Binary distributions of MySQL Workbench are available for the preceding
+    platforms. Source code distributions are also available as a
+    <code class="filename">tar.gz</code> package, or an RPM package.
+  </p><p>
+    MySQL Workbench downloads are available at
+    <a class="ulink" href="http://dev.mysql.com/downloads/workbench/" target="_top">http://dev.mysql.com/downloads/workbench/</a>. The source code is
+    also <a class="ulink" href="https://github.com/mysql/mysql-workbench" target="_top">available
+    on GitHub</a>.
+  </p><p>
+    The following sections explain the installation process for each of
+    these platforms.
+  </p><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-requirements"></a>2.1 System Requirements</h2></div></div></div><p>
+    MySQL Workbench is available on a number of operating systems and
+    platforms. For information about those platforms that are officially
+    supported, see
+    <a class="ulink" href="http://www.mysql.com/support/supportedplatforms/workbench.html" target="_top">http://www.mysql.com/support/supportedplatforms/workbench.html</a>
+    on the MySQL website.
+  </p><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="wb-requirements-general"></a>General Requirements</h3></div></div></div><p>
+      General requirements and considerations that apply to all
+      operating systems.
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <span class="bold"><strong>MySQL server</strong></span>: Although it is
+          not required, MySQL Workbench is designed to have either a remote
+          or local MySQL server connection. For additional information
+          about connecting to a MySQL server, see
+          <a class="xref" href="wb-mysql-connections.html" title="Chapter 5 Connections in MySQL Workbench">Chapter 5, <i>Connections in MySQL Workbench</i></a>. For additional
+          information about installing a MySQL server, see
+          <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/installing.html" target="_top">Installing and Upgrading MySQL</a>.
+        </p><p>
+          Data modeling does not require a MySQL server connection.
+        </p><p>
+          Some features take advantage of MySQL server features, and as
+          such, they require more recent versions of MySQL Server. For
+          example, the <span class="guilabel">Performance Dashboard</span>
+          requires MySQL Server 5.6 or higher.
+        </p></li><li class="listitem"><p>
+          <span class="bold"><strong>Simultaneous client
+          connections</strong></span>: Opening a MySQL connection from the
+          MySQL Workbench home page opens a new connection tab in
+          MySQL Workbench for that connection. Each of these tabs requires
+          two MySQL connections to perform basic tasks, such schema
+          discovery and SQL execution. Additionally, performing
+          management related tasks, such as <span class="guilabel">Server
+          Status</span>, requires two additional MySQL connections.
+          Essentially, this means that each MySQL connection tab in
+          MySQL Workbench requires four available connections to MySQL. For
+          additional information about "Too many connection" related
+          errors, see <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/too-many-connections.html" target="_top">Too many connections</a>.
+        </p><p>
+          This connection requirement doubles with each connection tab
+          opened in MySQL Workbench, even if the two connection tabs point
+          to the same MySQL server. SQL editor tabs share their
+          connections, so having multiple SQL editor and SQL results
+          tabs does not affect the number of required connections.
+        </p></li></ul></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+        On startup, the application checks the OpenGL version and
+        chooses between software and hardware rendering. To determine
+        which rendering method is being used, open the
+        <span class="guimenu">Help</span> menu and choose the <span class="guimenuitem">System
+        Info</span> item.
+      </p></div></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="wb-requirements-linux"></a>Requirements for Linux</h3></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          The requirements for Linux are embedded within their
+          respective packages. Use the platform specific tool (for
+          example, yum or apt) to install the package and their
+          dependencies.
+        </p></li><li class="listitem"><p>
+          The "Save password in keychain" functionality requires
+          <code class="literal">gnome-keyring</code> to store the passwords. Note
+          that on KDE systems, the <code class="literal">gnome-keyring</code>
+          daemon is not started by default.
+        </p></li><li class="listitem"><p>
+          For Linux and macOS, the MySQL server administration features
+          require <span class="command"><strong>sudo</strong></span> privileges to execute several
+          commands. The sudo user must be capable of executing the
+          following system commands:
+        </p><pre class="programlisting">
+
+/usr/bin/sudo
+/usr/bin/nohup
+/usr/bin/uptime
+/usr/bin/which
+/usr/bin/stat
+
+/bin/bash
+/bin/mkdir
+/bin/rm
+/bin/rmdir
+/bin/dd
+/bin/cp
+/bin/ls
+
+</pre><p>
+          Additionally, the sudo user must keep the
+          <code class="literal">HOME</code> environment variable when executing
+          system commands, which means adding the following to
+          <code class="filename">/etc/sudoers</code>:
+        </p><pre class="programlisting">
+
+env_keep +="HOME"
+
+</pre><p>
+          For MySQL Workbench to execute MySQL Enterprise Backup commands, the sudo user must
+          also be able to execute the MySQL Enterprise Backup binary.
+        </p></li></ul></div></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="wb-requirements-windows"></a>Minimum Requirements for Windows</h3></div></div></div><p>
+      The following prerequisites are available at the
+      <a class="ulink" href="http://www.microsoft.com/en-us/download/default.aspx" target="_top">Microsoft
+      Download Center</a>:
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          Microsoft .NET Framework 4.5.2
+        </p></li><li class="listitem"><p>
+          Visual C++ 2015 Redistributable for Visual Studio 2015
+        </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+            The 2013 version was changed to 2015 with MySQL Workbench 6.3.9.
+          </p></div></li><li class="listitem"><p>
+          Microsoft Windows 7 (and later)
+        </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+            MySQL Workbench 6.1 supports earlier versions of Windows,
+            including Vista.
+          </p></div></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-command-line-options"></a>2.2 Command-Line Options</h2></div></div></div><p>
+      In addition to platform-specific command-line options, MySQL Workbench
+      has the following command-line options:
+    </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+        On Microsoft Windows, the command-line options contain one
+        leading dash instead of two. For example, use
+        <code class="option">-log-level</code> for Microsoft Windows and
+        <code class="option">--log-level</code> for Linux and macOS.
+      </p></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <code class="option">--log-level</code> <em class="replaceable"><code>level</code></em>:
+          Controls the verbosity level for logging output from
+          Workbench.
+        </p><p>
+          With increasingly levels of verbosity, the valid values for
+          <code class="literal">level</code> are: error, warning, info, debug1,
+          debug2, and debug3.
+        </p><p>
+          The location of the generated log files, such as
+          <code class="filename">wb.log</code>, are as follows:
+        </p><div class="table"><a name="wb-configuring-log-file-paths"></a><p class="title"><b>Table 2.1 Default location of generated MySQL Workbench log files</b></p><div class="table-contents"><table class="table" summary="Default location of generated MySQL Workbench log files" border="1"><colgroup><col><col></colgroup><thead><tr><th scope="col">Platform</th><th scope="col">Default location</th></tr></thead><tbody><tr><td scope="row">Linux</td><td><code class="filename">~/.mysql/workbench/log/</code></td></tr><tr><td scope="row">macOS</td><td><code class="filename">~/Library/Application Support/Workbench/log/</code></td></tr><tr><td scope="row">Microsoft Windows</td><td><code class="filename">C:\Users\<em class="replaceable"><code>user_name</code></em>AppData\Roaming\MySQL\Workbench\log\</code></td></tr></tbody></table></div></div><br class="table-break"></li><li class="listitem"><p>
+          <code class="option">--admin <em class="replaceable"><code>instance</code></em></code>:
+          Open an administration tab to the named MySQL instance.
+        </p></li><li class="listitem"><p>
+          <code class="option">--upgrade-mysql-dbs</code>: Open the Migration
+          Wizard tab.
+        </p></li><li class="listitem"><p>
+          <code class="option">--migration</code>: Open the Migration Wizard tab.
+        </p></li><li class="listitem"><p>
+          <code class="option">--log-to-stderr</code>: Also log to
+          <code class="literal">stderr</code>.
+        </p></li><li class="listitem"><p>
+          <code class="option">--version</code>: Show MySQL Workbench version number
+          and exit.
+        </p></li><li class="listitem"><p>
+          <code class="option">--verbose, -v</code>: Enable diagnostics output.
+        </p></li><li class="listitem"><p>
+          <code class="option">--query
+          <em class="replaceable"><code>[connection|connection_string]</code></em></code>:
+        </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem"><p>
+              Empty: Open a query tab and prompts for a connection.
+            </p></li><li class="listitem"><p>
+              Connection: Open a named connection.
+            </p></li><li class="listitem"><p>
+              Connection_string: Create a connection based on the
+              entered connection string, which should be in the form
+              <em class="replaceable"><code>$USER@$HOST:$PORT</code></em>.
+            </p></li></ul></div></li><li class="listitem"><p>
+          <code class="option">--model <em class="replaceable"><code>modelfile</code></em></code>:
+          open the given EER model file.
+        </p></li><li class="listitem"><p>
+          <code class="option">--script <em class="replaceable"><code>script</code></em></code>:
+          Open the given SQL file in a connection, typically used with
+          the <code class="option">--query</code> parameter.
+        </p></li><li class="listitem"><p>
+          <code class="option">--run <em class="replaceable"><code>code</code></em></code>:
+          Execute the given code using the default language for GRT
+          shell.
+        </p></li><li class="listitem"><p>
+          <code class="option">--run-python
+          <em class="replaceable"><code>script</code></em></code>: Execute the given
+          code in Python.
+        </p></li><li class="listitem"><p>
+          <code class="option">--run-script <em class="replaceable"><code>file</code></em></code>:
+          Execute Python code from a file.
+        </p></li><li class="listitem"><p>
+          <code class="option">--open <em class="replaceable"><code>file</code></em></code>: Open
+          the given file at startup. Deprecated, so instead use specific
+          types such as <code class="option">--script</code> or
+          <code class="option">--model</code>.
+        </p></li><li class="listitem"><p>
+          <code class="option">--quit-when-done</code>: Quits MySQL Workbench after
+          <code class="option">--script</code> or <code class="option">--run</code> finishes.
+        </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-windows"></a>2.3 MySQL Workbench on Windows</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="wb-installing.html#wb-installing-windows">2.3.1 Installing</a></span></dt><dt><span class="section"><a href="wb-installing.html#wb-launching-windows">2.3.2 Launching</a></span></dt><dt><span class="section"><a href="wb-installing.html#wb-windows-uninstalling">2.3.3 Uninstalling</a></span></dt></dl></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-installing-windows"></a>2.3.1 Installing</h3></div></div></div><p>
+        MySQL Workbench for Windows can be installed using the MySQL Installer that
+        installs and updates all MySQL products on Windows or the
+        standalone Windows MSI Installer package.
+      </p><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Important</div><p>
+          Installing MySQL Workbench using a Windows MSI Installer package
+          requires either Administrator or Power User privileges.
+        </p></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-installing-windows-requirements"></a>Minimum Requirements for Windows</h4></div></div></div><p>
+      The following prerequisites are available at the
+      <a class="ulink" href="http://www.microsoft.com/en-us/download/default.aspx" target="_top">Microsoft
+      Download Center</a>:
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          Microsoft .NET Framework 4.5.2
+        </p></li><li class="listitem"><p>
+          Visual C++ 2015 Redistributable for Visual Studio 2015
+        </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+            The 2013 version was changed to 2015 with MySQL Workbench 6.3.9.
+          </p></div></li><li class="listitem"><p>
+          Microsoft Windows 7 (and later)
+        </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+            MySQL Workbench 6.1 supports earlier versions of Windows,
+            including Vista.
+          </p></div></li></ul></div></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-windows-mi"></a>Installation Using MySQL Installer</h4></div></div></div><p>
+          The general MySQL Installer download is available at
+          <a class="ulink" href="http://dev.mysql.com/downloads/windows/installer/" target="_top">http://dev.mysql.com/downloads/windows/installer/</a>. The
+          MySQL Installer application can install, upgrade, and manage most MySQL
+          products, including MySQL Workbench.
+        </p><h5><a name="idm140544312712368"></a>This is the Recommended Approach</h5><p>
+          Managing all of your MySQL products, including Workbench, with
+          <a class="ulink" href="http://dev.mysql.com/downloads/windows/installer/" target="_top">MySQL Installer</a>
+          is the recommended approach. It handles all requirements and
+          prerequisites, configurations, and upgrades.
+        </p><p>
+          When executing <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/mysql-installer.html" target="_top">MySQL Installer</a>,
+          you may choose MySQL Workbench as one of the products to install.
+          It is selected by default, and essentially executes the
+          standalone Installer Package described below.
+        </p></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-windows-standalone"></a>Installation Using the Windows MSI Installer Package</h4></div></div></div><p>
+          The standalone download is available at
+          <a class="ulink" href="http://dev.mysql.com/downloads/workbench/" target="_top">http://dev.mysql.com/downloads/workbench/</a>.
+        </p><p>
+          MySQL Workbench can be installed using the Windows MSI Installer
+          package. The MSI package bears the name
+          <code class="filename">mysql-workbench-<em class="replaceable"><code>community</code></em>-<em class="replaceable"><code>version</code></em>-win<em class="replaceable"><code>arch</code></em>.msi</code>,
+          where <em class="replaceable"><code>version</code></em> indicates the
+          MySQL Workbench version number, and
+          <em class="replaceable"><code>arch</code></em> the build architecture
+          (winx64).
+        </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+            The following procedure requires either Administrator or
+            Power User privileges.
+          </p></div><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+              To install MySQL Workbench, right-click the MSI file and
+              select the <span class="guimenuitem">Install</span> item from
+              the pop-up menu, or double-click the file.
+            </p></li><li class="listitem"><p>
+              In the <span class="guilabel">Setup Type</span> window you may
+              choose a <code class="option">Complete</code> or
+              <code class="option">Custom</code> installation. To use all features
+              of MySQL Workbench choose the <code class="option">Complete</code>
+              option.
+            </p></li><li class="listitem"><p>
+              Unless you choose otherwise, MySQL Workbench is installed in
+              <code class="filename">C:\<em class="replaceable"><code>%PROGRAMFILES%</code></em>\MySQL\MySQL
+              Workbench 6.3
+              <em class="replaceable"><code>edition_type</code></em>\</code>, where
+              <em class="replaceable"><code>%PROGRAMFILES%</code></em> is the default
+              directory for programs for your locale. The
+              <code class="literal">%PROGRAMFILES%</code> directory is defined as
+              <code class="filename">C:\Program Files\</code> on most systems.
+            </p></li></ol></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-launching-windows"></a>2.3.2 Launching</h3></div></div></div><p>
+        To start MySQL Workbench on Windows, select
+        <span class="guimenu">Start</span>, <span class="guimenuitem">Programs</span>,
+        <span class="guimenuitem">MySQL</span>, then select MySQL Workbench. This
+        executes the <code class="filename">MySQLWorkbench.exe</code> file on
+        your system.
+      </p><p>
+        Alternatively, start MySQL Workbench from the command line. To view
+        the available command-line options, issue the command
+        <span class="command"><strong>MySQLWorkbench -help</strong></span> from the MySQL Workbench
+        installation directory. You will see the following output:
+      </p><pre class="screen">
+
+MySQLWorkbench.exe [&lt;options&gt;] [&lt;name of a model file or sql script&gt;]
+
+Options:
+  -swrendering           Force the diagram canvas to use software rendering instead of OpenGL
+  -query [&lt;connection&gt;|&lt;connection string&gt;]
+                         Open a query tab and ask for connection if nothing is specified.
+                         If named connection is specified it will be opened, else connection
+                         will be created based on the given connection string, which should
+                         be in form &lt;user&gt;@&lt;host&gt;:&lt;port&gt;
+  -admin &lt;instance&gt;      Open a administration tab to the named instance
+  -upgrade-mysql-dbs     Open a migration wizard tab
+  -model &lt;model file&gt;    Open the given EER model file
+  -script &lt;sql file&gt;     Open the given SQL file in an connection, best in conjunction with
+                         a query parameter
+  -run-script &lt;file&gt;     Execute Python code from a file
+  -run &lt;code&gt;            Execute the given Python code
+  -run-python &lt;code&gt;     Execute the given Python code
+  -migration             Open the Migration Wizard tab
+  -quit-when-done        Quit Workbench when the script is done
+  -log-to-stderr         Also log to stderr
+  -help, -h              Show command line options and exit
+  -log-level=&lt;level&gt;     Valid levels are: error, warning, info, debug1, debug2, debug3
+  -verbose, -v           Enable diagnostics output
+  -version               Show Workbench version number and exit
+  -open &lt;file&gt;           Open the given file at startup (deprecated, use script, model etc.)
+
+</pre><p>
+        Use the <code class="option">-swrendering</code> option if your video card
+        does not support OpenGL 1.5. The <code class="option">-version</code>
+        option can be used to display the MySQL Workbench version number.
+        The other options are self-explanatory.
+      </p><p>
+        MySQL Workbench may also be started from MySQL Notifier by choosing
+        <span class="guimenu">SQL Editor</span> or <span class="guimenu">Configure
+        Instance</span> from the Notifier context menu. For
+        additional information, see <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/windows-notifier.html" target="_top">MySQL Notifier</a>.
+      </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-windows-uninstalling"></a>2.3.3 Uninstalling</h3></div></div></div><p>
+        The method for uninstalling MySQL Workbench depends on how you
+        installed MySQL Workbench.
+      </p><p>
+        <span class="bold"><strong>Removing MySQL Workbench After Installation
+        Using the Installer Package</strong></span>
+      </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+            To uninstall MySQL Workbench, open the <span class="guilabel">Control
+            Panel</span> and Choose <span class="guilabel">Add or Remove
+            Programs</span>. Find the MySQL Workbench entry and choose
+            the <span class="guibutton">Remove</span> button. This will remove
+            MySQL Workbench.
+          </p></li></ol></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+          If you installed MySQL Workbench using the Installer package, it
+          is not possible to remove MySQL Workbench from the command line.
+          Although you can manually remove some of the components, there
+          is no command-line option for removing MySQL Workbench.
+        </p><p>
+          Removing the MySQL Workbench directory manually will not remove
+          all the files belonging to MySQL Workbench.
+        </p></div><p>
+        <span class="bold"><strong>Removing MySQL Workbench After Installation
+        from the MySQL Installer</strong></span>
+      </p><p>
+        Open the MySQL Installer for Windows, click <span class="guilabel">Remove MySQL
+        Products</span>, choose MySQL Workbench, and then
+        <span class="guibutton">Execute</span>.
+      </p><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-windows-uninstalling-kept"></a>What Is Not Removed</h4></div></div></div><p>
+          Uninstalling MySQL Workbench does not remove your Workbench
+          configuration directory. This directory includes your MySQL
+          connections, configuration settings, cache files, SQL snippets
+          and history, logs, custom modules, and more. These files are
+          stored under your user's <code class="literal">%AppData%</code>
+          directory.
+        </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+            By default, the Workbench configuration directory is
+            <code class="filename">C:\username\AppData\Roaming\MySQL\Workbench\</code>
+            where "C:\username\AppData\Roaming\" is the value of your
+            <code class="literal">%AppData%</code> Windows system variable.
+          </p></div><p>
+          Also, uninstalling Workbench does not remove the
+          <code class="literal">.mysqlworkbench</code> schema that Workbench
+          creates when sharing SQL snippets across a MySQL connection.
+          For additional information about shared snippets, see
+          <a class="xref" href="wb-develop.html#wb-sql-editor-snippets" title="8.1.5 SQL Additions - Snippets Tab">Section 8.1.5, “SQL Additions - Snippets Tab”</a>.
+        </p></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-linux"></a>2.4 MySQL Workbench on Linux</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="wb-installing.html#wb-installing-linux">2.4.1 Installing</a></span></dt><dt><span class="section"><a href="wb-installing.html#wb-launching-linux">2.4.2 Launching</a></span></dt><dt><span class="section"><a href="wb-installing.html#wb-linux-uninstalling">2.4.3 Uninstalling</a></span></dt></dl></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-installing-linux"></a>2.4.1 Installing</h3></div></div></div><p>
+        There are binary distributions of MySQL Workbench available for
+        several variants of Linux, including Fedora, Oracle Linux, and
+        Ubuntu.
+      </p><p>
+        Installation options include:
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            <span class="bold"><strong>Official MySQL Yum or APT repository
+            packages</strong></span>: These binaries are built by the MySQL
+            Release team. For additional information about installing
+            these, see
+            <a class="ulink" href="http://dev.mysql.com/downloads/repo/yum/" target="_top">Yum</a>
+            or
+            <a class="ulink" href="http://dev.mysql.com/downloads/repo/apt/" target="_top">APT</a>.
+            They contain the newest versions of MySQL Workbench. Typically
+            this package is named
+            <code class="literal">mysql-workbench-community</code>.
+          </p></li><li class="listitem"><p>
+            <span class="bold"><strong>Your Linux distributions repository
+            packages</strong></span>: These binaries are built and maintained
+            by members of the Linux distribution you use, and not by the
+            MySQL team. They are stable but the releases often lag
+            behind. Typically this package is named
+            <code class="literal">mysql-workbench</code>.
+          </p></li><li class="listitem"><p>
+            <span class="bold"><strong>Download official MySQL
+            packages</strong></span>: Downloads are available at
+            <a class="ulink" href="http://dev.mysql.com/downloads/workbench" target="_top">http://dev.mysql.com/downloads/workbench</a>.
+          </p></li><li class="listitem"><p>
+            <span class="bold"><strong>Download the source code and compile
+            yourself</strong></span>: The source code is available at
+            <a class="ulink" href="http://dev.mysql.com/downloads/workbench" target="_top">http://dev.mysql.com/downloads/workbench</a> as a
+            <code class="filename">tar.gz</code> or RPM package.
+          </p></li></ul></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+          32-bit binary builds are not available as of MySQL Workbench
+          6.2.0. You can use the source code to build your own 32-bit
+          version, as needed.
+        </p></div><p>
+        The procedure for installing on Linux depends on which Linux
+        distribution you are using.
+      </p><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-installing-linux-requirements"></a>Requirements for Linux</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          The requirements for Linux are embedded within their
+          respective packages. Use the platform specific tool (for
+          example, yum or apt) to install the package and their
+          dependencies.
+        </p></li><li class="listitem"><p>
+          The "Save password in keychain" functionality requires
+          <code class="literal">gnome-keyring</code> to store the passwords. Note
+          that on KDE systems, the <code class="literal">gnome-keyring</code>
+          daemon is not started by default.
+        </p></li><li class="listitem"><p>
+          For Linux and macOS, the MySQL server administration features
+          require <span class="command"><strong>sudo</strong></span> privileges to execute several
+          commands. The sudo user must be capable of executing the
+          following system commands:
+        </p><pre class="programlisting">
+
+/usr/bin/sudo
+/usr/bin/nohup
+/usr/bin/uptime
+/usr/bin/which
+/usr/bin/stat
+
+/bin/bash
+/bin/mkdir
+/bin/rm
+/bin/rmdir
+/bin/dd
+/bin/cp
+/bin/ls
+
+</pre><p>
+          Additionally, the sudo user must keep the
+          <code class="literal">HOME</code> environment variable when executing
+          system commands, which means adding the following to
+          <code class="filename">/etc/sudoers</code>:
+        </p><pre class="programlisting">
+
+env_keep +="HOME"
+
+</pre><p>
+          For MySQL Workbench to execute MySQL Enterprise Backup commands, the sudo user must
+          also be able to execute the MySQL Enterprise Backup binary.
+        </p></li></ul></div></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-installing-linux-installing-deb"></a>Installing DEB packages</h4></div></div></div><p>
+          On Ubuntu, and other systems that use the Debian package
+          scheme, you can either download and install .deb packages or
+          use the APT package manager.
+        </p><p>
+          <span class="bold"><strong>Using the APT Package Manager</strong></span>
+        </p><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Important</div><p>
+            Your Linux distribution includes MySQL Workbench builds where
+            "apt-get install mysql-workbench" will install their build
+            of the MySQL Workbench package. To use the official MySQL Workbench
+            builds as provided by the MySQL Release team, you must
+            install the official MySQL APT repository and choose the
+            "mysql-workbench-community" package instead of
+            "mysql-workbench".
+          </p></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+              First, install the MySQL APT repository as described in
+              the
+              <a class="ulink" href="http://dev.mysql.com/doc/mysql-apt-repo-quick-guide/en/" target="_top">MySQL
+              APT Repository</a> documentation. For example:
+            </p><pre class="programlisting">
+shell&gt; <strong class="userinput"><code>sudo dpkg -i mysql-apt-config_0.5.3-1_all.deb</code></strong>
+shell&gt; <strong class="userinput"><code>sudo apt-get update</code></strong>
+</pre></li><li class="listitem"><p>
+              Next, install MySQL Workbench. You might have multiple
+              Workbench packages available, so choose the
+              "mysql-workbench-community" version. For example:
+            </p><pre class="programlisting">
+shell&gt; <strong class="userinput"><code>sudo apt-get install mysql-workbench-community</code></strong>
+</pre></li></ul></div><p>
+          <span class="bold"><strong>Manually Installing a Package</strong></span>
+        </p><p>
+          You install MySQL Workbench using a command such as:
+        </p><pre class="programlisting">
+shell&gt; <strong class="userinput"><code>sudo dpkg -i <em class="replaceable"><code>package</code></em>.deb</code></strong>
+</pre><p>
+          <code class="filename"><em class="replaceable"><code>package</code></em>.deb</code> is
+          the MySQL Workbench package name; for example,
+          <code class="filename">mysql-workbench-community-<em class="replaceable"><code>version</code></em>1ubu1404-amd64.deb</code>,
+          where <em class="replaceable"><code>version</code></em> is the MySQL Workbench
+          version number.
+        </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+            You may be warned that certain libraries are not available,
+            depending on what you already have installed. Install the
+            required libraries and then install the MySQL Workbench package
+            again.
+          </p></div></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-installing-linux-installing-rpm"></a>Installing RPM packages</h4></div></div></div><p>
+          On Red Hat-based systems, and other systems that use the RPM
+          package format, you can either download and install RPM
+          packages or use the Yum package manager.
+        </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+            Enterprise Linux systems, such as Oracle Linux and Red Hat,
+            require access to the EPEL package repository. For
+            additional information about installing EPEL, see
+            <a class="xref" href="wb-installing.html#wb-installing-linux-installing-oel" title="Installing Oracle Enterprise Linux and similar">Installing Oracle Enterprise Linux and similar</a>.
+          </p></div><p>
+          <span class="bold"><strong>Using the Yum Package Manager</strong></span>
+        </p><p>
+          Your Linux distribution includes MySQL Workbench builds where "yum
+          install mysql-workbench" will install their build of the
+          MySQL Workbench package. To use the official MySQL Workbench builds as
+          provided by the MySQL Release team, you must install the
+          official MySQL Yum repository and choose the
+          "mysql-workbench-community" package instead of
+          "mysql-workbench".
+        </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+              First, install the MySQL Yum repository as described in
+              the
+              <a class="ulink" href="http://dev.mysql.com/doc/mysql-yum-repo-quick-guide/en/" target="_top">MySQL
+              Yum Repository</a> documentation. For example:
+            </p><pre class="programlisting">
+shell&gt; <strong class="userinput"><code>sudo rpm -Uvh mysql-community-release-el7-7.noarch.rpm</code></strong>
+</pre></li><li class="listitem"><p>
+              Next, install MySQL Workbench. You might have multiple
+              Workbench packages available, so choose the
+              "mysql-workbench-community" version. For example:
+            </p><pre class="programlisting">
+shell&gt; <strong class="userinput"><code>sudo yum install mysql-workbench-community</code></strong>
+</pre></li></ul></div><p>
+          <span class="bold"><strong>Manually Installing a Package</strong></span>
+        </p><pre class="programlisting">
+shell&gt; <strong class="userinput"><code>sudo rpm -i <em class="replaceable"><code>package</code></em>.rpm</code></strong>
+</pre><p>
+          <code class="filename"><em class="replaceable"><code>package</code></em>.rpm</code> is
+          the MySQL Workbench package name; for example,
+          <code class="filename">mysql-workbench-community-<em class="replaceable"><code>version</code></em>-1fc10.x86_64.rpm</code>,
+          where <em class="replaceable"><code>version</code></em> is the MySQL Workbench
+          version number.
+        </p></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-installing-linux-installing-oel"></a>Installing Oracle Enterprise Linux and similar</h4></div></div></div><p>
+          MySQL Workbench requires access to the
+          <a class="ulink" href="http://fedoraproject.org/wiki/EPEL" target="_top">EPEL</a>
+          repository. EPEL is a repository with additional RPM packages
+          that are not part of the core RHEL/OEL distribution. This
+          includes packages (such as tinyxml) that MySQL Workbench requires.
+        </p><p>
+          You need to set up the EPEL repository in yum to resolve the
+          required dependencies. For example, using Oracle Linux 6.8 you
+          would:
+        </p><pre class="programlisting">
+shell&gt; <strong class="userinput"><code>wget http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm</code></strong>
+shell&gt; <strong class="userinput"><code>rpm -ivh epel-release-6-8.noarch.rpm</code></strong>
+
+shell&gt; <strong class="userinput"><code>yum repolist</code></strong>
+
+Loaded plugins: refresh-packagekit, rhnplugin
+repo id                repo name                                          status
+epel                   Extra Packages for Enterprise Linux 6 - x86_64      7,124
+</pre><p>
+          These instructions also apply to similar Linux distributions
+          such as Red Hat Enterprise Linux, CentOS, and Scientific
+          Linux.
+        </p><p>
+          Next, follow the RPM-based installation documentation at
+          <a class="xref" href="wb-installing.html#wb-installing-linux-installing-rpm" title="Installing RPM packages">Installing RPM packages</a>.
+        </p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-launching-linux"></a>2.4.2 Launching</h3></div></div></div><p>
+        After MySQL Workbench has been installed, it can be launched by
+        selecting <span class="guimenu">Applications</span>,
+        <span class="guimenuitem">Programming</span>, <span class="guimenuitem">MySQL
+        Workbench</span> from the main menu.
+      </p><p>
+        MySQL Workbench can also be launched from the command line on Linux.
+        Type the command:
+      </p><pre class="programlisting">
+shell&gt; <strong class="userinput"><code>/usr/bin/mysql-workbench --help</code></strong>
+</pre><p>
+        This will display the available command-line options:
+      </p><pre class="screen">
+
+mysql-workbench [&lt;options&gt;] [&lt;name of a model file or sql script&gt;]
+
+Options:
+  --force-sw-render       Force Xlib rendering
+  --force-opengl-render   Force OpenGL rendering
+  --query [&lt;connection&gt;|&lt;connection string&gt;]
+                          Open a query tab and ask for connection if nothing is specified.
+                          If named connection is specified it will be opened, else connection
+                          will be created based on the given connection string, which should
+                          be in form &lt;user&gt;@&lt;host&gt;:&lt;port&gt;
+  --admin &lt;instance&gt;      Open a administration tab to the named instance
+  --upgrade-mysql-dbs     Open a migration wizard tab
+  --model &lt;model file&gt;    Open the given EER model file
+  --script &lt;sql file&gt;     Open the given SQL file in an connection, best in conjunction with
+                          a query parameter
+  --run-script &lt;file&gt;     Execute Python code from a file
+  --run &lt;code&gt;            Execute the given Python code
+  --run-python &lt;code&gt;     Execute the given Python code
+  --migration             Open the Migration Wizard tab
+  --quit-when-done        Quit Workbench when the script is done
+  --log-to-stderr         Also log to stderr
+  --help, -h              Show command line options and exit
+  --log-level=&lt;level&gt;     Valid levels are: error, warning, info, debug1, debug2, debug3
+  --verbose, -v           Enable diagnostics output
+  --version               Show Workbench version number and exit
+  --open &lt;file&gt;           Open the given file at startup (deprecated, use script, model etc.)
+
+</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-linux-uninstalling"></a>2.4.3 Uninstalling</h3></div></div></div><p>
+        The procedure for uninstalling MySQL Workbench on Linux depends on
+        the package you are using.
+      </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+          When using apt, the official package name at dev.mysql.com is
+          <code class="literal">mysql-workbench-community</code>, whereas most
+          Linux distributions use the name
+          <code class="literal">mysql-workbench</code>. Adjust the following
+          commands accordingly.
+        </p></div><p>
+        <span class="bold"><strong>Uninstalling DEB packages</strong></span>
+      </p><p>
+        To uninstall a Debian package, use the following:
+      </p><pre class="programlisting">
+shell&gt; <strong class="userinput"><code>sudo apt-get remove mysql-workbench-community</code></strong>
+</pre><p>
+        Or, alternatively:
+      </p><pre class="programlisting">
+shell&gt; <strong class="userinput"><code>sudo dpkg -r mysql-workbench-community</code></strong>
+</pre><p>
+        This command does not remove the configuration files. If you
+        wish to also remove the configuration files, use this command:
+      </p><pre class="programlisting">
+shell&gt; <strong class="userinput"><code>sudo dpkg --purge mysql-workbench-community</code></strong>
+</pre><p>
+        <span class="bold"><strong>Uninstalling RPM packages</strong></span>
+      </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+          When using yum, the official package name at dev.mysql.com is
+          <code class="literal">mysql-workbench-community</code>, whereas most
+          Linux distributions use the name
+          <code class="literal">mysql-workbench</code>. Adjust the following
+          commands accordingly.
+        </p></div><p>
+        To uninstall an RPM package, use this command:
+      </p><pre class="programlisting">
+shell&gt; <strong class="userinput"><code>sudo yum remove mysql-workbench-community</code></strong>
+</pre><p>
+        Or, alternatively:
+      </p><pre class="programlisting">
+shell&gt; <strong class="userinput"><code>sudo rpm -e mysql-workbench-community</code></strong>
+</pre><p>
+        This command does not remove the configuration files.
+      </p><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-linux-uninstalling-kept"></a>What Is Not Removed</h4></div></div></div><p>
+          By default, uninstalling MySQL Workbench does not remove your
+          Workbench configuration directory. This directory includes
+          your MySQL connections, configuration settings, cache files,
+          SQL snippets and history, logs, custom modules, and more.
+          These files are stored under your user's
+          <code class="literal">.mysql/workbench/</code> directory.
+        </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+            By default, the Workbench configuration directory is
+            <code class="literal">~username/mysql/workbench/</code> where
+            "~username" is the path to your user's home directory.
+          </p></div><p>
+          Also, uninstalling Workbench does not remove the
+          <code class="literal">.mysqlworkbench</code> schema that Workbench
+          creates when sharing SQL snippets across a MySQL connection.
+          For additional information about shared snippets, see
+          <a class="xref" href="wb-develop.html#wb-sql-editor-snippets" title="8.1.5 SQL Additions - Snippets Tab">Section 8.1.5, “SQL Additions - Snippets Tab”</a>.
+        </p></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-mac"></a>2.5 MySQL Workbench on macOS</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="wb-installing.html#wb-installing-mac">2.5.1 Installing</a></span></dt><dt><span class="section"><a href="wb-installing.html#wb-launching-osx">2.5.2 Launching</a></span></dt><dt><span class="section"><a href="wb-installing.html#wb-mac-uninstalling">2.5.3 Uninstalling</a></span></dt></dl></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-installing-mac"></a>2.5.1 Installing</h3></div></div></div><p>
+        MySQL Workbench for macOS is distributed as a DMG file. The file is
+        named
+        <code class="filename">mysql-workbench-community-<em class="replaceable"><code>version</code></em>-osx.dmg</code>,
+        where <em class="replaceable"><code>version</code></em> is the MySQL Workbench
+        version.
+      </p><p>
+        Downloads are available at
+        <a class="ulink" href="http://dev.mysql.com/downloads/workbench/" target="_top">http://dev.mysql.com/downloads/workbench/</a>.
+      </p><p>
+        To install MySQL Workbench on macOS, download the file. Double-click
+        the downloaded file. You will be presented with the installation
+        window shown in the figure that follows.
+      </p><div class="figure"><a name="wb-installing-mac-install-screen"></a><p class="title"><b>Figure 2.1 MySQL Workbench macOS Installation Window</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-installing-mac-install-screen.png" width="526" height="390" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+        Drag the MySQL Workbench icon onto the Applications icon as
+        instructed. MySQL Workbench is now installed.
+      </p><p>
+        You can now launch MySQL Workbench from the Applications folder, or
+        from the command line:
+      </p><pre class="programlisting">
+shell&gt; <strong class="userinput"><code>/Applications/MySQLWorkbench.app/Contents/MacOS/MySQLWorkbench --help</code></strong>
+</pre><p>
+        This will display the available command-line options:
+      </p><pre class="screen">
+
+MySQLWorkbench [&lt;options&gt;] [&lt;name of a model file or sql script&gt;]
+Options:
+  --query [&lt;connection&gt;|&lt;connection string&gt;]
+                          Open a query tab and ask for connection if nothing is specified.
+                          If named connection is specified it will be opened,
+                          else connection will be created based on the given connection string,
+                          which should be in form &lt;user&gt;@&lt;host&gt;:&lt;port&gt;
+  --admin &lt;instance&gt;      Open a administration tab to the named instance
+  --upgrade-mysql-dbs     Open a migration wizard tab
+  --model &lt;model file&gt;    Open the given EER model file
+  --script &lt;sql file&gt;     Open the given SQL file in an connection, best in conjunction
+                          with a query parameter
+  --run-script &lt;file&gt;     Execute Python code from a file
+  --run &lt;code&gt;            Execute the given Python code
+  --run-python &lt;code&gt;     Execute the given Python code
+  --migration             Open the Migration Wizard tab
+  --quit-when-done        Quit Workbench when the script is done
+  --log-to-stderr         Also log to stderr
+  --help, -h              Show command line options and exit
+  --log-level=&lt;level&gt;     Valid levels are: error, warning, info, debug1, debug2, debug3
+  --verbose, -v           Enable diagnostics output
+  --version               Show Workbench version number and exit
+  --open &lt;file&gt;           Open the given file at startup (deprecated, use script, model etc.)
+
+</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-launching-osx"></a>2.5.2 Launching</h3></div></div></div><p>
+        To launch MySQL Workbench on macOS, open the Applications folder in
+        the Finder, then double-click MySQL Workbench.
+      </p><p>
+        It is also possible to start MySQL Workbench from the command line:
+      </p><pre class="programlisting">
+shell&gt; <strong class="userinput"><code>open MySQLWorkbench.app <em class="replaceable"><code>[options]</code></em> <em class="replaceable"><code>[model_file]</code></em></code></strong>
+</pre><p>
+        Specifying options and/or a model file is optional.
+      </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-mac-uninstalling"></a>2.5.3 Uninstalling</h3></div></div></div><p>
+        To uninstall MySQL Workbench for macOS, locate MySQL Workbench in the
+        Applications folder, right-click, and select <span class="guimenuitem">Move
+        to Trash</span>.
+      </p><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-mac-uninstalling-kept"></a>What Is Not Removed</h4></div></div></div><p>
+          By default, uninstalling MySQL Workbench does not remove your
+          Workbench configuration directory. This directory includes
+          your MySQL connections, configuration settings, cache files,
+          SQL snippets and history, logs, custom modules, and more.
+          These files are stored under your user's
+          <code class="literal">MySQL/Workbench/</code> folder.
+        </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+            By default, the Workbench configuration directory is
+            <code class="filename">~username/Library/Application
+            Support/MySQL/Workbench</code> where "~username" is the
+            path to your user's home directory.
+          </p></div><p>
+          Also, uninstalling Workbench does not remove the
+          <code class="literal">.mysqlworkbench</code> schema that Workbench
+          creates when sharing SQL snippets across a MySQL connection.
+          For additional information about shared snippets, see
+          <a class="xref" href="wb-develop.html#wb-sql-editor-snippets" title="8.1.5 SQL Additions - Snippets Tab">Section 8.1.5, “SQL Additions - Snippets Tab”</a>.
+        </p></div></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="wb-intro.html">Previous</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="wb-configuring.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 1 General Information </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Chapter 3 Configuration</td></tr></table></div><div class="copyright-footer"></div></body></html>

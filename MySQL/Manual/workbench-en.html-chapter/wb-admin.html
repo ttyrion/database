@@ -1,0 +1,1120 @@
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Chapter 6 Administrative Tasks</title><link rel="stylesheet" type="text/css" href="mvl.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="MySQL Workbench"><link rel="up" href="index.html" title="MySQL Workbench"><link rel="prev" href="wb-mysql-connections.html" title="Chapter 5 Connections in MySQL Workbench"><link rel="next" href="wb-performance.html" title="Chapter 7 Performance Tools"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 6 Administrative Tasks</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="wb-mysql-connections.html">Previous</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="wb-performance.html">Next</a></td></tr></table><hr></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a name="wb-admin"></a>Chapter 6 Administrative Tasks</h1></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl class="toc"><dt><span class="section"><a href="wb-admin.html#wb-admin-server-management">6.1 Server Management</a></span></dt><dd><dl><dt><span class="section"><a href="wb-admin.html#wb-mysql-connections-navigator-instance-server-logs">6.1.1 Server Logs</a></span></dt><dt><span class="section"><a href="wb-admin.html#wb-mysql-connections-navigator-instance-startup-shutdown">6.1.2 Service Control</a></span></dt><dt><span class="section"><a href="wb-admin.html#wb-mysql-connections-navigator-instance-options-file">6.1.3 Configuration (Options File)</a></span></dt></dl></dd><dt><span class="section"><a href="wb-admin.html#wb-mysql-connections-navigator-management-users-and-privileges">6.2 Users and Privileges</a></span></dt><dt><span class="section"><a href="wb-admin.html#wb-mysql-connections-navigator-management-server-status">6.3 Server Status</a></span></dt><dt><span class="section"><a href="wb-admin.html#wb-mysql-connections-navigator-management-status-variables">6.4 Status and System Variables</a></span></dt><dt><span class="section"><a href="wb-admin.html#wb-admin-export-import">6.5 Data Export and Import</a></span></dt><dd><dl><dt><span class="section"><a href="wb-admin.html#wb-admin-export-import-table">6.5.1 Table Data Export and Import Wizard</a></span></dt><dt><span class="section"><a href="wb-admin.html#wb-admin-export-import-management">6.5.2 SQL Data Export and Import Wizard</a></span></dt><dt><span class="section"><a href="wb-admin.html#wb-admin-export-import-results">6.5.3 Result Data Export and Import</a></span></dt></dl></dd><dt><span class="section"><a href="wb-admin.html#wb-audit-inspector">6.6 MySQL Audit Inspector Interface</a></span></dt><dt><span class="section"><a href="wb-admin.html#wb-mysql-enterprise-backup">6.7 MySQL Enterprise Backup Interface</a></span></dt><dd><dl><dt><span class="section"><a href="wb-admin.html#wb-mysql-enterprise-backup-general-requirements">6.7.1 General Requirements</a></span></dt><dt><span class="section"><a href="wb-admin.html#wb-mysql-enterprise-backup-online-backup">6.7.2 Online Backup</a></span></dt><dt><span class="section"><a href="wb-admin.html#wb-mysql-enterprise-backup-backup-recovery">6.7.3 Backup Recovery</a></span></dt></dl></dd><dt><span class="section"><a href="wb-admin.html#wb-mysql-firewall">6.8 MySQL Enterprise Firewall Interface</a></span></dt><dt><span class="section"><a href="wb-admin.html#wbcopytables">6.9 The wbcopytables Tool</a></span></dt></dl></div><p>
+    MySQL Workbench provides a visual interface to administer your MySQL
+    environment. The available visual tools help configure your MySQL
+    servers, administer users, perform backup and recovery, inspect
+    audit data, and view database health.
+  </p><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-admin-server-management"></a>6.1 Server Management</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="wb-admin.html#wb-mysql-connections-navigator-instance-server-logs">6.1.1 Server Logs</a></span></dt><dt><span class="section"><a href="wb-admin.html#wb-mysql-connections-navigator-instance-startup-shutdown">6.1.2 Service Control</a></span></dt><dt><span class="section"><a href="wb-admin.html#wb-mysql-connections-navigator-instance-options-file">6.1.3 Configuration (Options File)</a></span></dt></dl></div><p>
+      Manage your MySQL instances with a comprehensive view of your
+      MySQL server connections. The visual tree-based navigation
+      provides detailed information about server and status variables,
+      including the number of threads, bytes sent and received by
+      clients, buffer allocations size, and more.
+    </p><h3><a name="wb-mysql-connections-navigator"></a>MySQL Connection Navigator</h3><p>
+      The Navigator area of the sidebar panel has an
+      <span class="guilabel">Administration</span> secondary tab (previously
+      named <span class="guilabel">Management</span>) with functionality to
+      monitor and configure your selected MySQL connection. On some
+      hosts, the Navigator and Information labels are not shown. The
+      following figure shows the main elements that apply to server
+      management.
+    </p><div class="figure"><a name="wb-sql-editor-navigator-management-tab"></a><p class="title"><b>Figure 6.1 Navigator Administration Tab</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-manage-server-administration-main.png" width="736" height="515" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h3><a name="wb-mysql-connections-navigator-elements"></a>Description of the Server Management Elements</h3><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+          Connection tab. Each connection made to the MySQL server is
+          represented by a separate connection tab. A server can be
+          active or inactive when the connection tab for it is opened.
+          For assistance in creating and managing MySQL connections, see
+          <a class="xref" href="wb-mysql-connections.html" title="Chapter 5 Connections in MySQL Workbench">Chapter 5, <i>Connections in MySQL Workbench</i></a>.
+        </p></li><li class="listitem"><p>
+          Server menu. The Server menu on the main menu bar is one way
+          to open each category of administration secondary tab. The
+          menu includes the same set of items listed in the
+          <span class="guilabel">Administration</span> tab within the Navigator
+          area, plus two additional items: <span class="guimenuitem">Management
+          Access Settings</span> and <span class="guimenuitem">Reset Saved
+          Passwords for Connection</span>.
+        </p><p>
+          To open the <span class="guilabel">Administration - Users and
+          Privileges</span> secondary tab (see the previous figure),
+          click <span class="guimenu">Server</span> and then <span class="guimenuitem">Users
+          and Privileges</span>.
+        </p></li><li class="listitem"><p>
+          Administration tab. You can display only one administration
+          tab at a time; subsequent administration tabs replace the
+          active tab. To close an open tab, click the
+          <code class="literal">x</code> on the tab.
+        </p></li><li class="listitem"><p>
+          Operation tabs. Some administration secondary tabs also
+          include subtabs that separate the available operations within
+          that category. For example, the <span class="guilabel">Administration -
+          Users and Privileges</span> secondary tab (see the
+          previous figure) has four subtabs: <span class="guilabel">Login</span>,
+          <span class="guilabel">Account Limits</span>, <span class="guilabel">Administrative
+          Roles</span>, and <span class="guilabel">Schema Privileges</span>.
+        </p></li><li class="listitem"><p>
+          Sidebar panel. The sidebar panel includes the Navigator and
+          Information areas. With the
+          <span class="guilabel">Administration</span> tab selected, click any
+          item in the Navigator area to open the related administration
+          tab in the workspace. You can hide or show the panel using the
+          shortcut action in the main toolbar. The previous figure shows
+          only the sidebar panel. The secondary sidebar and output area
+          panels are hidden in this example.
+        </p><p>
+          The <span class="guilabel">Administration</span> secondary tab is
+          separated into the MANAGEMENT, INSTANCE, and PERFORMANCE
+          sections, and the Commercial edition of MySQL Workbench also
+          includes the MYSQL ENTERPRISE section.
+        </p><p>
+          The Navigator area also has a <span class="guilabel">Schemas</span>
+          secondary tab for managing databases using your MySQL
+          Connection. For information about the
+          <span class="guilabel">Schemas</span> tab, see
+          <a class="xref" href="wb-develop.html#wb-sql-editor-navigator" title="8.2.1 Object Browser and Editor Navigator">Section 8.2.1, “Object Browser and Editor Navigator”</a>.
+        </p></li><li class="listitem"><p>
+          Operation buttons. All buttons within the administration tabs
+          are located in same area of the workspace. However, the set of
+          operation buttons changes depending on the selected tab.
+        </p></li></ol></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-mysql-connections-navigator-instance-server-logs"></a>6.1.1 Server Logs</h3></div></div></div><p>
+    The <span class="guilabel">Administration - Server Logs</span> tab displays
+    log information for the MySQL server represented by each connection
+    tab. For each connection, the <span class="guilabel">Administration - Server
+    Logs</span> tab includes additional tabs for the general error
+    logs and the slow logs (if available).
+  </p><p>
+    With a valid connection established, and the connection tab for it
+    open, you can access log information from either the Navigator panel
+    or by clicking <span class="guimenu">Server</span> and then
+    <span class="guimenuitem">Server Logs</span> from the menu.
+  </p><h4><a name="idm140544311334176"></a>Error Log File</h4><p>
+    The following figure shows an example of entries within the
+    <span class="guilabel">Error Log File</span> tab. For more information, see
+    <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/error-log.html" target="_top">The Error Log</a>.
+  </p><div class="figure"><a name="wb-mysql-connections-navigator-server-logs-error-log"></a><p class="title"><b>Figure 6.2 Navigator Management: Instance: Server Logs: Error Log</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-navigator-server-logs-error-log.png" width="800" height="501" alt="Error Log File tab showing Oldest, Previous Page, Next Page, Most Recent, and Refresh buttons."></div></div></div><br class="figure-break"><h4><a name="idm140544311325168"></a>Slow Log File</h4><p>
+    The next figure shows an example of entries within the
+    <span class="guilabel">Slow Log File</span> tab. For more information, see
+    <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html" target="_top">The Slow Query Log</a>
+  </p><div class="figure"><a name="wb-mysql-connections-navigator-server-logs-slow"></a><p class="title"><b>Figure 6.3 Navigator Management: Instance: Server Logs: Slow Log</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-navigator-server-logs-slow.png" width="800" height="501" alt="Slow Log File tab showing Oldest, Previous Page, Next Page, Most Recent, and Refresh buttons."></div></div></div><br class="figure-break"></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-mysql-connections-navigator-instance-startup-shutdown"></a>6.1.2 Service Control</h3></div></div></div><p>
+    The <span class="guilabel">Administration - Startup / Shutdown</span> tab
+    enables you to perform the following service-control actions:
+  </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+        View the <span class="guilabel">Startup Message Log</span>.
+      </p></li><li class="listitem"><p>
+        Start up and shut down the MySQL instance.
+      </p></li><li class="listitem"><p>
+        View the current status of the MySQL instance.
+      </p></li></ul></div><p>
+    With a valid connection established, and the connection tab for it
+    open, you can access the control actions from either the Navigator
+    panel or by clicking <span class="guimenu">Server</span> and then
+    <span class="guimenuitem">Startup/Shutdown</span> from the menu. The
+    following figure shows an example of the <span class="guilabel">Administration -
+    Startup / Shutdown</span> tab with the database server instance
+    running and the <span class="guibutton">Stop Server</span> button displayed.
+  </p><div class="figure"><a name="wb-mysql-connections-navigator-startup-shutdown"></a><p class="title"><b>Figure 6.4 Navigator Management: Instance: Startup / Shutdown</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-navigator-startup-shutdown.png" width="799" height="589" alt="Administration - Startup / Shutdown tab showing the Stop Server, Refresh Status, Clear Messages, and Copy to Clipboard buttons."></div></div></div><br class="figure-break"></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-mysql-connections-navigator-instance-options-file"></a>6.1.3 Configuration (Options File)</h3></div></div></div><p>
+    The <span class="guilabel">Options File</span> editor is used to view and
+    edit the <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/option-files.html" target="_top">MySQL configuration
+    file</a> (<code class="filename">my.ini</code> on Windows or
+    <code class="filename">my.cnf</code> on Linux and macOS) by selecting check
+    boxes and other GUI controls, and then making edits. MySQL Workbench
+    divides the options file into its own groupings as a set of tabs
+    (such as <span class="guilabel">General</span>, <span class="guilabel">Logging</span>,
+    <span class="guilabel">InnoDB</span>, and so on). Make an edit and click
+    <span class="guibutton">Apply</span> to commit the changes.
+  </p><p>
+    You can open the <span class="guilabel">Administration - Options File</span>
+    secondary tab from either the Navigator area of the sidebar panel or
+    by clicking <span class="guimenu">Server</span> and then <span class="guimenuitem">Options
+    File</span> from the menu.
+  </p><p>
+    The options file editor includes the following components:
+  </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+        Option file groupings, as divided into convenient tabs by
+        MySQL Workbench.
+      </p></li><li class="listitem"><p>
+        A <span class="guilabel">Locate option</span> search field to search your
+        MySQL options configuration file.
+      </p></li><li class="listitem"><p>
+        <span class="guilabel">Configuration File</span> path, so you know the
+        configuration file you are editing.
+      </p></li><li class="listitem"><p>
+        An options file group selector, to select the option [group] to
+        edit. Because the same option can be defined under multiple
+        groupings, it is important to choose the correct group when
+        making edits. <code class="literal">[mysqld]</code> (the MySQL server) is
+        the default and most common group. For additional information
+        about groups, see <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/option-files.html" target="_top">Using Option Files</a>.
+      </p></li></ul></div><p>
+    The following figure shows an instance of the <span class="guilabel">Options
+    File</span> with the <span class="guilabel">General</span> tab selected.
+  </p><div class="figure"><a name="wb-mysql-connections-navigator-options-file-general"></a><p class="title"><b>Figure 6.5 Navigator Administration: Instance: Options File: General</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-navigator-options-file-general.png" width="759" height="583" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-mysql-connections-navigator-management-users-and-privileges"></a>6.2 Users and Privileges</h2></div></div></div><p>
+    The <span class="guilabel">Administration - Users and Privileges</span> tab
+    provides a list of all users and privileges that relate to an active
+    MySQL server instance. From this tab, you can add and manage user
+    accounts, adjust privileges, and expire passwords.
+  </p><p>
+    To open the <span class="guilabel">Administration - Users and
+    Privileges</span> tab:
+  </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+        Establish a connection to an active MySQL server instance.
+      </p></li><li class="listitem"><p>
+        Within the connection tab, do one of the following:
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            Click <span class="guilabel">Users and Privileges</span> from the
+            <span class="guilabel">Management</span> list within the Navigator
+            area.
+          </p></li><li class="listitem"><p>
+            Click <span class="guimenu">Server</span> and then <span class="guimenuitem">Users
+            and Privileges</span> from the menu.
+          </p></li></ul></div></li></ol></div><p>
+    The <span class="guilabel">Administration - Users and Privileges</span> tab
+    has several task areas, which are described in the following
+    sections:
+  </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><a class="xref" href="wb-admin.html#wb-users-and-privileges-accounts" title="User Accounts">User Accounts</a></p></li><li class="listitem"><p><a class="xref" href="wb-admin.html#wb-users-and-privileges-login" title="Login Tab">Login Tab</a></p></li><li class="listitem"><p><a class="xref" href="wb-admin.html#wb-users-and-privileges-limits" title="Account Limits Tab">Account Limits Tab</a></p></li><li class="listitem"><p><a class="xref" href="wb-admin.html#wb-users-and-privileges-admin-roles" title="Administrative Roles Tab">Administrative Roles Tab</a></p></li><li class="listitem"><p><a class="xref" href="wb-admin.html#wb-users-and-privileges-schema-privileges" title="Schema Privileges Tab">Schema Privileges Tab</a></p></li></ul></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="wb-users-and-privileges-accounts"></a>User Accounts</h3></div></div></div><p>
+      <span class="guilabel">User Accounts</span> consists of a vertical box that
+      lists each user account associated with the active MySQL
+      connection. The list contains each user name and the host name
+      where the account resides. Use the <span class="guibutton">Add
+      Account</span>, <span class="guibutton">Delete</span>, and
+      <span class="guibutton">Refresh</span> buttons to manage the list of user
+      accounts. Selecting an account from the list focuses the account
+      details, which appear in set of tabs, onto the selected user
+      account.
+    </p><p>
+      The figure that follows shows the layout of the
+      <span class="guilabel">Administration - Users and Privileges</span> tab
+      with the <span class="guilabel">Login</span> detail tab open to show an
+      example of general account information.
+    </p><div class="figure"><a name="wb-mysql-connections-navigator-users-privileges-login"></a><p class="title"><b>Figure 6.6 Navigator Administration: User And Privileges with Login Tab Open</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-navigator-users-privileges-login.png" width="748" height="460" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      For a description of the <span class="guilabel">Login</span>,
+      <span class="guilabel">Account Limits</span>, <span class="guilabel">Administrative
+      Roles</span>, and <span class="guilabel">Schema Privileges</span> tabs,
+      see the related sections.
+    </p></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="wb-users-and-privileges-login"></a>Login Tab</h3></div></div></div><p>
+      The <span class="guilabel">Login</span> tab provides the following
+      information related to the selected user account:
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <span class="guilabel">Login Name:</span> You may create multiple
+          accounts with the same name to connect from different hosts.
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">Authentication Type:</span> For standard
+          password or host-based authentication, select
+          <code class="literal">Standard</code>. The
+          <code class="literal">caching_sha2_password</code> and
+          <code class="literal">SHA256_Password</code> authentication types
+          provide more secure password encryption than the
+          <code class="literal">Standard</code> authentication type.
+        </p><p>
+          Starting with MySQL 8.0.4, the
+          <code class="literal">caching_sha2_password</code> plugin is the default
+          authentication plugin for the server. An account that
+          authenticates with <code class="literal">caching_sha2_password</code>
+          must use either a secure connection or an unencrypted
+          connection that supports password exchange using an RSA key
+          pair.
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">Limit to Hosts Matching:</span> The
+          <code class="literal">%</code> and <code class="literal">_</code> characters may
+          be used as wildcards. The percent sign (<code class="literal">%</code>)
+          matches zero or more characters and the underscore
+          (<code class="literal">_</code>) matches a single character.
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">Password</span> and <span class="guilabel">Confirm
+          Password:</span> To reset a password, type in the new
+          password and then confirm it. Consider using a password of
+          eight or more characters with mixed-case letters, numbers, and
+          punctuation marks.
+        </p><p>
+          Use <span class="guibutton">Expire Password</span> to require a change
+          of password to use the account.
+        </p></li></ul></div></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="wb-users-and-privileges-limits"></a>Account Limits Tab</h3></div></div></div><p>
+      The <span class="guilabel">Account Limits</span> tab defines the following
+      limits on the selected user account:
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <span class="guilabel">Max. Queries:</span> The number of queries the
+          account can execute within one hour.
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">Max. Updates:</span> The number of updates the
+          account can execute within one hour.
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">Max. Connections:</span> The number of times the
+          account can connect to the server within an hour.
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">Concurrent Connections:</span> The number of
+          simultaneous connections to the server the account can have.
+        </p></li></ul></div></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="wb-users-and-privileges-admin-roles"></a>Administrative Roles Tab</h3></div></div></div><p>
+      Roles are a quick way of granting a set of privileges to a user,
+      based on the work the user must carry out on the server. It is
+      also possible to assign multiple roles to a user account or to
+      assign privileges directly to an account without first assigning
+      roles.
+    </p><p>
+      After you select a role for a user account, you will see the
+      accumulated privileges in the <span class="guilabel">Global
+      Privileges</span> panel. For example, if you select the role
+      <code class="literal">BackupAdmin</code>, the privileges granted include
+      <code class="literal">EVENT</code>, <code class="literal">LOCK TABLES</code>,
+      <code class="literal">SELECT</code>, <code class="literal">SHOW DATABASES</code>. For
+      a complete list of privileges, see
+      <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html" target="_top">Privileges Provided by MySQL</a>
+    </p><p>
+      The <span class="guilabel">Administrative Roles</span> tab includes the
+      following roles:
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <code class="literal">DBA</code>: Grants the rights to perform all
+          tasks.
+        </p></li><li class="listitem"><p>
+          <code class="literal">MaintenanceAdmin</code>: Grants rights to maintain
+          the server.
+        </p></li><li class="listitem"><p>
+          <code class="literal">ProcessAdmin</code>: Grants rights to assess,
+          monitor, and kill user processes.
+        </p></li><li class="listitem"><p>
+          <code class="literal">UserAdmin</code>: Grants rights to create user
+          logins and reset passwords.
+        </p></li><li class="listitem"><p>
+          <code class="literal">SecurityAdmin</code>: Grants rights to manage
+          logins and grant and revoke server privileges.
+        </p></li><li class="listitem"><p>
+          <code class="literal">MonitorAdmin</code>: Grants the minimum rights to
+          monitor the server.
+        </p></li><li class="listitem"><p>
+          <code class="literal">DBManager</code>: Grants full rights on all
+          databases.
+        </p></li><li class="listitem"><p>
+          <code class="literal">DBDesigner</code>: Grants rights to create and
+          reverse-engineer any database schema.
+        </p></li><li class="listitem"><p>
+          <code class="literal">ReplicationAdmin</code>: Grants rights needed to
+          set up and manage replication.
+        </p></li><li class="listitem"><p>
+          <code class="literal">BackupAdmin</code>: Grants minimum rights required
+          to back up any database.
+        </p></li><li class="listitem"><p>
+          <code class="literal">Custom</code>: Lists other (custom) privileges
+          that are assigned to the user account. This role is not
+          available for all default accounts, such as
+          <code class="literal">root</code>. If you select a user account and then
+          select one or more privileges directly that are outside of any
+          selected roles, the <span class="guilabel">Custom</span> role is added
+          (and selected) to the list of roles.
+        </p></li></ul></div><p>
+      To remove all of the rights assigned to the selected user account,
+      click <span class="guibutton">Revoke All Privileges</span>.
+    </p></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="wb-users-and-privileges-schema-privileges"></a>Schema Privileges Tab</h3></div></div></div><p>
+      The <span class="guilabel">Schema Privileges</span> tab refines the way you
+      assign access rights to one or more schemas by user account. To
+      assign privileges to the selected account by schema, do the
+      following:
+    </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+          Add a schema entry (or rule) that specifies which schema or
+          schemas apply the selected user account. Click <span class="guibutton">Add
+          Entry</span> to open the New Schema Privilege Definition
+          dialog. The dialog provides the following independent options
+          to select:
+        </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+              <span class="guilabel">All Schema (%)</span> - This rule applies to
+              any schema name.
+            </p></li><li class="listitem"><p>
+              <span class="guilabel">Schemas matching pattern:</span>
+              <strong class="userinput"><code><em class="replaceable"><code>pattern</code></em></code></strong>
+              - Apply this rule to schemas that match the given name or
+              pattern. You may use <code class="literal">_</code> and
+              <code class="literal">%</code> as wildcards in the pattern; however,
+              to use the literal value you must escape each wildcard
+              character with a backslash (<code class="literal">\</code>) .
+            </p></li><li class="listitem"><p>
+              <span class="guilabel">Selected schema:</span> <em class="replaceable"><code>schema
+              name</code></em> - Apply the rule to the specific schema
+              name selected from the list.
+            </p></li></ul></div><p>
+          Use <span class="guibutton">Delete Entry</span> to remove an entry and
+          the privileges associated with it from the list. When you
+          click <span class="guibutton">Revoke All Privileges</span>, you are
+          prompted remove all privileges assigned to the selected user
+          account.
+        </p></li><li class="listitem"><p>
+          With an entry selected, mark the individual access rights that
+          apply only to the schema or schemas defined in the entry. The
+          access rights are categorized as Object Rights, DDL Rights,
+          and Other Rights. Each right that you select appears in the
+          <span class="guilabel">Privileges</span> column of the schema entry.
+        </p></li></ol></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-mysql-connections-navigator-management-server-status"></a>6.3 Server Status</h2></div></div></div><p>
+      Get an immediate view into the basic health indicators and
+      counters for your MySQL environment. As the next figure shows,
+      this includes viewing the server's running state
+      (stopped/running), available features, primary server directories,
+      replication state, and security settings for authentication and
+      SSL. Reports also include information and graphs to track memory
+      usage, connections, hit rates, and more.
+    </p><p>
+      You can access this window from either the Navigator area, or by
+      selecting <span class="guimenu">Server</span> and then <span class="guimenuitem">Server
+      Status</span> from the menu.
+    </p><div class="figure"><a name="wb-mysql-connections-navigator-server-status"></a><p class="title"><b>Figure 6.7 Navigator Administration: Server Status</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-navigator-server-status.png" width="744" height="495" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-mysql-connections-navigator-management-status-variables"></a>6.4 Status and System Variables</h2></div></div></div><p>
+      The <span class="guilabel">Administration - Status and System
+      Variables</span> secondary tab lists the full set of server
+      variables for the active MySQL connection. You may also copy all
+      or selected variables to your clipboard.
+    </p><p>
+      You can open this secondary tab from either the Navigator area
+      (see MANAGEMENT) or by clicking <span class="guimenu">Server</span> and then
+      <span class="guimenuitem">Status and System Variables</span> from the
+      menu. The following figure shows the <span class="guilabel">Status
+      Variables</span> subtab selected with all of the status
+      variable listed by name. Each variable has a value, if applicable,
+      and a description.
+    </p><div class="figure"><a name="wb-mysql-connections-navigator-variables-status"></a><p class="title"><b>Figure 6.8 Navigator Administration: Status Variables</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-navigator-variables-status.png" width="757" height="504" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      The next figure shows the <span class="guilabel">System Variables</span>
+      subtab selected with all of the global system variables for the
+      active server listed by name. You can refine the list of status
+      and system variables by typing the variable name into to the text
+      box provided or by selecting a category, such as
+      <code class="literal">InnoDB/General</code>.
+    </p><div class="figure"><a name="wb-mysql-connections-navigator-variables-system"></a><p class="title"><b>Figure 6.9 Navigator Management: System Variables</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-navigator-variables-system.png" width="753" height="511" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h3><a name="wb-mysql-connections-navigator-management-status-variables-persist"></a>Persist System Variables</h3><p>
+      Beginning with MySQL Workbench 8.0.11, you can set one or more global
+      system variables to persist across server restarts. To persist a
+      variable, select the <span class="guilabel">Persist</span> check box next
+      to the name (see the previous figure). For system variables that
+      include a value, the value is displayed in the <span class="guilabel">Persisted
+      Value</span> column of the list after you select the check
+      box. If a variable is not eligible to be persisted, an
+      informational dialog box appears when you select the check box.
+    </p><p>
+      To reset a persistent global system variable, deselect the
+      individual check box and then confirm the reset action for the
+      individual variable in the dialog box that opens. To reset all the
+      persistent variables at once, click <span class="guibutton">Reset persist
+      values</span> and then confirm the reset action for all of
+      the persistent variables.
+    </p><h3><a name="wb-mysql-connections-navigator-management-status-variables-group"></a>Custom Variable Grouping</h3><p>
+      The status and system variables are each categorized by groups
+      (such as InnoDB or Logging), and you may also create your own
+      custom groups. Right-click a variable, choose the custom group (or
+      create a new one), and then add the variable to the aforementioned
+      group. Your custom groups are listed along with the pre-existing
+      groups.
+    </p><p>
+      The following figure shows an example of a custom group titled
+      <code class="literal">My Variables</code>, which is being added to the
+      <code class="literal">Created_tmp_variables</code> variable.
+    </p><div class="figure"><a name="wb-status-and-system-variables-custom"></a><p class="title"><b>Figure 6.10 Navigator Management: Adding A Variable To A Custom Group</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-status-and-system-variables-custom.png" width="800" height="695" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-admin-export-import"></a>6.5 Data Export and Import</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="wb-admin.html#wb-admin-export-import-table">6.5.1 Table Data Export and Import Wizard</a></span></dt><dt><span class="section"><a href="wb-admin.html#wb-admin-export-import-management">6.5.2 SQL Data Export and Import Wizard</a></span></dt><dt><span class="section"><a href="wb-admin.html#wb-admin-export-import-results">6.5.3 Result Data Export and Import</a></span></dt></dl></div><p>
+      There are three ways to export and import data in MySQL Workbench,
+      each serving a different purpose.
+    </p><div class="table"><a name="wb-admin-export-import-methods"></a><p class="title"><b>Table 6.1 Methods to Export or Import data in MySQL Workbench</b></p><div class="table-contents"><table class="table" summary="Methods to Export or Import data in MySQL Workbench" border="1"><colgroup><col><col><col><col><col></colgroup><thead><tr><th scope="col">GUI Location</th><th scope="col">Data Set</th><th scope="col">Export Types</th><th scope="col">Import Types</th><th scope="col">Additional Details</th></tr></thead><tbody><tr><td scope="row">Object Browser context menu</td><td>Tables</td><td>JSON, CSV</td><td>JSON, CSV</td><td>Simple table operations, includes moderate control over the output type
+              (this method was added in version 6.3.0)</td></tr><tr><td scope="row">Result Grid menu under the SQL editor</td><td>Result set (after performing an SQL query)</td><td>CSV, HTML, JSON, SQL, XML, Excel XML, TXT</td><td>CSV</td><td>Simple data operations, includes little control</td></tr><tr><td scope="row">Management Navigator</td><td>Databases and/or Tables</td><td>SQL</td><td>SQL</td><td>Detailed database and table operations, standard backup/restore behavior
+              using the <span class="command"><strong>mysqldump</strong></span> command and meta
+              data, includes control over how data is handled, and
+              includes meta data</td></tr><tr><td scope="row">Management Navigator</td><td>Databases and/or Tables</td><td>SQL</td><td>SQL</td><td>Detailed database and table operations, includes control over how data
+              is handled, can be scheduled and incremental, includes
+              meta data, uses
+              <a class="link" href="wb-admin.html#wb-mysql-enterprise-backup" title="6.7 MySQL Enterprise Backup Interface">MySQL Enterprise Backup</a>
+              (commercial)</td></tr></tbody></table></div></div><br class="table-break"><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-admin-export-import-table"></a>6.5.1 Table Data Export and Import Wizard</h3></div></div></div><p>
+        This wizard supports import and export operations using CSV and
+        JSON files, and includes several configuration options
+        (separators, column selection, encoding selection, and more).
+        The wizard can be performed against local or remotely connected
+        MySQL servers, and the import action includes table, column, and
+        type mapping.
+      </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+          This wizard only exports/imports tables using the JSON or CSV
+          format. For an overview of the data export and import options
+          in MySQL Workbench, see <a class="xref" href="wb-admin.html#wb-admin-export-import" title="6.5 Data Export and Import">Section 6.5, “Data Export and Import”</a>.
+        </p></div><p>
+        The wizard is accessible from the object browser's context menu
+        by right-clicking on a table and choose either
+        <span class="guimenuitem">Table Data Export Wizard</span> or
+        <span class="guimenuitem">Table Data Import Wizard</span>, as the next
+        figure shows.
+      </p><div class="figure"><a name="wb-table-data-wizard-menu"></a><p class="title"><b>Figure 6.11 Table Data Wizards: Open</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-table-data-wizard-menu.png" width="458" height="562" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-admin-export-import-table-export"></a>Table Data Export Wizard</h4></div></div></div><p>
+          Export table data to either a JSON or CSV file. The following
+          figures show an example of an export sequence of the
+          <span class="emphasis"><em>sakila.actor</em></span> table to a CSV file.
+        </p><div class="figure"><a name="wb-table-data-export-source"></a><p class="title"><b>Figure 6.12 Table Data Export: Source</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-table-data-export-source.png" width="802" height="600" alt="Select data for export."></div></div></div><br class="figure-break"><div class="figure"><a name="wb-table-data-export-configuration"></a><p class="title"><b>Figure 6.13 Table Data Export: CSV Configuration</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-table-data-export-csv-configuration.png" width="802" height="600" alt="Select output file location."></div></div></div><br class="figure-break"><div class="figure"><a name="wb-table-data-export-results"></a><p class="title"><b>Figure 6.14 Table Data Export: Results</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-table-data-export-results.png" width="802" height="600" alt="Export data."></div></div></div><br class="figure-break"></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-admin-export-import-table-import"></a>Table Data Import Wizard</h4></div></div></div><p>
+          You can import table data from either a JSON or CSV file. The
+          following figures show an example of an import sequence of the
+          <span class="emphasis"><em>sakila.actor</em></span> table from a CSV file.
+        </p><div class="figure"><a name="wb-table-data-import-csv-source"></a><p class="title"><b>Figure 6.15 Table Data Import: CSV Source</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-table-data-import-csv-source.png" width="800" height="600" alt="Select file to import."></div></div></div><br class="figure-break"><div class="figure"><a name="wb-table-data-import-destination"></a><p class="title"><b>Figure 6.16 Table Data Import: Destination Table</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-table-data-import-destination.png" width="800" height="600" alt="Select destination."></div></div></div><br class="figure-break"><div class="figure"><a name="wb-table-data-import-csv-configuration"></a><p class="title"><b>Figure 6.17 Table Data Import: CSV Configuration</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-table-data-import-csv-configuration.png" width="800" height="755" alt="Configure import settings."></div></div></div><br class="figure-break"><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+            The <span class="guilabel">Encoding</span> field should correspond
+            with your CSV file.
+          </p></div><div class="figure"><a name="wb-table-data-import-results"></a><p class="title"><b>Figure 6.18 Table Data Import: Results</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-table-data-import-results.png" width="800" height="755" alt="Import data."></div></div></div><br class="figure-break"></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-admin-export-import-management"></a>6.5.2 SQL Data Export and Import Wizard</h3></div></div></div><p>
+        Use this wizard to either export or import SQL generated from
+        MySQL Workbench or with the <span class="command"><strong>mysqldump</strong></span> command.
+      </p><p>
+        Access these wizards from either the Navigator area of the
+        sidebar, or by selecting <span class="guimenu">Server</span> from the main
+        menu, and then either <span class="guimenuitem">Data Import</span> or
+        <span class="guimenuitem">Data Export</span>.
+      </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+          This wizard only exports/imports the MySQL SQL format. For an
+          overview of the data export and import options in MySQL Workbench,
+          see <a class="xref" href="wb-admin.html#wb-admin-export-import" title="6.5 Data Export and Import">Section 6.5, “Data Export and Import”</a>.
+        </p></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-mysql-connections-navigator-management-data-export"></a>Data Export</h4></div></div></div><p>
+          This tab allows you to export your MySQL data. Select each
+          schema you want to export, optionally choose specific schema
+          objects/tables from each schema, and generate the export.
+          Configuration options include exporting to a project folder or
+          self-contained SQL file, optionally dump stored routines and
+          events, or skip table data.
+        </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+            Alternatively, use
+            <a class="xref" href="wb-admin.html#wb-develop-sql-editor-export" title="Export a Result Set">Export a Result Set</a> to export a
+            specific result set in the SQL editor to another format such
+            as CSV, JSON, HTML, and XML.
+          </p></div><p>
+          Select the schema objects to export and then configure the
+          related options. The figure that follows shows the
+          <code class="literal">sakila</code> database ready for export.
+        </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+            Click <span class="guibutton">Refresh</span> to load the current
+            objects.
+          </p></div><div class="figure"><a name="wb-mysql-connections-navigator-data-export-object"></a><p class="title"><b>Figure 6.19 Navigator Administration: Data Export: Object Selection</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-navigator-data-export-object.png" width="800" height="662" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+          Optionally open the <span class="guibutton">Advanced Options</span>
+          tab that allows you to refine the export operation. The next
+          figure shows an example that adds table locks, uses replace
+          instead of insert statements, quotes identifiers with backtick
+          characters, and so on.
+        </p><div class="figure"><a name="wb-mysql-connections-navigator-data-export-advanced"></a><p class="title"><b>Figure 6.20 Navigator Administration: Data Export: Advanced Options</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-navigator-data-export-advanced.png" width="800" height="828" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+          Click <span class="guibutton">Start Export</span> to begin the export
+          process. As the next figure shows, status information
+          indicates when the export is finished.
+        </p><div class="figure"><a name="wb-mysql-connections-navigator-data-export-progress"></a><p class="title"><b>Figure 6.21 Navigator Administration: Data Export: Export Progress</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-navigator-data-export-progress.png" width="800" height="662" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+          This functionality uses the <span class="command"><strong>mysqldump</strong></span>
+          command.
+        </p></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-mysql-connections-navigator-management-data-import-restore"></a>Data Import/Restore</h4></div></div></div><p>
+          Restore exported data from the <span class="guilabel">Data
+          Export</span> operation, or from other exported data from
+          the <span class="command"><strong>mysqldump</strong></span> command.
+        </p><p>
+          Choose the project folder or self-contained SQL file, choose
+          the schema that the data will be imported to, or choose
+          <span class="guibutton">New</span> to define a new schema. The
+          following figure shows an example of an import from a dump
+          project folder.
+        </p><div class="figure"><a name="wb-mysql-connections-navigator-data-import-from-disk"></a><p class="title"><b>Figure 6.22 Navigator Administration: Data Import: Import From Disk</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-navigator-data-import-from-disk.png" width="756" height="504" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+            You may only select specific data objects (tables) to import
+            if the data export operation used project folders instead of
+            a self-contained SQL file.
+          </p></div><p>
+          Click <span class="guibutton">Start Import</span> to begin the import
+          process. Use the <span class="guilabel">Import Progress</span> tab to
+          monitor the progress. Status information indicates when the
+          import is finished and displays the log.
+        </p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-admin-export-import-results"></a>6.5.3 Result Data Export and Import</h3></div></div></div><p>
+        Export or Import data directly from or into the result set.
+      </p><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-develop-sql-editor-export"></a>Export a Result Set</h4></div></div></div><p>
+          A result set in the visual SQL editor can be exported to
+          common file formats including CSV, JSON, HTML, and XML. The
+          following figure demonstrates the selection of JSON as the
+          export type from within the Export Resultset dialog.
+        </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+            This wizard only exports/imports data from a result set. For
+            an overview of the data export and import options in
+            MySQL Workbench, see <a class="xref" href="wb-admin.html#wb-admin-export-import" title="6.5 Data Export and Import">Section 6.5, “Data Export and Import”</a>.
+          </p></div><div class="figure"><a name="wb-develop-sql-editor-table-export-results"></a><p class="title"><b>Figure 6.23 Exporting a Result Set</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-develop-export-results.png" width="800" height="490" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-develop-sql-editor-import"></a>Import into a Result Set</h4></div></div></div><p>
+          Records from a CSV file can be imported into the result set of
+          the visual SQL editor.
+        </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+            The result set must have a unique row identifier (such as a
+            Primary Key or NOT NULL unique index) as otherwise values
+            can not be imported because the result set will be
+            read-only.
+          </p></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+            Alternatively, use <a class="xref" href="wb-admin.html#wb-admin-export-import" title="6.5 Data Export and Import">Section 6.5, “Data Export and Import”</a>
+            to export larger sets of data, such as entire tables and
+            databases.
+          </p></div></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-audit-inspector"></a>6.6 MySQL Audit Inspector Interface</h2></div></div></div><p>
+    MySQL Workbench offers a graphical interface to the Audit Inspector. By
+    default, the <code class="literal">audit_log</code> plugin is not installed.
+  </p><p>
+    To activate the <code class="literal">audit_log</code> plugin:
+  </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+        Click <span class="guilabel">Audit Inspector</span> from the
+        <span class="guilabel">Administration</span> secondary tab of the
+        Navigator area to open the <span class="guilabel">Administration - Audit
+        Inspector</span> tab
+      </p></li><li class="listitem"><p>
+        Click <span class="guibutton">Install audit_log</span> within the tab.
+      </p></li></ol></div><p>
+    After the plugin is installed, the initial screen looks similar to
+    the figure that follows. At this point, no entries are listed.
+  </p><div class="figure"><a name="fig-wb-audit-inspector-initial"></a><p class="title"><b>Figure 6.24 Workbench: Audit Inspector: Initializing</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-audit-inspector-initial.png" width="751" height="487" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+    When you first start the <span class="guilabel">Audit Inspector</span>,
+    MySQL Workbench must cache the audit log for performance reasons.
+    MySQL Workbench then parses, indexes, and retrieves values from the
+    encrypted cached file on your local computer.
+  </p><p>
+    Generating the cache file can take a long time. If you press
+    <span class="guibutton">Abort</span> during the caching process, MySQL Workbench
+    will save the results that were cached at the point you pressed
+    <span class="guibutton">Abort</span>.
+  </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+      MySQL Workbench will prompt for <span class="bold"><strong>sudo</strong></span>
+      access if the MySQL Workbench user is unable to read the audit log
+      file.
+    </p></div><p>
+    To generate the cache file, click <span class="guibutton">Cache Selected Files
+    for Browsing</span>. When prompted, set a password for the
+    encrypted file that will be used when viewing this file. After
+    caching an audit log, the <span class="guilabel">Audit Inspector</span>
+    screen displays the results as shown in the following figure. Each
+    record includes a record ID, timestamp, type, connection ID, user,
+    host/IP, status, command class, and information.
+  </p><div class="figure"><a name="fig-wb-audit-inspector-main"></a><p class="title"><b>Figure 6.25 Workbench: Audit Inspector</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-audit-inspector-main.png" width="753" height="484" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+    The search field offers criteria for narrowing the displayed events,
+    including <span class="guimenuitem">Show events of type Fetch</span> and
+    <span class="guimenuitem">Show events of type Query</span>, and defaults
+    to <span class="guimenuitem">Show all events</span>. Custom filters are
+    also available.
+  </p><p>
+    Click <span class="guibutton">Add Files to Cache</span> at any time to add
+    new files to the cache. Click <span class="guibutton">Delete Cache</span> to
+    remove the cache file.
+  </p><p>
+    The next time you start the Audit Inspector, you will be prompted
+    for the password that you set during the initial step.
+  </p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-mysql-enterprise-backup"></a>6.7 MySQL Enterprise Backup Interface</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="wb-admin.html#wb-mysql-enterprise-backup-general-requirements">6.7.1 General Requirements</a></span></dt><dt><span class="section"><a href="wb-admin.html#wb-mysql-enterprise-backup-online-backup">6.7.2 Online Backup</a></span></dt><dt><span class="section"><a href="wb-admin.html#wb-mysql-enterprise-backup-backup-recovery">6.7.3 Backup Recovery</a></span></dt></dl></div><p>
+    MySQL Workbench includes a MySQL Enterprise Backup interface that is listed in the
+    Navigator <span class="guilabel">Administration</span> tab for a MySQL
+    connection. There are two MySQL Enterprise Backup related sections in the Navigator:
+  </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+        <span class="guilabel">Online Backup</span>: Sets a backup profile that
+        defines <code class="literal">what</code> should be backed up,
+        <code class="literal">where</code> the backup should be stored, and
+        <code class="literal">when</code> (the frequency) MySQL should be backed
+        up.
+      </p></li><li class="listitem"><p>
+        <span class="guilabel">Restore</span>: Restores the MySQL server to a
+        specific point in time, typically by restoring a backup that was
+        created by the <span class="guilabel">Online Backup</span> feature in
+        MySQL Workbench.
+      </p></li></ul></div><p>
+    For information comparing the different methods to import/export
+    data using MySQL Workbench, see
+    <a class="xref" href="wb-admin.html#wb-admin-export-import" title="6.5 Data Export and Import">Section 6.5, “Data Export and Import”</a>.
+  </p><p>
+    The MySQL Enterprise Backup configuration is located on the MySQL server, and not
+    locally. This information includes the MySQL Enterprise Backup configuration backup
+    profiles, job scheduling, backup operations, and data. This also
+    means that the backup operations are executed with (or without)
+    MySQL Workbench running.
+  </p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-mysql-enterprise-backup-general-requirements"></a>6.7.1 General Requirements</h3></div></div></div><p>
+      MySQL Enterprise Backup is a MySQL Enterprise Feature that is separate from
+      MySQL Workbench. For more information about its functionality, see the
+      MySQL Enterprise Backup documentation at
+      <a class="ulink" href="http://dev.mysql.com/doc/mysql-enterprise-backup/en" target="_top">http://dev.mysql.com/doc/mysql-enterprise-backup/en</a>.
+      MySQL Workbench provides an interface to MySQL Enterprise Backup, as described in the
+      following documentation. In addition to having MySQL Enterprise Backup installed on
+      your host, the following general requirements also apply:
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          A recent version of MySQL Enterprise Backup. The MySQL Enterprise Backup support policy is to
+          support the current GA version of MySQL Enterprise Backup, and the major version
+          before that. This dictates the minimum MySQL Enterprise Backup version required
+          by MySQL Workbench, which is the major version before the current
+          GA release.
+        </p></li><li class="listitem"><p>
+          Managing both local and remote MySQL instances is available on
+          Linux and macOS, and managing local MySQL instances is
+          available on Microsoft Windows. Remote management is
+          configured using SSH Remote Management.
+        </p></li><li class="listitem"><p>
+          A MySQL connection with a root user.
+        </p></li><li class="listitem"><p>
+          The MySQL server configuration file path must be set and
+          correct for the MySQL connection.
+        </p></li><li class="listitem"><p>
+          The user running MySQL Workbench must be a sudo user (Linux and 
+          macOS) that is able to execute the MySQL Enterprise Backup binary.
+        </p></li><li class="listitem"><p>
+          Additionally, the sudo user must keep the
+          <code class="literal">HOME</code> environment variable when executing
+          system commands, which means adding the following to
+          <code class="filename">/etc/sudoers</code>:
+        </p><pre class="programlisting">
+env_keep +="HOME"
+</pre></li></ul></div><p>
+      You can set the following prerequisites by clicking
+      <span class="guibutton">Settings</span>:
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          A path to the MySQL Enterprise Backup executable. MySQL Enterprise Backup is available with
+          eDelivery or My Oracle Support (MOS). MySQL Workbench attempts to
+          locate the MySQL Enterprise Backup executable, so check the path and adjust it
+          accordingly.
+        </p></li><li class="listitem"><p>
+          The path to the <span class="guilabel">Backup Home Directory</span>,
+          where backup profiles and data is stored. This can be created
+          from within Workbench from <span class="guilabel">Settings</span>.
+        </p></li><li class="listitem"><p>
+          The MySQL account for the <span class="guilabel">Backup Process</span>.
+          The available actions depends on the current state of this set
+          up, with options including:
+        </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem"><p>
+              <span class="guibutton">Create MEB Account</span>: Available if a
+              backup user does not already exist.
+            </p></li><li class="listitem"><p>
+              <span class="guibutton">Change Password</span>: Available if a
+              backup user does exist.
+            </p></li><li class="listitem"><p>
+              <span class="guibutton">Fix Grants for MEB</span>: Available if
+              the user's privileges are invalid, which alters the user
+              by adding the <code class="literal">RELOAD</code>,
+              <code class="literal">SUPER</code>, and <code class="literal">REPLICATION CLIENT
+              ON *.*</code> privileges.
+            </p></li></ul></div></li></ul></div><p>
+      <span class="bold"><strong>Uninstalling Workbench notes</strong></span>
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          Uninstalling Workbench does not remove the associated MySQL Enterprise Backup
+          backup tasks. To stop the scheduled backups, edit the related
+          "Task Scheduler" entries on Windows, or remove the associated
+          cron jobs on Linux and macOS.
+        </p></li><li class="listitem"><p>
+          Uninstalling Workbench does not remove the MySQL Enterprise Backup master
+          related configuration file, the configuration files generated
+          for each defined profile, nor the MySQL backups.
+        </p></li></ul></div><p>
+      The following figure shows an example of the prerequisites.
+    </p><div class="figure"><a name="fig-wb-meb-online-backup-backup-settings"></a><p class="title"><b>Figure 6.26 Workbench: MySQL Enterprise Backup Settings</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-meb-online-backup-settings.png" width="751" height="534" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      If any of the requirements are not met, then an error will be
+      generated when attempting to use MySQL Enterprise Backup features.
+    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-mysql-enterprise-backup-online-backup"></a>6.7.2 Online Backup</h3></div></div></div><p>
+      Sets a backup profile that defines <code class="literal">what</code> should
+      be backed up, <code class="literal">where</code> the backup should be
+      stored, and <code class="literal">when</code> (the frequency) it should be
+      backed up. The following figure shows an example of the main
+      screen.
+    </p><div class="figure"><a name="fig-wb-meb-online-backup-backup-main"></a><p class="title"><b>Figure 6.27 Workbench: MySQL Enterprise Backup</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-online-backup-create.png" width="748" height="530" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      The <span class="guilabel">Online Backup</span> page is separated into
+      three sections:
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <span class="guilabel">Backup Jobs</span>: Used for managing backup
+          jobs for the MySQL server. A backup job (profile) is a
+          configuration file used to store information about what is
+          backed up, where the backup is stored, and optionally when
+          backups will be performed.
+        </p><p>
+          Right-click a backup job is an alternative way to access the
+          available actions, such as <span class="guimenuitem">Configure
+          Job</span>, <span class="guimenuitem">Delete Job</span>, and
+          <span class="guimenuitem">Execute Backup</span>. Right-clicking also
+          offers two additional options:
+        </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem"><p>
+              <span class="guimenu">Execute Backup to Image File</span>: Saves the
+              backup to a single file, and prompts for the file name.
+            </p></li><li class="listitem"><p>
+              <span class="guimenu">Copy Backup Command to Clipboard</span>:
+              Generates a command for executing the backup, and copies
+              it to your clipboard. You might execute this command in
+              the shell or terminal, which looks similar to:
+              <code class="literal">/bin/mysqlbackup
+              --defaults-file="/var/lib/meb/foo.cnf"
+              --show-progress=stdout backup --with-timestamp</code>.
+            </p></li></ul></div></li><li class="listitem"><p>
+          <span class="guilabel">Backup Job Details</span>: Displays information
+          about the state of a specific (selected) backup job. It
+          includes information from the <span class="guibutton">Settings</span>
+          page, and information specific to the selected backup.
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">Recent Activity</span>: Historical information
+          about the backup operations performed on the server. View the
+          backup log by right-clicking an entry and choosing
+          <code class="literal">View Backup Log</code>
+        </p></li></ul></div><p>
+      A progress dialog is generated for the backup operation.
+    </p><h4><a name="idm140544310858624"></a>Backup Jobs</h4><p>
+      The following information applies to the <span class="guibutton">New
+      Job</span> operation, and <span class="guibutton">Configure
+      Job</span> is used to modify existing jobs.
+    </p><p>
+      The <span class="guilabel">Backup Profile Name</span> and its associated
+      <span class="guilabel">Comments</span> field are used to identify the
+      profile of the backup job. Each backup job name is listed on the
+      main screen.
+    </p><p>
+      The <span class="guibutton">New Job</span> scheduling screen separates the
+      configuration information into four subtabs:
+      <span class="guilabel">Schedule</span>, <span class="guilabel">Contents</span>,
+      <span class="guilabel">Options</span>, and <span class="guilabel">Advanced</span>.
+      The <span class="guilabel">Contents</span> subtab defines the schemas and
+      tables to back up, and whether the job is a full or partial
+      backup.
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <code class="literal">Full backup</code>: All schemas and tables are
+          backed up (see the figure that follows).
+        </p><div class="figure"><a name="fig-wb-meb-online-backup-configure-full-contents"></a><p class="title"><b>Figure 6.28 Workbench: MySQL Enterprise Backup Configuration: Contents for Full Backups</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-meb-online-backup-configure-contents-full.png" width="737" height="471" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></li><li class="listitem"><p>
+          <code class="literal">Partial</code>: Select the schemas and tables
+          (objects) that you want to back up. Choose <span class="guilabel">Select
+          objects to included/excluded</span> to open the table
+          inclusion (and exclusion) options. For additional information
+          about the include, exclude, and <span class="guilabel">Transportable
+          Tablespace</span> options, see the MySQL Enterprise Backup documentation
+          titled
+          <a class="ulink" href="http://dev.mysql.com/doc/mysql-enterprise-backup/en/backup-partial-options.html" target="_top">Partial
+          Backup and Restore Options</a>.
+        </p></li></ul></div><p>
+      The <span class="guilabel">Options</span> tab includes settings to modify
+      the default behavior of the backup process.
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <span class="guilabel">Backup Storage Directory</span>: By default, the
+          <span class="guilabel">Backup Storage Directory</span> is stored under
+          a sub-folder using the name of the <span class="guilabel">Backup Profile
+          Name</span> in the <code class="literal">MySQL Backup Home
+          Directory</code> setting.
+        </p><p>
+          A new sub-folder is created for each backup, named with its
+          timestamp. An example subdirectory is "2016-02-22_17-49-18"
+          where 17:49:18 is the time.
+        </p><p>
+          Incremental backups are also stored in the <span class="guilabel">Backup
+          Storage Directory</span> directory, but in their own
+          <code class="filename">inc/</code> sub-folder. Each incremental backup
+          also creates its own timestamped sub-folder within
+          <code class="filename">inc/</code>.
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">Compress Backup</span>: Optionally compress
+          non-incremental InnoDB backups.
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">Apply Log after backup</span>: After a backup is
+          completed, an <a class="ulink" href="http://dev.mysql.com/doc/mysql-enterprise-backup/8.0/en/backup-commands-update.html#option_meb_apply-log" target="_top"><code class="option">apply-log</code></a> operation
+          is needed before it can be completed. This can be done after a
+          backup, before recovery, or at any other time. Disabled by
+          default.
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">Skip Unused Pages</span>: Use this option to
+          reduce the backup size by removing unused pages that are
+          typically generated by bulk deletes. Disabled by default.
+        </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+            Enabling this increases the restoration time because the
+            removed unused pages must be added back during the recovery
+            process.
+          </p></div></li></ul></div><p>
+      Additional options include compression and
+      <code class="literal">apply-log</code>, and the option to <span class="guilabel">Skip
+      Unused Pages</span>.
+    </p><p>
+      The <span class="guilabel">Schedule</span> tab optionally sets a backup
+      schedule for both full and incremental backups (see the figure
+      that follows). The schedule uses the Windows Tasks Scheduler on
+      Microsoft Windows, and a cron job on Linux and macOS. It is
+      scheduled using the operating system user that is scheduling the
+      backup, which is typically the MySQL user.
+    </p><p>
+      A full backup is slower than the incremental backup that merges
+      with a full backup. A common scenario is to set a full backup as
+      weekly, and an incremental backup as daily. For additional
+      information about backup performance, see
+      <a class="ulink" href="http://dev.mysql.com/doc/mysql-enterprise-backup/8.0/en/backup-performance.html" target="_top">Optimizing Backup Performance</a>.
+    </p><p>
+      The <span class="guilabel">Advanced</span> tab allows you to pass in
+      additional MySQL Enterprise Backup options.
+    </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+        These additional options are not validated.
+      </p></div><p>
+      To recover backups, see
+      <a class="xref" href="wb-admin.html#wb-mysql-enterprise-backup-backup-recovery" title="6.7.3 Backup Recovery">Section 6.7.3, “Backup Recovery”</a>.
+    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-mysql-enterprise-backup-backup-recovery"></a>6.7.3 Backup Recovery</h3></div></div></div><p>
+      The Backup Recovery wizard is used to recover MySQL Enterprise Backup backups. For
+      more information about creating MySQL Enterprise Backup backups using MySQL Workbench,
+      see <a class="xref" href="wb-admin.html#wb-mysql-enterprise-backup-online-backup" title="6.7.2 Online Backup">Section 6.7.2, “Online Backup”</a>.
+    </p><p>
+      The Backup Recovery wizard allows you to restore backups from
+      folders, image files, and backup profiles created by
+      <a class="xref" href="wb-admin.html#wb-mysql-enterprise-backup-online-backup" title="6.7.2 Online Backup">Section 6.7.2, “Online Backup”</a>. Before
+      you can restore a MySQL instance from a backup to a target server,
+      you must first delete all files inside the data directory of that
+      server.
+    </p><p>
+      Click <span class="guilabel">Restore</span> from the Navigator area in the
+      sidebar and then select the appropriate option. The following
+      figure shows an example recovery session.
+    </p><div class="figure"><a name="fig-wb-backup-recovery-start"></a><p class="title"><b>Figure 6.29 Workbench: Backup Recovery: Start</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-meb-backup-recovery-start.png" width="744" height="527" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <span class="bold"><strong>Backup Profile</strong></span>: Choose from
+          the available MySQL Enterprise Backup profiles on your system.
+        </p></li><li class="listitem"><p>
+          <span class="bold"><strong>Backup Image File</strong></span>: Opens the
+          system's file browser; choose a backup image file to restore.
+        </p></li><li class="listitem"><p>
+          <span class="bold"><strong>Backup Folder</strong></span>: Opens the
+          system's file browser; choose a backup folder to restore.
+        </p></li></ul></div><p>
+      In the following figure, the example session restores a full
+      backup profile that was created by MySQL Workbench Online Backup.
+      After choosing the "FullBackup" profile that we created earlier,
+      use the next page to review its upcoming restoration.
+    </p><div class="figure"><a name="fig-wb-backup-recovery-profile"></a><p class="title"><b>Figure 6.30 Workbench: Backup Recovery: Profile</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-meb-backup-recovery-main.png" width="738" height="665" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      Optionally, click <span class="guibutton">View Backup Content</span> to
+      view the backup contents for the restoration (see the figure that
+      follows for an example).
+    </p><div class="figure"><a name="fig-wb-backup-recovery-table-view"></a><p class="title"><b>Figure 6.31 Workbench: Backup Recovery: Contents Table View</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-meb-backup-recovery-table-view.png" width="800" height="600" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+        The <span class="guilabel">Show System</span> check box toggles internal
+        schemas from view, schemas such as the internal
+        performance_schema and mysql tables.
+      </p></div><p>
+      Clicking <span class="guibutton">Next &gt;</span> will open the
+      <span class="guilabel">Restore</span> wizard. The example next uses
+      <span class="guibutton">Restore &gt;</span> to execute the restoration
+      process and to toggle the message logs as shown in the following
+      figure.
+    </p><div class="figure"><a name="fig-wb-backup-recovery-restore"></a><p class="title"><b>Figure 6.32 Workbench: Backup Recovery: Restore</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-backup-recovery-restore.png" width="736" height="587" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-mysql-firewall"></a>6.8 MySQL Enterprise Firewall Interface</h2></div></div></div><p>
+    MySQL Workbench provides a graphical interface to MySQL Enterprise Firewall. For additional
+    information about MySQL Enterprise Firewall, see
+    <a class="ulink" href="https://dev.mysql.com/doc/en/firewall.html" target="_top">https://dev.mysql.com/doc/en/firewall.html</a>.
+  </p><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="wb-mysql-firewall-setup"></a>Setup and Configuration</h3></div></div></div><p>
+      MySQL Workbench can manage the MySQL Enterprise Firewall installation and configuration
+      by installing (or uninstalling) and enabling (or disabling) the
+      plugin, and enabling (or disabling) Firewall Tracer.
+    </p><p>
+      To prepare MySQL Enterprise Firewall plugin:
+    </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+          Open a connection to MySQL Enterprise Edition.
+        </p></li><li class="listitem"><p>
+          From the Navigator area of the sidebar and with the
+          <span class="guilabel">Administration</span> secondary tab selected,
+          click <span class="guilabel">Firewall</span> (see MYSQL ENTERPRISE) to
+          open the <span class="guilabel">Administration - Firewall</span>
+          secondary tab in the workspace.
+        </p><p>
+          If MySQL Enterprise Firewall is not installed, click <span class="guibutton">Install
+          Firewall</span>. After the plugin is installed,
+          MySQL Workbench displays three controls: <span class="guilabel">Installed
+          status</span>, <span class="guilabel">Enabled status</span>, and
+          <span class="guilabel">Tracer status</span>. The following figure shows
+          the MySQL Enterprise Firewall installed, but not yet enabled within MySQL Workbench.
+        </p><div class="figure"><a name="wb-firewall-plugin-startup-configure"></a><p class="title"><b>Figure 6.33 MySQL Enterprise Firewall Installation and Configuration</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-firewall-plugin-startup-configure.png" width="739" height="513" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></li><li class="listitem"><p>
+          Click <span class="guibutton">Enable Firewall</span> to make the
+          plugin fully operational, and optionally click
+          <span class="guibutton">Enable Firewall Tracer</span> to enable
+          tracing. You can modify the plugin controls as follows:
+        </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+              <span class="guilabel">Install</span>: Executes queries to install
+              the new MySQL Enterprise Firewall tables and stored procedure needed to
+              switch the state. <span class="guilabel">Uninstall</span> reverses
+              these effects, which also removes the recorded rules.
+            </p></li><li class="listitem"><p>
+              <span class="guilabel">Enable</span>: Executes <span class="emphasis"><em> SET
+              GLOBAL mysql_firewall_mode = ON;</em></span> against the
+              connected MySQL server. <span class="guilabel">Disable</span> sets
+              it to OFF instead of ON.
+            </p><p>
+              This is a runtime operation. Configure the MySQL server
+              configuration file to enable MySQL Enterprise Firewall at startup.
+              Specifically, select the
+              <code class="literal">mysql_firewall_mode</code> option in the
+              configuration option to enable it after a restart. You can
+              edit the MySQL configuration file with an external editor
+              or use MySQL Workbench to edit it.
+            </p></li></ul></div></li></ol></div></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="wb-mysql-firewall-rules"></a>Firewall Rules and Information</h3></div></div></div><p>
+      The <span class="guilabel">Firewall Rules</span> tab lists the active and
+      recorded rules for a given user, the state of each rule, and
+      includes options to add, delete, and save rules. The next figure
+      shows the actions available within the <span class="guilabel">Firewall
+      Rules</span> tab.
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <span class="guilabel">State</span> (mode): Options include
+          <span class="bold"><strong>OFF</strong></span> (disables the firewall),
+          <span class="bold"><strong>PROTECTING</strong></span> (enables the
+          whitelist), <span class="bold"><strong>RECORDING</strong></span>
+          (training mode), and <span class="bold"><strong>RESET</strong></span>
+          (removes the rules). For additional information about the
+          meaning of these states, see
+          <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/firewall-reference.html#firewall-routines" target="_top">MySQL Enterprise Firewall Procedures and Functions</a>.
+        </p></li><li class="listitem"><p>
+          Administrative actions include <span class="guibutton">Add</span> and
+          <span class="guibutton">Delete</span> for individual rules, and
+          <span class="guibutton">Clear</span> to clear (remove) all rules.
+          <span class="guibutton">Add From File</span> prompts for a firewall
+          rules text file (defaults to the <code class="filename">.fwr</code>
+          extension) that contains one rule per line, and
+          <span class="guibutton">Save To File</span> saves the current rules.
+        </p></li><li class="listitem"><p>
+          <span class="emphasis"><em>Active rules</em></span> are used in PROTECTIVE mode,
+          and <span class="emphasis"><em>Rules being recorded</em></span> are entries
+          still being RECORDED. Switching from RECORDING to PROTECTING
+          mode copies the recorded rules into the active rule subset.
+        </p></li></ul></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+        MySQL Workbench executes queries, gets variables, and performs a lot
+        of checks. For this reason, MySQL Workbench is more useful as an
+        administration tool for MySQL Enterprise Firewall than a tool to record rules. For
+        example, RECORDING rules in MySQL Workbench will record the
+        behind-the-scenes operations performed by MySQL Workbench for the
+        MySQL user. Also, using MySQL Workbench by a MySQL user in
+        PROTECTING mode will attempt to execute operations that a
+        typical firewalled MySQL user might not have access to.
+      </p></div><div class="figure"><a name="wb-firewall-users-firewall-rules"></a><p class="title"><b>Figure 6.34 MySQL Enterprise Firewall Rules</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-firewall-users-firewall-rules.png" width="800" height="525" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wbcopytables"></a>6.9 The wbcopytables Tool</h2></div></div></div><p>
+    <a class="link" href="wb-admin.html#wbcopytables" title="6.9 The wbcopytables Tool"><span class="command"><strong>wbcopytables</strong></span></a> is a command line utility included
+    in MySQL Workbench that allows you to copy table data from a supported
+    source database server to MySQL. It is used by the Workbench
+    Migration wizard to copy data after the schema is migrated and
+    created in the target MySQL server.
+  </p><p>
+    <a class="link" href="wb-admin.html#wbcopytables" title="6.9 The wbcopytables Tool"><span class="command"><strong>wbcopytables</strong></span></a> can connect to the source database
+    using either ODBC, the Python DBAPI, or the native MySQL client
+    library.
+  </p><p>
+    The copy executes a <code class="literal">SELECT</code> statement on the
+    source database, and then <code class="literal">INSERT</code>'s the retrieved
+    rows into the target MySQL server.
+  </p><div class="table"><a name="wbcopytables-file-location"></a><p class="title"><b>Table 6.2 File Location (Default)</b></p><div class="table-contents"><table><col width="25%"><col width="75%"><thead><tr>
+        <th scope="col">Operating System</th>
+        <th scope="col">Location</th>
+      </tr></thead><tbody><tr>
+        <td scope="row">Linux</td>
+        <td scope="row"><code class="filename">/usr/bin/wbcopytables</code></td>
+      </tr><tr>
+        <td scope="row">macOS</td>
+        <td scope="row"><code class="filename">/Applications/MySQLWorkbench.app/Contents/MacOS/wbcopytables</code></td>
+      </tr><tr>
+        <td scope="row">Windows</td>
+        <td scope="row"><code class="filename">C:\Program Files\MySQL\MySQL Workbench
+          6.3\wbcopytables.exe</code></td>
+      </tr></tbody></table></div></div><br class="table-break"><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="wbcopytables-connection-parameters"></a>Connection Parameters</h3></div></div></div><p>
+      Options for the source connection are:
+    </p><p>
+      <code class="option">--odbc-source</code>=<em class="replaceable"><code>ODBC_connection_string</code></em>:
+      The syntax of the ODBC connection string uses standard ODBC
+      syntax. You can also use a ODBC data source name (DSN).
+    </p><p>
+      <code class="option">--mysql-source</code>=<em class="replaceable"><code>MySQL_connection_string</code></em>:
+      Use for MySQL sources (when doing a MySQL to MySQL
+      migration/copy). It uses the same syntax as the MySQL Utilities:
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          For TCP/IP connections:
+          <em class="replaceable"><code>username[:password]@host:port</code></em>
+        </p></li><li class="listitem"><p>
+          For local socket connections:
+          <em class="replaceable"><code>username[:password]@::socket_path</code></em>
+        </p></li></ul></div><p>
+      You can pass the connection password by using the
+      <code class="option">--source-password</code> option.
+    </p><p>
+      For the target connection, the option is:
+      <code class="option">--target</code>=<em class="replaceable"><code>MySQL_connection_string</code></em>.
+    </p><p>
+      You can use the <code class="option">--passwords-from-stdin</code> option to
+      pass a passwords through STDIN. Source and target passwords must
+      be separated by a tab character.
+    </p><p>
+      You can use ODBC specific data source options from the source
+      RDBMS to specify the number of rows to fetch at a time for the
+      source <code class="literal">SELECT</code> statement.
+    </p></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="wbcopytables-connection-table-specs"></a>Table Specification</h3></div></div></div><p>
+      One or more tables can be specified in the command line for the
+      copy operation. There are two copy types:
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          Full table copy: <code class="option">--table</code>
+        </p></li><li class="listitem"><p>
+          Range copy: <code class="option">--table-range</code>
+        </p></li></ul></div><p>
+      Both table copy types require a set of common arguments:
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <span class="bold"><strong>Source schema</strong></span>: The
+          schema/catalog the table belongs to. If quoting is required,
+          it must be done using the syntax from the source RDBMS. For
+          example, SQL Server uses
+          <span class="emphasis"><em>[square_brackets]</em></span>.
+        </p></li><li class="listitem"><p>
+          <span class="bold"><strong>Source table</strong></span>: The table to
+          copy. If the source RDBMS uses a schema name in addition to a
+          catalog, both schema and table must be specified here and
+          separated by a dot. For example,
+          <span class="emphasis"><em>[dbo].[mytable]</em></span>.
+        </p></li><li class="listitem"><p>
+          <span class="bold"><strong>Target schema</strong></span>: The name of
+          the MySQL schema. If quoting is needed, it must use the MySQL
+          backtick syntax. For example,
+          <code class="literal">`</code>sakila<code class="literal">`</code>.
+        </p></li><li class="listitem"><p>
+          <span class="bold"><strong>Target table</strong></span>: The name of the
+          MySQL table.
+        </p></li><li class="listitem"><p>
+          <span class="bold"><strong>Select expression</strong></span>: The list
+          of fields to <code class="literal">SELECT</code>. This will be inserted
+          verbatim into the source <code class="literal">SELECT</code> statement.
+        </p><div class="caution" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Caution</div><p>
+            Use caution as this expression is copied directly into the
+            source <code class="literal">SELECT</code> statement.
+          </p></div></li></ul></div><p>
+      For the select expression, if both the source and target tables
+      have the same fields in the same order, and use compatible types,
+      you can simply pass <code class="literal">*</code> here, which will build a
+      query like "<span class="emphasis"><em>SELECT * FROM [dbo].[mytable]</em></span>".
+      If not, you can specify the fields as you would in the
+      <code class="literal">SELECT</code> statement, which are comma (,) separated
+      and with proper escaping/quoting specific to the source RDBMS. You
+      can also specify typecasts and/or data conversions that the source
+      RDBMS supports. For example:
+    </p><p>
+      [client_id], [name], [address], AsText([location])
+    </p><p>
+      Because each option must be interpreted as a single option by the
+      <a class="link" href="wb-admin.html#wbcopytables" title="6.9 The wbcopytables Tool"><span class="command"><strong>wbcopytables</strong></span></a> command, you must perform OS shell
+      specific quoting whenever necessary. Usually, quoting your
+      parameter values with 'single' or "double" quotes is enough. This
+      is in addition to any database specific quoting you use.
+    </p><h4><a name="wbcopytables-full-table-copy"></a>Full Table Copy</h4><p>
+      This performs a full <code class="literal">SELECT</code> on the source
+      table, fetches records, and then inserts them into the target
+      table.
+    </p><p>
+      There are no additional arguments required.
+    </p><p>
+      The <code class="option">--table</code> syntax is as follows:
+    </p><pre class="programlisting">
+
+--table Source_Schema Source_Table Target_Schema Target_Table Select_Expression
+
+</pre><h4><a name="wbcopytables-range-table-copy"></a>Range Copy</h4><p>
+      This performs a <code class="literal">SELECT</code> copy on the source table
+      for the specified range. The table must have a numeric
+      <code class="literal">UNIQUE NOT NULL</code> or <code class="literal">PRIMARY
+      KEY</code> that is used to create a <code class="literal">WHERE</code>
+      expression for the range.
+    </p><p>
+      The <code class="option">--table-range</code> syntax is as follows:
+    </p><pre class="programlisting">
+
+--table-range Source_Schema Source_Table Target_Schema Target_Table Select_Expression Source_Key Range_Start Range_End
+
+</pre><p>
+      The generated expression is:
+    </p><pre class="programlisting">
+
+key_column &gt;= range_start AND key_column &lt;= range_end
+
+</pre><p>
+      If you specify <span class="bold"><strong>-1</strong></span> for Range_End,
+      then the expression will be:
+    </p><pre class="programlisting">
+
+key_column &gt;= range_start
+
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="wbcopytables-other-options"></a>Other Options</h3></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <code class="option">--thread-count</code>=<em class="replaceable"><code>Number</code></em>:
+          If you are copying more than one table, you can use this
+          option to divide the tables across several threads. There is
+          no support for dividing a single table across many threads.
+        </p></li><li class="listitem"><p>
+          <code class="option">--count-only</code>: Only perform a
+          <code class="literal">COUNT(*)</code> of the <code class="literal">SELECT</code>
+          which would be generated by the <code class="option">--table</code>
+          option that was used. The target schema and table can be
+          omitted in this case.
+        </p></li><li class="listitem"><p>
+          <code class="option">--truncate-target</code>: Execute a TRUNCATE TABLE
+          command on each target table that is copied.
+        </p></li></ul></div></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="wbcopytables-trigger-handling"></a>Trigger Handling</h3></div></div></div><p>
+      Because there is no way to temporarily disable triggers in MySQL
+      and they can affect the copy process, MySQL Workbench will backup and
+      drop all triggers from the target MySQL database before the copy
+      process starts, and then these triggers are restored after the
+      copy finishes. The triggers are backed up in the target schema
+      under a table named <code class="literal">wb_tmp_triggers</code>.
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <code class="option">--disable-triggers-on</code>=<em class="replaceable"><code>Schema_Name</code></em>:
+          Performs the backup and DROP process for all triggers in the
+          specified schema.
+        </p></li><li class="listitem"><p>
+          <code class="option">--reenable-triggers-on</code>=<em class="replaceable"><code>Schema_Name</code></em>:
+          Restores triggers previously backed up to the
+          <code class="literal">wb_tmp_triggers</code> table.
+        </p></li><li class="listitem"><p>
+          <code class="option">--dont-disable-triggers</code>: Bypass the trigger
+          disabling step.
+        </p></li></ul></div></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="wb-mysql-connections.html">Previous</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="wb-performance.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 5 Connections in MySQL Workbench </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Chapter 7 Performance Tools</td></tr></table></div><div class="copyright-footer"></div></body></html>

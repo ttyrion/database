@@ -1,0 +1,626 @@
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Chapter 1 General Information</title><link rel="stylesheet" type="text/css" href="mvl.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="MySQL Workbench"><link rel="up" href="index.html" title="MySQL Workbench"><link rel="prev" href="wb-preface.html" title="Preface and Legal Notices"><link rel="next" href="wb-installing.html" title="Chapter 2 Installation"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 1 General Information</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="wb-preface.html">Previous</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="wb-installing.html">Next</a></td></tr></table><hr></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a name="wb-intro"></a>Chapter 1 General Information</h1></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl class="toc"><dt><span class="section"><a href="wb-intro.html#wb-what-is-new">1.1 What Is New in MySQL Workbench</a></span></dt><dd><dl><dt><span class="section"><a href="wb-intro.html#wb-what-is-new-8">1.1.1 New in MySQL Workbench 8.0 Release Series</a></span></dt><dt><span class="section"><a href="wb-intro.html#wb-what-is-new-6">1.1.2 New in MySQL Workbench 6.0 Release Series</a></span></dt></dl></dd><dt><span class="section"><a href="wb-intro.html#wb-editions">1.2 MySQL Workbench Editions</a></span></dt></dl></div><p>
+    This chapter provides general information about MySQL Workbench and how
+    it has changed.
+  </p><p>
+    MySQL Workbench is a graphical tool for working with MySQL servers and
+    databases. MySQL Workbench fully supports MySQL server versions 5.5 and
+    higher. It is also compatible with older MySQL server 5.x versions,
+    except in certain situations (like displaying the process list) due
+    to changed system tables. It does not support MySQL server versions
+    4.x.
+  </p><p>
+    MySQL Workbench functionality covers five main topics:
+  </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+        <span class="bold"><strong>SQL Development</strong></span>: Enables you to
+        create and manage connections to database servers. Along with
+        enabling you to configure connection parameters, MySQL Workbench
+        provides the capability to execute SQL queries on the database
+        connections using the built-in SQL Editor.
+      </p></li><li class="listitem"><p>
+        <span class="bold"><strong>Data Modeling (Design)</strong></span>: Enables
+        you to create models of your database schema graphically,
+        reverse and forward engineer between a schema and a live
+        database, and edit all aspects of your database using the
+        comprehensive Table Editor. The Table Editor provides
+        easy-to-use facilities for editing Tables, Columns, Indexes,
+        Triggers, Partitioning, Options, Inserts and Privileges,
+        Routines and Views.
+      </p></li><li class="listitem"><p>
+        <span class="bold"><strong>Server Administration</strong></span>: Enables
+        you to administer MySQL server instances by administering users,
+        performing backup and recovery, inspecting audit data, viewing
+        database health, and monitoring the MySQL server performance.
+      </p></li><li class="listitem"><p>
+        <span class="bold"><strong>Data Migration</strong></span>: Allows you to
+        migrate from Microsoft SQL Server, Microsoft Access, Sybase ASE,
+        SQLite, SQL Anywhere, PostreSQL, and other RDBMS tables, objects
+        and data to MySQL. Migration also supports migrating from
+        earlier versions of MySQL to the latest releases.
+      </p></li><li class="listitem"><p>
+        <span class="bold"><strong>MySQL Enterprise Support</strong></span>:
+        Support for Enterprise products such as MySQL Enterprise Backup, MySQL Firewall,
+        and MySQL Audit.
+      </p></li></ul></div><p>
+    MySQL Workbench is available in two editions: the Community Edition and
+    the Commercial Edition. The Community Edition is available free of
+    charge. The Commercial Edition provides additional Enterprise
+    features, such as access to MySQL Enterprise Backup, MySQL Firewall, and MySQL Audit.
+    For a complete comparison, see
+    <a class="ulink" href="http://www.mysql.com/products/workbench/features.html" target="_top">http://www.mysql.com/products/workbench/features.html</a>
+  </p><p>
+    For notes detailing the changes in each release, see the
+    <a class="ulink" href="http://dev.mysql.com/doc/relnotes/workbench/en/" target="_top">MySQL Workbench Release
+    Notes</a>.
+  </p><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-what-is-new"></a>1.1 What Is New in MySQL Workbench</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="wb-intro.html#wb-what-is-new-8">1.1.1 New in MySQL Workbench 8.0 Release Series</a></span></dt><dt><span class="section"><a href="wb-intro.html#wb-what-is-new-6">1.1.2 New in MySQL Workbench 6.0 Release Series</a></span></dt></dl></div><p>
+    For notes detailing the changes in each point release, see the
+    <a class="ulink" href="http://dev.mysql.com/doc/relnotes/workbench/en/" target="_top">MySQL Workbench Release
+    Notes</a>.
+  </p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-what-is-new-8"></a>1.1.1 New in MySQL Workbench 8.0 Release Series</h3></div></div></div><p>
+      This section summarizes how the MySQL Workbench 8.0 release series
+      progressed with each minor release.
+    </p><h4><a name="idm140544318839392"></a>SQL Query and Object Editors</h4><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          SQL context help was enhanced to eliminate the requirement of
+          having a valid MySQL connection to view the help topics and to
+          improve the presentation of each help topic.
+        </p></li><li class="listitem"><p>
+          A new code-completion engine was added for use with object
+          editors (triggers, views, stored procedures, and functions) in
+          the visual SQL editor and in models.
+        </p></li><li class="listitem"><p>
+          Geometry fields displayed in the result grid now include a
+          context-menu item that opens the specific location value in a
+          browser. The selected point opens in
+          <code class="literal">openstreetmap.org</code> by default, but an
+          alternative online service can be used (see
+          <a class="xref" href="wb-configuring.html#wb-preferences-others" title="3.2.7 Other Preferences">Section 3.2.7, “Other Preferences”</a> ).
+        </p></li><li class="listitem"><p>
+          Support for invisible indexes was added for use when the
+          active server supports the feature and the index is neither a
+          primary key index nor a unique column (see
+          <a class="ulink" href="http://dev.mysql.com/doc/refman/8.0/en/invisible-indexes.html" target="_top">Invisible Indexes</a>). A new option in the
+          <span class="guilabel">Indexes</span> subtab of the table editor (for
+          both the SQL and modeling editors) provides index visibility
+          when it is selected.
+        </p></li></ul></div><h4><a name="idm140544318831280"></a>SET PERSIST and SET PERSIST ONLY Functionality</h4><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          MySQL Workbench now provides a simple way to enable or disable the
+          persisted global system variable settings introduced in MySQL
+          8.0 (see <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/set-variable.html" target="_top">SET Syntax for Variable Assignment</a>). For variables that
+          can be persisted, a new check box enables configuration
+          changes at runtime that also persist across server restarts
+          and applies the persisted value, if one exists. Persistent
+          system variables can be reset (to not persist) individually or
+          collectively. For additional information, see
+          <a class="xref" href="wb-admin.html#wb-mysql-connections-navigator-management-status-variables-persist" title="Persist System Variables">Persist System Variables</a>.
+        </p></li></ul></div><h4><a name="idm140544318827216"></a>Platform and Source Code Changes</h4><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          Support for Microsoft Windows Server 2016 was added in the
+          MySQL Workbench 8.0.11 release.
+        </p></li><li class="listitem"><p>
+          MySQL Workbench source code has been reformatted according to
+          Google style.
+        </p></li></ul></div><h4><a name="idm140544318824304"></a>Security Changes</h4><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          MySQL Workbench now supports the
+          <code class="literal">caching_sha2_password</code> authentication plugin
+          introduced in MySQL 8.0 (see
+          <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/caching-sha2-pluggable-authentication.html" target="_top">Caching SHA-2 Pluggable Authentication</a>).
+        </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-what-is-new-6"></a>1.1.2 New in MySQL Workbench 6.0 Release Series</h3></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="wb-intro.html#wb-what-is-new-63">1.1.2.1 New in MySQL Workbench 6.3</a></span></dt><dt><span class="section"><a href="wb-intro.html#wb-what-is-new-62">1.1.2.2 New in MySQL Workbench 6.2</a></span></dt><dt><span class="section"><a href="wb-intro.html#wb-what-is-new-61">1.1.2.3 New in MySQL Workbench 6.1</a></span></dt><dt><span class="section"><a href="wb-intro.html#wb-what-is-new-60">1.1.2.4 New in MySQL Workbench 6.0</a></span></dt></dl></div><p>
+      This section summarizes how the MySQL Workbench 6.0 release series
+      progressed with each minor release.
+    </p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="wb-what-is-new-63"></a>1.1.2.1 New in MySQL Workbench 6.3</h4></div></div></div><p>
+        This section summarizes many of the new features added to
+        MySQL Workbench 6.3.x, in relation to MySQL Workbench 6.2.x;.
+      </p><h5><a name="idm140544313296432"></a>MySQL</h5><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            Full MySQL 5.7 language support was added, which affects
+            grammar, syntax highlighting, preferences, behavior, and
+            more.
+          </p></li><li class="listitem"><p>
+            The bundled <code class="filename">sakila_full.mwb</code> model now
+            uses a dedicated 5.7 version to allow for 5.7 specific
+            features, regardless of the version setting in the
+            preferences.
+          </p></li><li class="listitem"><p>
+            The JSON editor was improved with better parsing and error
+            checking.
+          </p></li><li class="listitem"><p>
+            The option to specify an alternative application data
+            directory, instead of the default location, was added.
+          </p></li><li class="listitem"><p>
+            Dropped support for MySQL 5.1. Minimum version is now MySQL
+            5.5.
+          </p></li><li class="listitem"><p>
+            Dropped Fabric support in MySQL Workbench 6.3.9; support in
+            older versions of MySQL Workbench is unchanged.
+          </p></li><li class="listitem"><p>
+            Dropped support for DBDesigner 4.
+          </p></li></ul></div><h5><a name="idm140544313288496"></a>User Interface Changes</h5><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            The home screen was modified: the connections, models, and
+            starters were split into individual pages.
+          </p></li></ul></div><h5><a name="idm140544313286560"></a>User Preference Changes</h5><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            A new <span class="guilabel">Log Level</span> preference (under
+            <span class="guilabel">Others</span>) was added to alter the log
+            verbosity level.
+          </p><p>
+            As before, this can still be set by passing in the
+            <a class="link" href="wb-installing.html#wb-command-line-options" title="2.2 Command-Line Options">log-level</a>
+            command-line argument into Workbench at runtime, and doing
+            so overrides the <span class="guilabel">Log Level</span> setting.
+          </p></li></ul></div><h5><a name="idm140544313281616"></a>Package and Build Related Changes</h5><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            Linux: Fedora 23 support dropped, Fedora 25 support added.
+            Oracle Linux 6 support was dropped.
+          </p></li><li class="listitem"><p>
+            Windows: Zip packages and 32-bit binaries are no longer
+            published. The .NET Framework version 4.5 is now required.
+          </p></li><li class="listitem"><p>
+            OS X / macOS: Version 10.7 (Lion) and 10.8 (Mountain Lion)
+            support was dropped. Now supporting versions 10.9
+            (Mavericks), 10.10 (Yosemite), 10.11 (El Capitan), and 10.12
+            (Sierra).
+          </p></li><li class="listitem"><p>
+            Changed to GTK 3 on Linux.
+          </p></li><li class="listitem"><p>
+            Changed to C++11.
+          </p></li></ul></div><h5><a name="idm140544313276208"></a>Fast Data Migration</h5><p>
+        A new "fast migration" option was added to the migration wizard.
+        This is another way to transfer data from one MySQL server to
+        another while performing a migration, and it complements the
+        existing solutions. The premise is to use a generated script on
+        the source server to create a dump that you move to the target
+        machine to perform the import there. This avoids the need to
+        traffic all data through MySQL Workbench, or to have a permanent
+        network connection between the servers. Instead, the dump and
+        restore is performed at maximum speed by using the LOAD DATA
+        call for the MySQL import. The migration wizard automatically
+        creates all necessary scripts for all supported platforms and
+        servers. The generated script creates a self-contained Zip file
+        that must be copied to the target server. You unzip it and
+        execute the provided script to perform the data import.
+      </p><div class="figure"><a name="wb-what-is-new-data-transfer-setup-fast-migration"></a><p class="title"><b>Figure 1.1 Data Transfer Setup: New Fast Migration Option</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-data-transfer-setup-fast-migration.png" width="800" height="489" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h5><a name="idm140544313267392"></a>SSL Certificate Generator</h5><p>
+        A new SSL certificate generation wizard was added. This new
+        wizard helps create proper SSL certificates for both MySQL
+        clients and MySQL servers. Connections in MySQL Workbench are
+        updated with the certificates by the wizard. This wizard
+        requires OpenSSL to create the certificates. An example
+        <code class="filename">my.cnf</code> / <code class="filename">my.ini</code> file
+        is also generated that utilizes the generated certificates.
+      </p><div class="figure"><a name="wb-what-is-new-ssl-wizard"></a><p class="title"><b>Figure 1.2 SSL Certificate Wizard</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-ssl-wizard-results.png" width="600" height="450" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+        For additional details, see
+        <a class="xref" href="wb-mysql-connections.html#wb-mysql-connections-ssl-wizard" title="5.3.4 SSL Wizard (Certificates)">Section 5.3.4, “SSL Wizard (Certificates)”</a>.
+      </p><h5><a name="idm140544313257168"></a>SQL Editor Auto-Completion</h5><p>
+        The SQL editor auto-completion improvements include the
+        following changes:
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            It now functions with all statement types, when before only
+            SELECT statements were fully supported.
+          </p></li><li class="listitem"><p>
+            It now minds the MySQL server version. For example, it now
+            only shows the engines available from the server.
+          </p></li><li class="listitem"><p>
+            Additional suggestions are now available, such as system
+            variables, engines, table spaces, logfile groups, and more.
+          </p></li><li class="listitem"><p>
+            New graphics including color coded (and tagged) entries.
+          </p></li><li class="listitem"><p>
+            It is context aware, as for example it only shows available
+            keywords, columns, and tables.
+          </p></li><li class="listitem"><p>
+            Improved MySQL 5.7 syntax support.
+          </p></li></ul></div><div class="figure"><a name="wb-what-is-new-sql-editor-auto-completion"></a><p class="title"><b>Figure 1.3 SQL Editor Auto-Completion</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-sql-editor-auto-completion.png" width="634" height="499" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h5><a name="idm140544313242832"></a>MySQL Enterprise Firewall</h5><p>
+        MySQL Enterprise Firewall support was added in MySQL Workbench 6.3.4. Use MySQL Workbench
+        to install and enable MySQL Enterprise Firewall, and manage the MySQL Enterprise Firewall rules and
+        variables. For additional information, see
+        <a class="xref" href="wb-admin.html#wb-mysql-firewall" title="6.8 MySQL Enterprise Firewall Interface">Section 6.8, “MySQL Enterprise Firewall Interface”</a>.
+      </p><div class="figure"><a name="wb-what-is-new-mysql-enterprise-firewall-install"></a><p class="title"><b>Figure 1.4 MySQL Enterprise Firewall: Install / Enable</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-firewall-plugin-startup-configure.png" width="800" height="653" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><div class="figure"><a name="wb-what-is-new-mysql-enterprise-firewall-users"></a><p class="title"><b>Figure 1.5 MySQL Enterprise Firewall Rules</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-firewall-users-firewall-rules.png" width="800" height="525" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h5><a name="idm140544313227600"></a>MySQL Enterprise Backup</h5><p>
+        Profile handling now detects mismatches between MySQL Enterprise Backup
+        executables and corresponding profiles.
+      </p><p>
+        Improved scheduling logic
+      </p><h5><a name="idm140544313226064"></a>Table Data Export and Import Wizard</h5><p>
+        A new table data import/export wizard was added. This feature
+        enhances the current CSV import and export feature found in the
+        SQL editor's result set viewer. It supports import and export of
+        CSV and JSON files, and allows a more flexible configuration
+        (separators, column selection, encoding selection, and more).
+        This new wizard does not require an executed statement on a
+        table for a result set to be operated on, as it can now work
+        directly on tables. The wizard can be performed against either a
+        local or remotely connected MySQL server. The import action
+        includes table, column, and type mapping. For additional
+        information, see <a class="xref" href="wb-admin.html#wb-admin-export-import-table" title="6.5.1 Table Data Export and Import Wizard">Section 6.5.1, “Table Data Export and Import Wizard”</a>.
+      </p><p>
+        The wizard is accessible from the object browser's context menu.
+      </p><div class="figure"><a name="wb-what-is-new-data-import-export-wizard-menu"></a><p class="title"><b>Figure 1.6 Table Data Import/Export Wizard Menu</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-table-data-wizard-menu.png" width="458" height="562" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><div class="figure"><a name="wb-what-is-new-data-import-export-wizard-configure"></a><p class="title"><b>Figure 1.7 Table Data Import/Export Wizard CSV Configure</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-table-data-import-wizard-configure.png" width="600" height="574" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><div class="figure"><a name="wb-what-is-new-data-import-export-wizard-options"></a><p class="title"><b>Figure 1.8 Table Data Import/Export Wizard Options</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-table-data-import-wizard-options.png" width="600" height="450" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h5><a name="idm140544313203104"></a>Additional Changes</h5><p>
+        MySQL Fabric 1.5 is now supported. Older versions of Fabric are
+        no longer supported due to incompatible protocol changes.
+      </p><p>
+        OS X / macOS builds were switched from 32-bit to 64-bit.
+      </p><p>
+        Platforms support changes: 6.3.0: Fedora 21 and Ubuntu 14.10
+        support was added, Ubuntu 12.10 support was dropped. 6.3.4:
+        Fedora 22 and Ubuntu 15.04 support was added, Ubuntu 14.10
+        support was dropped.
+      </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="wb-what-is-new-62"></a>1.1.2.2 New in MySQL Workbench 6.2</h4></div></div></div><p>
+        This section summarizes many of the new features added to
+        MySQL Workbench 6.2.x, in relation to MySQL Workbench 6.1.x;.
+      </p><h5><a name="idm140544313199264"></a>SQL Editor</h5><p>
+        Most of the changes and improvements were made to the SQL
+        editor.
+      </p><h5><a name="idm140544313198144"></a>Overlay Icons in the Object Viewer</h5><p>
+        The schema navigator now includes shortcut buttons for common
+        operations such as table data view, the table editor, and the
+        table/schema inspector.
+      </p><div class="figure"><a name="wb-what-is-new-overlay-icon"></a><p class="title"><b>Figure 1.9 Object Viewer Overlay Icons</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-object-viewer-overlay-icons.png" width="800" height="580" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h5><a name="idm140544313190192"></a>A "Pin Tab" Results Option</h5><p>
+        Result tabs can now be "pinned" to your result set window.
+      </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+          The "Rename Tab" context menu option is also new. New names
+          are preserved (and remembered) in your Workbench's
+          <code class="filename">cache/</code> directory.
+        </p></div><div class="figure"><a name="wb-what-is-new-pin-tab"></a><p class="title"><b>Figure 1.10 Pin Tab</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-pin-results-tab.png" width="800" height="566" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h5><a name="idm140544313181008"></a>Microsoft Access to MySQL Migration</h5><p>
+        The migration wizard now supports Microsoft Access migration.
+        Select "Microsoft Access" as your source database in the wizard,
+        use MySQL as your target source database, and then execute. For
+        additional information, see
+        <a class="xref" href="wb-migration.html#wb-migration-database-access" title="10.4 Microsoft Access Migration">Section 10.4, “Microsoft Access Migration”</a>.
+      </p><h5><a name="idm140544313179232"></a>Visual Explain / Execution Plan Improvements</h5><p>
+        The Visual Explain <span class="guilabel">Execution Plan</span> feature
+        was improved. A list of changes includes:
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            An "Execution Plan" tab was added to the results view
+          </p></li><li class="listitem"><p>
+            All statements now offer a "Visual Explain" execution plan
+          </p></li><li class="listitem"><p>
+            The layout changed, and was improved to allow easier
+            navigation in large query plans
+          </p></li></ul></div><div class="figure"><a name="wb-what-is-new-visual-explain-execution-plan"></a><p class="title"><b>Figure 1.11 Execution Plan Explained</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-execution-plan-explained.png" width="799" height="546" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h5><a name="idm140544313167856"></a>Spatial View Panel</h5><p>
+        GIS support for InnoDB tables is now supported to make it easier
+        to visualize spatial and geometry data in a geographic context.
+        The new spatial view panel renders data from each row into a
+        separate and selectable element. When clicked, you can view the
+        rest of the data from that row in the textbox. If you have
+        multiple queries with geometry data, you can overlay them onto
+        the same map. View options include the Robinson, Mercator,
+        Equirectangular, and Bonne projection methods.
+      </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+          GIS support for InnoDB tables was added in MySQL server 5.7.
+        </p></div><div class="figure"><a name="wb-what-is-new-spatial-view-gis-example"></a><p class="title"><b>Figure 1.12 Spatial View Example</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-spatial-view-gis-map-example.png" width="800" height="599" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h5><a name="idm140544313158768"></a>Geometry Data Viewer</h5><p>
+        The SQL field and form editors were updated to support the
+        <code class="literal">GEOMETRY</code> datatype. You can view geometry
+        data, such as polygons, from a single row as an image or as
+        text. The available formats include WKT, GeoJSON, GML, and KML.
+      </p><div class="figure"><a name="wb-what-is-new-geometry-data-viewer"></a><p class="title"><b>Figure 1.13 Geometry Data Viewer</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-geometry-data-viewer.png" width="800" height="471" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h5><a name="idm140544313150208"></a>Additional New SQL Editor Features</h5><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            <span class="bold"><strong>Result Set Widths</strong></span>: resized
+            result set column widths are now preserved and remembered.
+            This data is saved under Workbench's
+            <code class="filename">cache/</code> directory using the
+            <span class="emphasis"><em>schema.table.column</em></span> format.
+          </p></li><li class="listitem"><p>
+            Opened, closed, and reordered SQL editor tabs are now
+            properly saved and restored. The scroll position and cursor
+            locations are also remembered.
+          </p></li><li class="listitem"><p>
+            <span class="bold"><strong>Shared Snippets</strong></span>: these
+            allow multiple users to share SQL code across a shared MySQL
+            connection. They are stored in a schema named
+            <span class="emphasis"><em>.mysqlworkbench</em></span> on the connected MySQL
+            server. by storing the snippets in a shared MySQL instance.
+            For additional information, see
+            <a class="xref" href="wb-develop.html#wb-sql-editor-snippets" title="8.1.5 SQL Additions - Snippets Tab">Section 8.1.5, “SQL Additions - Snippets Tab”</a>.
+          </p></li><li class="listitem"><p>
+            The full SQL syntax error is now viewable by hovering over
+            the error response message.
+          </p></li><li class="listitem"><p>
+            The <span class="guilabel">Query Status</span> tab was improved to
+            include graphs and additional information.
+          </p></li></ul></div><h5><a name="idm140544313140656"></a>Execute SQL Scripts</h5><p>
+        The new <span class="guilabel">Run SQL Script</span> dialog executes an
+        SQL script without loading it into the SQL editor. This is
+        useful because loading large scripts for editing can cause
+        performance problems related to increased memory usage and
+        required processing for editor features such as syntax
+        highlighting, syntax checking, and code-folding. The dialog lets
+        you preview a part of the script, optionally specify a default
+        schema, and optionally set the default character set to use for
+        the imported data. The output window shows warnings, messages,
+        and an execution progression bar. Select <span class="guimenuitem">Run SQL
+        Script</span> from the <span class="guimenu">File</span> menu to
+        execute this wizard.
+      </p><div class="figure"><a name="wb-what-is-new-run-sql-script"></a><p class="title"><b>Figure 1.14 Run SQL Script</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-file-run-sql-script.png" width="800" height="644" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h5><a name="idm140544313130496"></a>Model Script Attachments</h5><p>
+        Previously, MySQL Workbench modeling supported attaching SQL script
+        files to models, usually for documentation and organization
+        purposes. You can now include attached SQL files to the output
+        script when performing forward engineering or synchronization
+        operations.
+      </p><div class="figure"><a name="wb-what-is-new-wb-modeling-script-attachments"></a><p class="title"><b>Figure 1.15 Data Modeling Script Attachments</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-modeling-script-attachments.png" width="858" height="493" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h5><a name="idm140544313122512"></a>Client Connections and Metadata locks</h5><p>
+        The <span class="guilabel">Client Connections</span> management window
+        has a new <span class="guibutton">Show Details</span> window. This
+        window's three tabs are:
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            <span class="guilabel">Details</span>: connection details such as
+            Process ID, Type, User, Host, Instrumented, and additional
+            information.
+          </p></li><li class="listitem"><p>
+            <span class="guilabel">Locks</span>: MySQL uses metadata locking to
+            manage access to objects such as tables and triggers.
+            Sometimes a query might be blocked while being manipulated
+            by another connection from another user. The
+            <span class="guilabel">Locks</span> feature utilizes these MySQL
+            metadata locks (MDL) to show the locked connections that are
+            blocked or being waiting on, and shows information about the
+            locks, what they are waiting for, and what they hold.
+          </p><div class="figure"><a name="wb-what-is-new-metadata-locks-figure"></a><p class="title"><b>Figure 1.16 Metadata Locks Browser</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-metadata-lock-browser.png" width="800" height="611" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+              The metadata lock information is provided in the
+              performance schema as of MySQL server 5.7.3.
+            </p></div></li><li class="listitem"><p>
+            <span class="guilabel">Attributes</span>: these are connection
+            attributes such as OS, Client Name, Client Version, and
+            Platform.
+          </p><div class="figure"><a name="wb-what-is-new-client-connection-attributes-figure"></a><p class="title"><b>Figure 1.17 Client Connection Attributes</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-client-connection-attributes.png" width="800" height="490" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></li></ul></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+          This feature uses performance schema details from MySQL server
+          5.7 and above.
+        </p></div><p>
+        For additional information, see
+        <a class="xref" href="wb-mysql-connections.html#wb-mysql-connections-navigator-management-client-connections" title="5.4 Client Connections">Section 5.4, “Client Connections”</a>.
+      </p><h5><a name="idm140544313096944"></a>Additional New Features</h5><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            Performance columns (that display sizes) now have an option
+            to alter the value units. They can be set to KB, MB, or GB.
+            Right-click on a column header and choose <span class="guilabel">Set
+            Display Unit</span>.
+          </p></li><li class="listitem"><p>
+            The migration wizard can now resume operation if a data copy
+            failed during a database migration from, for example, a
+            timeout or network failure. Click
+            <span class="guibutton">Resume</span> retry the data copy, and
+            MySQL Workbench locates the last row that was copied
+            successfully and attempts to restart the copy from that row.
+          </p></li><li class="listitem"><p>
+            The MySQL connection password is now remembered across the
+            MySQL Workbench session, even if it not stored in the keychain.
+            This is so you do not need to re-enter it whenever a new
+            MySQL connection is needed.
+          </p></li><li class="listitem"><p>
+            Under Modeling, the Role Editor now has "Add Everything" and
+            "Check All Privileges" options.
+          </p></li><li class="listitem"><p>
+            The <span class="guilabel">Preferences</span> layout changed. The
+            tabs were replaced by a list using a horizontal sidebar, and
+            additional category names were added. For additional
+            information, see <a class="xref" href="wb-configuring.html#wb-preferences" title="3.2 Workbench Preferences">Section 3.2, “Workbench Preferences”</a>.
+          </p></li><li class="listitem"><p>
+            Keyboard shortcuts now function in the <span class="emphasis"><em>Scripting
+            Shell</em></span>.
+          </p></li><li class="listitem"><p>
+            <span class="bold"><strong>Model diagram notes</strong></span> can now
+            be resized and automatically rearranged. You can also change
+            the style attributes such as the font, background color, and
+            text color.
+          </p><div class="figure"><a name="wb-what-is-new-model-diagram-note-formatting"></a><p class="title"><b>Figure 1.18 Model Diagram Note Formatting</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-model-diagram-note-formatting.png" width="293" height="219" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="wb-what-is-new-61"></a>1.1.2.3 New in MySQL Workbench 6.1</h4></div></div></div><p>
+        This section summarizes many of the new features added to
+        MySQL Workbench 6.1.x, in relation to MySQL Workbench 6.0.x;.
+      </p><h5><a name="idm140544313077600"></a>New Navigator PERFORMANCE Section</h5><p>
+        The new <span class="guilabel">PERFORMANCE</span> section includes
+        <span class="guilabel">Dashboard</span>, <span class="guilabel">Performance
+        Reports</span>, and <span class="guilabel">Performance Schema
+        Setup</span> pages. Generally, this new performance
+        reporting feature provides a graphical representation of key
+        statistics from the MySQL server status, and provides an
+        overview of the MySQL server subsystems.
+      </p><p>
+        <span class="guilabel">Dashboard</span>
+      </p><p>
+        View server performance statistics in a graphical dashboard.
+      </p><div class="figure"><a name="wb-what-is-new-performance-dashboard"></a><p class="title"><b>Figure 1.19 Performance Dashboard</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-performance-dashboard.png" width="800" height="520" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+        <span class="guilabel">Performance Reports</span>
+      </p><p>
+        Performance schema based reports that provide insight into the
+        operation of the MySQL server through many high-level reports.
+      </p><div class="figure"><a name="wb-what-is-new-performance-reports-top-io-bytes"></a><p class="title"><b>Figure 1.20 Performance Reports: Top I/0 By Bytes</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-performance-reports-top-io-bytes.png" width="800" height="503" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+        <span class="guilabel">Performance Schema Setup</span>
+      </p><p>
+        A GUI for configuring and fine tuning the Performance Schema
+        instrumentation. Initially, this loads an "Easy Setup" page that
+        is enough for most users. Slide the "Performance Schema Full
+        Enabled" slider to <span class="guilabel">YES</span> to enable all
+        available Performance Schema instruments.
+      </p><div class="figure"><a name="wb-what-is-new-performance-schema-setup-easy-setup"></a><p class="title"><b>Figure 1.21 Performance Schema Setup: Easy Setup</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-performance-schema-setup-easy.png" width="800" height="657" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+        Clicking <span class="guibutton">Show Advanced</span> provides methods
+        to fine tune the Performance Schema instrumentation.
+      </p><div class="figure"><a name="wb-what-is-new-performance-schema-setup-introduction"></a><p class="title"><b>Figure 1.22 Performance Schema Setup: Introduction</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-performance-schema-setup-introduction.png" width="800" height="775" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+        For additional information, see
+        <a class="xref" href="wb-performance.html" title="Chapter 7 Performance Tools">Chapter 7, <i>Performance Tools</i></a>.
+      </p><h5><a name="idm140544313039600"></a>Server Variable Groupings</h5><p>
+        Variables can now be organized using custom groupings in the
+        <span class="guilabel">Status and System Variables</span> Management tab.
+      </p><p>
+        To create a custom group, right-click on a variable and choose
+        either <span class="guimenu">Add to Custom Category</span> (to create a
+        new category), or an existing custom category. For additional
+        information, see
+        <a class="xref" href="wb-admin.html#wb-mysql-connections-navigator-management-status-variables" title="6.4 Status and System Variables">Section 6.4, “Status and System Variables”</a>.
+      </p><div class="figure"><a name="wb-what-is-new-status-and-system-variables-custom"></a><p class="title"><b>Figure 1.23 Status And System Variables: Custom</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-status-and-system-variables-custom.png" width="800" height="695" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h5><a name="idm140544313029184"></a>SQL Editor Views</h5><p>
+        Additional viewing options were added for executed statements:
+      </p><p>
+        <span class="bold"><strong>Result Grid</strong></span>
+      </p><p>
+        Available previously, and it remains the default view.
+      </p><div class="figure"><a name="wb-what-is-new-sql-editor-result-grid"></a><p class="title"><b>Figure 1.24 SQL Editor: Result Grid</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-sql-editor-result-grid.png" width="800" height="490" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+        <span class="bold"><strong>Form Editor</strong></span>
+      </p><p>
+        You can now edit records row by row in a form style editor.
+      </p><div class="figure"><a name="wb-what-is-new-sql-editor-form-editor"></a><p class="title"><b>Figure 1.25 SQL Editor: Form Editor</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-sql-editor-form-editor.png" width="800" height="490" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+        <span class="bold"><strong>Field Types</strong></span>
+      </p><p>
+        Displays information about the selected fields, similar to
+        passing in <code class="literal">--column-type-info</code> from the
+        command line client.
+      </p><div class="figure"><a name="wb-what-is-new-sql-editor-field-types"></a><p class="title"><b>Figure 1.26 SQL Editor: Field Types</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-sql-editor-field-types.png" width="800" height="490" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+        <span class="bold"><strong>Query Stats</strong></span>
+      </p><p>
+        Query statistics are taken from the Performance Schema, and
+        includes information about timing, temporary tables, indexes,
+        joins, and more.
+      </p><div class="figure"><a name="wb-what-is-new-sql-editor-query-stats"></a><p class="title"><b>Figure 1.27 SQL Editor: Query Stats</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-sql-editor-query-stats.png" width="800" height="580" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h5><a name="idm140544312994864"></a>Home Screen Features</h5><p>
+        Several behavioral improvements were made to the
+        <a class="link" href="wb-home.html" title="Chapter 4 The Home Screen">MySQL Workbench home screen</a>,
+        including:
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            Connection tiles can now be repositioned by using drag and
+            drop
+          </p></li><li class="listitem"><p>
+            A script or model file can be dragged into a MySQL
+            connection tile
+          </p></li><li class="listitem"><p>
+            The following right-click options were added to the
+            connection tiles: <span class="guimenu">Copy JDBC Connection
+            String</span> and <span class="guimenu">Copy Connection
+            String</span>
+          </p></li><li class="listitem"><p>
+            Right-clicking a blank area in the <span class="guilabel">MySQL
+            Connections</span> area now offers an option to create a
+            <span class="guimenu">New Connection From Clipboard</span>
+          </p></li></ul></div><h5><a name="idm140544312986864"></a>Visual Explain</h5><p>
+        The layout changed, and additional information is now viewable
+        by hovering over the fields. It also displays traditional
+        <code class="literal">EXPLAIN</code> output in a separate tab, and the
+        <span class="guilabel">Raw Explain Data</span> (as JSON) in another. For
+        MySQL server 5.7+, the new "cost information" (such as
+        "query_cost" and "sort_cost) is also utilized.
+      </p><div class="figure"><a name="wb-what-is-new-visual-explain-60a"></a><p class="title"><b>Figure 1.28 Visual Explain: Workbench 6.0</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-new-visual-explain-60.png" width="800" height="509" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><div class="figure"><a name="wb-what-is-new-visual-explain-61"></a><p class="title"><b>Figure 1.29 Visual Explain: Workbench 6.1</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-new-visual-explain-61.png" width="800" height="648" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h5><a name="idm140544312971008"></a>Table Inspector</h5><p>
+        View table information, similar to the
+        <a class="link" href="wb-develop.html#wb-develop-object-management-inspector" title="8.2.3 Schema and Table Inspector">Schema
+        Inspector</a>. This also has a simpler and easier to use
+        interface for analyzing and creating indexes for your tables.
+      </p><div class="figure"><a name="wb-what-is-new-table-inspector-info"></a><p class="title"><b>Figure 1.30 Table Inspector</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-table-inspector-info.png" width="800" height="631" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h5><a name="idm140544312962512"></a>Additional Client Connection Information</h5><p>
+        Additional information was added to the <span class="guilabel">Client
+        Connections</span> tab, such as Thread ID, Parent Thread,
+        Instrumented, and Type.
+      </p><div class="figure"><a name="wb-what-is-new-client-connections-60"></a><p class="title"><b>Figure 1.31 Client Connections: MySQL Workbench 6.0</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-new-client-connections-60.png" width="800" height="452" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><div class="figure"><a name="wb-what-is-new-client-connections-61"></a><p class="title"><b>Figure 1.32 Client Connections: MySQL Workbench 6.1</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-new-client-connections-61.png" width="800" height="442" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+        Also, a <span class="guilabel">Thread Stack</span> view option was added
+        by right-clicking a connection entry in the <span class="guilabel">Client
+        Connections</span> tab and choosing <span class="guimenu">View Thread
+        Stack</span>.
+      </p><div class="figure"><a name="wb-what-is-new-client-connections-thread-stack"></a><p class="title"><b>Figure 1.33 Client Connections: View Thread Stack</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-new-client-connections-thread-stack.png" width="809" height="1050" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h5><a name="idm140544312938352"></a>Additional Miscellaneous Additions</h5><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            MSAA (Windows Accessibility API) support and High contrast
+            color theme in Microsoft Windows
+          </p></li><li class="listitem"><p>
+            MySQL Enterprise Backup improvements
+          </p></li><li class="listitem"><p>
+            Improvements with general performance and overall stability
+          </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="wb-what-is-new-60"></a>1.1.2.4 New in MySQL Workbench 6.0</h4></div></div></div><p>
+        This section summarizes many of the new features added to
+        MySQL Workbench 6.0.0, in relation to MySQL Workbench 5.2.x;.
+      </p><h5><a name="idm140544312933168"></a>A New Home Screen</h5><p>
+        A new, modernized <a class="link" href="wb-home.html" title="Chapter 4 The Home Screen">home screen</a>
+        where major functionality of MySQL Workbench can be accessed,
+        including connections to MySQL servers, modeling, migration, and
+        the command-line utilities.
+      </p><div class="figure"><a name="wb-what-is-new-home-52"></a><p class="title"><b>Figure 1.34 Home Screen: Workbench 5.2</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-new-home-52.png" width="800" height="628" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><div class="figure"><a name="wb-what-is-new-home-60"></a><p class="title"><b>Figure 1.35 Home Screen: Workbench 6.0</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-new-home-60.png" width="800" height="581" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h5><a name="idm140544312918048"></a>Unified SQL Editor and Administration Interface</h5><p>
+        In the new user interface, the Server Administration
+        functionality (such as start/stop server, managing user accounts
+        etc) is now accessible directly from the SQL Editor interface,
+        located near where the schema information can be browsed and
+        queries executed.
+      </p><p>
+        The image below contains three screenshots of the Schema window
+        in the SQL Editor. The first is from MySQL Workbench 5.2, the second
+        is MySQL Workbench 6.0 with the management tab collapsed, and the
+        third shows what the merged management tab looks like. Toggle
+        the merged and tabbed views by clicking the new merge button
+        next to the refresh button.
+      </p><div class="figure"><a name="wb-what-is-new-unified-editor"></a><p class="title"><b>Figure 1.36 Comparing the SQL Editor interface for Workbench 5.2 and 6.0</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-new-schema-52-60.png" width="750" height="550" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h5><a name="idm140544312909200"></a>Table Data Search</h5><p>
+        You can select schemas, tables, or both to perform client-side
+        searches for user specified strings and patterns. To access this
+        new search feature, right click select a schema or a table in
+        the left sidebar and select <span class="guimenu">Search Table
+        Data...</span>.
+      </p><p>
+        This screenshot demonstrates the search feature, along with an
+        example search. Multiple tables were selected and searched in
+        this example:
+      </p><div class="figure"><a name="wb-what-is-new-table-search"></a><p class="title"><b>Figure 1.37 Table search functionality</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-new-table-search.png" width="800" height="558" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+        For additional information, see
+        <a class="xref" href="wb-develop.html#wb-develop-sql-editor-table-search" title="8.1.8 Table Data Search Tab">Section 8.1.8, “Table Data Search Tab”</a>.
+      </p><h5><a name="idm140544312899200"></a>Context Sensitive Help for the SQL Editor</h5><p>
+        Select a keyword or function in your query and after a delay it
+        will show formatted help information from the MySQL Server
+        (equivalent to using the help command from the command-line
+        MySQL Client).
+      </p><div class="figure"><a name="wb-what-is-new-context-sensitive-help"></a><p class="title"><b>Figure 1.38 Context Sensitive Help</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-new-context-help.png" width="800" height="581" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+        For additional information, see
+        <a class="xref" href="wb-develop.html#wb-develop-sql-editor-help" title="8.1.6 SQL Additions - Context Help Tab">Section 8.1.6, “SQL Additions - Context Help Tab”</a>.
+      </p><h5><a name="idm140544312890416"></a>Schema Inspector</h5><p>
+        New Schema Inspector feature allows you to browse general
+        information from schema objects. For tables, it's also possible
+        to perform maintenance tasks such as <code class="literal">ANALYZE</code>,
+        <code class="literal">OPTIMIZE</code>, <code class="literal">CHECK</code>, and
+        <code class="literal">CHECKSUM TABLE</code>. To access the inspector,
+        right-click a schema and select the <span class="guimenuitem">Schema
+        Inspector</span>
+      </p><div class="figure"><a name="wb-what-is-new-schema-inspector"></a><p class="title"><b>Figure 1.39 Schema Inspector</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-new-schema-inspector.png" width="800" height="581" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+        And choosing <span class="guibutton">Maintenance</span> for a table:
+      </p><div class="figure"><a name="wb-what-is-new-schema-inspector-maintenance"></a><p class="title"><b>Figure 1.40 Schema Inspector: Maintenance</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-new-schema-inspector-maintenance.png" width="800" height="641" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+        For additional information, see
+        <a class="xref" href="wb-develop.html#wb-develop-object-management-schema-inspector" title="Schema Inspector">Schema Inspector</a>.
+      </p><h5><a name="idm140544312870672"></a>Cascaded DELETE Statements Generator</h5><p>
+        You can generate a series of <code class="literal">DELETE</code>
+        statements needed to delete a row from that table, which
+        includes rows from other tables that reference it, recursively.
+        The <code class="literal">SELECT</code> version allows you to preview what
+        rows would be deleted. Right click a table and select
+        <span class="guimenuitem">Copy to Clipboard</span>,
+        <span class="guimenuitem">Delete with References</span>.
+      </p><div class="figure"><a name="wb-what-is-new-cascading-select"></a><p class="title"><b>Figure 1.41 Cascading SELECT</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-new-cascading-select.png" width="800" height="556" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h5><a name="idm140544312860240"></a>Table Templates</h5><p>
+        Define templates of tables with commonly used columns, to be
+        used to create new tables in a live connection or in an EER
+        model. In the SQL Editor, choose <span class="guilabel">Create Table
+        Like...</span>, or in Modeling, use the right sidebar. For
+        additional information, see
+        <a class="xref" href="wb-data-modeling.html#wb-design-table-templates" title="9.6 Table Templates">Section 9.6, “Table Templates”</a>.
+      </p><h5><a name="idm140544312857808"></a>Vertical Text</h5><p>
+        A Vertical Text output option for queries (equivalent to \G from
+        the command-line Client) was added. To execute, choose
+        <span class="guimenu">Query</span>, <span class="guimenuitem">Execute Current Statement
+        (Vertical Text Output)</span>.
+      </p><div class="figure"><a name="wb-what-is-new-vertical-text-output"></a><p class="title"><b>Figure 1.42 Vertical Text (\G)</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-new-vertical-text-output.png" width="800" height="738" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h5><a name="idm140544312848672"></a>Improved Visual Explain</h5><p>
+        The Visual Explain output was improved.
+      </p><div class="figure"><a name="wb-what-is-new-visual-explain-52"></a><p class="title"><b>Figure 1.43 Visual Explain: Workbench 5.2</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-new-visual-explain-52.png" width="800" height="614" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><div class="figure"><a name="wb-what-is-new-visual-explain-60b"></a><p class="title"><b>Figure 1.44 Visual Explain: Workbench 6.0</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-new-visual-explain-60.png" width="800" height="509" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h5><a name="idm140544312834384"></a>Improved Server Status</h5><p>
+        Additional server status information was added, and the user
+        interface was improved. Select <span class="guilabel">Server
+        Status</span> from the <span class="guilabel">Management</span> tab
+        to open this window.
+      </p><div class="figure"><a name="wb-what-is-new-server-status-52"></a><p class="title"><b>Figure 1.45 Server Status: Workbench 5.2</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-new-server-status-52.png" width="800" height="600" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><div class="figure"><a name="wb-what-is-new-server-status-60"></a><p class="title"><b>Figure 1.46 Server Status: Workbench 6.0</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-new-server-status-60.png" width="800" height="601" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h5><a name="idm140544312818720"></a>Enterprise Features</h5><p>
+        Support for MySQL Enterprise features in the Commercial Edition
+        of MySQL Workbench was added. From within the
+        <span class="guilabel">Management</span> tab for an open connection, look
+        for the following products under the heading <span class="guilabel">MySQL
+        Enterprise</span>:
+      </p><p>
+        <code class="literal">MySQL Enterprise Backup (MEB)</code>: A GUI front
+        end for the MEB tool. After installing a Commercial Edition of
+        MySQL Workbench and MySQL Enterprise Backup, MySQL Workbench will check for and handle the
+        prerequisites. Backup recovery is also supported. This plugin
+        supports MEB with local and remote installations of Linux and
+        macOS, and locally for MySQL Windows.
+      </p><p>
+        <code class="literal">MySQL Audit Log Inspector</code>: A GUI for browsing
+        the contents of generated logs by the commercial Audit Log
+        Plugin. Powerful filtering and search capabilities are
+        available. Fast browsing is provided by caching the log data
+        locally in an encrypted file. This plugin supports MEB with
+        local and remote installations of Linux and macOS, and locally
+        for Microsoft Windows.
+      </p><h5><a name="idm140544312813392"></a>Database Migration Features</h5><p>
+        SQL Anywhere and SQLite are now supported.
+      </p></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-editions"></a>1.2 MySQL Workbench Editions</h2></div></div></div><p>
+    MySQL Workbench is available in the following editions:
+  </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+        <code class="literal">Community Edition</code> (Open Source, GPL) -- This
+        is the foundation for all other editions
+      </p></li><li class="listitem"><p>
+        <code class="literal">Standard Edition</code> (Commercial)
+      </p></li><li class="listitem"><p>
+        <code class="literal">Enterprise Edition</code> (Commercial)
+      </p></li></ul></div><p>
+    ﻿For details about each edition, see
+    <a class="ulink" href="http://www.mysql.com/products/workbench/features.html" target="_top">http://www.mysql.com/products/workbench/features.html</a>
+  </p><p>
+    For more information about the Enterprise edition, visit
+    <a class="ulink" href="http://www.mysql.com/enterprise" target="_top">http://www.mysql.com/enterprise</a>
+  </p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="wb-preface.html">Previous</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="wb-installing.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Preface and Legal Notices </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Chapter 2 Installation</td></tr></table></div><div class="copyright-footer"></div></body></html>

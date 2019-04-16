@@ -1,0 +1,90 @@
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Chapter 4 The Home Screen</title><link rel="stylesheet" type="text/css" href="mvl.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="MySQL Workbench"><link rel="up" href="index.html" title="MySQL Workbench"><link rel="prev" href="wb-configuring.html" title="Chapter 3 Configuration"><link rel="next" href="wb-mysql-connections.html" title="Chapter 5 Connections in MySQL Workbench"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 4 The Home Screen</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="wb-configuring.html">Previous</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="wb-mysql-connections.html">Next</a></td></tr></table><hr></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a name="wb-home"></a>Chapter 4 The Home Screen</h1></div></div></div><p>
+    When started, MySQL Workbench opens to the home screen. Initially, the
+    screen displays a welcome message and links to <span class="guilabel">Browse
+    Documentation &gt;</span>, <span class="guilabel">Read the Blog
+    &gt;</span>, and <span class="guilabel">Discuss on the Forums
+    &gt;</span>. In addition, the home screen provides quick access
+    to MySQL connections, models, and the MySQL Workbench Migration
+    Wizard.
+  </p><p>
+    As depicted in the following figure, a home-screen side panel
+    enables you to toggle between MySQL Connections (selected in the
+    figure) and Models within the home tab. The last option in the side
+    panel opens the MySQL Workbench Migration Wizard in a new tab.
+  </p><div class="figure"><a name="wb-homepage"></a><p class="title"><b>Figure 4.1 The Home Screen</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-home-screen-new.png" width="762" height="514" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+      In MySQL Workbench 6.3.8 and earlier, the home screen combined three
+      sections titled <span class="guilabel">MySQL Connections</span>,
+      <span class="guilabel">Models</span>, and external
+      <span class="guilabel">Shortcuts</span>.
+    </p></div><p><a name="wb-workbench-welcome"></a><b>Workbench Welcome Message. </b>
+      The welcome text and links are optional and can be removed or
+      restored to the home screen when MySQL Connections is selected
+      from the side panel. Links to the documentation, blog, and forums
+      are also accessible from the <span class="guimenu">Help</span> menu.
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+        To remove the text and links, click the <span class="guiicon">X</span>
+        icon above the welcome message.
+      </p></li><li class="listitem"><p>
+        To restore the text and links:
+      </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+            Click <span class="guimenu">Edit</span>,
+            <span class="guimenuitem">Preferences</span>, and then select
+            <span class="guilabel">Other</span>.
+          </p></li><li class="listitem"><p>
+            Select the <span class="guilabel">Show Welcome Message on Connections
+            Screen</span> check box and then restart MySQL Workbench.
+          </p></li></ol></div></li></ul></div><div class="simplesect"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-home-connections"></a>MySQL Connections</h2></div></div></div><p>
+      The connections view (<span class="inlinemediaobject"><img src="images/wb-home-panel-connections.png" align="middle" width="24" height="22"></span>) in the side panel, when selected, displays a
+      list of established connections to local and remote instances of
+      MySQL. It enables you to load, configure, group, and view
+      information about each MySQL connection. For more information, see
+      <a class="xref" href="wb-mysql-connections.html" title="Chapter 5 Connections in MySQL Workbench">Chapter 5, <i>Connections in MySQL Workbench</i></a> and
+      <a class="xref" href="wb-mysql-connections.html#wb-getting-started-tutorial-create-connection" title="5.2 Creating A New MySQL Connection (Tutorial)">Section 5.2, “Creating A New MySQL Connection (Tutorial)”</a>.
+    </p><p><a name="wb-home-connection-groups"></a><b>Connection Groups. </b>
+        You may also create groups of connections. Create a group by
+        either right-clicking a connection and choosing the
+        <span class="guimenuitem">Move to group</span> context menu option, or
+        you may prefix your connection name with the group name
+        separated by a forward slash (for example, "QA/TestBox") when
+        you create or configure the connection.
+      </p><p><a name="wb-home-connection-information"></a><b>Connection Information. </b>
+        The method to view connection information depends on the
+        operating system:
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          On Microsoft Windows and Linux: hover over the upper-right
+          corner of a connection title and click the title where the
+          corner is lifted.
+        </p></li><li class="listitem"><p>
+          On macOS: hover over a connection title and click the
+          <span class="guilabel">(i)</span> that appears in the lower-right
+          corner.
+        </p></li></ul></div><p>
+      The information will be displayed near the connection tile, as
+      shown in the following figure.
+    </p><div class="figure"><a name="wb-home-screen-connection-info-fig"></a><p class="title"><b>Figure 4.2 Viewing Connection Information</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-home-screen-connection-info.png" width="768" height="535" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></div><div class="simplesect"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-home-models"></a>Models</h2></div></div></div><p>
+      The models view (<span class="inlinemediaobject"><img src="images/wb-home-panel-models.png" align="middle" width="24" height="22"></span>) in the side panel, when selected, displays
+      your most recently used models. As the next figure shows, each
+      entry lists the date and time that the model was last opened and
+      shows its associated database. To the right of the
+      <span class="guilabel">Models</span> title are the following options:
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          Plus-sign button (+) adds a new model.
+        </p></li><li class="listitem"><p>
+          Folder button (see the figure that follows) enables you to
+          browse for and open saved models.
+        </p></li><li class="listitem"><p>
+          More button (&gt;) opens a context menu with additional
+          commands, such as <span class="guilabel">Create EER Model from
+          Database</span>.
+        </p></li></ul></div><p>
+      For additional information about modeling, see
+      <a class="xref" href="wb-data-modeling.html" title="Chapter 9 Database Design and Modeling">Chapter 9, <i>Database Design and Modeling</i></a>.
+    </p><div class="figure"><a name="wb-home-screen-model-fig"></a><p class="title"><b>Figure 4.3 Selecting Models from the Side Panel</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-home-screen-model.png" width="753" height="244" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></div><div class="simplesect"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-home-migrate"></a>MySQL Migration Wizard</h2></div></div></div><p>
+      The migration view (<span class="inlinemediaobject"><img src="images/wb-home-panel-migration.png" align="middle" width="24" height="22"></span>) in the side panel, when selected, opens the
+      <span class="guilabel">Migration</span> tab and displays an overview of
+      prerequisites for using the wizard. From the
+      <span class="guilabel">Migration</span> tab, you can start a migration
+      process, open the ODBC administrator, or view documentation. For
+      detailed instructions on using the wizard, see
+      <a class="xref" href="wb-migration.html" title="Chapter 10 Database Migration Wizard">Chapter 10, <i>Database Migration Wizard</i></a>.
+    </p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="wb-configuring.html">Previous</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="wb-mysql-connections.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 3 Configuration </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Chapter 5 Connections in MySQL Workbench</td></tr></table></div><div class="copyright-footer"></div></body></html>

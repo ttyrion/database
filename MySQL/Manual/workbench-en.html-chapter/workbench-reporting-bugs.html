@@ -1,0 +1,145 @@
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Appendix D How To Report Bugs or Problems</title><link rel="stylesheet" type="text/css" href="mvl.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="MySQL Workbench"><link rel="up" href="index.html" title="MySQL Workbench"><link rel="prev" href="wb-extending.html" title="Appendix C Extending Workbench"><link rel="next" href="wb-mysql-enterprise.html" title="Appendix E MySQL Enterprise Features"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Appendix D How To Report Bugs or Problems</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="wb-extending.html">Previous</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="wb-mysql-enterprise.html">Next</a></td></tr></table><hr></div><div class="appendix"><div class="titlepage"><div><div><h1 class="title"><a name="workbench-reporting-bugs"></a>Appendix D How To Report Bugs or Problems</h1></div></div></div><p>
+    The following is a list of tips and information that is helpful for
+    reporting a MySQL Workbench bug.
+  </p><h2><a name="idm140544305098688"></a>A useful bug report includes:</h2><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+        The exact steps taken to repeat the bug, ideally as a video if
+        the bug is tricky to repeat
+      </p></li><li class="listitem"><p>
+        A screenshot, if the bug is visual
+      </p></li><li class="listitem"><p>
+        The error messages, which includes text sent to stdout and the
+        GUI
+      </p></li><li class="listitem"><p>
+        The MySQL Workbench Log file
+      </p><p>
+        The log file location can be found using
+        <span class="guimenu">Help</span>, <span class="guimenuitem">Locate Log
+        Files</span> from within MySQL Workbench.
+      </p></li></ul></div><p>
+    Bugs that cannot be reproduced are difficult and nearly impossible
+    to fix, so it is important to provide the steps necessary to
+    reproduce the bug.
+  </p><h2><a name="idm140544305091680"></a>Where to report a bug</h2><p>
+    Visit http://bugs.mysql.com/ and use one of the "MySQL Workbench"
+    bug categories.
+  </p><h2><a name="idm140544305090496"></a>Log Levels</h2><p>
+    There are six different log levels, with increasing levels of
+    verbosity: <code class="literal">error</code>, <code class="literal">warning</code>,
+    <code class="literal">info</code>, <code class="literal">debug1</code>,
+    <code class="literal">debug2</code>, and <code class="literal">debug3</code>. By
+    default, the <code class="literal">error</code>, <code class="literal">warning</code>
+    and <code class="literal">info</code> levels are enabled. There is also a
+    "none" level that disables logging.
+  </p><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Important</div><p>
+      Please enable the <code class="literal">debug3</code> level before
+      generating a log for the report.
+    </p></div><p>
+    The enabled error log levels can be configured using an environment
+    variable, or by using a command line parameter.
+  </p><p>
+    Both the environment variable and command line variants accept a
+    single error level, but enabling a more verbose option will
+    implicitly enable the levels below it. For example, passing in
+    "info" will also enable the "error" and "warning" levels.
+  </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+        Environment variable: <code class="literal">WB_LOG_LEVEL</code>
+      </p><p>
+        Command line option: <code class="literal">--log-level</code> on macOS and
+        Linux, and <code class="literal">-log-level</code> on Microsoft Windows
+      </p></li></ul></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+      If both the command line and environment variable are set, the
+      command line takes precedence.
+    </p></div><p>
+    For example:
+  </p><pre class="programlisting">
+# Microsoft Windows
+shell&gt; <strong class="userinput"><code>cd "C:\Program Files (x86)\MySQL\MySQL Workbench CE 6.3.10\"</code></strong>
+shell&gt; <strong class="userinput"><code>MySQLWorkbench.exe -log-level=debug3</code></strong>
+
+# macOS
+shell&gt; <strong class="userinput"><code>cd /Applications</code></strong>
+shell&gt; <strong class="userinput"><code>MySQLWorkbench --log-level=debug3</code></strong>
+
+# Linux (Ubuntu)
+shell&gt; <strong class="userinput"><code>cd /usr/bin</code></strong>
+shell&gt; <strong class="userinput"><code>mysqlworkbench --log-level=debug3</code></strong>
+</pre><p>
+    If the <code class="literal">info</code> level is enabled, the system
+    information and all paths used in the application are also logged.
+    On Microsoft Windows, this also means that the log file contains the
+    full set of current environment variables that are active for the
+    program.
+  </p><h2><a name="idm140544305068192"></a>Operating System Specific Notes</h2><p>
+    <span class="bold"><strong>Microsoft Windows</strong></span>
+  </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+        Log file location: Near the user's app data folder, such as
+        <code class="filename">C:\Users\[user]\AppData\Roaming\MySQL\Workbench\log</code>
+        for Microsoft Windows 7.
+      </p></li><li class="listitem"><p>
+        In case of errors (or exceptions), the log file contains the
+        stack trace to the point MySQL Workbench can track it (usually only
+        C# code, and not C++ code). Also, all warnings are added to the
+        log if the warning (or greater) log level is enabled.
+      </p></li><li class="listitem"><p>
+        If it is a crash and that cannot be replicated by the
+        MySQL Workbench team, and the stack trace cannot be obtained, we
+        will request a crashdump. Instructions for enabling a crashdump
+        can be
+        <a class="ulink" href="http://forums.plexapp.com/index.php/topic/23320-enabling-automatic-crash-dumps-on-windows/" target="_top">found
+        here</a>, and please also read the MSDN details for this as
+        we need a full dump, and not the mini dump.
+      </p></li><li class="listitem"><p>
+        For crashes related to display issues, start MySQL Workbench with
+        the <code class="literal">-swrendering</code> parameter (and only then, as
+        it switches off OpenGL rendering, which is of no use in WBA or
+        WQE). This output will be added to the log file.
+      </p></li><li class="listitem"><p>
+        If it is a crash when MySQL Workbench is started (especially if the
+        error report includes something about
+        <code class="filename">kernelbase.dll</code>), we will ask you to run
+        <code class="filename">depends.exe</code> on the
+        <code class="filename">MySQLWorkbench.exe</code> binary, and ask for the
+        reported errors.
+      </p></li><li class="listitem"><p>
+        If it is a crash when MySQL Workbench is started, and it is a 64-bit
+        version of Microsoft Windows, check that the correct MSVC
+        runtimes are installed. Often people install the 64-bit version
+        of them, but only the 32-bit will function. More precisely:
+        <code class="literal">MSVC 2010 runtime x86 (32-bit)</code>.
+      </p></li></ul></div><p>
+    <span class="bold"><strong>macOS</strong></span>
+  </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+        Log File Location: <code class="filename">~/Library/Application
+        Support/MySQL/Workbench/logs</code>
+      </p></li><li class="listitem"><p>
+        System crash logs generated for Workbench are in
+        <code class="filename">~/Library/Logs/DiagnosticReports/MySQLWorkbench*</code>
+      </p></li></ul></div><p>
+    <span class="bold"><strong>Linux</strong></span>
+  </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+        Log File Location: <code class="filename">~/.mysql/workbench/logs</code>
+      </p></li><li class="listitem"><p>
+        For a crash, we might ask for a stack trace that can generated
+        by <code class="literal">gdb</code> by using the following steps:
+      </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+          Because published MySQL Workbench builds lack debug symbols, this
+          step is optional and will probably not be necessary.
+        </p></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem"><p>
+            In shell, execute <code class="literal">source
+            /usr/bin/mysql-workbench</code>
+          </p></li><li class="listitem"><p>
+            Quit MySQL Workbench
+          </p></li><li class="listitem"><p>
+            In shell, execute <code class="literal">gdb
+            /usr/bin/mysql-workbench-bin</code>
+          </p></li><li class="listitem"><p>
+            In the gdb interface, type <code class="literal">run</code>
+          </p></li><li class="listitem"><p>
+            In MySQL Workbench, repeat the crash
+          </p></li><li class="listitem"><p>
+            In the gdb interface, type <code class="literal">bt</code>
+          </p></li></ul></div></li><li class="listitem"><p>
+        If it is a crash, also run <code class="literal">glxinfo</code>. If that
+        also crashes, then it is a driver/X server problem related to
+        OpenGL that is not specific to MySQL Workbench.
+      </p></li></ul></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="wb-extending.html">Previous</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="wb-mysql-enterprise.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Appendix C Extending Workbench </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Appendix E MySQL Enterprise Features</td></tr></table></div><div class="copyright-footer"></div></body></html>

@@ -1,0 +1,876 @@
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Chapter 3 Configuration</title><link rel="stylesheet" type="text/css" href="mvl.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="MySQL Workbench"><link rel="up" href="index.html" title="MySQL Workbench"><link rel="prev" href="wb-installing.html" title="Chapter 2 Installation"><link rel="next" href="wb-home.html" title="Chapter 4 The Home Screen"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 3 Configuration</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="wb-installing.html">Previous</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="wb-home.html">Next</a></td></tr></table><hr></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a name="wb-configuring"></a>Chapter 3 Configuration</h1></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl class="toc"><dt><span class="section"><a href="wb-configuring.html#wb-accessibility">3.1 User Accessibility Options</a></span></dt><dt><span class="section"><a href="wb-configuring.html#wb-preferences">3.2 Workbench Preferences</a></span></dt><dd><dl><dt><span class="section"><a href="wb-configuring.html#wb-preferences-general-editors">3.2.1 General Editors Preferences</a></span></dt><dt><span class="section"><a href="wb-configuring.html#wb-preferences-sql-editor">3.2.2 SQL Editor Preferences</a></span></dt><dt><span class="section"><a href="wb-configuring.html#wb-preferences-administration">3.2.3 Administration Preferences</a></span></dt><dt><span class="section"><a href="wb-configuring.html#wb-preferences-modeling">3.2.4 Modeling Preferences</a></span></dt><dt><span class="section"><a href="wb-configuring.html#wb-preferences-fonts-and-colors">3.2.5 Fonts and Colors Preferences</a></span></dt><dt><span class="section"><a href="wb-configuring.html#wb-preferences-ssh">3.2.6 SSH Preferences</a></span></dt><dt><span class="section"><a href="wb-configuring.html#wb-preferences-others">3.2.7 Other Preferences</a></span></dt></dl></dd><dt><span class="section"><a href="wb-configuring.html#wb-configuring-files">3.3 MySQL Workbench Settings and Log Files</a></span></dt><dt><span class="section"><a href="wb-configuring.html#wb-configuring-custom-home-link">3.4 Tutorial: Add a Custom Link to the Home Screen</a></span></dt><dt><span class="section"><a href="wb-configuring.html#wb-configuration-additional">3.5 Common Preferences and Configurations</a></span></dt></dl></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-accessibility"></a>3.1 User Accessibility Options</h2></div></div></div><p>
+    MySQL Workbench includes options to improve user accessibility that you
+    can select from the Workbench Preferences dialog. To open the
+    dialog, click <span class="guimenu">Edit</span> and then
+    <span class="guimenuitem">Preferences</span> from the menu.
+  </p><h3><a name="idm140544312528112"></a>Fonts</h3><p>
+    Modeling fonts are adjustable from the
+    <span class="guilabel">Appearance</span> section of the
+    <span class="guilabel">Modeling</span> list. The following figure shows the
+    color presets and fonts.
+  </p><div class="figure"><a name="wb-accessibility-appearance"></a><p class="title"><b>Figure 3.1 Appearance Preferences</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-preferences-modeling-appearance.png" width="848" height="622" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+    Choose the character set from the <span class="guilabel">Configure Fonts
+    For</span> list (or leave the default setting) and then adjust
+    the model fonts to fit your requirements.
+  </p><p>
+    The font types and sizes for other screen elements are set from the
+    <span class="guilabel">Fonts &amp; Colors</span> preferences. The next figure
+    shows the default fonts for the SQL Editor, Resultset Grid,
+    Scripting Shell, and Script Editor.
+  </p><div class="figure"><a name="wb-accessibility-fonts-and-colors"></a><p class="title"><b>Figure 3.2 Fonts &amp; Color Preferences</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-preferences-fonts-and-colors.png" width="848" height="622" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+      Font changes require a refresh or restart before they take effect.
+    </p></div><p>
+    The following figure shows an example of the SQL Editor after
+    changing the <span class="guilabel">Editor</span> font size from 10 to 30.
+  </p><div class="figure"><a name="wb-accessibility-editor-example"></a><p class="title"><b>Figure 3.3 SQL Editor with Font size 30</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-accessibility-editor-example.png" width="800" height="522" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h3><a name="idm140544312501664"></a>Color Presets</h3><p>
+    Color presets in the <span class="guilabel">Appearance</span> preferences
+    enable you to define the colors used in EER diagrams for the tables,
+    views, layers, and notes. You can edit or add additional color
+    choices by entering their ASCII values.
+  </p><h3><a name="idm140544312499824"></a>Theming</h3><p>
+    On Windows, the <span class="guilabel">Fonts &amp; Colors</span> preference
+    tab also includes a "Color Scheme" configuration section. From here,
+    you can enable the <span class="guilabel">High Contrast</span> color theme
+    (see the figure that follows). This theme preference affects the
+    MySQL Workbench GUI.
+  </p><div class="figure"><a name="wb-accessibility-theming"></a><p class="title"><b>Figure 3.4 High Contrast Preference</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-preferences-fonts-and-colors-high-contrast.png" width="749" height="600" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h3><a name="idm140544312490592"></a>Microsoft Active Accessibility (MSAA)</h3><p>
+    On Windows, MySQL Workbench supports MSAA, which enables the use of
+    screen reader applications with MySQL Workbench.
+  </p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-preferences"></a>3.2 Workbench Preferences</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="wb-configuring.html#wb-preferences-general-editors">3.2.1 General Editors Preferences</a></span></dt><dt><span class="section"><a href="wb-configuring.html#wb-preferences-sql-editor">3.2.2 SQL Editor Preferences</a></span></dt><dt><span class="section"><a href="wb-configuring.html#wb-preferences-administration">3.2.3 Administration Preferences</a></span></dt><dt><span class="section"><a href="wb-configuring.html#wb-preferences-modeling">3.2.4 Modeling Preferences</a></span></dt><dt><span class="section"><a href="wb-configuring.html#wb-preferences-fonts-and-colors">3.2.5 Fonts and Colors Preferences</a></span></dt><dt><span class="section"><a href="wb-configuring.html#wb-preferences-ssh">3.2.6 SSH Preferences</a></span></dt><dt><span class="section"><a href="wb-configuring.html#wb-preferences-others">3.2.7 Other Preferences</a></span></dt></dl></div><p>
+    Use the <span class="guimenu">Preferences</span> menu to configure MySQL Workbench
+    to your specific needs. This menu is divided sections, as described
+    below:
+  </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+        <span class="guimenu">General Editors</span>: General-purpose editor
+        options, such as SQL parsing options.
+      </p></li><li class="listitem"><p>
+        <span class="guimenu">SQL Editor</span>: SQL editor related preferences
+        that also includes subsections for the <span class="guilabel">Query
+        Editor</span>, <span class="guilabel">Object Editor</span>, and
+        <span class="guilabel">SQL Execution</span>.
+      </p></li><li class="listitem"><p>
+        <span class="guimenu">Administration</span>: Tools used by the
+        Administrator functionality.
+      </p></li><li class="listitem"><p>
+        <span class="guimenu">Modeling</span>: Model related preferences that also
+        includes subsections for <span class="guilabel">Defaults</span>,
+        <span class="guilabel">MySQL</span> (MySQL specific settings),
+        <span class="guilabel">Diagram</span> (EER), and
+        <span class="guilabel">Appearance</span> (model colors and fonts).
+      </p></li><li class="listitem"><p>
+        <span class="guimenu">Fonts &amp; Colors</span>: Change fonts for tools
+        such as the SQL editor and results grid.
+      </p></li><li class="listitem"><p>
+        <span class="guimenu">Others</span>: Miscellaneous options.
+      </p></li></ul></div><p>
+    A more detailed discussion of these options follows.
+  </p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-preferences-general-editors"></a>3.2.1 General Editors Preferences</h3></div></div></div><p>
+      This section describes the preference options that apply to
+      general-purpose editors (see the figure that follows).
+    </p><div class="figure"><a name="wb-preferences-general-editor-figure"></a><p class="title"><b>Figure 3.5 Preferences: General Editors</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-preferences-general-editors.png" width="848" height="622" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      <span class="bold"><strong> SQL Parsing in Code Editors </strong></span>
+    </p><p>
+      SQL properties that can be set include the
+      <code class="literal">SQL_MODE</code>, case sensitivity of identifiers, and
+      the SQL delimiter used.
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <span class="bold"><strong>Default SQL_MODE for syntax
+          checker</strong></span>: Optionally configure the SQL_MODE for the
+          SQL editor's SQL syntax checker.
+        </p><p>
+          The document property <code class="literal">SqlMode</code> defines
+          <code class="literal">SQL_MODE</code> for all operations affecting SQL
+          parsing at the document scope. The purpose of this option is
+          to preserve the consistency of SQL statements within the
+          document.
+        </p><p>
+          The property has the following functions:
+        </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem"><p>
+              Sets the <code class="literal">SQL_MODE</code> DBMS session variable
+              to the value stored in the <code class="literal">SqlMode</code>
+              property of the document when performing reverse
+              engineering, forward engineering, or synchronization
+              operations.
+            </p></li><li class="listitem"><p>
+              Honors the <code class="literal">SQL_MODE</code> values defined in
+              <code class="literal">SqlMode</code> so that SQL parsing is correct.
+            </p></li></ul></div><p>
+          Only a subset of all possible <code class="literal">SQL_MODE</code>
+          values affect the MySQL Workbench SQL parser. These values are:
+          <code class="literal">ANSI_QUOTES</code>,
+          <code class="literal">HIGH_NOT_PRECEDENCE</code>,
+          <code class="literal">IGNORE_SPACE</code>,
+          <code class="literal">NO_BACKSLASH_ESCAPES</code>,
+          <code class="literal">PIPES_AS_CONCAT</code>. Other values do not affect
+          the MySQL Workbench SQL parser and are ignored.
+        </p><p>
+          If the value of <code class="literal">SqlMode</code> is not set, the
+          default value of the <code class="literal">SQL_MODE</code> session
+          variable defined by the server stays unchanged during
+          operations with the server. However, the MySQL Workbench SQL
+          parser behaves as if <code class="literal">SQL_MODE</code> is also not
+          set. This may potentially lead to inconsistencies in parsing
+          of SQL statements stored in the document. If you choose to not
+          set the <code class="literal">SqlMode</code> property, ensure that the
+          default <code class="literal">SQL_MODE</code> variable defined by the
+          server does not contain any values from the following list:
+          <code class="literal">ANSI_QUOTES</code>,
+          <code class="literal">HIGH_NOT_PRECEDENCE</code>,
+          <code class="literal">IGNORE_SPACE</code>,
+          <code class="literal">NO_BACKSLASH_ESCAPES</code>,
+          <code class="literal">PIPES_AS_CONCAT</code>.
+        </p><p>
+          The <code class="literal">SqlMode</code> property is defined in two
+          locations: globally and at document scope. MySQL Workbench uses
+          the global property to initialize the document property for
+          each new document created. For each document, the property
+          value defined at document scope always has higher priority
+          over the one defined globally.
+        </p></li><li class="listitem"><p>
+          [ ] <span class="bold"><strong>SQL Identifiers are Case
+          Sensitive</strong></span>: Whether to treat identifiers separately
+          if their names differ only in letter case. This is enabled by
+          default.
+        </p></li><li class="listitem"><p>
+          <span class="bold"><strong>Non-Standard SQL Delimiter</strong></span>:
+          [<em class="replaceable"><code>$$</code></em>]. Define the SQL statement
+          delimiter to be different from the normally used delimiter
+          (such as ";"). Change this if the deliminator you normally
+          use, specifically in stored routines, happens to be the
+          current setting.
+        </p></li></ul></div><p>
+      <span class="bold"><strong>Indentation</strong></span>
+    </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+        This preference section was added in MySQL Workbench 6.2.4.
+      </p></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          [ ] Tab key inserts spaces instead of tabs
+        </p></li><li class="listitem"><p>
+          Indent width: [<em class="replaceable"><code>4</code></em>] The number of
+          spaces inserted after pressing <span class="guibutton">Tab</span> --
+          this assumes that the <span class="emphasis"><em>Tab key inserts spaces instead
+          of tabs</em></span> option is enabled
+        </p></li><li class="listitem"><p>
+          Tab width: [<em class="replaceable"><code>4</code></em>] The width (number of
+          spaces) that tab characters are displayed as in MySQL Workbench
+        </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-preferences-sql-editor"></a>3.2.2 SQL Editor Preferences</h3></div></div></div><p>
+      This section provides configuration options that affect the SQL
+      Editor functionality in MySQL Workbench.
+    </p><p>
+      As the following figure shows, the SQL Editor preferences has
+      three additional sections: Query Editor, Object Editors, and SQL
+      Execution.
+    </p><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-preferences-sql-editor-main"></a>Preferences: SQL Editor: Main</h4></div></div></div><p>
+        <span class="bold"><strong>SQL Editor</strong></span>
+      </p><div class="figure"><a name="wb-preferences-sql-editor-figure"></a><p class="title"><b>Figure 3.6 Preferences: Main SQL Editor Section</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-preferences-sql-editor.png" width="848" height="622" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            <span class="bold"><strong>Save snapshot of open editors on
+            close</strong></span>: Enabling will save and reload the SQL
+            Editor tabs after closing/opening MySQL Workbench (including
+            after an unexpected crash).
+          </p></li><li class="listitem"><p>
+            <span class="bold"><strong>Auto-save scripts interval</strong></span>:
+            Frequency of the auto-saves.
+          </p></li><li class="listitem"><p>
+            <span class="bold"><strong>Create new tabs as Query tabs instead
+            of File</strong></span>: By default, opening a new SQL Editor tab
+            opens as an SQL File tab. Check this option if you prefer
+            the simpler Query tabs that, for example, will not prompt to
+            be saved when closed.
+          </p></li><li class="listitem"><p>
+            <span class="bold"><strong>Restore expanded state of the active
+            schema objects</strong></span>: Group nodes that were previously
+            expanded in the active schema when the SQL editor was last
+            closed are re-expanded and loaded. This is enabled by
+            default.
+          </p></li></ul></div><p>
+        <span class="bold"><strong>Sidebar</strong></span>
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            <span class="guilabel">Show Schema Contents in Schema Tree</span>:
+            Enumerating, populating, and drawing large numbers of items
+            can significantly increase loading times. For this reason,
+            this facility can be switched off for models containing
+            large numbers of schemata and tables.
+          </p></li><li class="listitem"><p>
+            <span class="guilabel">Show Data Dictionaries and Internal
+            Schemas</span>: Whether to show data directories and
+            internal schemas in the schema tree (such as
+            <code class="literal">INFORMATION_SCHEMA</code>, mysql, and schemas
+            starting with ".").
+          </p></li><li class="listitem"><p>
+            <span class="guilabel">Combine Management Tools and Schema Tree
+            tab</span>: This affects the Object Browser in the left
+            sidebar, and this option can also be toggled from the
+            sidebar. The management tools and schema tree can be
+            viewable as separate tabs, or as a single long list.
+          </p></li></ul></div><p>
+        <span class="bold"><strong>MySQL Session</strong></span>
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            <span class="guilabel">DBMS connection keep-alive interval (in
+            seconds)</span>: [<em class="replaceable"><code>600</code></em>]. Time
+            interval between sending keep-alive messages to the DBMS.
+            Set to 0 to not send keep-alive messages.
+          </p></li><li class="listitem"><p>
+            <span class="guilabel">DBMS connection read time out (in
+            seconds)</span>: [<em class="replaceable"><code>600</code></em>]. The
+            maximum amount of time the query can take to return data
+            from the DBMS. Set 0 to not check the read time out.
+          </p></li><li class="listitem"><p>
+            <span class="guilabel">DBMS connection time out (in seconds)</span>:
+            [<em class="replaceable"><code>60</code></em>]. Maximum time to wait before
+            a connection attempt is aborted.
+          </p></li></ul></div><p>
+        <span class="bold"><strong>Other</strong></span>
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            <span class="guilabel">Internal Workbench Schema</span>:
+            [<em class="replaceable"><code>.mysqlworkbench</code></em>]. This schema is
+            used by MySQL Workbench to store information required for
+            certain operations, such as saving shared SQL snippets.
+          </p></li><li class="listitem"><p>
+            [ ] : <span class="guilabel">"Safe Updates"</span>, forbid
+            UPDATE and DELETE queries to execute that lack a
+            corresponding key in a WHERE clause, or lack a LIMIT clause.
+            Setting this option requires a MySQL server reconnection.
+          </p><p>
+            This makes it possible to catch UPDATE and DELETE statements
+            where keys are not used properly and that would probably
+            accidentally change or delete a large number of rows.
+          </p></li></ul></div></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-preferences-sql-editor-query-editor"></a>Preferences: SQL Editor: Query Editor</h4></div></div></div><p>
+        The following figure shows the preference options that apply to
+        the Query Editor.
+      </p><div class="figure"><a name="wb-preferences-sql-editor-query-editor-figure"></a><p class="title"><b>Figure 3.7 Preferences: SQL Editor: Query Editor</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-preferences-sql-editor-query-editor.png" width="848" height="622" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+        <span class="bold"><strong>Productivity</strong></span>
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            <span class="guilabel">Enable Code Completion in Editors</span>: The
+            SQL Editor offers Auto-complete functionality by either
+            pressing the keyboard shortcut (<span class="keycap"><strong>Modifier</strong></span> +
+            <span class="keycap"><strong>Space</strong></span>), or it will start automatically if
+            the <span class="guilabel">Automatically Start Code Completion</span>
+            preference is enabled.
+          </p></li><li class="listitem"><p>
+            <span class="guilabel">Automatically Start Code Completion</span>:
+            Enabled by default, this will automatically execute the code
+            auto-completion feature while editing SQL in the SQL Editor.
+            If disabled, you will instead use the keyboard shortcut
+            <span class="keycap"><strong>Modifier</strong></span> + <span class="keycap"><strong>Space</strong></span> to
+            execute the auto-completion routine.
+          </p></li><li class="listitem"><p>
+            <span class="guilabel">Use UPPERCASE keywords on completion</span>:
+            Normally keywords are shown and inserted as they come from
+            the code editor's configuration file. This setting will
+            always write completed keywords as uppercase.
+          </p></li><li class="listitem"><p>
+            <span class="guilabel">Comment type to use for comment
+            shortcut</span>: [<em class="replaceable"><code>--</code></em>].
+            Defaults to "--", with "#" as another option.
+          </p></li><li class="listitem"><p>
+            <span class="guilabel">Max syntax error count</span>: Large complex
+            scripts may contain errors. Further, a syntax error early on
+            can lead to subsequent syntax errors. For these reasons, it
+            is possible to limit the number of errors displayed using
+            this option. The default is 100 error messages.
+          </p></li><li class="listitem"><p>
+            <span class="guilabel">Max number of result sets</span>: Maximum
+            number of result sets for SQL queries that can be opened for
+            a single SQL editor. Defaults to 50. Reaching the limit
+            emits a warning.
+          </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+              This option was added in MySQL Workbench 6.2.4.
+            </p></div></li></ul></div><p>
+        <span class="bold"><strong>SQL Beautifier</strong></span>
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            [ ] <span class="guilabel">Change keywords to UPPER CASE</span>:
+            Enabled by default, executing the SQL beautifier will
+            uppercase all SQL keywords.
+          </p></li></ul></div></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-preferences-sql-editor-object-editors"></a>Preferences: SQL Editor: Object Editors</h4></div></div></div><p>
+        The following figure shows the preference options that apply to
+        all object editors.
+      </p><div class="figure"><a name="wb-preferences-sql-editor-query-object-editors"></a><p class="title"><b>Figure 3.8 Preferences: SQL Editor: Object Editors</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-preferences-sql-editor-object-editors.png" width="848" height="622" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+        <span class="bold"><strong>Online DDL</strong></span>
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            <span class="guilabel">Default algorithm for ALTER table</span>: The
+            default algorithm selected when performing
+            <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/alter-table.html" target="_top"><code class="literal">ALTER TABLE</code></a> operations in
+            MySQL Workbench. The setting can also be adjusted for each
+            <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/alter-table.html" target="_top"><code class="literal">ALTER TABLE</code></a> operation.
+            Options include "In-Place" (preferred) and "Copy", see the
+            <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/innodb-online-ddl.html" target="_top">online DDL</a>
+            documentation for more information.
+          </p></li><li class="listitem"><p>
+            <span class="guilabel">Default lock for ALTER table</span>: The
+            default lock setting for allowing concurrent queries with
+            <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/alter-table.html" target="_top"><code class="literal">ALTER TABLE</code></a> in MySQL Workbench.
+            This setting can also be adjusted for each
+            <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/alter-table.html" target="_top"><code class="literal">ALTER TABLE</code></a> operation.
+            Options include "None", "Shared", and "Exclusive", see the
+            <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/innodb-online-ddl.html" target="_top">online DDL</a>
+            documentation for more information.
+          </p></li></ul></div><p>
+        <span class="bold"><strong>Views</strong></span>
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            <span class="guilabel">Reformat DDL for Views</span>: Whether to
+            automatically reformat the View DDL that is returned by the
+            MySQL Server.
+          </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+              The MySQL Server does not store the formatting information
+              for View definitions.
+            </p></div></li></ul></div></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-preferences-sql-editor-sql-execution"></a>Preferences: SQL Editor: SQL Execution</h4></div></div></div><p>
+        The following figure shows the preference options that apply to
+        SQL execution.
+      </p><div class="figure"><a name="wb-preferences-sql-editor-query-sql-execution"></a><p class="title"><b>Figure 3.9 Preferences: SQL Editor: SQL Execution</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-preferences-sql-editor-sql-execution.png" width="848" height="622" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+        <span class="bold"><strong>General</strong></span>
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            <span class="guilabel">Max query length to store in history (in
+            bytes)</span>: Queries that exceed this size will not be
+            saved in the history when executed. The default is 65536
+            bytes, and setting to 0 means there is no limit (all queries
+            will be saved).
+          </p></li><li class="listitem"><p>
+            <span class="guilabel">Continue on SQL Script Error</span>: Should an
+            error occur while executing a script, this option causes
+            execution to continue for the remainder of the script.
+          </p></li><li class="listitem"><p>
+            <span class="guilabel">Leave autocommit mode enabled by
+            default</span>: Toggles the default autocommit mode for
+            connections. When enabled, each statement will be committed
+            immediately.
+          </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+              All query tabs in the same connection share the same
+              transaction. To have independent transactions, you must
+              open a new connection.
+            </p></div></li><li class="listitem"><p>
+            <span class="guilabel">Progress status update interval</span>: When
+            executing long running queries over a slow connection, you
+            may need to increase this value to prevent excess load on
+            the connection. Defaults to 500 milliseconds.
+          </p></li></ul></div><p>
+        <span class="bold"><strong>SELECT Query Results</strong></span>
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            <span class="guilabel">Limit Rows</span>: Queries can sometimes
+            return an excessive number of rows, which can heavily load
+            the connection, and take time to display in MySQL Workbench. To
+            prevent this, you can set a more moderate value here. This
+            limit is defined by the <span class="guilabel">Limit Rows
+            Count</span> option.
+          </p></li><li class="listitem"><p>
+            <span class="guilabel">Limit Rows Count</span>: Specify the maximum
+            number of result rows to return. Defaults to 1000.
+          </p></li><li class="listitem"><p>
+            <span class="guilabel">Max. Field Value Length to Display</span>: To
+            avoid display problems due to excessive field length, it is
+            possible to set the maximum field length to display (in
+            bytes). Defaults to 256.
+          </p></li><li class="listitem"><p>
+            <span class="guilabel">Treat BINARY/VARBINARY as non-binary character
+            string</span>: Binary byte string values are not
+            displayed by default in the results grid, but are instead
+            marked as <code class="literal">BLOB</code> values. These can then be
+            viewed or edited with the <code class="literal">BLOB</code> editor.
+            Nonbinary character string values are displayed in the
+            results grid, and can be edited in the grid cell or using
+            the <code class="literal">BLOB</code> editor.
+          </p><p>
+            If this option is turned on, data truncation may result:
+            Binary byte string values may contain null bytes as part of
+            their valid data, whereas for nonbinary character strings, a
+            null byte terminates the string.
+          </p></li><li class="listitem"><p>
+            <span class="guilabel">Confirm Data Changes</span>: In the SQL
+            Editor, if you edit table data and then click the
+            <span class="guibutton">Applying changes to data</span> button,
+            MySQL Workbench launches a wizard to step you through applying
+            your changes. This gives you a chance to review the SQL that
+            will be applied to the live server to make the requested
+            changes. If this option is deselected, the changes will be
+            applied to the server without the wizard being displayed and
+            without giving you a chance to review the changes that will
+            be made.
+          </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-preferences-administration"></a>3.2.3 Administration Preferences</h3></div></div></div><p>
+      This section provides configuration options that affect the
+      Administration functionality in MySQL Workbench (see the figure that
+      follows).
+    </p><div class="figure"><a name="wb-preferences-administration-figure"></a><p class="title"><b>Figure 3.10 Preferences: Administration</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-preferences-administration.png" width="848" height="622" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      <span class="bold"><strong>Data Export and Import</strong></span>
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <span class="bold"><strong>Path to mysqldump tool</strong></span>: Path
+          to your local mysqldump binary. Leave it blank to use the
+          bundled mysqldump binary.
+        </p></li><li class="listitem"><p>
+          <span class="bold"><strong>Path to mysql tool</strong></span>: Path to
+          your local mysql client binary. Leave it blank to use the
+          bundled mysql binary.
+        </p></li><li class="listitem"><p>
+          <span class="bold"><strong>Export Directory Path</strong></span>:
+          Directory where your exported mysql dumps are located.
+        </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-preferences-modeling"></a>3.2.4 Modeling Preferences</h3></div></div></div><p>
+      This section provides configuration options that affect the
+      Modeling functionality in MySQL Workbench (see the figure that
+      follows).
+    </p><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-preferences-modeling-main"></a>Preferences: Modeling: Main</h4></div></div></div><div class="figure"><a name="wb-preferences-modeling-figure"></a><p class="title"><b>Figure 3.11 Preferences: Modeling</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-preferences-modeling.png" width="848" height="622" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+        <span class="bold"><strong>EER Modeler</strong></span>
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            <span class="bold"><strong>Automatically reopen previous model at
+            start</strong></span>: Check this if you want the model on which
+            you previously worked to be automatically reopened when you
+            start MySQL Workbench.
+          </p></li><li class="listitem"><p>
+            <span class="bold"><strong>Force use of software based rendering
+            for EER diagrams</strong></span>: MySQL Workbench will use OpenGL for
+            rendering when available. However, due to faulty drivers,
+            problems do occasionally occur. These issues can be resolved
+            by selecting the software rendering option here.
+          </p></li><li class="listitem"><p>
+            <span class="bold"><strong>Model undo history size</strong></span>:
+            You can limit the size of the undo history here. Set this
+            value to 0 to have an unlimited undo history.
+          </p></li><li class="listitem"><p>
+            <span class="bold"><strong>Auto-save model interval</strong></span>:
+            An open model that has not been saved will automatically be
+            saved after this period. On loading a model file,
+            MySQL Workbench will notify the user if the file was not
+            previously saved correctly, due to a crash or power failure.
+            MySQL Workbench can then attempt to recover the last auto-saved
+            version. For automatic recovery to be available for a new
+            file, it will have to have been saved at least once by the
+            user.
+          </p></li></ul></div></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-preferences-modeling-defaults"></a>Preferences: Modeling: Defaults</h4></div></div></div><p>
+        Sets default values for modeling object names (see the figure
+        that follows).
+      </p><div class="figure"><a name="wb-preferences-modeling-defaults-figure"></a><p class="title"><b>Figure 3.12 Preferences: Modeling: Defaults</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-preferences-modeling-defaults.png" width="848" height="622" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+        The following tables show the object names and their default
+        values.
+      </p><p>
+        <span class="bold"><strong>Column Defaults</strong></span>
+      </p><div class="informaltable"><table class="informaltable" summary="Object name default values" border="1"><colgroup><col><col></colgroup><thead><tr><th scope="col">Object Name</th><th scope="col">Default Value</th></tr></thead><tbody><tr><td scope="row"><code class="literal">PK Column Name</code></td><td><code class="literal">id%table%</code></td></tr><tr><td scope="row"><code class="literal">PK Column Type</code></td><td><code class="literal">INT</code></td></tr><tr><td scope="row"><code class="literal">Column Name</code></td><td><code class="literal">%table%col</code></td></tr><tr><td scope="row"><code class="literal">Column Type</code></td><td><code class="literal">VARCHAR(45)</code></td></tr></tbody></table></div><p>
+        <span class="bold"><strong>Foreign Key/Relationship
+        Defaults</strong></span>
+      </p><div class="informaltable"><table class="informaltable" summary="Object name default values" border="1"><colgroup><col><col></colgroup><thead><tr><th scope="col">Object Name</th><th scope="col">Default Value</th></tr></thead><tbody><tr><td scope="row"><code class="literal">FK Name</code></td><td><code class="literal">fk%stable_%dtable%</code></td></tr><tr><td scope="row"><code class="literal">Column Name</code></td><td><code class="literal">%table%_%column%</code></td></tr><tr><td scope="row"><code class="literal">ON UPDATE</code></td><td><code class="literal">NO ACTION</code></td></tr><tr><td scope="row"><code class="literal">ON DELETE</code></td><td><code class="literal">NO ACTION</code></td></tr><tr><td scope="row"><code class="literal">Associative Table Name</code></td><td><code class="literal">%stable%_has_%dtable%</code></td></tr></tbody></table></div></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-preferences-modeling-mysql"></a>Preferences: Modeling: MySQL</h4></div></div></div><p>
+        This preference group enables you to set model-related options
+        specific to your MySQL version (see the figure that follows).
+      </p><div class="figure"><a name="wb-preferences-modeling-mysql-figure"></a><p class="title"><b>Figure 3.13 Preferences: Modeling: MySQL</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-preferences-modeling-mysql.png" width="848" height="622" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+        <span class="bold"><strong>Model</strong></span>
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            <span class="guilabel">Default Target MySQL Version</span>: A limited
+            subset of validation procedures and table editor options are
+            affected by this MySQL version number.
+          </p><p>
+            Supported MySQL Server 5.6 features include fraction seconds
+            support for <code class="literal">TIME</code>,
+            <code class="literal">DATETIME</code>, and
+            <code class="literal">TIMESTAMP</code>, automatic initialization and
+            updates for <code class="literal">TIMESTAMP</code> and
+            <code class="literal">DATETIME</code> (for example, setting them to
+            <code class="literal">CURRENT_TIMESTAMP</code>), and FULLTEXT index
+            types with the InnoDB engine.
+          </p></li></ul></div><p>
+        <span class="bold"><strong>Model Table Defaults</strong></span>
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            <span class="guilabel">Default Storage Engine</span>: Tables created
+            in MySQL Workbench will be defined using this default storage
+            engine.
+          </p></li></ul></div><p>
+        <span class="bold"><strong>Forward Engineering and
+        Synchronization</strong></span>
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            <span class="guilabel">SQL_MODE to be used in generated
+            scripts</span>: Defaults to
+            "TRADITIONAL,ALLOW_INVALID_DATES", this defines the
+            <code class="literal">SQL_MODE</code> used by Forward Engineering and
+            Synchronization.
+          </p></li></ul></div></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-preferences-modeling-diagram"></a>Preferences: Modeling: Diagram</h4></div></div></div><p>
+        The following figure shows the preference options that apply to
+        model-related diagrams.
+      </p><div class="figure"><a name="wb-preferences-modeling-diagram-figure"></a><p class="title"><b>Figure 3.14 Preferences: Modeling: Diagram</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-preferences-modeling-diagram.png" width="848" height="622" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+        <span class="bold"><strong>All Objects</strong></span>
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            [ ] <span class="guilabel">Expand New Objects</span>: Enabled by
+            default.
+          </p></li><li class="listitem"><p>
+            [ ] <span class="guilabel">Propagate Object Color Changes to All
+            Diagrams</span>: Enabled by default.
+          </p></li></ul></div><p>
+        <span class="bold"><strong>Tables</strong></span>
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            [ ] <span class="guilabel">Show Column Types</span>: Enabled by
+            default.
+          </p></li><li class="listitem"><p>
+            [ ] <span class="guilabel">Show Schema Name</span>:
+          </p></li><li class="listitem"><p>
+            <span class="guilabel">Max. Length of ENUMs and SETs to
+            Display</span>: [<em class="replaceable"><code>20</code></em>]
+          </p></li><li class="listitem"><p>
+            [ ] <span class="guilabel">Show Column Flags</span>:
+          </p></li><li class="listitem"><p>
+            <span class="guilabel">Max. Number of Columns to Display</span>:
+            [<em class="replaceable"><code>30</code></em>] Larger tables will be
+            truncated.
+          </p></li></ul></div><p>
+        <span class="bold"><strong>Routines</strong></span>
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            <span class="guilabel">Trim Routine Names Longer Than</span>:
+            [<em class="replaceable"><code>20</code></em>] characters.
+          </p></li></ul></div><p>
+        <span class="bold"><strong>Relationships / Connections</strong></span>
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            [ ] <span class="guilabel">Draw Line Crossings (slow in large
+            diagrams)</span>:
+          </p></li><li class="listitem"><p>
+            [ ] <span class="guilabel">Hide Captions</span>: Enabled by
+            default.
+          </p></li><li class="listitem"><p>
+            [ ] <span class="guilabel">Center Captions Over Line</span>:
+          </p></li></ul></div></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-preferences-modeling-appearance"></a>Preferences: Modeling: Appearance</h4></div></div></div><p>
+        Use this preference group to set the available colors for the
+        objects that appear on an EER diagram canvas. As the following
+        figure shows, you can also add colors as needed.
+      </p><p>
+        For related information, see <a class="xref" href="wb-configuring.html#wb-accessibility" title="3.1 User Accessibility Options">Section 3.1, “User Accessibility Options”</a>.
+      </p><div class="figure"><a name="wb-preferences-modeling-appearance-figure"></a><p class="title"><b>Figure 3.15 Preferences: Modeling: Appearance</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-preferences-modeling-appearance.png" width="848" height="622" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+        <span class="bold"><strong>Color Presets</strong></span>
+      </p><p>
+        These are the available colors used while modeling, and they are
+        divided into two sections. First, the colors used when creating
+        tables and views. The second section are available colors for
+        items such as layers and notes.
+      </p><p>
+        <span class="bold"><strong>Fonts</strong></span>
+      </p><p>
+        These define the fonts and font sizes used while modeling.
+      </p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-preferences-fonts-and-colors"></a>3.2.5 Fonts and Colors Preferences</h3></div></div></div><p>
+      The following figure shows the preference options that apply to
+      fonts and colors.
+    </p><div class="figure"><a name="wb-preferences-fonts-and-colors-figure"></a><p class="title"><b>Figure 3.16 Preferences: Fonts and Colors</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-preferences-fonts-and-colors.png" width="848" height="622" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      <span class="bold"><strong>Fonts</strong></span>
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <span class="guilabel">SQL Editor</span>: [<em class="replaceable"><code>Consolas
+          10</code></em>] -- Global font for SQL text editors.
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">Resultset Grid</span>: [<em class="replaceable"><code>Tahoma
+          8</code></em>] -- Resultset grid in SQL editor
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">Scripting Shell</span>: [<em class="replaceable"><code>Consolas
+          10</code></em>] -- Scripting Shell output area
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">Script Editor</span>: [<em class="replaceable"><code>Consolas
+          10</code></em>] -- Code editors in scripting shell
+        </p></li></ul></div><p>
+      <span class="bold"><strong>Color Scheme</strong></span>
+    </p><p>
+      On Microsoft Windows, set the scheme that determines the
+      user-interface colors.
+    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-preferences-ssh"></a>3.2.6 SSH Preferences</h3></div></div></div><p>
+      The following figure shows the preference options that apply to
+      SSH items, such as timeouts.
+    </p><div class="figure"><a name="wb-preferences-ssh-figure"></a><p class="title"><b>Figure 3.17 Preferences: SSH</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-preferences-ssh.png" width="768" height="580" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      <span class="bold"><strong>Timeouts</strong></span>
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <span class="guilabel">SSH Connect Timeout</span>:
+          [<em class="replaceable"><code>10</code></em>] SSH connect time out in
+          seconds.
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">SSH Read Write Timeout</span>:
+          [<em class="replaceable"><code>5</code></em>] SSH read and write timeout in
+          seconds.
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">SSH Command timeout</span>:
+          [<em class="replaceable"><code>1</code></em>] SSH command timeout in seconds.
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">SSH Command Retry Count</span>:
+          [<em class="replaceable"><code>3</code></em>] SSH command retry count.
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">SSH BufferSize</span>:
+          [<em class="replaceable"><code>500</code></em>] SSH buffer size in bytes.
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">SSH Maximum File Size</span>:
+          [<em class="replaceable"><code>500</code></em>] The size in bytes of the
+          maximum file that is allowed to be transferred by SSH.
+        </p></li></ul></div><p>
+      Use the following options to set SSH file paths:
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <span class="guilabel">Path to SSH config file</span>: Click browse to
+          select a configuration file.
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">Path to SSH Known hosts file</span>: Click
+          browse to select a hosts file.
+        </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-preferences-others"></a>3.2.7 Other Preferences</h3></div></div></div><p>
+      The following figure shows the preference options that apply to
+      general items, such as the home screen and logs.
+    </p><div class="figure"><a name="wb-preferences-others-figure"></a><p class="title"><b>Figure 3.18 Preferences: Others</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-preferences-others.png" width="768" height="581" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      <span class="bold"><strong>Home Screen</strong></span>
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <span class="guilabel">Show Welcome Message on Connections
+          Screen</span>: Enabled by default. This option displays or
+          hides the text and links of the welcome message when
+          <span class="guilabel">MySQL Connections</span> is selected from the
+          side panel and MySQL Workbench is restarted.
+        </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+            This option was added in Workbench 6.3.9.
+          </p></div></li></ul></div><p>
+      <span class="bold"><strong>Timeouts</strong></span>
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <span class="guilabel">Migration Connection Timeout</span>:
+          [<em class="replaceable"><code>60</code></em>]: Maximum time to wait before a
+          connection is aborted.
+        </p></li></ul></div><p>
+      To set an alternative online service:
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <span class="guilabel">URL location to display geometry point</span>:
+          [<em class="replaceable"><code><a class="ulink" href="http://www.openstreetmap.org/?mlat=%LAT%&amp;mlon=%LON%" target="_top">http://www.openstreetmap.org/?mlat=%LAT%&amp;mlon=%LON%</a></code></em>]:
+          Replace the default value with an alternative URL. For
+          example, to use Google Maps rather than OpenStreetMap, enter
+          <code class="literal">https://www.google.com/maps/?q=%LAT%,%LON%</code>.
+        </p></li></ul></div><p>
+      <span class="bold"><strong>Others</strong></span>
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <span class="guilabel">Allow more than one instance of MySQL Workbench to
+          run</span>: By default, only one instance of MySQL Workbench
+          can be running at the same time. This setting is available
+          only on Windows.
+        </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+            All MySQL Workbench instances share the same files and settings,
+            so enable at your own risk.
+          </p></div></li></ul></div><p>
+      <span class="bold"><strong>Logs</strong></span>
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <span class="guilabel">Log Level</span>: Logs at the
+          <code class="literal">info</code> level by default. From lowest to
+          highest, the levels are: <code class="literal">none</code>,
+          <code class="literal">error</code>, <code class="literal">warning</code>,
+          <code class="literal">info</code>, <code class="literal">debug1</code>,
+          <code class="literal">debug2</code>, and <code class="literal">debug3</code>.
+        </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+            This option was added in Workbench 6.3.9.
+          </p></div></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-configuring-files"></a>3.3 MySQL Workbench Settings and Log Files</h2></div></div></div><p>
+      MySQL Workbench saves configuration, cache, and log related files and
+      directories on your system. These files are saved in your user's
+      MySQL Workbench directory as defined by MySQL Workbench, with this base
+      defaulting to:
+    </p><div class="table"><a name="wb-configuring-file-paths"></a><p class="title"><b>Table 3.1 Default Local Configuration Base File Path</b></p><div class="table-contents"><table class="table" summary="Default Local Configuration Base File Path" border="1"><colgroup><col><col></colgroup><thead><tr><th scope="col">Operating System</th><th scope="col">File Path</th></tr></thead><tbody><tr><td scope="row">Windows</td><td>%AppData%\MySQL\Workbench\</td></tr><tr><td scope="row">macOS</td><td>~username/Library/Application Support/MySQL/Workbench/</td></tr><tr><td scope="row">Linux</td><td>~username/.mysql/workbench/</td></tr></tbody></table></div></div><br class="table-break"><p>
+      A brief description of these directories and files:
+    </p><div class="table"><a name="wb-configuring-file-directory-descriptions"></a><p class="title"><b>Table 3.2 Local Workbench Files and Directory Descriptions</b></p><div class="table-contents"><table class="table" summary="Local Workbench Files and Directory Descriptions" border="1"><colgroup><col><col></colgroup><thead><tr><th scope="col">Directory or File</th><th scope="col">Description</th></tr></thead><tbody><tr><td scope="row"><a class="link" href="wb-configuring.html#wb-configuring-files-cache" title="The cache/ Directory">cache/</a></td><td>General behaviors are stored per-connection in *.cache files, and column
+              widths as *.column_widths files</td></tr><tr><td scope="row"><a class="link" href="wb-configuring.html#wb-configuring-files-log" title="The log/ Directory">log/</a></td><td>Log files include Workbench startup information, and also per-connection
+              SQL action results performed in Workbench</td></tr><tr><td scope="row"><a class="link" href="wb-configuring.html#wb-configuring-files-modules" title="The modules/ Directory">modules/</a></td><td>Home of installed plugins, for additional information see
+              <a class="xref" href="wb-extending.html#wb-plugins" title="C.3 Plugins and Tools">Section C.3, “Plugins and Tools”</a></td></tr><tr><td scope="row"><a class="link" href="wb-configuring.html#wb-configuring-files-sql-history" title="The sql_history/ Directory">sql_history/</a></td><td>Queries executed in Workbench are stored here, and are available from
+              within MySQL Workbench</td></tr><tr><td scope="row"><a class="link" href="wb-configuring.html#wb-configuring-files-snippets" title="The snippets/ Directory">snippets/</a></td><td>Saved SQL snippets are stored here, for additional information see
+              <a class="xref" href="wb-develop.html#wb-sql-editor-snippets" title="8.1.5 SQL Additions - Snippets Tab">Section 8.1.5, “SQL Additions - Snippets Tab”</a></td></tr><tr><td scope="row">audit_cache/</td><td>Cache storage by the Audit Log inspector, for additional information see
+              <a class="xref" href="wb-admin.html#wb-audit-inspector" title="6.6 MySQL Audit Inspector Interface">Section 6.6, “MySQL Audit Inspector Interface”</a></td></tr><tr><td scope="row"><code class="filename">connections.xml</code></td><td>Saved MySQL server connection information, as seen on the
+              <a class="link" href="wb-home.html" title="Chapter 4 The Home Screen">home screen</a>. For
+              information about backing up and restoring this file, see
+              <a class="xref" href="wb-data-modeling.html#wb-plugins-menu" title="9.1.1.1.7 The Tools Menu">Section 9.1.1.1.7, “The Tools Menu”</a></td></tr><tr><td scope="row"><code class="filename">server_instances.xml</code></td><td>Stores your MySQL server information, as it relates to your MySQL
+              connections</td></tr><tr><td scope="row"><code class="filename">wb_options.xml</code></td><td>Stores your preferences, both configured and default</td></tr></tbody></table></div></div><br class="table-break"><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="wb-configuring-files-cache"></a>The <code class="filename">cache/</code> Directory</h3></div></div></div><p>
+        The <code class="filename">cache/</code> directory contains cache files
+        in the <a class="link" href="wb-configuring.html#wb-configuring-file-paths" title="Table 3.1 Default Local Configuration Base File Path">user's
+        MySQL Workbench directory</a>. All cache files are stored as
+        SQLite 3 databases, and they are not meant to be edited outside
+        of MySQL Workbench. The types of cache files are:
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            <span class="bold"><strong>*.column_widths</strong></span>:
+          </p><p>
+            These are the saved column widths after adjusting columns in
+            the SQL editor's results grid. The fields include column_id,
+            stored as column_name::db_name::table_name, and width,
+            stored as an integer of character length.
+          </p></li><li class="listitem"><p>
+            <span class="bold"><strong>*.cache</strong></span>:
+          </p><p>
+            This information (schemas, engines, and other global
+            information) serves as a quick lookup source for the SQL
+            editor's auto completion functionality, and is implicitly
+            updated whenever the schema tree is updated.
+          </p></li></ul></div><p>
+        All cache/ file names begin with the MySQL connection name. For
+        example, the column width file is named
+        <code class="filename">Local_instance_3306.column_widths</code> for a
+        MySQL connection named "Local Instance 3306".
+      </p><p>
+        Cached files remain after a connection is either renamed or
+        deleted.
+      </p></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="wb-configuring-files-log"></a>The <code class="filename">log/</code> Directory</h3></div></div></div><p>
+        MySQL Workbench start up and SQL actions are logged and stored in
+        the <code class="filename">log/</code> directory. This directory is in
+        the <a class="link" href="wb-configuring.html#wb-configuring-file-paths" title="Table 3.1 Default Local Configuration Base File Path">user's MySQL Workbench
+        directory</a>.
+      </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+          To find these text files, from the main Workbench navigation
+          menu choose <span class="guimenu">Help</span> and then <span class="guimenuitem">Show
+          Log Files</span>.
+        </p></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            <span class="bold"><strong>wb<em class="replaceable"><code>*</code></em>.log</strong></span>:
+          </p><p>
+            Debugging information is generated when MySQL Workbench is
+            started and unexpectedly stopped. Information includes paths
+            used, modules and plugins loaded, system information, and
+            more. The log files are useful when
+            <a class="link" href="workbench-reporting-bugs.html" title="Appendix D How To Report Bugs or Problems">reporting a
+            MySQL Workbench bug</a>.
+          </p><p>
+            The log files rotates when MySQL Workbench is started, in that
+            <code class="filename">wb.log</code> is renamed to
+            <code class="filename">wb.1.log</code>, <code class="filename">wb.log</code>
+            is reset, and the previous <code class="filename">wb.1.log</code>
+            file is renamed to <code class="filename">wb.2.log</code>, and so on,
+            all the way up to <code class="filename">wb.9.log</code>.
+          </p></li><li class="listitem"><p>
+            <span class="bold"><strong>sql_actions_<em class="replaceable"><code>*</code></em>.log</strong></span>:
+          </p><p>
+            A log of all SQL execution results but without the data, for
+            debugging purposes.
+          </p><p>
+            The SQL editor's SQL history does not originate from here,
+            as it is stored in the <code class="filename">sql_history</code>
+            directory.
+          </p></li></ul></div></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="wb-configuring-files-modules"></a>The <code class="filename">modules/</code> Directory</h3></div></div></div><p>
+        Custom plugins (modules) are stored in the
+        <code class="filename">modules</code> directory. For additional
+        information about MySQL Workbench plugins, see
+        <a class="xref" href="wb-extending.html#wb-plugins" title="C.3 Plugins and Tools">Section C.3, “Plugins and Tools”</a>.
+      </p></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="wb-configuring-files-sql-history"></a>The <code class="filename">sql_history/</code> Directory</h3></div></div></div><p>
+        SQL statements executed in the SQL editor are saved in the
+        <code class="filename">sql_history</code> directory. They are stored as
+        plain text files that are separated one per day (such as
+        <code class="filename">2015-12-15</code>) and they contain your
+        MySQL Workbench SQL statement history for all MySQL connections. For
+        additional information, see
+        <a class="xref" href="wb-develop.html#wb-develop-sql-editor-history" title="8.1.7 Output Panel">Section 8.1.7, “Output Panel”</a>.
+      </p></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="wb-configuring-files-snippets"></a>The <code class="filename">snippets/</code> Directory</h3></div></div></div><p>
+        SQL snippets used by the SQL editor are stored in the
+        <code class="filename">snippets</code> directory. These files include
+        bundled snippets (such as "SQL DDL Statements") and custom
+        snippets saved under the <span class="guilabel">My Snippets</span> tab.
+        For additional information, see
+        <a class="xref" href="wb-develop.html#wb-sql-editor-snippets" title="8.1.5 SQL Additions - Snippets Tab">Section 8.1.5, “SQL Additions - Snippets Tab”</a>.
+      </p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-configuring-custom-home-link"></a>3.4 Tutorial: Add a Custom Link to the Home Screen</h2></div></div></div><p>
+      This tutorial introduces the concept of altering the MySQL Workbench
+      home screen by adding your own shortcut link. Specifically, the
+      tutorial adds a shortcut titled "Example" that opens "example.org"
+      as a browser tab inside MySQL Workbench.
+    </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+        Although adding a link to the home screen is not a common need,
+        this tutorial is an example that demonstrates the idea of
+        customizing MySQL Workbench.
+      </p></div><p>
+      First, create an icon for your shortcut. This step is optional,
+      and the table below compares the icon used in this tutorial and
+      the default icon if a custom icon is not defined.
+    </p><div class="table"><a name="wb-configuring-custom-home-link-icons"></a><p class="title"><b>Table 3.3 MySQL Workbench Home Screen Icons</b></p><div class="table-contents"><table class="table" summary="MySQL Workbench Home Screen Icons" border="1"><colgroup><col><col></colgroup><thead><tr><th scope="col">Default Icon</th><th scope="col">Our Example Icon</th></tr></thead><tbody><tr><td scope="row"><span class="inlinemediaobject"><img src="images/wb_starter_generic_52.png" align="middle" width="52" height="52"></span></td><td><span class="inlinemediaobject"><img src="images/wb-home-screen-example-icon.png" align="middle" width="52" height="52"></span></td></tr></tbody></table></div></div><br class="table-break"><p>
+      Save your new 52x52 pixel image to a location accessible by
+      MySQL Workbench. The following table indicates the default path by
+      operating system where the source icons are stored.
+    </p><div class="table"><a name="wb-configuring-custom-link-file-paths"></a><p class="title"><b>Table 3.4 Default Path for Home Screen Icons</b></p><div class="table-contents"><table class="table" summary="Default Path for Home Screen Icons" border="1"><colgroup><col><col></colgroup><thead><tr><th scope="col">Operating System</th><th scope="col">File Path</th></tr></thead><tbody><tr><td scope="row">Windows</td><td>"C:\Program Files (x86)\MySQL\MySQL Workbench CE
+              6.3.10\images\home\</td></tr><tr><td scope="row">macOS</td><td>/Applications/MySQLWorkbench.app/Contents/Resources/</td></tr><tr><td scope="row">Linux</td><td>/usr/share/mysql-workbench/images/</td></tr></tbody></table></div></div><br class="table-break"><p>
+      Next, open <code class="filename">starters_settings.xml</code> (this file
+      is located under your
+      <a class="link" href="wb-configuring.html#wb-configuring-file-paths" title="Table 3.1 Default Local Configuration Base File Path">user's MySQL Workbench
+      directory</a>) and add an entry for your new shortcut ID where
+      the order determines the location on the home screen. Follow the
+      standard convention by appending your value to
+      "com.mysql.wb.starter.", this tutorial uses "example":
+    </p><pre class="programlisting">
+
+&lt;link type="object"&gt;com.mysql.wb.starter.example&lt;/link&gt;
+
+</pre><p>
+      Lastly, open <code class="filename">predefined_starters.xml</code> and add
+      a new "app.Starter" entry.
+    </p><div class="table"><a name="wb-configuring-predefined-starters-file-path"></a><p class="title"><b>Table 3.5 Default Path to predefined_starters.xml</b></p><div class="table-contents"><table class="table" summary="Default Path to predefined_starters.xml" border="1"><colgroup><col><col></colgroup><thead><tr><th scope="col">Operating System</th><th scope="col">File Path</th></tr></thead><tbody><tr><td scope="row">Windows</td><td>"C:\Program Files (x86)\MySQL\MySQL Workbench CE
+              6.3.10\data\</td></tr><tr><td scope="row">macOS</td><td>/Applications/MySQLWorkbench.app/Contents/Resources/data/</td></tr><tr><td scope="row">Linux</td><td>/usr/share/mysql-workbench/data/</td></tr></tbody></table></div></div><br class="table-break"><p>
+      This tutorial does not describe this entry in detail, so consider
+      it as a self-explanatory template for now. The important concepts
+      include using the ID you defined in the previous step, your own
+      URL for the "command", and "smallIcon" as a 52x52 pixel image that
+      is displayed on the MySQL Workbench home screen. Adjust these entries
+      according to your needs, including the path to your icon.
+    </p><pre class="programlisting">
+
+&lt;value type="object" struct-name="app.Starter" id="com.mysql.wb.starter.example"&gt;
+ &lt;value type="string" key="type"&gt;Website&lt;/value&gt;
+ &lt;value type="string" key="title"&gt;Example&lt;/value&gt;
+ &lt;value type="string" key="description"&gt;My wonderful example.org&lt;/value&gt;
+ &lt;value type="string" key="publisher"&gt;Example Inc.&lt;/value&gt;
+ &lt;value type="string" key="authorHome"&gt;http://www.example.org/about&lt;/value&gt;
+ &lt;value type="string" key="smallIcon"&gt;/usr/local/share/wb-home-screen-example-icon.png&lt;/value&gt;
+ &lt;value type="string" key="command"&gt;browse:http://example.org&lt;/value&gt;
+&lt;/value&gt;
+
+</pre><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+        Upgrading MySQL Workbench will overwrite these changes, because
+        <code class="filename">predefined_starters.xml</code> is stored inside
+        the MySQL Workbench installation directory, and
+        <code class="filename">starters_settings.xml</code> is reset during
+        installation. Consider saving copies of these changes for future
+        reference.
+      </p></div><p>
+      Restart MySQL Workbench to see the new link on your MySQL Workbench home
+      screen.
+    </p><p>
+      Additional "app.Starter" options include:
+    </p><pre class="programlisting">
+
+Require a specific edition of Workbench:
+  Community:
+    &lt;value type="string" key="edition"&gt;ce&lt;/value&gt;
+  Commercial:
+    &lt;value type="string" key="edition"&gt;se&lt;/value&gt;
+
+Require a specific version (or higher) of Workbench:
+  &lt;value type="string" key="introduction"&gt;6.1.0&lt;/value&gt;
+
+</pre></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-configuration-additional"></a>3.5 Common Preferences and Configurations</h2></div></div></div><p>
+      Commonly used configuration options and preferences include:
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <span class="guilabel">Rescan for Local MySQL Instances</span>:
+          Right-click on the home screen, and this option will scan your
+          system for MySQL instances and add connection tiles to the
+          home screen.
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">Safe Updates</span>: When enabled (default),
+          Workbench will not execute UPDATE or DELETE statements if a
+          key is not defined in the WHERE clause. In other words,
+          Workbench attempts to prevent big mistakes, such as deleting a
+          large number of (or all) rows. Set from the <span class="guilabel">SQL
+          Editor</span> preferences tab.
+        </p><p>
+          For example, "DELETE FROM foo" is considered unsafe, whereas
+          "DELETE FROM foo WHERE id = 1" is safe and will always
+          execute.
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">Default Target MySQL Version</span>: For
+          modeling, set this <span class="guilabel">Modeling</span> MySQL
+          preference to your target MySQL Server version. This affects
+          the generated syntax and database structure in relation to how
+          MySQL changed over time. Having the wrong version may generate
+          invalid syntax for your MySQL server.
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">Combine Management Tools and Schema Tree</span>:
+          This refers to the left panel in the SQL Editor, where the
+          <span class="guilabel">Management</span> and
+          <span class="guilabel">Schemas</span> areas are on one or two separate
+          tabs.
+        </p><p>
+          This behavior can also be toggled at runtime by clicking the
+          <span class="inlinemediaobject"><img src="images/wb-icon-navigator-merge.png" align="middle" width="12" height="12"></span> icon.
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">Save snapshot of open editors on close</span>:
+          By default, Workbench saves all query tabs and reopens them
+          when you restart Workbench. Use the related
+          <span class="guilabel">Auto-save scripts interval</span> setting to
+          modify its behavior. Both are set from the <span class="guilabel">SQL
+          Editor</span> preferences tab.
+        </p><p>
+          <span class="emphasis"><em>Related behavior</em></span>: Right-click on an SQL
+          tab and choose either <span class="guimenuitem">Save tab</span> (to
+          save the tab to a file) or <span class="guimenuitem">Close Other
+          Tabs</span> to close all other SQL editor tabs.
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">Enable Code Completion in Editors</span>: Code
+          suggestions can be activated either manually, or automatically
+          if the related <span class="guilabel">Automatically Start Code
+          Completion</span> setting is also enabled. In addition,
+          enable <span class="guilabel">Use UPPERCASE keywords on
+          completion</span> to code suggest upper case SQL keywords,
+          such as "INSERT" instead of "insert".
+        </p><p>
+          <span class="emphasis"><em>Related behavior</em></span>: The <span class="guilabel">Context
+          Help</span> right panel in the SQL editor displays
+          documentation for SQL statements, and is disabled/enabled from
+          the right panel. For example, typing INSERT will load
+          documentation for the INSERT statement in the right panel.
+        </p></li></ul></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="wb-installing.html">Previous</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="wb-home.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 2 Installation </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Chapter 4 The Home Screen</td></tr></table></div><div class="copyright-footer"></div></body></html>

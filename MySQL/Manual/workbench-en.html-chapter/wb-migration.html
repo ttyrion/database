@@ -1,0 +1,1367 @@
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Chapter 10 Database Migration Wizard</title><link rel="stylesheet" type="text/css" href="mvl.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="MySQL Workbench"><link rel="up" href="index.html" title="MySQL Workbench"><link rel="prev" href="wb-data-modeling.html" title="Chapter 9 Database Design and Modeling"><link rel="next" href="workbench-faq.html" title="Appendix A MySQL Workbench Frequently Asked Questions"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 10 Database Migration Wizard</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="wb-data-modeling.html">Previous</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="workbench-faq.html">Next</a></td></tr></table><hr></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a name="wb-migration"></a>Chapter 10 Database Migration Wizard</h1></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl class="toc"><dt><span class="section"><a href="wb-migration.html#wb-migration-install">10.1 General Installation Requirements</a></span></dt><dd><dl><dt><span class="section"><a href="wb-migration.html#wb-migration-install-odbc-libraries">10.1.1 ODBC Libraries</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-install-odbc-drivers">10.1.2 ODBC Drivers</a></span></dt></dl></dd><dt><span class="section"><a href="wb-migration.html#wb-migration-overview">10.2 Migration Overview</a></span></dt><dd><dl><dt><span class="section"><a href="wb-migration.html#wb-migration-overview-steps">10.2.1 A Visual Guide to Performing a Database Migration</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-overview-supported">10.2.2 Migrating from Supported Databases</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-overview-generic">10.2.3 Migrating from Unsupported (Generic) Databases</a></span></dt></dl></dd><dt><span class="section"><a href="wb-migration.html#wb-migration-database-concepts">10.3 Conceptual DBMS Equivalents</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-database-access">10.4 Microsoft Access Migration</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-database-mssql">10.5 Microsoft SQL Server Migration</a></span></dt><dd><dl><dt><span class="section"><a href="wb-migration.html#wb-migration-database-mssql-prepare">10.5.1 Preparations</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-database-mssql-drivers">10.5.2 Drivers</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-database-mssql-connection">10.5.3 Connection Setup</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-database-mssql-typemapping">10.5.4 Microsoft SQL Server Type Mapping</a></span></dt></dl></dd><dt><span class="section"><a href="wb-migration.html#wb-migration-database-postgresql">10.6 PostgreSQL migration</a></span></dt><dd><dl><dt><span class="section"><a href="wb-migration.html#wb-migration-database-postgresql-prepare">10.6.1 Preparations</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-database-postgresql-drivers">10.6.2 Drivers</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-database-postgresql-connection">10.6.3 Connection Setup</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-database-postgresql-typemapping">10.6.4 PostgreSQL Type Mapping</a></span></dt></dl></dd><dt><span class="section"><a href="wb-migration.html#wb-migration-database-mysql">10.7 MySQL Migration</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-wizard">10.8 Using the MySQL Workbench Migration Wizard</a></span></dt><dd><dl><dt><span class="section"><a href="wb-migration.html#wb-migration-wizard-connection">10.8.1 Connecting to the Databases</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-wizard-schemata">10.8.2 Schema Retrieval and Selection</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-wizard-reverse-engineering">10.8.3 Reverse Engineering</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-wizard-object-selection">10.8.4 Object Selection</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-wizard-migration">10.8.5 Migration</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-wizard-manual-editing">10.8.6 Manual Editing</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-wizard-schema-target-options">10.8.7 Target Creation Options</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-wizard-schema-creation">10.8.8 Schema Creation</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-wizard-create-target">10.8.9 Create Target Results</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-wizard-data-migration-setup">10.8.10 Data Transfer and Migration Setup</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-wizard-data-migration-transfer">10.8.11 Bulk Data Transfer</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-wizard-report">10.8.12 Migration Report</a></span></dt></dl></dd><dt><span class="section"><a href="wb-migration.html#wb-migration-faq">10.9 MySQL Workbench Migration Wizard FAQ</a></span></dt></dl></div><p>
+    MySQL Workbench provides the ability to migrate ODBC-compliant databases
+    to MySQL.
+  </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+        Convert (migrate) different database types, including MySQL,
+        across servers.
+      </p></li><li class="listitem"><p>
+        Convert tables and copy data, but will not convert stored
+        procedures, views, or triggers.
+      </p></li><li class="listitem"><p>
+        Allows customization and editing during the migration process.
+      </p></li><li class="listitem"><p>
+        Works on Linux, macOS, and Microsoft Windows.
+      </p></li></ul></div><p>
+    This is not an exhaustive list. The following sections discuss these
+    and additional migration capabilities.
+  </p><p>
+    Setup may be the most challenging aspect of using the
+    MySQL Workbench Migration Wizard. There is the
+    <a class="link" href="wb-migration.html#wb-migration-install" title="10.1 General Installation Requirements">installation section</a>,
+    which describes setting up ODBC requirements for Linux, macOS, and
+    Microsoft Windows, and the
+    <a class="link" href="wb-migration.html#wb-migration-database-concepts" title="10.3 Conceptual DBMS Equivalents">Database Product
+    Specific Notes</a> section that references setup conditions for
+    each RDBMS.
+  </p><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-migration-install"></a>10.1 General Installation Requirements</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="wb-migration.html#wb-migration-install-odbc-libraries">10.1.1 ODBC Libraries</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-install-odbc-drivers">10.1.2 ODBC Drivers</a></span></dt></dl></div><p>
+      The MySQL Workbench Migration Wizard uses ODBC to connect to a source
+      database, except for MySQL. You will need the ODBC driver
+      installed that corresponds to the database you want to migrate
+      from. For example, PostgreSQL can be migrated with the psqlodbc
+      ODBC driver; Microsoft SQL Server can be migrated using the native
+      Microsoft SQL Server driver on Windows or with FreeTDS on Linux
+      and macOS.
+    </p><p>
+      The following figure shows the general components involved in an
+      ODBC connection: An ODBC driver for MySQL server and the other
+      relational database management system, the ODBC Driver Manager,
+      and MySQL Workbench.
+    </p><div class="figure"><a name="wb-migration-install-odbc-diagram"></a><p class="title"><b>Figure 10.1 MySQL Workbench migration installation diagram</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-install-odbc-diagram.png" width="800" height="353" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      When specifying the source RDBMS, you can either use a data source
+      configured externally or provide the individual connection
+      parameters to MySQL Workbench. If you already have an ODBC Data Source
+      configured in your system, then you can use that in MySQL Workbench.
+    </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+        The migration process does not support source or target RDBMS
+        connections through SSH.
+      </p><p>
+        A workaround is to set up an encrypted tunnel, and then treat
+        the MySQL target as a standard TCP (unencrypted) connection.
+      </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-migration-install-odbc-libraries"></a>10.1.1 ODBC Libraries</h3></div></div></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+          This section may be skipped when using a MySQL Workbench binary
+          that is provided by Oracle.
+        </p></div><p>
+        An ODBC Driver Manager library must be present. Both Windows and
+        macOS provide one.
+      </p><h4><a name="idm140544306992448"></a>Linux</h4><p>
+        <code class="literal">iODBC</code>: MySQL Workbench binaries provided by
+        Oracle already include iODBC and no additional action is
+        required. If you compile it yourself, you must install iODBC or
+        unixODBC. iODBC is recommended. You can use the iODBC library
+        provided by your distribution by installing the libiodbc2
+        package on Debian based systems, or libiodbc on RPM based
+        systems.
+      </p><p>
+        <code class="literal">pyodbc</code>: is the Python module used by
+        MySQL Workbench to interface with ODBC, and may be used to migrate
+        ODBC compliant databases such as PostgreSQL and DB2. In Windows
+        and macOS, it is included with Workbench. In Linux, binaries
+        provided by Oracle also include pyodbc.
+      </p><p>
+        If you're using a self-compiled binary, make sure you have the
+        latest version, and that it is compiled against the ODBC manager
+        library that you chose, whether it is iODBC or unixODBC. As of
+        version 3.0.6, pyodbc will compile against unixODBC by default.
+        If you are compiling against iODBC then you must perform the
+        following steps:
+      </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+            For compiling, make sure you have the iODBC headers
+            installed. For Linux, the name depends on your system's
+            package manager but common names are
+            <code class="literal">libiodbc-devel</code> (RPM based systems) or
+            <code class="literal">libiodbc2-dev</code> (Debian based systems). For
+            macOS, the headers come with the system and no additional
+            action is required for this step.
+          </p></li><li class="listitem"><p>
+            In the pyodbc source directory, edit the setup.py file and
+            around line 157, replace the following line:
+            <code class="literal">settings['libraries'].append('odbc')</code> with
+            <code class="literal">settings['libraries'].append('iodbc')</code>
+          </p></li><li class="listitem"><p>
+            Execute the following command as the root user:
+            <code class="literal">CFLAGS=`iodbc-config --cflags`
+            LDFLAGS=`iodbc-config --libs` python setup.py
+            install</code>
+          </p></li></ol></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-migration-install-odbc-drivers"></a>10.1.2 ODBC Drivers</h3></div></div></div><p>
+        For each RDBMS, you need its corresponding ODBC driver, which
+        must also be installed on the same machine that MySQL Workbench is
+        running on. This driver is usually provided by the RDBMS
+        manufacturer, but in some cases they can also be provided by
+        third party vendors or open source projects.
+      </p><p>
+        Operating systems usually provide a graphical interface to help
+        set up ODBC drivers and data sources. Use that to install the
+        driver (i.e., make the ODBC Manager "see" a newly installed ODBC
+        driver). You can also use it to create a data source for a
+        specific database instance, to be connected using a previously
+        configured driver. Typically you need to provide a name for the
+        data source (the DSN), in addition to the database server IP,
+        port, username, and sometimes the database the user has access
+        to.
+      </p><p>
+        If MySQL Workbench is able to locate an ODBC manager GUI for your
+        system, the <span class="guibutton">Open ODBC Administrator</span>
+        button on the migration wizard's overview page will open it.
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            <code class="literal">Linux</code>: There are a few GUI utilities,
+            some of which are included with unixODBC. Refer to the
+            documentation for your distribution. iODBC provides
+            <code class="literal">iodbcadm-gtk</code>.
+          </p></li><li class="listitem"><p>
+            <code class="literal">macOS</code>: You can use the ODBC Administrator
+            tool that is separate download from Apple, or an ODBC
+            Management tool from a different vendor. If the tool is
+            installed in the
+            <code class="filename">/Applications/Utilities</code> folder, you can
+            start it using the <span class="guibutton">Open ODBC
+            Administrator</span> button.
+          </p></li><li class="listitem"><p>
+            <code class="literal">Microsoft Windows</code>: You can use the Data
+            Sources (ODBC) tool under Administrative Tools. If present,
+            the <span class="guibutton">Open ODBC Administrator</span> button
+            will start it.
+          </p></li></ul></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">ODBC Driver architecture</div><p>
+          Since the ODBC driver needs to be installed in the client
+          side, you will need an ODBC driver that supports your clients
+          operating system and architecture. For example, if you are
+          running MySQL Workbench from Linux x64, then you need a Linux x64
+          ODBC driver for your RDBMS. In macOS, MySQL Workbench is built as
+          a 32-bit application, so you need the 32-bit drivers.
+        </p></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-migration-overview"></a>10.2 Migration Overview</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="wb-migration.html#wb-migration-overview-steps">10.2.1 A Visual Guide to Performing a Database Migration</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-overview-supported">10.2.2 Migrating from Supported Databases</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-overview-generic">10.2.3 Migrating from Unsupported (Generic) Databases</a></span></dt></dl></div><p>
+      The Migration Wizard performs the following steps when migrating a
+      database to MySQL:
+    </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+          Connects to the source RDBMS and retrieves a list of available
+          databases/schemas.
+        </p></li><li class="listitem"><p>
+          Reverse engineers selected database/schemas into a internal
+          representation specific to the source RDBMS. This step will
+          also perform the renaming of objects/schemas depending on the
+          type of object name mapping method that is chosen.
+        </p></li><li class="listitem"><p>
+          Automatically migrates the source RDBMS objects into MySQL
+          specific objects.
+        </p><div class="orderedlist"><ol class="orderedlist" type="a"><li class="listitem"><p>
+              Target schema objects are created.
+            </p></li><li class="listitem"><p>
+              Target table objects are created.
+            </p><div class="orderedlist"><ol class="orderedlist" type="i"><li class="listitem"><p>
+                  Columns for each table are copied.
+                </p><div class="orderedlist"><ol class="orderedlist" type="A"><li class="listitem"><p>
+                      Data types are mapped to MySQL data types.
+                    </p></li><li class="listitem"><p>
+                      Default values are mapped to a MySQL supported
+                      default value, if possible.
+                    </p></li></ol></div></li><li class="listitem"><p>
+                  Indexes are converted.
+                </p></li><li class="listitem"><p>
+                  Primary Keys are converted.
+                </p></li><li class="listitem"><p>
+                  Triggers are copied, and commented out if the source
+                  is not MySQL.
+                </p></li></ol></div></li><li class="listitem"><p>
+              Foreign Keys for all tables (of all schemas) are
+              converted.
+            </p></li><li class="listitem"><p>
+              View objects are copied, and commented out if the source
+              is not MySQL.
+            </p></li><li class="listitem"><p>
+              Stored Procedure and Function objects are copied, and
+              commented out if the source is not MySQL.
+            </p></li></ol></div></li><li class="listitem"><p>
+          Provides an opportunity to review the changes, for editing and
+          correcting errors in the migrated objects.
+        </p></li><li class="listitem"><p>
+          Creates the migrated objects in the target MySQL server. If
+          there are errors, you can return to the previous step and
+          correct them, and retry the target creation.
+        </p></li><li class="listitem"><p>
+          Copy data of the migrated tables from the source RDBMS to
+          MySQL.
+        </p></li></ol></div><p>
+      MySQL Workbench provides support for migrating from some specific
+      RDBMS products. The Migration Wizard will provide the best results
+      when migrating from such products. However, in some cases, other
+      unsupported database products can also be migrated by using its
+      Generic database support, as long as you have an ODBC driver for
+      it. In this case, the migration will be less automatic, but should
+      still work nonetheless.
+    </p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-migration-overview-steps"></a>10.2.1 A Visual Guide to Performing a Database Migration</h3></div></div></div><p>
+        This example migrates a Microsoft SQL Server database to MySQL
+        and includes an image for each step.
+      </p><p>
+        From MySQL Workbench, choose <span class="guimenu">Database</span> and then
+        <span class="guimenu">Migrate</span> to open the migration wizard and
+        display the migration wizard overview (see the figure that
+        follows).
+      </p><h4><a name="idm140544306940848"></a>Overview</h4><div class="figure"><a name="wb-migration-overview-overview"></a><p class="title"><b>Figure 10.2 MySQL Workbench migration: Overview</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-overview.png" width="800" height="461" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+        It describes the prerequisites and requirements that should be
+        understood before proceeding further. The <span class="guibutton">Open ODBC
+        Administrator</span> option will load
+        <code class="filename">odbcad32.exe</code>, and is used to confirm that
+        the ODBC Driver for SQL Server is installed, and to make
+        configuration changes if needed.
+      </p><p>
+        Click <span class="guibutton">Start Migration</span> to continue.
+      </p><h4><a name="idm140544306928976"></a>Source Selection</h4><p>
+        Select the source RDBMS that is migrating to MySQL. Choose the
+        <span class="guilabel">Database System</span> that is being migrated and
+        the other connection parameters will change accordingly. The
+        following figure shows an example of the connection session.
+      </p><div class="figure"><a name="wb-migration-overview-source-selection-parameters"></a><p class="title"><b>Figure 10.3 MySQL Workbench migration: Source Selection (Parameters)</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-source-selection-parameters.png" width="800" height="460" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h4><a name="idm140544306918832"></a>Target Selection</h4><p>
+        The target is the MySQL database that will contain the newly
+        migrated database (see the figure that follows). The current
+        Workbench MySQL connections will be available here, or you can
+        choose <span class="guimenu">Manage DB Connections</span> to create a new
+        connection.
+      </p><div class="figure"><a name="wb-migration-overview-target-selection"></a><p class="title"><b>Figure 10.4 MySQL Workbench migration: Target selection</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-target-selection.png" width="800" height="460" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h4><a name="idm140544306909616"></a>Fetch Schemas List</h4><p>
+        The Schemas list is retrieved from both the source and target
+        RDBMS (see the figure that follows). This is an automated and
+        informational step that reports connection related errors and/or
+        general log information. Click <span class="guibutton">Next</span> to
+        continue.
+      </p><div class="figure"><a name="wb-migration-overview-fetch-schemata-list"></a><p class="title"><b>Figure 10.5 MySQL Workbench migration: Fetch Schemas List</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-fetch-schemata-list.png" width="800" height="526" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h4><a name="idm140544306900384"></a>Schemas Selection</h4><p>
+        Choose the schemas you want to migrate.
+      </p><p>
+        "Schema Name Mapping Method" options while migrating Microsoft
+        SQL Server:
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            Keep schemas as they are: Catalog.Schema.Table -&gt;
+            Schema.Table: This will create multiple databases, one per
+            schema.
+          </p></li><li class="listitem"><p>
+            Only one schema: Catalog.Schema.Table -&gt; Catalog.Table:
+            Merges each schema into a single database. The following
+            figure shows an example of this mapping method.
+          </p></li><li class="listitem"><p>
+            Only one schema, keep current schema names as a prefix:
+            Catalog.Schema.Table -&gt; Catalog.Schema_table: Preserves
+            the schema name as a prefix.
+          </p></li></ul></div><div class="figure"><a name="wb-migration-overview-schemata-selection"></a><p class="title"><b>Figure 10.6 MySQL Workbench migration: Schemas Selection</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-schemata-selection.png" width="800" height="462" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h4><a name="idm140544306886816"></a>Reverse Engineer Source</h4><p>
+        The source metadata is fetched from the source RDBMS and then is
+        reverse-engineered. This is an automated and informational step
+        that reports related errors, general log information, or both
+        (see the figure that follows). View the logs and then click
+        <span class="guibutton">Next</span> to continue.
+      </p><div class="figure"><a name="wb-migration-overview-reverse-engineer-source"></a><p class="title"><b>Figure 10.7 MySQL Workbench migration: Reverse Engineer Source</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-reverse-engineer-source.png" width="800" height="531" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h4><a name="idm140544306877488"></a>Source Objects</h4><p>
+        The discovered objects from the <span class="guilabel">Reverse Engineer
+        Source</span> stage are revealed and made available. As the
+        next figure shows, the results include Table, View, and Routine
+        objects, with only the Table objects being selected by default.
+      </p><div class="figure"><a name="wb-migration-overview-source-objects"></a><p class="title"><b>Figure 10.8 MySQL Workbench migration: Source Objects</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-source-objects.png" width="800" height="531" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h4><a name="idm140544306868224"></a>Migration</h4><p>
+        The migration process now converts the selected objects into
+        MySQL compatible objects (see the figure that follows). View the
+        logs and then proceed.
+      </p><div class="figure"><a name="wb-migration-overview-migration"></a><p class="title"><b>Figure 10.9 MySQL Workbench migration: Migration</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-migration.png" width="800" height="596" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h4><a name="idm140544306859840"></a>Manual Editing</h4><p>
+        There are three sections to edit, which are selected by using
+        the <span class="guilabel">View</span> select box on the top right. The
+        <span class="guibutton">Show Code and Messages</span> button is
+        available with every view and it will show the generated MySQL
+        code that corresponds to the selected object.
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            <span class="guimenu">Migration Problems</span>: This will either
+            report problems or display "No mapping problems found." It
+            is an informational screen. The following figure shows an
+            example of this type of message.
+          </p><div class="figure"><a name="wb-migration-overview-manual-editing-problems"></a><p class="title"><b>Figure 10.10 MySQL Workbench migration: Manual Editing (Migration Problems)</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-manual-editing-problems.png" width="800" height="463" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></li><li class="listitem"><p>
+            <span class="guimenu">All Objects</span>: An object view that allows
+            you to view and edit the object definitions. Double-click on
+            a row to modify a target objects name. The following figure
+            shows an example of this type of message.
+          </p><div class="figure"><a name="wb-migration-overview-manual-editing-all-objects"></a><p class="title"><b>Figure 10.11 MySQL Workbench migration: Manual Editing (All Objects)</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-manual-editing-all-objects.png" width="800" height="701" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></li><li class="listitem"><p>
+            <span class="guimenu">Column Mappings</span>: Shows all of the table
+            column mappings, and allows you to individually review and
+            fix the mapping for all column types, default values, and
+            other attributes. The following figure shows an example of
+            this type of message.
+          </p><div class="figure"><a name="wb-migration-overview-manual-editing-column-mappings"></a><p class="title"><b>Figure 10.12 MySQL Workbench migration: Manual Editing (Column Mappings)</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-manual-editing-column-mappings.png" width="800" height="563" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></li></ul></div><h4><a name="idm140544306829792"></a>Target Creation Options</h4><p>
+        The schema may be created by either adding it to the target
+        RDBMS, creating an SQL script file, or both. The following
+        figure shows the target creation options.
+      </p><div class="figure"><a name="wb-migration-overview-target-creation-options"></a><p class="title"><b>Figure 10.13 MySQL Workbench migration: Target Creation Options</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-target-creation-options.png" width="800" height="429" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h4><a name="idm140544306821296"></a>Create Schema</h4><p>
+        Now the schema is created (see the figure that follows). The
+        complete log is also available here.
+      </p><div class="figure"><a name="wb-migration-overview-create-schemata"></a><p class="title"><b>Figure 10.14 MySQL Workbench migration: Create Schema</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-create-schemata.png" width="800" height="519" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h4><a name="idm140544306812976"></a>Create Target Results</h4><p>
+        The generated objects in this example are listed in the figure
+        that follows, along with the error messages if any exist.
+      </p><p>
+        The migration code may also be viewed and edited here. To make
+        changes, select an object, edit the query code and then click
+        <span class="guibutton">Apply</span>. Repeat this process for each
+        object that will be edited. Finally, click <span class="guibutton">Recreate
+        Objects</span> to save the results.
+      </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+          The <span class="guibutton">Recreate Objects</span> operation is
+          required to save any changes here. It will then execute the
+          previous migration step (<span class="guilabel">Create Schema</span>)
+          with the modified code, and then continue the migration
+          process. This also means that the previously saved schema will
+          be dropped.
+        </p></div><div class="figure"><a name="wb-migration-overview-create-target-results"></a><p class="title"><b>Figure 10.15 MySQL Workbench Migration: Create Target Results</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-create-target-results.png" width="800" height="519" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h4><a name="idm140544306799968"></a>Data Transfer Setup</h4><p>
+        The next step transfers data from the source RDBMS to the target
+        MySQL database. The setup screen includes the following options:
+      </p><p>
+        <span class="bold"><strong>Data Copy</strong></span>:
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            <span class="guilabel">Online copy of table data to target
+            RDBMS</span>: This method (default) will copy the data
+            to the target RDBMS.
+          </p></li><li class="listitem"><p>
+            <span class="guilabel">Create a batch file to copy the data at another
+            time</span>: The data may also be dumped to a file that
+            can be executed at a later time, or be used as a backup.
+            This script uses a MySQL connection to transfer the data.
+          </p></li><li class="listitem"><p>
+            <span class="guilabel">Create a shell script to use native server dump
+            and load abilities for fast migration</span>: Unlike the
+            simple batch file that performs a live online copy, this
+            generates a script to be executed on the
+            <span class="emphasis"><em>source</em></span> host to then generate a Zip file
+            containing all of the data and information needed to migrate
+            the data locally on the target host. Copy and extract the
+            generated Zip file on the target host and then execute the
+            import script (on the target host) to import the data into
+            MySQL using a LOAD DATA call.
+          </p><p>
+            This faster method avoids the need to traffic all data
+            through MySQL Workbench, or to have a permanent network
+            connection between the MySQL servers.
+          </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+              This option was added in MySQL Workbench 6.3.0.
+            </p></div></li></ul></div><p>
+        Options (see the figure that follows for an example):
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            Truncate target tables before copying data: In case the
+            target database already exists, this will delete said data.
+          </p></li><li class="listitem"><p>
+            Worker tasks: The default value is <code class="literal">2</code>.
+            This is the number of tasks (database connections) used
+            while copying the data.
+          </p></li><li class="listitem"><p>
+            Enable debug output for table copy: Shows debugging
+            information.
+          </p></li></ul></div><div class="figure"><a name="wb-migration-overview-data-transfer-setup"></a><p class="title"><b>Figure 10.16 MySQL Workbench Migration: Data Transfer Setup</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-data-transfer-setup.png" width="800" height="494" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h4><a name="idm140544306778464"></a>Bulk Data Transfer</h4><p>
+        Depending on the selected option, this will either transfer the
+        data to the target RDMS (default), generate a simple script for
+        the online data transfer, or generate script to execute on the
+        source host that then generates a Zip file containing both the
+        transfer script and data that will be executed on the target
+        host. Optionally, view the logs to confirm (see the figure that
+        follows).
+      </p><div class="figure"><a name="wb-migration-overview-bulk-data-transfer"></a><p class="title"><b>Figure 10.17 MySQL Workbench Migration: Bulk Data Transfer</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-bulk-data-transfer.png" width="800" height="512" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><h4><a name="idm140544306769680"></a>Migration Report</h4><p>
+        And finally, the migration report is available and summarizes
+        the entire migration process as depicted in the following
+        figure.
+      </p><div class="figure"><a name="wb-migration-overview-migration-report"></a><p class="title"><b>Figure 10.18 MySQL Workbench Migration: Migration Report</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-migration-report.png" width="800" height="473" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+        Clicking <span class="guibutton">Finish</span> will close the migration
+        window. If you chose the online copy then the database can now
+        be viewed within the MySQL Workbench SQL editor as the following
+        figure shows.
+      </p><div class="figure"><a name="wb-migration-sql-editor-adventureworks"></a><p class="title"><b>Figure 10.19 MySQL Workbench Migration: Viewing the Migrated Database</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-sql-editor-adventureworks.png" width="800" height="598" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+          If a MySQL Workbench SQL Editor tab is already opened, then the
+          schema list within the Object Browser must be refreshed in
+          order to view the newly imported schema.
+        </p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-migration-overview-supported"></a>10.2.2 Migrating from Supported Databases</h3></div></div></div><p>
+        When a supported RDBMS product is being migrated, the
+        MySQL Workbench Migration Wizard will automatically convert as much
+        information as it can, but you may still be required to manually
+        edit the automatically migrated schema for difficult cases, or
+        when the default mapping is not as desired.
+      </p><p>
+        Generally speaking, only table information and its data are
+        automatically converted to MySQL. Code objects such as views,
+        stored procedures, and triggers, are not. But supported RDBMS
+        products will be retrieved and displayed in the wizard. You can
+        then manually convert them, or save them for converting at a
+        later time.
+      </p><p>
+        The following RDBMS products and versions are currently tested
+        and supported by the MySQL Workbench Migration Wizard, although other RDBMS
+        products can also be migrated with
+        <a class="xref" href="wb-migration.html#wb-migration-overview-generic" title="10.2.3 Migrating from Unsupported (Generic) Databases">Section 10.2.3, “Migrating from Unsupported (Generic) Databases”</a>
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            Microsoft SQL Server 2000, 2005, 2008, 2012
+          </p></li><li class="listitem"><p>
+            Microsoft Access 2007 and greater
+          </p></li><li class="listitem"><p>
+            MySQL Server 4.1 and greater as the source, and MySQL Server
+            5.1 and greater as the target
+          </p></li><li class="listitem"><p>
+            PostgreSQL 8.0 and greater
+          </p></li><li class="listitem"><p>
+            SQL Anywhere
+          </p></li><li class="listitem"><p>
+            SQLite
+          </p></li><li class="listitem"><p>
+            Sybase Adaptive Server Enterprise 15.x and greater
+          </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-migration-overview-generic"></a>10.2.3 Migrating from Unsupported (Generic) Databases</h3></div></div></div><p>
+        Most ODBC compliant databases may be migrated using the generic
+        database support. In this case, code objects will not be
+        retrieved from the source database; only tables and data.
+      </p><p>
+        When using the generic support, column data types are mapped
+        using the following steps:
+      </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+            It searches for the first entry in the <span class="guimenu">Generic
+            Datatype Mapping Table</span> for the source type name.
+            If the length/scale ranges of the entry matches the source
+            column, it will pick that type. Otherwise, it continues
+            searching.
+          </p></li><li class="listitem"><p>
+            If no matches were found in the generic table, then it tries
+            to directly map the source type to a MySQL type of the same
+            name.
+          </p></li><li class="listitem"><p>
+            If the source type name doesn't match any of the MySQL data
+            types, then it is not converted and an error is logged. From
+            here you can specify the target datatype in the
+            <span class="guilabel">Manual Object Editing</span> step of the
+            wizard.
+          </p></li></ol></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-migration-database-concepts"></a>10.3 Conceptual DBMS Equivalents</h2></div></div></div><div class="table"><a name="wb-migration-database-concepts-table"></a><p class="title"><b>Table 10.1 Conceptual equivalents between supported DBMS products and MySQL</b></p><div class="table-contents"><table class="table" summary="Conceptual equivalents between supported DBMS products and MySQL" border="1"><colgroup><col><col><col><col><col><col></colgroup><thead><tr><th scope="col">Concept</th><th scope="col">MS SQL Server</th><th scope="col">Sybase ASE</th><th scope="col">PostgreSQL</th><th scope="col">MySQL</th><th scope="col">Note</th></tr></thead><tbody><tr><td scope="row"><a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/security.html" target="_top">Authentication</a></td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td> </td></tr><tr><td scope="row"><a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/example-auto-increment.html" target="_top">Auto_Increment</a></td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>PostgreSQL uses sequences for Auto_Increment.</td></tr><tr><td scope="row">Backup</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>See
+              <a class="ulink" href="http://www.mysql.com/products/enterprise/backup.html" target="_top">MySQL
+              Enterprise Backup</a></td></tr><tr><td scope="row">Catalog</td><td>Yes</td><td>Yes</td><td>Yes</td><td>N/A</td><td>You can map a catalog into a schema and drop the , use the owner as the
+              schema name or merge the owner and object name together.
+              ownerobject</td></tr><tr><td scope="row"><a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/constraints.html" target="_top">Constraints</a></td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td> </td></tr><tr><td scope="row">Data Dictionary</td><td> </td><td> </td><td> </td><td>N/A</td><td> </td></tr><tr><td scope="row"><a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/create-database.html" target="_top">Database</a></td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td> </td></tr><tr><td scope="row">Database Instance</td><td> </td><td> </td><td> </td><td> </td><td> </td></tr><tr><td scope="row">Dump</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td><span class="command"><strong>mysqldump</strong></span></td></tr><tr><td scope="row"><a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/event-scheduler.html" target="_top">Events</a></td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td> </td></tr><tr><td scope="row"><a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/create-table.html" target="_top">Foreign Keys</a></td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td> </td></tr><tr><td scope="row"><a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/fulltext-search.html" target="_top">Full Text Search</a></td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>In InnoDB as of MySQL Server 5.6, and in all versions of MyISAM</td></tr><tr><td scope="row"><a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/optimization-indexes.html" target="_top">Index</a></td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td> </td></tr><tr><td scope="row"><a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/information-schema.html" target="_top">Information Schema</a></td><td>Yes</td><td>No</td><td>Yes</td><td>Yes</td><td> </td></tr><tr><td scope="row"><a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/identifier-case-sensitivity.html" target="_top">Object Names Case
+              Sensitivity</a></td><td>Depends on collation</td><td>Depends on collation</td><td>Mixed</td><td>Mixed</td><td>MySQL: sensitivity of database, table, and trigger names OS dependent;
+              other object names are case insensitive. PostgreSQL: as
+              specified in the SQL-99 standard, unquoted object names
+              are treated as case insensitive while quoted object names
+              are case-sensitive. Unlike the standard, unquoted object
+              names are converted to lowercase instead of uppercase.</td></tr><tr><td scope="row"><a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/language-structure.html" target="_top">Object Naming Conventions</a></td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td> </td></tr><tr><td scope="row">Packages</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td> </td></tr><tr><td scope="row"><a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/partitioning.html" target="_top">Partitioning</a></td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td> </td></tr><tr><td scope="row"><a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/performance-schema.html" target="_top">Performance Schema</a></td><td>N/A</td><td>N/A</td><td>Yes</td><td>Yes</td><td> </td></tr><tr><td scope="row"><a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/privilege-system.html" target="_top">Permissions</a></td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td> </td></tr><tr><td scope="row"><a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/primary-key-optimization.html" target="_top">Primary Key</a></td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td> </td></tr><tr><td scope="row"><a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/create-table.html" target="_top">Referential Integrity</a></td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Sybase ASE: referential integrity only through triggers.</td></tr><tr><td scope="row"><a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/replication.html" target="_top">Replication</a></td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td> </td></tr><tr><td scope="row">Role</td><td>Yes</td><td>Yes</td><td>Yes</td><td>N/A</td><td>Roles are not available in MySQL at the database level.</td></tr><tr><td scope="row"><a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/create-database.html" target="_top">Schema</a></td><td>Yes</td><td>Yes*</td><td>Yes</td><td>Yes</td><td>Equivalent to database in MySQL. Sybase ASE: Schemas corresponds to user
+              names.</td></tr><tr><td scope="row"><a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/example-auto-increment.html" target="_top">Sequences</a></td><td>Yes*</td><td>Yes*</td><td>Yes</td><td>Yes*</td><td>Standalone sequence objects are not supported in MySQL. Similar
+              functionality can be obtained with IDENTITY columns in
+              MSSQL and AUTO_INCREMENT columns in MySQL</td></tr><tr><td scope="row"><a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/sql-mode.html" target="_top">SQL Modes</a></td><td>Yes</td><td> </td><td>Yes</td><td>Yes</td><td>SET_ANSI_* in MSSQL</td></tr><tr><td scope="row"><a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/storage-engines.html" target="_top">Storage Engines</a></td><td>N/A</td><td>N/A</td><td>Yes*</td><td>Yes</td><td>PostgreSQL itself supports and uses only one storage engine
+              (Postgresql). Other companies have added extra storage
+              engines to PostgreSQL.</td></tr><tr><td scope="row"><a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/create-procedure.html" target="_top">Stored Procedures</a></td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td> </td></tr><tr><td scope="row">Synonyms</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td> </td></tr><tr><td scope="row"><a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/create-table.html" target="_top">Table</a></td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td> </td></tr><tr><td scope="row">Tablespace</td><td>Yes</td><td>Yes*</td><td>Yes</td><td>N/A</td><td>MSSQL groups tables in schemas (unless referring to
+              <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/create-tablespace.html" target="_top">CREATE
+              TABLESPACE</a>). Sybase ASE: tables are grouped in
+              schemas that are more like user names.</td></tr><tr><td scope="row"><a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/create-table.html" target="_top">Temporary Tables</a></td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td> </td></tr><tr><td scope="row"><a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/commit.html" target="_top">Transactions</a></td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td> </td></tr><tr><td scope="row"><a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/triggers.html" target="_top">Triggers</a></td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td> </td></tr><tr><td scope="row"><a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/adding-functions.html" target="_top">UDFs</a></td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td> </td></tr><tr><td scope="row"><a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/charset-unicode.html" target="_top">Unicode</a></td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td> </td></tr><tr><td scope="row"><a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/create-table.html" target="_top">Unique Key</a></td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td> </td></tr><tr><td scope="row"><a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/create-user.html" target="_top">User</a></td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td> </td></tr><tr><td scope="row"><a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/create-view.html" target="_top">Views</a></td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td> </td></tr></tbody></table></div></div><br class="table-break"><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Handling Microsoft SQL Server and MySQL structural differences</div><p>
+        A Microsoft SQL Server database is made up of one catalog and
+        one or more schemas. MySQL only supports one schema for each
+        database (or rather, a MySQL database is a schema) so this
+        difference in design must be planned for. The Migration Wizard
+        must know how to handle the migration of schemas for the source
+        (Microsoft SQL Server) database. It can either keep all of the
+        schemas as they are (the Migration Wizard will create one
+        database per schema), or merge them into a single MySQL
+        database. Additional configure options include: either remove
+        the schema names (the Migration Wizard will handle the possible
+        name collisions that may appear along the way), and an option to
+        add the schema name to the database object names as a prefix.
+      </p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-migration-database-access"></a>10.4 Microsoft Access Migration</h2></div></div></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+      This feature was added in MySQL Workbench 6.2.0.
+    </p></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="wb-migration-database-access-general"></a>General Information</h3></div></div></div><p>
+      Microsoft Windows is required because Microsoft Access ODBC
+      drivers are only available on Windows. As for the destination
+      MySQL server, you can have it in the same local machine or
+      elsewhere in your network.
+    </p></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="wb-migration-database-access-prepare"></a>Preparing a Microsoft Access Database for Migration</h3></div></div></div><p>
+      Microsoft Access stores relationship/foreign key information in an
+      internal table called
+      <span class="bold"><strong>MSysRelationships</strong></span>. That table is
+      protected against read access even to the Admin user, so if you
+      try to migrate without opening up access to it, then you will get
+      an error like this:
+    </p><pre class="programlisting">
+[42000] [Microsoft][ODBC Microsoft Access Driver] Record(s) cannot be read; no read permission on 'msysobjects'. (-1907) (SQLExecDirectW)
+</pre><p>
+      The steps to grant read access to the Admin are explained below.
+    </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+        The screen shots in this documentation use Microsoft Access
+        2007.
+      </p></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          Open up database in Microsoft Access
+        </p></li><li class="listitem"><p>
+          From the <span class="guimenu">Database Tools</span> ribbon, click the
+          <span class="guimenu">Visual Basic</span> to open the Visual Basic (VB)
+          console. The following figure shows the location of this
+          button in the Macro area.
+        </p><div class="figure"><a name="wb-migration-access-visual-basic-macro-figure"></a><p class="title"><b>Figure 10.20 Locating the Visual Basic Macro Database Tool</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-access-visual-basic-macro.png" width="788" height="245" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></li><li class="listitem"><p>
+          To confirm that you're logged in as the "Admin" user, locate
+          the <span class="guilabel">Immediate</span> panel and type the "?
+          CurrentUser" and press <span class="guibutton">Enter</span>. This
+          should output "Admin" under "? CurrentUser" in the panel (see
+          the figure that follows).
+        </p></li><li class="listitem"><p>
+          Also in the <span class="guilabel">Immediate</span> panel, type the
+          following command to grant access:
+        </p><pre class="programlisting">
+<strong class="userinput"><code>CurrentProject.Connection.Execute "GRANT SELECT ON MSysRelationships TO Admin"</code></strong>
+</pre><div class="figure"><a name="wb-migration-access-grant-msysrelationships-access-figure"></a><p class="title"><b>Figure 10.21 GRANT SELECT ON MSysRelationships TO Admin</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-access-grant-msysrelationships-access.png" width="800" height="443" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></li><li class="listitem"><p>
+          Quit the Microsoft Access application
+        </p></li></ul></div></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="wb-migration-database-access-start"></a>Start the MySQL Workbench Migration Wizard</h3></div></div></div><p>
+      From the main MySQL Workbench screen you can start the Migration
+      Wizard by clicking the database-migration launcher (
+      <span class="inlinemediaobject"><img src="images/wb-migration-wizard-button.png" align="middle" width="21" height="20"></span>) in the Workbench side panel or by clicking
+      <span class="guimenu">Database</span> and then <span class="guimenu">Migration
+      Wizard</span> from the main menu. As the following figure
+      shows, a new tab showing the Overview page of the Migration Wizard
+      is displayed.
+    </p><div class="figure"><a name="wb-migration-access-overview-page-figure"></a><p class="title"><b>Figure 10.22 Migration Overview Page</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-overview-page.png" width="800" height="531" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="wb-migration-database-access-odbc-drivers"></a>Setting Up ODBC Drivers</h3></div></div></div><p>
+      To verify that you have the ODBC driver installed, click
+      <span class="guibutton">Open ODBC Administrator</span> from the
+      MySQL Workbench migration overview page to open the system ODBC tool.
+      Then, select the <span class="guilabel">Drivers</span> tab (see the figure
+      that follows).
+    </p><div class="figure"><a name="wb-migration-access-odbc-drivers-figure"></a><p class="title"><b>Figure 10.23 Checking the ODBC Drivers for Access Support</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-access-odbc-drivers.png" width="473" height="388" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Important</div><p>
+        MySQL Workbench has both 32-bit and 64-bit executables. The ODBC
+        drivers you use must be of the same architecture as the
+        MySQL Workbench binaries you are using. Because Office 2007 and
+        older was 32-bit only and even Office 2010 installs as 32-bit by
+        default, you may need to install the 32-bit version of
+        MySQL Workbench to migrate from Access, even if you have a 64-bit
+        machine. If during migration you get an ODBC error about
+        "architecture mismatch between the Driver and Application", you
+        installed the wrong version of MySQL Workbench.
+      </p></div><p>
+      In the <span class="guilabel">User DSN</span> tab, click
+      <span class="guibutton">Add</span> to create a DSN for your database file.
+      As the next figure shows, a new data source was created for the
+      northwind database sample.
+    </p><div class="figure"><a name="wb-migration-access-dsn-new-figure"></a><p class="title"><b>Figure 10.24 Adding a New DSN</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-access-dsn-new.png" width="470" height="389" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="wb-migration-database-access-source-selection"></a>Setting Up Source Parameters</h3></div></div></div><p>
+      Click <span class="guibutton">Start Migration</span> from the Overview
+      page to advance to the <span class="guilabel">Source Selection</span> page.
+      Here you need to provide the information about the Access database
+      you are migrating from, the ODBC driver to use, and the parameters
+      for the Access connection.
+    </p><p>
+      Open the <span class="guilabel">Database System</span> combo box for a list
+      of supported RDBMSes, and select <span class="bold"><strong>Microsoft
+      Access</strong></span> from the list. There is another combo box below
+      it named <span class="guilabel">Stored Connection</span>. It lists saved
+      connection settings for that RDBMS. You can save connections by
+      marking the check box at the bottom of the page, along with a name
+      for the saved connection.
+    </p><p>
+      The next combo box selects the <span class="guilabel">Connection
+      Method</span>. This time we are going to select <span class="emphasis"><em>ODBC
+      Data Source</em></span> from the list. This allows you to select
+      pre-existing DSNs that you have configured in your system.
+    </p><p>
+      The <span class="guilabel">DSN</span> drop-down list will have all DSNs you
+      have defined in your system. Pick the one you created for the
+      Access database being migrated from the list.
+    </p><p>
+      In the <span class="guilabel">Default Character Set</span> field you can
+      select the character set of your database (see the figure that
+      follows). If your Access version uses western/latin characters,
+      you can leave the default <span class="emphasis"><em>cp1252</em></span>. However, if
+      you use a localized version of Access, such as Japanese, you must
+      enter the correct character set used by your edition of Microsoft
+      Office, otherwise the data will be copied incorrectly.
+    </p><div class="figure"><a name="wb-migration-access-source-selection-figure"></a><p class="title"><b>Figure 10.25 Access Source Selection</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-access-source-selection.png" width="800" height="555" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      Lastly, click <span class="guibutton">Test Connection</span> to check
+      whether an ODBC connection can be established. If you entered the
+      correct parameters then you should see a message reporting a
+      successful connection attempt.
+    </p></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="wb-migration-database-access-target-selection"></a>Setting Up Target Parameters</h3></div></div></div><p>
+      Next, set up the target (MySQL) database parameters by defining
+      the parameters that connect to your MySQL Server instance. When
+      finished, click <span class="guibutton">Test Connection</span> to verify
+      the connection definition. The following figure shows the
+      <span class="guilabel">Parameters</span> tab.
+    </p><div class="figure"><a name="wb-migration-access-target-selection-figure"></a><p class="title"><b>Figure 10.26 Target Database Selection</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-access-target-selection.png" width="800" height="502" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="wb-migration-database-access-select-objects"></a>Select the Objects to Migrate</h3></div></div></div><p>
+      Next, you should see the reverse engineering of the selected
+      database objects progress. At this point, the migration wizard is
+      retrieving relevant information about the involved database
+      objects (such as table names, table columns, primary and foreign
+      keys, indexes, triggers, views, and more). You will be presented a
+      page showing the progress as shown in the next figure.
+    </p><div class="figure"><a name="wb-migration-access-reverse-engineer-source-figure"></a><p class="title"><b>Figure 10.27 Reverse Engineer Source</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-access-reverse-engineer-source.png" width="799" height="513" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      Wait for it to finish and verify that everything went well. Next,
+      the <span class="guilabel">Source Objects</span> displays a list with the
+      objects that were retrieved and are available for migration. It
+      will look similar to the figure that follows.
+    </p><div class="figure"><a name="wb-migration-access-source-objects-figure"></a><p class="title"><b>Figure 10.28 Source Objects</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-access-source-objects.png" width="799" height="513" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      In the previous example, the migration wizard discovered table and
+      view objects for our source database. Only the table objects are
+      selected by default for migration.
+    </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+        You can also select the view objects but you must also provide
+        their corresponding MySQL equivalent code later (no automatic
+        migration is available for them) so our example will leave the
+        views unchecked. The same applies for stored procedures,
+        functions and triggers.
+      </p></div><p>
+      Click <span class="guibutton">Show Selection</span> to configure exactly
+      which objects you want to migrate, as the next figure shows.
+    </p><div class="figure"><a name="wb-migration-access-source-objects-selection-figure"></a><p class="title"><b>Figure 10.29 Source Objects Selection</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-access-source-objects-selection.png" width="799" height="513" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      The objects on the right will be migrated. The filter box can
+      filter the list (wildcards are allowed, as demonstrated above). By
+      using the arrow buttons you can filter out the objects that you do
+      not want to migrate. Before continuing, clear the filter text box
+      to check the full list of the selected objects. Our example
+      migrates all of the table objects so all of them are in the
+      <span class="guilabel">Objects to Migrate</span> list, and the
+      <span class="guilabel">Migrate Table Objects</span> check box is checked.
+    </p></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="wb-migration-database-access-review-proposed-migration"></a>Review the Proposed Migration</h3></div></div></div><p>
+      At this point, the migration wizard converts the selected objects
+      into their equivalent objects into the target MySQL server, and it
+      also generates the MySQL code needed to create them. You might
+      have to wait before the <span class="guilabel">Manual Editing</span> step
+      displays the initial page shown in the next figure.
+    </p><div class="figure"><a name="wb-migration-access-manual-editing-wait-figure"></a><p class="title"><b>Figure 10.30 Manual Editing: Initial Page</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-access-manual-editing-wait.png" width="799" height="513" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      The <span class="guilabel">View</span> combo box changes the way the
+      migrated database objects are shown (see the figure that follows).
+      Click <span class="guibutton">Show Code</span> to view and edit the
+      generated MySQL code that corresponds to the selected object.
+      Additionally, you can double-click on a row in the object tree to
+      edit the object name, or double-click the database row to change
+      its name.
+    </p><div class="figure"><a name="wb-migration-access-manual-editing-all-figure"></a><p class="title"><b>Figure 10.31 Manual Editing: All Objects</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-access-manual-editing-all.png" width="799" height="513" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      The <span class="guilabel">View</span> combo box also has a
+      <span class="guilabel">Column Mappings</span> option. As the following
+      figure indicates, it shows the table columns and allows you to
+      review and fix the mapping of column types, default values, and
+      other attributes.
+    </p><div class="figure"><a name="wb-migration-access-manual-editing-column-mappings-figure"></a><p class="title"><b>Figure 10.32 Manual Editing: Column Mappings</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-access-manual-editing-column-mappings.png" width="799" height="513" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="wb-migration-database-access-create-objects"></a>Create the Database Objects</h3></div></div></div><p>
+      Next is the <span class="guilabel">Target Creation Options</span> page, as
+      shown in the following figure.
+    </p><div class="figure"><a name="wb-migration-access-target-creation-options-figure"></a><p class="title"><b>Figure 10.33 Target Creation Options</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-access-target-creation-options.png" width="800" height="497" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      Use target-creation options to execute the generated code in the
+      target RDBMS (your MySQL instance from the second step) or you can
+      dump it to an SQL script file. Leave it as shown in the previous
+      figure and move to the next page. The migrated SQL code will be
+      executed on the target MySQL server. You can view its progress in
+      the <span class="guilabel">Create Schemas</span> page shown in the next
+      figure.
+    </p><div class="figure"><a name="wb-migration-access-create-schemata-figure"></a><p class="title"><b>Figure 10.34 Create Schemas</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-access-create-schemata.png" width="799" height="513" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      When the creation of the schemas and objects finishes, you can
+      move to the <span class="guilabel">Create Target Results</span> page. It
+      presents a list of created objects and includes any generated
+      errors while they were created. It will look similar to the
+      following figure.
+    </p><div class="figure"><a name="wb-migration-access-create-target-results-figure"></a><p class="title"><b>Figure 10.35 Create Target Results</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-access-create-target-results.png" width="799" height="513" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      You can edit the migration code using the code box to the right,
+      and save your changes by clicking <span class="guibutton">Apply</span>. If
+      edits were made, you still need to recreate the objects with the
+      modified code in order to perform the changes. This is done by
+      clicking <span class="guibutton">Recreate Objects</span>. In this tutorial
+      we are not changing anything, so leave the code as it is, and
+      continue on to the <span class="guilabel">Data Transfer Setup</span> page.
+    </p></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="wb-migration-database-access-transfer-data"></a>Transfer the Data to the MySQL Database</h3></div></div></div><p>
+      The next step transfers data from the source Access database into
+      your newly created target MySQL database. The Data Transfer Setup
+      page allows you to configure this process (see the figure that
+      follows).
+    </p><div class="figure"><a name="wb-migration-access-data-transfer-setup-figure"></a><p class="title"><b>Figure 10.36 Data Transfer Setup</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-access-data-transfer-setup.png" width="800" height="497" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      There are two sets of options here. The first allows you to
+      perform a live transference and/or to dump the data into a batch
+      file that you can execute later. The other set of options allows
+      you to alter this process.
+    </p><p>
+      This tutorial uses the default values for the options in this page
+      as shown in the previous figure. Next, the data is transferred. At
+      this point the corresponding progress page confirms the tasks
+      being performed (see the figure that follows).
+    </p><div class="figure"><a name="wb-migration-access-bulk-data-transfer-figure"></a><p class="title"><b>Figure 10.37 Bulk Data Transfer</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-access-bulk-data-transfer.png" width="799" height="513" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      Once it finishes, move to the next page. You will be presented a
+      report page summarizing the whole process. Now, review and click
+      <span class="guilabel">Finish</span> to close the wizard.
+    </p></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="wb-migration-database-access-verification"></a>Verification</h3></div></div></div><p>
+      Now that the northwind database was successfully migrated, you can
+      view the results. Open an SQL Editor that is associated with your
+      MySQL server instance and then query the northwind database. For
+      example, execute a query like <code class="literal">SELECT * FROM
+      northwind.customers</code>, which populates the result grid as
+      shown in the next figure.
+    </p><div class="figure"><a name="wb-migration-access-verify-figure"></a><p class="title"><b>Figure 10.38 Verify Your Results</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-access-verify.png" width="800" height="553" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-migration-database-mssql"></a>10.5 Microsoft SQL Server Migration</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="wb-migration.html#wb-migration-database-mssql-prepare">10.5.1 Preparations</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-database-mssql-drivers">10.5.2 Drivers</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-database-mssql-connection">10.5.3 Connection Setup</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-database-mssql-typemapping">10.5.4 Microsoft SQL Server Type Mapping</a></span></dt></dl></div><p>
+      The MySQL Workbench Migration Wizard is tested against the following
+      Microsoft SQL Server versions: 2000, 2005, 2008, and 2012.
+    </p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-migration-database-mssql-prepare"></a>10.5.1 Preparations</h3></div></div></div><p>
+        To be able to migrate from Microsoft SQL Server, ensure the
+        following:
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            The source SQL Server instance is running, and accepts TCP
+            connections.
+          </p></li><li class="listitem"><p>
+            You know the IP and port of the source SQL server instance.
+            If you will be migrating using a Microsoft ODBC driver for
+            SQL Server (the default in Windows), you will need to know
+            the host and the name of the SQL Server instance.
+          </p></li><li class="listitem"><p>
+            Make sure that the SQL Server is reachable from where you
+            will be running MySQL Workbench. More specifically, check the
+            firewall settings.
+          </p></li><li class="listitem"><p>
+            Make sure that the user account has proper privileges to the
+            database that will be migrated.
+          </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-migration-database-mssql-drivers"></a>10.5.2 Drivers</h3></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="wb-migration.html#wb-migration-database-mssql-drivers-windows">10.5.2.1 Microsoft Windows</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-database-mssql-drivers-linux">10.5.2.2 Linux</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-database-mssql-drivers-osx">10.5.2.3 macOS</a></span></dt></dl></div><p>
+        Microsoft Windows does not require additional drivers to be
+        installed and configured, but Linux (and macOS) do. The
+        following sections include specific instructions for each type
+        of system.
+      </p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="wb-migration-database-mssql-drivers-windows"></a>10.5.2.1 Microsoft Windows</h4></div></div></div><p>
+          Microsoft Windows XP and newer includes at least one ODBC
+          driver for Microsoft SQL Server, so additional actions are
+          likely not required on your system. Multiple SQL Server driver
+          options exist, as described in this section.
+        </p><p>
+          You can check your ODBC driver information by starting the
+          Windows ODBC Data Source Administrator that is linked from the
+          MySQL Workbench migration wizard's home page. Alternatively, open
+          a Windows terminal and execute
+          <code class="filename">odbcad32.exe</code>. Open the
+          <span class="guilabel">Drivers</span> tab to see something similar to
+          the following figure.
+        </p><div class="figure"><a name="wb-migration-database-mssql-drivers-windows-driver-view"></a><p class="title"><b>Figure 10.39 Windows ODBC Data Source Administrator: SQL Server Drivers</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-database-mssql-drivers-windows.png" width="471" height="390" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+          Common ODBC drivers available on Windows are:
+        </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+              <span class="bold"><strong>SQL Driver</strong></span>: preinstalled
+              on Windows, but is limited to the functionality provided
+              by SQL Server 2000. It functions okay if your database
+              does not use features and data types introduced after SQL
+              Server 2000, so it should be enough for you if your
+              database does not make use of the new features and data
+              types introduced after this SQL Server version.
+            </p></li><li class="listitem"><p>
+              <span class="bold"><strong>SQL Server Native Client
+              XX.X</strong></span>: if you have an SQL Server instance on the
+              same machine as MySQL Workbench, then you will also have this
+              additional driver. This comes with SQL Server and fully
+              supports the companion SQL Server version. If this is not
+              on your system then you can download and install this it
+              from Microsoft. For example, download the
+              <a class="ulink" href="http://www.microsoft.com/en-us/download/details.aspx?id=42295" target="_top">Microsoft
+              SQL Server 2014 Feature Pack</a> to install the Native
+              Client that supports SQL Server 2014 and earlier.
+            </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+                XX.X represents the major version number for SQL Server,
+                so an actual name might be "SQL Server Native Client
+                11.0".
+              </p></div></li></ul></div><p>
+          Decide which driver you want to use, and remember its name as
+          shown in the ODBC Data Source Administrator. This specific
+          name is used in MySQL Workbench to connect your SQL Server
+          instance.
+        </p><p>
+          Jump to the documentation titled
+          <a class="xref" href="wb-migration.html#wb-migration-database-mssql-connection" title="10.5.3 Connection Setup">Section 10.5.3, “Connection Setup”</a>.
+        </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="wb-migration-database-mssql-drivers-linux"></a>10.5.2.2 Linux</h4></div></div></div><p>
+          Setting up drivers on Linux.
+        </p><h5><a name="idm140544306339888"></a>FreeTDS</h5><p>
+          FreeTDS version 0.92 or greater is required. Many
+          distributions ship older versions of FreeTDS, so it may need
+          to be installed separately. Additionally, the FreeTDS version
+          provided by distributions may also be compiled for the wrong
+          ODBC library (usually to unixODBC instead of iODBC, which
+          MySQL Workbench uses). Because of that, you will probably need to
+          build this library yourself.
+        </p><p>
+          A script is provided to compile FreeTDS using the options
+          required for MySQL Workbench. You can find it at
+          <code class="filename">/usr/share/mysql-workbench/extras/build_freetds.sh</code>
+          on Linux or
+          <code class="filename">MySQLWorkbench.app/Contents/SharedSupport/build_freetds.sh</code>
+          on macOS. To use it, follow these steps:
+        </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Using FreeTDS with iODBC</div><p>
+            When compiling FreeTDS for use with iODBC (the default with
+            the official binaries), it must be compiled with the
+            <code class="literal">--enable-odbc-wide</code> command line. Failing
+            to do so will result in crashes and other unpredictable
+            errors. The provided <code class="filename">build_freetds.sh</code>
+            script does this for you.
+          </p></div><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+              For compiling, make sure you have the iODBC headers
+              installed. For Linux, the name depends on your system's
+              package manager but common names are
+              <code class="literal">libiodbc-devel</code> (RPM based systems) or
+              <code class="literal">libiodbc2-dev</code> (Debian based systems).
+              For macOS, the headers come with the system and no
+              additional action is required for this step.
+            </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+                If you are using Oracle Enterprise Linux, RedHat,
+                CentOS, and similar, you must have the EPEL repository
+                set up in yum for it to find the
+                <code class="literal">libiodbc-devel</code> package. For
+                additional information about this step, see
+                <a class="xref" href="wb-installing.html#wb-installing-linux-installing-oel" title="Installing Oracle Enterprise Linux and similar">Installing Oracle Enterprise Linux and similar</a>.
+              </p></div></li><li class="listitem"><p>
+              <code class="literal">mkdir ~/freetds</code> to create a directory -
+              within the users home directory.
+            </p></li><li class="listitem"><p>
+              Copy the <code class="filename">build_freetds.sh</code> script to
+              <code class="filename">~/freetds</code>
+            </p></li><li class="listitem"><p>
+              Get the latest FreeTDS sources from
+              <a class="ulink" href="ftp://ftp.freetds.org/pub/freetds/" target="_top">ftp://ftp.freetds.org/pub/freetds/</a>
+              and place the <code class="literal">.tar.gz</code> source file into
+              the <code class="filename">~/freetds</code> directory. Make sure to
+              get FreeTDS version 0.92 or newer.
+            </p></li><li class="listitem"><p>
+              <code class="literal">cd ~/freetds</code>
+            </p></li><li class="listitem"><p>
+              Execute <code class="filename">build_freetds.sh</code>
+            </p></li><li class="listitem"><p>
+              After compilation is done, install it using <code class="literal">make
+              install</code> from the path given by the script.
+            </p></li><li class="listitem"><p>
+              Install the driver using ODBC Administrator so that the
+              ODBC subsystem recognizes it. Open ODBC Administrator from
+              the migration tab in MySQL Workbench (see the figure that
+              follows).
+            </p><div class="figure"><a name="wb-migration-database-mssql-drivers-linux-driver-open-odbc-admin"></a><p class="title"><b>Figure 10.40 Open the ODBC Administrator</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-odbc-driver-add-linux-open-odbc-admin.png" width="606" height="348" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+              The name of the driver file is
+              <code class="filename">libtdsodbc.so</code> and it is located in
+              <code class="filename">/usr/lib</code> or
+              <code class="filename">/usr/local/lib</code>. For example, under
+              the <span class="guilabel">ODBC Drivers</span> tab click
+              <span class="guibutton">Add Driver</span> and fill out the
+              description (name) and path to the driver file (see the
+              figure that follows). Remember the name you define here as
+              it will be needed later on. Save the driver.
+            </p><div class="figure"><a name="wb-migration-database-mssql-drivers-linux-driver"></a><p class="title"><b>Figure 10.41 ODBC Driver Add/Setup</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-odbc-driver-add-linux.png" width="606" height="502" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+                Only the driver file name is required, while the setup
+                file name can remain undefined.
+              </p></div></li><li class="listitem"><p>
+              Close the ODBC Administrator and click <span class="guibutton">Start
+              Migration</span>. For information about making a
+              Microsoft SQL Server connection using the MySQL Workbench
+              migration wizard, see
+              <a class="xref" href="wb-migration.html#wb-migration-database-mssql-connection-linux" title="10.5.3.2 Linux">Section 10.5.3.2, “Linux”</a>.
+            </p></li></ol></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="wb-migration-database-mssql-drivers-osx"></a>10.5.2.3 macOS</h4></div></div></div><p>
+          See the FreeTDS setup notes for Linux,
+          <a class="xref" href="wb-migration.html#wb-migration-database-mssql-drivers-linux" title="10.5.2.2 Linux">Section 10.5.2.2, “Linux”</a>.
+        </p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-migration-database-mssql-connection"></a>10.5.3 Connection Setup</h3></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="wb-migration.html#wb-migration-database-mssql-connection-windows">10.5.3.1 Microsoft Windows</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-database-mssql-connection-linux">10.5.3.2 Linux</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-database-mssql-connection-osx">10.5.3.3 macOS</a></span></dt></dl></div><p>
+        This section focuses on creating a connection to the source
+        Microsoft SQL Server, because creating a MySQL connection is a
+        standard operation.
+      </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+          Prerequisite: that you already installed and configured the
+          required
+          <a class="link" href="wb-migration.html#wb-migration-database-mssql-drivers" title="10.5.2 Drivers">Microsoft
+          SQL Server driver</a> on the system running MySQL Workbench.
+        </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="wb-migration-database-mssql-connection-windows"></a>10.5.3.1 Microsoft Windows</h4></div></div></div><p>
+          Select <span class="guimenuitem">Microsoft SQL Server</span> as the
+          database system and fill out the remaining options as
+          described in this section. The following figure shows an
+          example of the <span class="guilabel">Drivers</span> tab.
+        </p><div class="figure"><a name="wb-migration-database-mssql-connection-windows-example"></a><p class="title"><b>Figure 10.42 SQL Server Connection Parameters Example on Windows</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-mssql-target-connection-parameters-windows.png" width="471" height="390" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+              <span class="guilabel">Database System</span>: Microsoft SQL Server
+            </p></li><li class="listitem"><p>
+              <span class="guilabel">Connection Method</span>: choose
+              <span class="guimenuitem">ODBC (native)</span> to use the native
+              ODBC driver that is provided by Microsoft. Alternatives
+              include "ODBC data sources" and "ODBC FreeTDS". FreeTDS is
+              a popular open source driver for SQL Server and Sybase.
+            </p></li><li class="listitem"><p>
+              <span class="guilabel">Driver</span>: use the SQL Server driver
+              name, as described in the documentation titled
+              <a class="xref" href="wb-migration.html#wb-migration-database-mssql-drivers-windows" title="10.5.2.1 Microsoft Windows">Section 10.5.2.1, “Microsoft Windows”</a>.
+              Typically this will be "SQL Server" or a versioned client,
+              such as "SQL Server Native Client 11.0".
+            </p></li><li class="listitem"><p>
+              <span class="guilabel">Server</span>: the address and optionally
+              instance name of the SQL server, such as "example.com" or
+              "example.org\SQLEXPRESS".
+            </p></li><li class="listitem"><p>
+              <span class="guilabel">Username</span>: the user name on the SQL
+              Server, with "sa" being a commonly used name.
+            </p></li><li class="listitem"><p>
+              <span class="guilabel">Password</span>: optionally enter a password
+              to save locally, or leave it blank to enter the password
+              when the SQL Server connection is made later on in the
+              process.
+            </p></li><li class="listitem"><p>
+              <span class="guilabel">Database</span>: optionally enter a database
+              name. Leave it blank to select a database name after the
+              MySQL Workbench wizard fetches the available databases.
+            </p></li><li class="listitem"><p>
+              <span class="guilabel">Store connection for future</span>:
+              optionally store the connection details locally for future
+              use by checking this box and entering a name for the
+              connection.
+            </p></li><li class="listitem"><p>
+              <span class="guilabel">Advanced</span>: optionally enter additional
+              options.
+            </p></li></ul></div><p>
+          Click <span class="guibutton">Test Connection</span> to confirm that
+          the parameters are correct before moving on.
+        </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="wb-migration-database-mssql-connection-linux"></a>10.5.3.2 Linux</h4></div></div></div><p>
+          Select <span class="guimenuitem">Microsoft SQL Server</span> as the
+          source database system and fill out the remaining options as
+          described in this section. The following figure shows an
+          example of the connection parameters.
+        </p><div class="figure"><a name="wb-migration-database-mssql-connection-linux-example"></a><p class="title"><b>Figure 10.43 SQL Server Connection Parameters Example on Linux</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-mssql-target-connection-parameters-linux.png" width="800" height="461" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+          Source RDBMS connection parameters include:
+        </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+              <span class="guilabel">Database System</span>: Microsoft SQL Server
+            </p></li><li class="listitem"><p>
+              <span class="guilabel">Connection Method</span>: choose
+              <span class="guimenuitem">ODBC (FreeTDS)</span> to use the local
+              FreeTDS that was installed in an earlier step. For
+              additional information about how to install a FreeTDS
+              driver on Linux that will work with the MySQL Workbench
+              migration wizard, see
+              <a class="xref" href="wb-migration.html#wb-migration-database-mssql-drivers-linux" title="10.5.2.2 Linux">Section 10.5.2.2, “Linux”</a>.
+            </p><p>
+              Alternatively, choose <span class="guimenuitem">ODBC Data Source
+              (FreeTDS)</span> if you defined a DSN when creating
+              the SQL Server driver. The available pre-configured DSN
+              options will be available to choose from.
+            </p></li><li class="listitem"><p>
+              <span class="guilabel">Driver</span>: The name of the driver that
+              you created with the ODBC Administrator, as described in
+              the documentation titled
+              <a class="xref" href="wb-migration.html#wb-migration-database-mssql-drivers-linux" title="10.5.2.2 Linux">Section 10.5.2.2, “Linux”</a>.
+            </p><p>
+              An example name might be "Workbench FreeTDS", or
+              "FreeTDS", but it is the name you defined in an earlier
+              step, so it may or may not be "FreeTDS". Use the ODBC
+              Administrator to find the correct driver name, as
+              otherwise the connection will fail.
+            </p></li><li class="listitem"><p>
+              <span class="guilabel">Hostname</span>: the address and instance
+              name of the SQL server, such as "example.org".
+            </p></li><li class="listitem"><p>
+              <span class="guilabel">Port</span>: the port number. Port number
+              1433 is commonly used for MySQL server.
+            </p></li><li class="listitem"><p>
+              <span class="guilabel">Username</span>: the user name on the SQL
+              server, with "sa" being a commonly used name.
+            </p></li><li class="listitem"><p>
+              <span class="guilabel">Password</span>: optionally enter a password
+              to save locally, or leave it blank to enter the password
+              when the SQL Server connection is made later on in the
+              process.
+            </p></li><li class="listitem"><p>
+              <span class="guilabel">Database</span>: optionally enter a database
+              name. Leave it blank to select a database name after the
+              MySQL Workbench wizard fetches the available databases.
+            </p></li><li class="listitem"><p>
+              <span class="guilabel">Store connection for future</span>:
+              optionally store the connection details locally for future
+              use by checking this box and entering a name for the
+              connection.
+            </p></li><li class="listitem"><p>
+              <span class="guilabel">Advanced</span>: Deselect the
+              <span class="guilabel">Driver sends Unicode data as UTF-8</span>
+              option to use UCS-2.
+            </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+                If your MSSQL server connection succeeded but the data
+                import failed, it could be because this setting was
+                enabled.
+              </p></div></li></ul></div><p>
+          Click <span class="guibutton">Test Connection</span> to confirm that
+          the parameters are correct before moving on.
+        </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="wb-migration-database-mssql-connection-osx"></a>10.5.3.3 macOS</h4></div></div></div><p>
+          Connection parameters are similar to Linux, see
+          <a class="xref" href="wb-migration.html#wb-migration-database-mssql-connection-linux" title="10.5.3.2 Linux">Section 10.5.3.2, “Linux”</a>.
+        </p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-migration-database-mssql-typemapping"></a>10.5.4 Microsoft SQL Server Type Mapping</h3></div></div></div><div class="table"><a name="wb-migration-database-mssql-typemapping-table"></a><p class="title"><b>Table 10.2 Type mapping</b></p><div class="table-contents"><table class="table" summary="Type mapping" border="1"><colgroup><col><col><col></colgroup><thead><tr><th scope="col">Source Type</th><th scope="col"><a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/data-types.html" target="_top">MySQL Type</a></th><th scope="col">Comment</th></tr></thead><tbody><tr><td scope="row">INT</td><td>INT</td><td> </td></tr><tr><td scope="row">TINYINT</td><td>TINYINT</td><td>UNSIGNED flag set in MySQL</td></tr><tr><td scope="row">SMALLINT</td><td>SMALLINT</td><td> </td></tr><tr><td scope="row">BIGINT</td><td>BIGINT</td><td> </td></tr><tr><td scope="row">BIT</td><td>TINYINT(1)</td><td> </td></tr><tr><td scope="row">FLOAT</td><td>FLOAT</td><td>Precision value is used for storage size in both</td></tr><tr><td scope="row">REAL</td><td>FLOAT</td><td> </td></tr><tr><td scope="row">NUMERIC</td><td>DECIMAL</td><td> </td></tr><tr><td scope="row">DECIMAL</td><td>DECIMAL</td><td> </td></tr><tr><td scope="row">MONEY</td><td>DECIMAL</td><td> </td></tr><tr><td scope="row">SMALLMONEY</td><td>DECIMAL</td><td> </td></tr><tr><td scope="row">CHAR</td><td>CHAR/LONGTEXT</td><td>Depending on its length. MySQL Server 5.5 and above can have CHAR
+                columns with a length up to 255 characters. Anything
+                larger is migrated as LONGTEXT</td></tr><tr><td scope="row">NCHAR</td><td>CHAR/LONGTEXT</td><td>Depending on its length. MySQL Server 5.5 and above can have VARCHAR
+                columns with a length up to 65535 characters. Anything
+                larger is migrated to one of the TEXT blob types. In
+                MySQL, character set of strings depend on the column
+                character set instead of the datatype.</td></tr><tr><td scope="row">VARCHAR</td><td>VARCHAR/MEDIUMTEXT/LONGTEXT</td><td>Depending on its length. MySQL Server 5.5 and above can have VARCHAR
+                columns with a length up to 65535 characters. Anything
+                larger is migrated to one of the TEXT blob types.</td></tr><tr><td scope="row">NVARCHAR</td><td>VARCHAR/MEDIUMTEXT/LONGTEXT</td><td>Depending on its length. MySQL Server 5.5 and above can have VARCHAR
+                columns with a length up to 65535 characters. Anything
+                larger is migrated to one of the TEXT blob types. In
+                MySQL, character set of strings depend on the column
+                character set instead of the datatype.</td></tr><tr><td scope="row">DATE</td><td>DATE</td><td> </td></tr><tr><td scope="row">DATETIME</td><td>DATETIME</td><td> </td></tr><tr><td scope="row">DATETIME2</td><td>DATETIME</td><td>Date range in MySQL is '1000-01-01 00:00:00.000000' to '9999-12-31
+                23:59:59.999999'. Note: fractional second values are
+                only stored as of MySQL Server 5.6.4</td></tr><tr><td scope="row">SMALLDATETIME</td><td>DATETIME</td><td> </td></tr><tr><td scope="row">DATETIMEOFFSET</td><td>DATETIME</td><td> </td></tr><tr><td scope="row">TIME</td><td>TIME</td><td> </td></tr><tr><td scope="row">TIMESTAMP</td><td>TIMESTAMP</td><td> </td></tr><tr><td scope="row">ROWVERSION</td><td>TIMESTAMP</td><td> </td></tr><tr><td scope="row">BINARY</td><td>BINARY/MEDIUMBLOB/LONGBLOB</td><td>Depending on its length</td></tr><tr><td scope="row">VARBINARY</td><td>VARBINARY/MEDIUMBLOB/LONGBLOB</td><td>Depending on its length</td></tr><tr><td scope="row">TEXT</td><td>VARCHAR/MEDIUMTEXT/LONGTEXT</td><td>Depending on its length</td></tr><tr><td scope="row">NTEXT</td><td>VARCHAR/MEDIUMTEXT/LONGTEXT</td><td>Depending on its length</td></tr><tr><td scope="row">IMAGE</td><td>TINYBLOB/MEDIUMBLOB/LONGBLOB</td><td>Depending on its length</td></tr><tr><td scope="row">SQL_VARIANT</td><td>not migrated</td><td>There is not specific support for this datatype.</td></tr><tr><td scope="row">TABLE</td><td>not migrated</td><td>There is not specific support for this datatype.</td></tr><tr><td scope="row">HIERARCHYID</td><td>not migrated</td><td>There is not specific support for this datatype.</td></tr><tr><td scope="row">UNIQUEIDENTIFIER</td><td>VARCHAR(64)</td><td>A unique flag set in MySQL. There is not specific support for inserting
+                unique identifier values.</td></tr><tr><td scope="row">SYSNAME</td><td>VARCHAR(160)</td><td> </td></tr><tr><td scope="row">XML</td><td>TEXT</td><td> </td></tr></tbody></table></div></div><br class="table-break"></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-migration-database-postgresql"></a>10.6 PostgreSQL migration</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="wb-migration.html#wb-migration-database-postgresql-prepare">10.6.1 Preparations</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-database-postgresql-drivers">10.6.2 Drivers</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-database-postgresql-connection">10.6.3 Connection Setup</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-database-postgresql-typemapping">10.6.4 PostgreSQL Type Mapping</a></span></dt></dl></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-migration-database-postgresql-prepare"></a>10.6.1 Preparations</h3></div></div></div><p>
+        Before proceeding, you will need the following:
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            Follow the installation guide for installing iODBC on your
+            system. For more information, see
+            <a class="xref" href="wb-migration.html#wb-migration-install" title="10.1 General Installation Requirements">Section 10.1, “General Installation Requirements”</a>.
+          </p></li><li class="listitem"><p>
+            Access to a running PostgreSQL instance with privileges to
+            the database you want to migrate, otherwise known as the
+            "source database." The Migration Wizard officially supports
+            PostgreSQL 8.0 and above, although older versions may work.
+          </p></li><li class="listitem"><p>
+            Access to a running MySQL Server instance with privileges to
+            the database you want to migrate. The Migration Wizard
+            officially supports MySQL 5.0 and above.
+          </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-migration-database-postgresql-drivers"></a>10.6.2 Drivers</h3></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="wb-migration.html#wb-migration-database-postgresql-drivers-windows">10.6.2.1 Microsoft Windows</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-database-postgresql-drivers-linux">10.6.2.2 Linux</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-database-postgresql-drivers-osx">10.6.2.3 macOS</a></span></dt></dl></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="wb-migration-database-postgresql-drivers-windows"></a>10.6.2.1 Microsoft Windows</h4></div></div></div><p>
+          Download and install the MSI package for psqlODBC. Choose the
+          newest file from
+          <a class="ulink" href="http://www.postgresql.org/ftp/odbc/versions/msi/" target="_top">http://www.postgresql.org/ftp/odbc/versions/msi/</a>,
+          which will be at the bottom of the downloads page. This will
+          install psqlODBC on your system and allow you to migrate from
+          Postgresql to MySQL using MySQL Workbench.
+        </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="wb-migration-database-postgresql-drivers-linux"></a>10.6.2.2 Linux</h4></div></div></div><p>
+          After installing iODBC, proceed to install the PostgreSQL ODBC
+          drivers.
+        </p><p>
+          Download the psqlODBC source tarball file from
+          <a class="ulink" href="http://www.postgresql.org/ftp/odbc/versions/src/" target="_top">http://www.postgresql.org/ftp/odbc/versions/src/</a>.
+          Use the latest version available for download, which will be
+          at the bottom of the downloads page. The file will look
+          similar to <code class="filename">psqlodbc-09.03.0400.tar.gz</code>.
+          Extract this tarball to a temporary location, open a terminal,
+          and cd into that directory. The installation process is:
+        </p><pre class="programlisting">
+shell&gt; <strong class="userinput"><code>cd the/src/directory</code></strong>
+shell&gt; <strong class="userinput"><code>./configure --with-iodbc --enable-pthreads</code></strong>
+shell&gt; <strong class="userinput"><code>make</code></strong>
+shell&gt; <strong class="userinput"><code>sudo make install</code></strong>        
+</pre><p>
+          Verify the installation by confirming that the file
+          <code class="filename">psqlodbcw.so</code> is in the
+          <code class="filename">/usr/local/lib</code> directory.
+        </p><p>
+          Next, you must register your new ODBC Driver.
+        </p><p>
+          Open the iODBC Data Source Administrator application by either
+          executing <code class="filename">iodbcadm-gtk</code> in the
+          command-line, or by launching it from the
+          <span class="guilabel">Overview</span> page of the MySQL Workbench
+          Migration Wizard by clicking the <span class="guibutton">Open ODBC
+          Administrator</span> button.
+        </p><p>
+          Go to the <span class="guilabel">ODBC Drivers</span> tab in the iODBC
+          Data Source Administrator. It should look similar to the
+          example in the figure that follows.
+        </p><div class="figure"><a name="wb-migration-install-iodbc-data-source"></a><p class="title"><b>Figure 10.44 The iODBC Data Source Administrator</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-iodbcadm-gtk.png" width="602" height="479" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+          Click <span class="guibutton">Add a driver</span> then fill out the
+          form with the following values:
+        </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+              <span class="guilabel">Description of the driver</span>: psqlODBC
+            </p></li><li class="listitem"><p>
+              <span class="guilabel">Driver file name</span>:
+              <code class="filename">/usr/local/lib/psqlodbcw.so</code>
+            </p></li><li class="listitem"><p>
+              <span class="guilabel">Setup file name</span>: No value is needed
+              here
+            </p></li></ul></div><p>
+          And lastly, clicking <span class="guibutton">OK</span> will complete
+          the <code class="literal">psqlODBC</code> driver registration.
+        </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="wb-migration-database-postgresql-drivers-osx"></a>10.6.2.3 macOS</h4></div></div></div><p>
+          To compile <code class="filename">psqlODBC</code> on macOS, you will
+          need to have Xcode and its "Command Line Tools" component
+          installed on your system, as this includes the required
+          <code class="literal">gcc</code> compiler. Xcode is free, and available
+          from the AppStore. And after installing Xcode, open it and go
+          to <span class="guimenu">Preferences</span>,
+          <span class="guilabel">Downloads</span>,
+          <span class="guilabel">Components</span>, and then install the "Command
+          Line Tools" component.
+        </p><p>
+          Download the psqlODBC source tarball file from
+          <a class="ulink" href="http://www.postgresql.org/ftp/odbc/versions/src/" target="_top">http://www.postgresql.org/ftp/odbc/versions/src/</a>.
+          Use the latest version available for download, which will be
+          at the bottom of the downloads page. The file will look
+          similar to <code class="filename">psqlodbc-09.03.0400.tar.gz</code>.
+          Extract this tarball to a temporary location, open a terminal,
+          and cd into that directory. The installation process is:
+        </p><pre class="programlisting">
+shell&gt; <strong class="userinput"><code>cd the/src/directory</code></strong>
+shell&gt; <strong class="userinput"><code>./configure --with-iodbc --enable-pthreads</code></strong>
+shell&gt; <strong class="userinput"><code>CFLAGS="-arch i386 -arch x86_64" make</code></strong>
+shell&gt; <strong class="userinput"><code>sudo make install</code></strong>        
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-migration-database-postgresql-connection"></a>10.6.3 Connection Setup</h3></div></div></div><p>
+        After loading the Migration Wizard, click on the
+        <span class="guibutton">Start Migration</span> button in the
+        <span class="guilabel">Overview</span> page to begin the migration
+        process. You will first connect to the source PostgreSQL
+        database. Here you will provide the information about the
+        PostgreSQL RDBMS that you are migrating from, the ODBC driver
+        that will be used for the migration, and all of the parameters
+        required for the connection. The name of the ODBC driver is the
+        one you set up when you registered your psqlODBC driver with the
+        driver manager.
+      </p><p>
+        Opening the <span class="guilabel">Database System</span> dropdown will
+        reveal each RDBMS that is supported on your system. Select
+        PostgreSQL from the list. Below that is the <span class="guilabel">Stored
+        Connection</span> dropdown, which is optional. Stored
+        connections will be listed here, which are connections saved
+        after defining a connection with the <span class="guilabel">Store connection
+        for future use as</span> checkbox enabled.
+      </p><p>
+        The three <span class="guilabel">Connection Method</span> options are:
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            <code class="literal">ODBC (manually entered parameters)</code>: Each
+            parameter, like a username, is defined separately
+          </p></li><li class="listitem"><p>
+            <code class="literal">ODBC Data Source</code>: For pre-configured data
+            sources (DSN) -- you can optionally create a DSN using the
+            ODBC Administrator
+          </p></li><li class="listitem"><p>
+            <code class="literal">ODBC (direct connection string)</code>: A full
+            ODBC connection string
+          </p></li></ul></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+          The psqlODBC driver does not allow a connection without
+          specifying a database name.
+        </p></div><p>
+        The migration process is similar to other databases. See
+        <a class="xref" href="wb-migration.html#wb-migration-database-postgresql-typemapping" title="10.6.4 PostgreSQL Type Mapping">Section 10.6.4, “PostgreSQL Type Mapping”</a>
+        for information on how the migration wizard migrates types from
+        PostgreSQL to MySQL, and
+        <a class="xref" href="wb-migration.html#wb-migration-overview-steps" title="10.2.1 A Visual Guide to Performing a Database Migration">Section 10.2.1, “A Visual Guide to Performing a Database Migration”</a> for a general
+        migration guide.
+      </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-migration-database-postgresql-typemapping"></a>10.6.4 PostgreSQL Type Mapping</h3></div></div></div><div class="table"><a name="wb-migration-database-postgresql-typemapping-table"></a><p class="title"><b>Table 10.3 Type mapping</b></p><div class="table-contents"><table class="table" summary="Type mapping" border="1"><colgroup><col><col><col></colgroup><thead><tr><th scope="col">Source Type</th><th scope="col"><a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/data-types.html" target="_top">MySQL Type</a></th><th scope="col">Comment</th></tr></thead><tbody><tr><td scope="row">INT</td><td>INT</td><td> </td></tr><tr><td scope="row">SMALLINT</td><td>SMALLINT</td><td> </td></tr><tr><td scope="row">BIGINT</td><td>BIGINT</td><td> </td></tr><tr><td scope="row">SERIAL</td><td>INT</td><td>Sets AUTO_INCREMENT in its table definition.</td></tr><tr><td scope="row">SMALLSERIAL</td><td>SMALLINT</td><td>Sets AUTO_INCREMENT in its table definition.</td></tr><tr><td scope="row">BIGSERIAL</td><td>BIGINT</td><td>Sets AUTO_INCREMENT in its table definition.</td></tr><tr><td scope="row">BIT</td><td>BIT</td><td> </td></tr><tr><td scope="row">BOOLEAN</td><td>TINYINT(1)</td><td> </td></tr><tr><td scope="row">REAL</td><td>FLOAT</td><td> </td></tr><tr><td scope="row">DOUBLE PRECISION</td><td>DOUBLE</td><td> </td></tr><tr><td scope="row">NUMERIC</td><td>DECIMAL</td><td> </td></tr><tr><td scope="row">DECIMAL</td><td>DECIMAL</td><td> </td></tr><tr><td scope="row">MONEY</td><td>DECIMAL(19,2)</td><td> </td></tr><tr><td scope="row">CHAR</td><td>CHAR/LONGTEXT</td><td>Depending on its length. MySQL Server 5.5 and above can have CHAR
+                columns with a length up to 255 characters. Anything
+                larger is migrated as LONGTEXT</td></tr><tr><td scope="row">NATIONAL CHARACTER</td><td>CHAR/LONGTEXT</td><td>Depending on its length. MySQL Server 5.5 and above can have VARCHAR
+                columns with a length up to 65535 characters. Anything
+                larger is migrated to one of the TEXT blob types. In
+                MySQL, character set of strings depend on the column
+                character set instead of the datatype.</td></tr><tr><td scope="row">VARCHAR</td><td>VARCHAR/MEDIUMTEXT/LONGTEXT</td><td>Depending on its length. MySQL Server 5.5 and above can have VARCHAR
+                columns with a length up to 65535 characters. Anything
+                larger is migrated to one of the TEXT blob types.</td></tr><tr><td scope="row">NATIONAL CHARACTER VARYING</td><td>VARCHAR/MEDIUMTEXT/LONGTEXT</td><td>Depending on its length. MySQL Server 5.5 and above can have VARCHAR
+                columns with a length up to 65535 characters. Anything
+                larger is migrated to one of the TEXT blob types. In
+                MySQL, character set of strings depend on the column
+                character set instead of the datatype.</td></tr><tr><td scope="row">DATE</td><td>DATE</td><td> </td></tr><tr><td scope="row">TIME</td><td>TIME</td><td> </td></tr><tr><td scope="row">TIMESTAMP</td><td>DATETIME</td><td> </td></tr><tr><td scope="row">INTERVAL</td><td>TIME</td><td> </td></tr><tr><td scope="row">BYTEA</td><td>LONGBLOB</td><td> </td></tr><tr><td scope="row">TEXT</td><td>LONGTEXT</td><td> </td></tr><tr><td scope="row">CIDR</td><td>VARCHAR(43)</td><td> </td></tr><tr><td scope="row">INET</td><td>VARCHAR(43)</td><td> </td></tr><tr><td scope="row">MACADDR</td><td>VARCHAR(17)</td><td> </td></tr><tr><td scope="row">UUID</td><td>VARCHAR(36)</td><td> </td></tr><tr><td scope="row">XML</td><td>LONGTEXT</td><td> </td></tr><tr><td scope="row">JSON</td><td>LONGTEXT</td><td> </td></tr><tr><td scope="row">TSVECTOR</td><td>LONGTEXT</td><td> </td></tr><tr><td scope="row">TSQUERY</td><td>LONGTEXT</td><td> </td></tr><tr><td scope="row">ARRAY</td><td>LONGTEXT</td><td> </td></tr><tr><td scope="row">POINT</td><td>POINT</td><td> </td></tr><tr><td scope="row">LINE</td><td>LINESTRING</td><td>Although LINE length is infinite, and LINESTRING is finite in MySQL, it
+                is approximated</td></tr><tr><td scope="row">LSEG</td><td>LINESTRING</td><td>A LSEG is like a LINESTRING with only two points</td></tr><tr><td scope="row">BOX</td><td>POLYGON</td><td>A BOX is a POLYGON with five points and right angles</td></tr><tr><td scope="row">PATH</td><td>LINESTRING</td><td> </td></tr><tr><td scope="row">POLYGON</td><td>POLYGON</td><td> </td></tr><tr><td scope="row">CIRCLE</td><td>POLYGON</td><td>A POLYGON is used to approximate a CIRCLE</td></tr><tr><td scope="row">TXID_SNAPSHOT</td><td>VARCHAR</td><td> </td></tr></tbody></table></div></div><br class="table-break"></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-migration-database-mysql"></a>10.7 MySQL Migration</h2></div></div></div><p>
+      Perform MySQL server version upgrades to move off older MySQL
+      versions to the latest version. The standard migration wizard can
+      migrate MySQL to MySQL, and a simpler <span class="guilabel">Schema Transfer
+      Wizard</span> can also be used.
+    </p><h3><a name="wb-migration-database-mysql-schema-transfer"></a>MySQL Schema Transfer Wizard</h3><p>
+      The MySQL Schema Transfer wizard helps you move your data from an
+      older MySQL server version to a different (typically later) MySQL
+      version. This migration tool is meant for developer hosts as it is
+      simpler than the standard migration wizard, because it only
+      migrates MySQL to MySQL. The data is transferred and not based on
+      a consistent snapshot, so it works best on local MySQL instances.
+    </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+        You should not use this wizard on production MySQL instances.
+      </p></div><p>
+      To open the wizard, select <span class="guimenu">Database</span> and then
+      <span class="guimenuitem">Schema Transfer Wizard</span> from the main
+      menu. The next figure shows the initial screen.
+    </p><div class="figure"><a name="wb-migration-mysql-schema-transfer-overview"></a><p class="title"><b>Figure 10.45 MySQL Schema Transfer Wizard: Overview</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-mysql-schema-transfer-overview.png" width="800" height="490" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      Read the overview text and click <span class="guibutton">Start the
+      Wizard</span> to begin. An example transfer appears in the
+      figure that follows.
+    </p><div class="figure"><a name="wb-migration-mysql-schema-transfer-connection-selection"></a><p class="title"><b>Figure 10.46 MySQL Schema Transfer Wizard: Connection Selection</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-mysql-schema-transfer-connection-selection.png" width="800" height="490" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      Choose your target and source MySQL connections (see the figure
+      that follows). After choosing and testing your MySQL connections,
+      click <span class="guibutton">Next</span> to continue.
+    </p><div class="figure"><a name="wb-migration-mysql-schema-transfer-schema-selection"></a><p class="title"><b>Figure 10.47 MySQL Schema Transfer Wizard: Schema Selection</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-mysql-schema-transfer-schema-selection.png" width="800" height="490" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      Choose the schemas to migrate, and click <span class="guibutton">Start
+      Copy</span> to begin copying the selected schemas from the
+      source to target MySQL server. The next figure shows the copy
+      status.
+    </p><div class="figure"><a name="wb-migration-mysql-schema-transfer-copy-databases"></a><p class="title"><b>Figure 10.48 MySQL Schema Transfer Wizard: Copy Databases</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-mysql-schema-transfer-copy-databases.png" width="800" height="492" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      Review the <span class="guilabel">Message Log</span> to confirm that the
+      migration finished with success. Click <span class="guibutton">Next</span>
+      to view a summary of the results. The following figure shows an
+      example of the copy results.
+    </p><div class="figure"><a name="wb-migration-mysql-schema-transfer-results"></a><p class="title"><b>Figure 10.49 MySQL Schema Transfer Wizard: Results</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-mysql-schema-transfer-results.png" width="800" height="490" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"><p>
+      Click <span class="guibutton">Finish</span> to close the wizard.
+    </p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-migration-wizard"></a>10.8 Using the MySQL Workbench Migration Wizard</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="wb-migration.html#wb-migration-wizard-connection">10.8.1 Connecting to the Databases</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-wizard-schemata">10.8.2 Schema Retrieval and Selection</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-wizard-reverse-engineering">10.8.3 Reverse Engineering</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-wizard-object-selection">10.8.4 Object Selection</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-wizard-migration">10.8.5 Migration</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-wizard-manual-editing">10.8.6 Manual Editing</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-wizard-schema-target-options">10.8.7 Target Creation Options</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-wizard-schema-creation">10.8.8 Schema Creation</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-wizard-create-target">10.8.9 Create Target Results</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-wizard-data-migration-setup">10.8.10 Data Transfer and Migration Setup</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-wizard-data-migration-transfer">10.8.11 Bulk Data Transfer</a></span></dt><dt><span class="section"><a href="wb-migration.html#wb-migration-wizard-report">10.8.12 Migration Report</a></span></dt></dl></div><p>
+      For a visual walk-through of the migration wizard, see
+      <a class="xref" href="wb-migration.html#wb-migration-overview-steps" title="10.2.1 A Visual Guide to Performing a Database Migration">Section 10.2.1, “A Visual Guide to Performing a Database Migration”</a>.
+    </p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-migration-wizard-connection"></a>10.8.1 Connecting to the Databases</h3></div></div></div><p>
+        A connection is made to the source and target database servers.
+      </p><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-migration-wizard-connection-source"></a>Source Connection</h4></div></div></div><p>
+          Select the source RDBMS that is migrating to MySQL. Choose the
+          <span class="guilabel">Database System</span> that is being migrated
+          and the other connection parameters will change accordingly
+          (see the figure that follows).
+        </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+            This connection definition may be saved using the
+            <code class="literal">Store connection for future use as</code>
+            option, and there is also the <span class="guibutton">Test
+            Connection</span> option.
+          </p></div><div class="figure"><a name="wb-migration-wizard-connection-source-image"></a><p class="title"><b>Figure 10.50 MySQL Workbench migration: Source Selection (Parameters)</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-source-selection-parameters.png" width="800" height="460" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-migration-wizard-connection-target"></a>Target Selection</h4></div></div></div><p>
+          The target is the MySQL database that will contain the
+          migrated data. Choose an existing MySQL Workbench connection or
+          select <span class="guimenu">Manage Stored Connections</span> from
+          drop-down list to create a new MySQL connection. An example
+          stored connection appears in the following figure.
+        </p><div class="figure"><a name="wb-migration-wizard-connection-target-image"></a><p class="title"><b>Figure 10.51 MySQL Workbench migration: Target selection</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-target-selection.png" width="800" height="460" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-migration-wizard-schemata"></a>10.8.2 Schema Retrieval and Selection</h3></div></div></div><p>
+        Retrieve a list of available databases and choose the specific
+        databases (and tables) that you want to migrate to MySQL.
+      </p><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-migration-wizard-schemata-retrieve"></a>Fetch Schemas List</h4></div></div></div><p>
+          The Schemas list is retrieved from both the source and target
+          RDBMS. The account used for the connection will need to have
+          appropriate privileges for listing and reading the schemas you
+          want to migrate. Target RDBMS connection settings will also be
+          validated. This is an automated and informational step that
+          reports connection related errors, general log information, or
+          both (see the figure that follows).
+        </p><p>
+          The steps that are performed include: connects to the source
+          DBMS, checks the connection, and retrieves the schema list
+          from the source.
+        </p><div class="figure"><a name="wb-migration-wizard-schemata-retrieve-image"></a><p class="title"><b>Figure 10.52 MySQL Workbench migration: Fetch Schemas List</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-fetch-schemata-list.png" width="800" height="526" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="wb-migration-wizard-schemata-select"></a>Schemas Selection</h4></div></div></div><p>
+          Choose the databases you want to migrate over to MySQL.
+        </p><p>
+          The <span class="guilabel">Schema Name Mapping Method</span> step
+          provides the following options for migrating from Microsoft
+          SQL Server:
+        </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+            This example uses Microsoft SQL Server as the source RDMS.
+            Although the options will be different for other database
+            systems, the concept remains the same.
+          </p></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+              <span class="guilabel">Keep schemas as they are: Catalog.Schema.Table
+              -&gt; Schema.Table</span>: This will create multiple
+              databases, one per schema.
+            </p></li><li class="listitem"><p>
+              <span class="guilabel">Only one schema: Catalog.Schema.Table -&gt;
+              Catalog.Table</span>: Merges each schema into a single
+              database (see the figure that follows).
+            </p></li><li class="listitem"><p>
+              <span class="guilabel">Only one schema, keep current schema names as a
+              prefix: Catalog.Schema.Table -&gt;
+              Catalog.Schema_table</span>: Preserves the schema name
+              as a prefix.
+            </p></li></ul></div><div class="figure"><a name="wb-migration-wizard-schemata-select-image"></a><p class="title"><b>Figure 10.53 MySQL Workbench Migration: Schemas Selection</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-schemata-selection.png" width="800" height="462" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-migration-wizard-reverse-engineering"></a>10.8.3 Reverse Engineering</h3></div></div></div><p>
+        The source metadata is fetched from the source RDBMS, and
+        reverse engineered. This is an automated and informational step
+        that reports related errors, general log information, or both
+        (see the figure that follows). View the logs and then click
+        <span class="guibutton">Next</span> to continue.
+      </p><div class="figure"><a name="wb-migration-wizard-reverse-engineering-image"></a><p class="title"><b>Figure 10.54 MySQL Workbench migration: Reverse Engineer Source</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-reverse-engineer-source.png" width="800" height="531" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-migration-wizard-object-selection"></a>10.8.4 Object Selection</h3></div></div></div><p>
+        Objects discovered by the <span class="guilabel">Reverse Engineer
+        Source</span> stage are made available here. Valid objects
+        include Table, View, and Routine objects, with only the Table
+        objects being selected by default (see the figure that follows).
+        Use the <span class="guibutton">Show Selection</span> button in order to
+        disable individual table objects from being migrated.
+      </p><div class="figure"><a name="wb-migration-wizard-object-selection-image"></a><p class="title"><b>Figure 10.55 MySQL Workbench migration: Source Objects</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-source-objects.png" width="800" height="531" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-migration-wizard-migration"></a>10.8.5 Migration</h3></div></div></div><p>
+        Reverse engineered objects from the source RDBMS are
+        automatically converted to MySQL compatible objects. Default
+        data type and default column value mappings are used, and the
+        generated objects and column definitions may be reviewed and
+        edited in the next step.
+      </p><p>
+        The steps performed include Migrating the selected objects, and
+        generating the SQL CREATE statements, as indicated in the next
+        figure.
+      </p><div class="figure"><a name="wb-migration-wizard-migration-image"></a><p class="title"><b>Figure 10.56 MySQL Workbench Migration: Migration</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-migration.png" width="800" height="596" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-migration-wizard-manual-editing"></a>10.8.6 Manual Editing</h3></div></div></div><p>
+        Use the <span class="guilabel">View</span> select box to choose the
+        section to edit (see the figure that follows). The
+        <span class="guibutton">Show Code and Messages</span> button is
+        available on every page and it shows the generated MySQL code
+        that corresponds to the selected object.
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            <span class="guimenu">Migration Problems</span>: This either reports
+            problems or displays "No mapping problems found." As the
+            following figure shows, this is an informational screen.
+          </p><div class="figure"><a name="wb-migration-wizard-manual-editing-problems"></a><p class="title"><b>Figure 10.57 MySQL Workbench migration: Manual Editing (Migration Problems)</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-manual-editing-problems.png" width="800" height="463" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></li><li class="listitem"><p>
+            <span class="guimenu">All Objects</span>: An object view that allows
+            you to view and edit the object definitions. Double-click on
+            a row to modify a target objects name (see the figure that
+            follows).
+          </p><div class="figure"><a name="wb-migration-wizard-manual-editing-all-objects"></a><p class="title"><b>Figure 10.58 MySQL Workbench Migration: Manual Editing (All Objects)</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-manual-editing-all-objects.png" width="800" height="701" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></li><li class="listitem"><p>
+            <span class="guimenu">Column Mappings</span>: Shows all of the table
+            column mappings and enables you to individually review and
+            fix the mapping for all column types, default values, and
+            other attributes. The following figure shows an example of
+            the manual editing session.
+          </p><div class="figure"><a name="wb-migration-wizard-manual-editing-column-mappings"></a><p class="title"><b>Figure 10.59 MySQL Workbench Migration: Manual Editing (Column Mappings)</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-manual-editing-column-mappings.png" width="800" height="563" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-migration-wizard-schema-target-options"></a>10.8.7 Target Creation Options</h3></div></div></div><p>
+        Defines addition settings for the target schema. Configuration
+        options include:
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            <span class="guilabel">Create schema in target RDBMS</span>
+          </p></li><li class="listitem"><p>
+            <span class="guilabel">Create an SQL script file</span>
+          </p></li><li class="listitem"><p>
+            <span class="guilabel">Keep the schemas if they already exist. Objects
+            that already exist will not be recreated or
+            update.</span>
+          </p></li></ul></div><div class="figure"><a name="wb-migration-wizard-schema-target-options-image"></a><p class="title"><b>Figure 10.60 MySQL Workbench Migration: Target Creation Options</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-target-creation-options.png" width="800" height="429" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-migration-wizard-schema-creation"></a>10.8.8 Schema Creation</h3></div></div></div><p>
+        The SQL scripts generated for the migrated schema objects will
+        now be executed in the target database. You can monitor
+        execution in the logs, if errors exist then they will be fixed
+        in the next step. Table data will be migrated in a later step as
+        well.
+      </p><p>
+        As the following figure shows, this is an automated step and the
+        actions include: Create Script File, Connect to Target Database,
+        and Create Schemas and Objects.
+      </p><div class="figure"><a name="wb-migration-wizard-schema-creation-image"></a><p class="title"><b>Figure 10.61 MySQL Workbench Migration: Create Schemas</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-create-schemata.png" width="800" height="519" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-migration-wizard-create-target"></a>10.8.9 Create Target Results</h3></div></div></div><p>
+        The generated objects are listed here, along with the error
+        messages if any exist.
+      </p><p>
+        The migration code may also be viewed and edited here (see the
+        figure that follows). To make changes, select an object, edit
+        the query code, and click <span class="guibutton">Apply</span>. Repeat
+        this process for each object that will be edited. Finally, click
+        <span class="guibutton">Recreate Objects</span> to save the results.
+      </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+          The <span class="guibutton">Recreate Objects</span> operation is
+          required to save any changes here. It will then execute the
+          previous migration step (<span class="guilabel">Create Schemas</span>)
+          with the modified code, and then continue the migration
+          process. This also means that the previously saved schema will
+          be dropped.
+        </p></div><div class="figure"><a name="wb-migration-wizard-create-target-image"></a><p class="title"><b>Figure 10.62 MySQL Workbench Migration: Create Target Results</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-create-target-results.png" width="800" height="519" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-migration-wizard-data-migration-setup"></a>10.8.10 Data Transfer and Migration Setup</h3></div></div></div><p>
+        Transfers data from the source RDBMS to the target MySQL
+        database (see the figure that follows). The setup screen
+        includes the following options:
+      </p><p>
+        <span class="bold"><strong>Data Copy</strong></span>:
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            <span class="guilabel">Online copy of table data to target
+            RDBMS</span>: This (default) will copy the data to the
+            target RDBMS.
+          </p></li><li class="listitem"><p>
+            <span class="guilabel">Create a batch file to copy the data at another
+            time</span>: The data may also be dumped to a file that
+            can be executed at a later time, or be used as a backup.
+            This script uses a MySQL connection to transfer the data.
+          </p></li><li class="listitem"><p>
+            <span class="guilabel">Create a shell script to use native server dump
+            and load abilities for fast migration</span>: Unlike the
+            simple batch file that performs a live online copy, this
+            generates a script to be executed on the
+            <span class="emphasis"><em>source</em></span> host to then generate a Zip file
+            containing all of the data and information needed to migrate
+            the data locally on the target host. Copy and extract the
+            generated Zip file on the target host and then execute the
+            import script (on the target host) to import the data into
+            MySQL using a LOAD DATA call.
+          </p><p>
+            This faster method avoids the need to traffic all data
+            through MySQL Workbench, or to have a permanent network
+            connection between the MySQL servers.
+          </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">Note</div><p>
+              This option was added in MySQL Workbench 6.3.0.
+            </p></div></li></ul></div><p>
+        Options:
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            Truncate target tables before copying data: In case the
+            target database already exists, this will delete said data.
+          </p></li><li class="listitem"><p>
+            Worker tasks: The default value is <code class="literal">2</code>.
+            This is the number of tasks (database connections) used
+            while copying the data.
+          </p></li><li class="listitem"><p>
+            Enable debug output for table copy: Shows debugging
+            information.
+          </p></li></ul></div><div class="figure"><a name="wb-migration-wizard-data-migration-setup-image"></a><p class="title"><b>Figure 10.63 MySQL Workbench Migration: Data Transfer Setup</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-data-transfer-setup.png" width="800" height="494" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-migration-wizard-data-migration-transfer"></a>10.8.11 Bulk Data Transfer</h3></div></div></div><p>
+        Depending on the selected option, this will either transfer the
+        data to the target RDMS (default), generate a simple script for
+        the online data transfer, or generate script to execute on the
+        source host that then generates a Zip file containing both the
+        transfer script and data that will be executed on the target
+        host. Optionally, view the logs to confirm (see the figure that
+        follows).
+      </p><div class="figure"><a name="wb-migration-wizard-data-migration-transfer-image"></a><p class="title"><b>Figure 10.64 MySQL Workbench Migration: Bulk Data Transfer</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-bulk-data-transfer.png" width="800" height="512" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="wb-migration-wizard-report"></a>10.8.12 Migration Report</h3></div></div></div><p>
+        Displays the final report that summarizes the migration process.
+        The following figure shows an example of the migration report.
+      </p><div class="figure"><a name="wb-migration-wizard-report-image"></a><p class="title"><b>Figure 10.65 MySQL Workbench Migration: Migration Report</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/wb-migration-migration-report.png" width="800" height="473" alt="Content is described in the surrounding text."></div></div></div><br class="figure-break"></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-migration-faq"></a>10.9 MySQL Workbench Migration Wizard FAQ</h2></div></div></div><p>
+      Frequently Asked Questions with answers.
+    </p><div class="qandaset"><a name="idm140544305750464"></a><dl><dt>10.9.1. <a href="wb-migration.html#idm140544305750208">
+            While using the Postgresql psqlodbc driver, I see the
+            following error: ('08001', '[08001] Already
+            connected. (202) (SQLDriverConnect)')
+          </a></dt></dl><table border="0" style="width: 100%;"><colgroup><col align="left" width="1%"><col></colgroup><tbody><tr class="question"><td align="left" valign="top"><a name="idm140544305750208"></a><a name="idm140544305749952"></a><p><b>10.9.1.</b></p></td><td align="left" valign="top"><p>
+            While using the Postgresql psqlodbc driver, I see the
+            following error: <code class="literal">('08001', '[08001] Already
+            connected. (202) (SQLDriverConnect)')</code>
+          </p></td></tr><tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p>
+            This means that PostgreSQL is not configured to accept
+            connections from the source IP.
+          </p></td></tr></tbody></table></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="wb-data-modeling.html">Previous</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="workbench-faq.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 9 Database Design and Modeling </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Appendix A MySQL Workbench Frequently Asked Questions</td></tr></table></div><div class="copyright-footer"></div></body></html>
